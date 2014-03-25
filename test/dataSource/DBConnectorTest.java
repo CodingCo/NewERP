@@ -6,6 +6,7 @@
 
 package dataSource;
 
+import java.sql.Connection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,7 +24,7 @@ public class DBConnectorTest {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {	
     }
     
     @AfterClass
@@ -32,16 +33,19 @@ public class DBConnectorTest {
     
     @Before
     public void setUp() {
+	DBConnector.getInstance();
     }
     
     @After
     public void tearDown() {
+	
     }
 
     @Test
-    public void testSomeMethod() {
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+    public void testGetConnection() {
+	Connection con = DBConnector.getConnection();
+	assertNotNull(con);
     }
+    
     
 }
