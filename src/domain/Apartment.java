@@ -3,16 +3,16 @@ package domain;
 public class Apartment {
 
     //== Fields
-    private final int apartmentNumber;
+    private final int a_num;
     private String type;
 
     /**
      *
-     * @param apartmentID
+     * @param a_num
      * @param type
      */
-    public Apartment(int apartmentID, String type) {
-        this.apartmentNumber = apartmentID;
+    public Apartment(int a_num, String type) {
+        this.a_num = a_num;
         this.type = type;
     }
 
@@ -20,8 +20,8 @@ public class Apartment {
         this.type = type;
     }
     
-    public int getApartmentID() {
-        return apartmentNumber;
+    public int getANum() {
+        return a_num;
     }
 
     public String getType() {
@@ -30,7 +30,7 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment{" + "apartmentID=" + apartmentNumber 
+        return "Apartment{" + "a_num=" + a_num 
                 + ", type=" + type + '}';
     }
 
