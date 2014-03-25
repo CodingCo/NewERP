@@ -6,7 +6,6 @@
 
 package dataSource;
 
-import java.sql.Connection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,13 +17,13 @@ import static org.junit.Assert.*;
  *
  * @author kasper
  */
-public class DBConnectorTest {
+public class DBFacadeTest {
     
-    public DBConnectorTest() {
+    public DBFacadeTest() {
     }
     
     @BeforeClass
-    public static void setUpClass() {	
+    public static void setUpClass() {
     }
     
     @AfterClass
@@ -33,19 +32,24 @@ public class DBConnectorTest {
     
     @Before
     public void setUp() {
-	DBConnector.getInstance();
     }
     
     @After
     public void tearDown() {
-	
     }
 
+    /**
+     * Test of getInstance method, of class DbFacade.
+     */
     @Test
-    public void testGetConnection() {
-	Connection con = DBConnector.getConnection();
-	assertNotNull(con);
+    public void testGetInstance() {
+	System.out.println("getInstance");
+	DBFacade instance = null;
+	DBFacade expResult = null;
+	DBFacade result = instance.getInstance();
+	assertEquals(expResult, result);
+	// TODO review the generated test code and remove the default call to fail.
+	fail("The test case is a prototype.");
     }
-    
     
 }
