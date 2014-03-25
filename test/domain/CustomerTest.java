@@ -46,7 +46,7 @@ public class CustomerTest {
 	System.out.println("getCustomerID");
 	Customer instance = null;
 	int expResult = 0;
-	int result = instance.getCustomerID();
+	int result = instance.getCustID();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -102,7 +102,7 @@ public class CustomerTest {
 	System.out.println("getEMail");
 	Customer instance = null;
 	String expResult = "";
-	String result = instance.getEMail();
+	String result = instance.getEmail();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -172,7 +172,7 @@ public class CustomerTest {
 	System.out.println("getZipCode");
 	Customer instance = null;
 	int expResult = 0;
-	int result = instance.getZipCode();
+	int result = instance.getZipcode();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
