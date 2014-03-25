@@ -19,7 +19,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
      */
     public CasablancaGUI() {
         initComponents();
-          this.setExtendedState(Frame.MAXIMIZED_BOTH);
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.dispose();
         this.setUndecorated(true);
     }
@@ -33,24 +33,56 @@ public class CasablancaGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPage = new javax.swing.JPanel();
+        frontPagePanel = new javax.swing.JPanel();
+        newBookingPanel = new javax.swing.JPanel();
+        editBookingPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1366, 768));
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1366, 768));
+        mainPage.setMinimumSize(new java.awt.Dimension(1366, 768));
+        mainPage.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout frontPagePanelLayout = new javax.swing.GroupLayout(frontPagePanel);
+        frontPagePanel.setLayout(frontPagePanelLayout);
+        frontPagePanelLayout.setHorizontalGroup(
+            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1366, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        frontPagePanelLayout.setVerticalGroup(
+            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 768, Short.MAX_VALUE)
         );
+
+        mainPage.add(frontPagePanel, "card2");
+
+        javax.swing.GroupLayout newBookingPanelLayout = new javax.swing.GroupLayout(newBookingPanel);
+        newBookingPanel.setLayout(newBookingPanelLayout);
+        newBookingPanelLayout.setHorizontalGroup(
+            newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1366, Short.MAX_VALUE)
+        );
+        newBookingPanelLayout.setVerticalGroup(
+            newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
+        );
+
+        mainPage.add(newBookingPanel, "card3");
+
+        javax.swing.GroupLayout editBookingPanelLayout = new javax.swing.GroupLayout(editBookingPanel);
+        editBookingPanel.setLayout(editBookingPanelLayout);
+        editBookingPanelLayout.setHorizontalGroup(
+            editBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        editBookingPanelLayout.setVerticalGroup(
+            editBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        mainPage.add(editBookingPanel, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,14 +90,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(551, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(134, Short.MAX_VALUE))
         );
 
@@ -108,6 +140,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel editBookingPanel;
+    private javax.swing.JPanel frontPagePanel;
+    private javax.swing.JPanel mainPage;
+    private javax.swing.JPanel newBookingPanel;
     // End of variables declaration//GEN-END:variables
 }
