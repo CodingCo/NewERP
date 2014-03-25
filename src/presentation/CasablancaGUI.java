@@ -9,7 +9,6 @@ import java.awt.CardLayout;
 import java.awt.Frame;
 
 /**
- *
  * @author Robert
  */
 public class CasablancaGUI extends javax.swing.JFrame {
@@ -29,7 +28,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.dispose();
         this.setUndecorated(true);
-
+        this.frontPageLogoutButton.setVisible(false);
     }
 
     /**
@@ -218,11 +217,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void frontPageEditBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageEditBookingActionPerformed
-        // TODO add your handling code here:
+        cl.show(mainPage, "EditBooking");
     }//GEN-LAST:event_frontPageEditBookingActionPerformed
 
     private void frontPageNewBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageNewBookingActionPerformed
-        // TODO add your handling code here:
+        cl.show(mainPage, "NewBooking");
     }//GEN-LAST:event_frontPageNewBookingActionPerformed
 
     private void frontPageExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageExitButtonActionPerformed
