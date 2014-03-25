@@ -2,15 +2,24 @@ package domain;
 
 public class Booking {
 
-    //== Fields
-    private int bookingID;
+    
+    private final int bookingID;
     private int apartmentID;
     private int customerID;
     private int numberOfNights;
     private int travelAgency;
     private int rent;
 
-    //== Constructor
+    /**
+     * Booking entity
+     * 
+     * @param bookingID
+     * @param apartmentID
+     * @param customerID
+     * @param numberOfNights
+     * @param travelAgency
+     * @param rent
+     */
     public Booking(int bookingID, int apartmentID, int customerID, int numberOfNights, int travelAgency, int rent) {
         this.bookingID = bookingID;
         this.apartmentID = apartmentID;
@@ -20,7 +29,26 @@ public class Booking {
         this.rent = rent;
     }
 
-    //== Methods
+    public void setApartmentID(int apartmentID) {
+        this.apartmentID = apartmentID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public void setNumberOfNights(int numberOfNights) {
+        this.numberOfNights = numberOfNights;
+    }
+
+    public void setTravelAgency(int travelAgency) {
+        this.travelAgency = travelAgency;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
+    
     public int getBookingID() {
         return bookingID;
     }
