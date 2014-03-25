@@ -1,13 +1,21 @@
 package dataSource;
 
 
+
 import java.sql.Connection;
+
+
 
 
 /**
  *
  * @author kasper
  */
+
+
+
+import java.sql.Connection;
+
 
 public class DbFacade {
     //== Fields
@@ -30,10 +38,5 @@ public class DbFacade {
     }
 
     //== Singleton End
-    
-    //== Methods
-
-    
-
     
 }
