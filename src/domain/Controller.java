@@ -18,16 +18,7 @@ public class Controller {
         return instance;
     }
 
-<<<<<<< HEAD
-   
-=======
-    
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
->>>>>>> ce205bd32c2f834a8d4245a8c8ecfc85dbe95e02
->>>>>>> FETCH_HEAD
     public Booking addNewBooking(){
         return null;
     }
@@ -66,15 +57,6 @@ public class Controller {
 
     
     // JEg har en stor pikkermand
-<<<<<<< HEAD
 
-=======
-    
-<<<<<<< HEAD
-
-=======
->>>>>>> FETCH_HEAD
->>>>>>> ce205bd32c2f834a8d4245a8c8ecfc85dbe95e02
->>>>>>> FETCH_HEAD
     
 }
