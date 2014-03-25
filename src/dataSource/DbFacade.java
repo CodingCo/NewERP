@@ -1,5 +1,9 @@
 package dataSource;
 
+/**
+ *
+ * @author kasper
+ */
 public class DbFacade {
     //== Fields
     private DbFacade instance;
@@ -14,4 +18,6 @@ public class DbFacade {
             instance = new DbFacade();
         return instance;
     }
+    
+    
 }
