@@ -19,7 +19,7 @@ public class Controller {
     }
 
     
-<<<<<<< HEAD
+
     public Booking addNewBooking(){
         return null;
     }
@@ -55,10 +55,9 @@ public class Controller {
     public Booking getBooking(){
     return null;
     }
-=======
+
     
     // JEg har en stor pikkermand
-    
->>>>>>> FETCH_HEAD
+
     
 }
