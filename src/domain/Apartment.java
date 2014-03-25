@@ -3,18 +3,25 @@ package domain;
 public class Apartment {
 
     //== Fields
-    private int apartmentID;
+    private final int apartmentNumber;
     private String type;
 
-    //== Constructor
+    /**
+     *
+     * @param apartmentID
+     * @param type
+     */
     public Apartment(int apartmentID, String type) {
-        this.apartmentID = apartmentID;
+        this.apartmentNumber = apartmentID;
         this.type = type;
     }
 
-    //== Methods
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     public int getApartmentID() {
-        return apartmentID;
+        return apartmentNumber;
     }
 
     public String getType() {
@@ -23,7 +30,7 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment{" + "apartmentID=" + apartmentID 
+        return "Apartment{" + "apartmentID=" + apartmentNumber 
                 + ", type=" + type + '}';
     }
 
