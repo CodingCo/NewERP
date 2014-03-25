@@ -2,42 +2,42 @@ package domain;
 
 public class Customer {
     //== Fields
-    private final int customerID;
+    private final int cust_id;
     private String name;
-    private String familyName;
+    private String family_name;
     private int age;
-    private String eMail;
-    private int phoneNum;
+    private String email;
+    private int phone;
     private String country;
     private String city;
     private String street;
-    private int zipCode;
+    private int zipcode;
     
     /**
      *  Customer entity 
      * 
-     * @param customerID
+     * @param cust_id
      * @param name
-     * @param familyName
+     * @param family_name
      * @param age
-     * @param eMail
-     * @param phoneNum
+     * @param email
+     * @param phone
      * @param country
      * @param city
      * @param street
-     * @param zipCode
+     * @param zipcode
      */
-    public Customer(int customerID, String name, String familyName, int age, String eMail, int phoneNum, String country, String city, String street, int zipCode){
-        this.customerID = customerID;
+    public Customer(int cust_id, String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode){
+        this.cust_id = cust_id;
         this.name = name;
-        this.familyName = familyName;
+        this.family_name = family_name;
         this.age = age;
-        this.eMail = eMail;
-        this.phoneNum = phoneNum;
+        this.email = email;
+        this.phone = phone;
         this.country = country;
         this.city = city;
         this.street = street;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
     public void setName(String name) {
@@ -45,7 +45,7 @@ public class Customer {
     }
 
     public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+        this.family_name = familyName;
     }
 
     public void setAge(int age) {
@@ -53,11 +53,11 @@ public class Customer {
     }
 
     public void seteMail(String eMail) {
-        this.eMail = eMail;
+        this.email = eMail;
     }
 
     public void setPhoneNum(int phoneNum) {
-        this.phoneNum = phoneNum;
+        this.phone = phoneNum;
     }
 
     public void setCountry(String country) {
@@ -73,26 +73,26 @@ public class Customer {
     }
 
     public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+        this.zipcode = zipCode;
     }
     
-    public int getCustomerID(){
-        return customerID;
+    public int getCustID(){
+        return cust_id;
     }
     public String getName(){
         return name;
     }
     public String getFamilyName(){
-        return familyName;
+        return family_name;
     }
     public int getAge(){
         return age;
     }
-    public String getEMail(){
-        return eMail;
+    public String getEmail(){
+        return email;
     }
     public int getPhoneNum(){
-        return phoneNum;
+        return phone;
     }
     public String getCountry(){
         return country;
@@ -103,22 +103,22 @@ public class Customer {
     public String getStreet(){
         return street;
     }
-    public int getZipCode(){
-        return zipCode;
+    public int getZipcode(){
+        return zipcode;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "customerID=" + customerID 
+        return "Customer{" + "customerID=" + cust_id 
                 + ", name=" + name 
-                + ", familyName=" + familyName 
+                + ", familyName=" + family_name 
                 + ", age=" + age 
-                + ", eMail=" + eMail 
-                + ", phoneNum=" + phoneNum 
+                + ", eMail=" + email 
+                + ", phoneNum=" + phone 
                 + ", country=" + country 
                 + ", city=" + city 
                 + ", street=" + street 
-                + ", zipCode=" + zipCode + '}';
+                + ", zipCode=" + zipcode + '}';
     }
 
     
