@@ -1,6 +1,13 @@
 package dataSource;
 
+
 import java.sql.Connection;
+
+
+/**
+ *
+ * @author kasper
+ */
 
 public class DbFacade {
     //== Fields
@@ -21,8 +28,12 @@ public class DbFacade {
             instance = new DbFacade();
         return instance;
     }
+
     //== Singleton End
     
     //== Methods
+
+    
+
     
 }

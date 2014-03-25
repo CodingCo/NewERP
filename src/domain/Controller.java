@@ -18,7 +18,7 @@ public class Controller {
         return instance;
     }
 
-    
+   
     public Booking addNewBooking(){
         return null;
     }
@@ -54,5 +54,10 @@ public class Controller {
     public Booking getBooking(){
     return null;
     }
+
+    
+    // JEg har en stor pikkermand
+    
+
     
 }
