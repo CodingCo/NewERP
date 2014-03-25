@@ -219,7 +219,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_frontPageNewBookingActionPerformed
 
     private void frontPageExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageExitButtonActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_frontPageExitButtonActionPerformed
 
     /**
