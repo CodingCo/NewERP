@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package presentation;
 
+import java.awt.CardLayout;
 import java.awt.Frame;
 
 /**
@@ -14,14 +14,22 @@ import java.awt.Frame;
  */
 public class CasablancaGUI extends javax.swing.JFrame {
 
+    CardLayout cl;
+
     /**
      * Creates new form CasablancaGUI
      */
     public CasablancaGUI() {
         initComponents();
+        cl = (CardLayout) (mainPage.getLayout());
+        cl.addLayoutComponent(frontPagePanel, "FrontPage");
+        cl.addLayoutComponent(newBookingPanel, "NewBooking");
+        cl.addLayoutComponent(editBookingPanel, "EditBooking");
+        cl.show(mainPage, "FrontPage");
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.dispose();
         this.setUndecorated(true);
+
     }
 
     /**
@@ -35,25 +43,130 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         mainPage = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
+        frontPageMenuPanel = new javax.swing.JPanel();
+        frontPageLogoutButton = new javax.swing.JButton();
+        frontPageExitButton = new javax.swing.JButton();
+        frontPageNavPanel = new javax.swing.JPanel();
+        frontPageNewBooking = new javax.swing.JButton();
+        frontPageEditBooking = new javax.swing.JButton();
         newBookingPanel = new javax.swing.JPanel();
         editBookingPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
 
         mainPage.setMinimumSize(new java.awt.Dimension(1366, 768));
         mainPage.setLayout(new java.awt.CardLayout());
+
+        frontPagePanel.setMaximumSize(new java.awt.Dimension(1366, 768));
+        frontPagePanel.setMinimumSize(new java.awt.Dimension(1366, 768));
+
+        frontPageMenuPanel.setMaximumSize(new java.awt.Dimension(200, 768));
+        frontPageMenuPanel.setMinimumSize(new java.awt.Dimension(200, 768));
+        frontPageMenuPanel.setPreferredSize(new java.awt.Dimension(200, 768));
+
+        frontPageLogoutButton.setText("Logout");
+        frontPageLogoutButton.setMaximumSize(new java.awt.Dimension(76, 25));
+        frontPageLogoutButton.setMinimumSize(new java.awt.Dimension(76, 25));
+        frontPageLogoutButton.setPreferredSize(new java.awt.Dimension(76, 25));
+
+        frontPageExitButton.setText("Exit");
+        frontPageExitButton.setMaximumSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.setMinimumSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.setPreferredSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageExitButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frontPageMenuPanelLayout = new javax.swing.GroupLayout(frontPageMenuPanel);
+        frontPageMenuPanel.setLayout(frontPageMenuPanelLayout);
+        frontPageMenuPanelLayout.setHorizontalGroup(
+            frontPageMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPageMenuPanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(frontPageMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        frontPageMenuPanelLayout.setVerticalGroup(
+            frontPageMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPageMenuPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        frontPageNavPanel.setMaximumSize(new java.awt.Dimension(1166, 768));
+        frontPageNavPanel.setMinimumSize(new java.awt.Dimension(1166, 768));
+        frontPageNavPanel.setPreferredSize(new java.awt.Dimension(1166, 768));
+
+        frontPageNewBooking.setText("New Booking");
+        frontPageNewBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frontPageNewBooking.setMaximumSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.setMinimumSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.setPreferredSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageNewBookingActionPerformed(evt);
+            }
+        });
+
+        frontPageEditBooking.setText("Edit Booking");
+        frontPageEditBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frontPageEditBooking.setMaximumSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.setMinimumSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.setPreferredSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageEditBookingActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frontPageNavPanelLayout = new javax.swing.GroupLayout(frontPageNavPanel);
+        frontPageNavPanel.setLayout(frontPageNavPanelLayout);
+        frontPageNavPanelLayout.setHorizontalGroup(
+            frontPageNavPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPageNavPanelLayout.createSequentialGroup()
+                .addGroup(frontPageNavPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frontPageNavPanelLayout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(frontPageNewBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frontPageNavPanelLayout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(frontPageEditBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(608, Short.MAX_VALUE))
+        );
+        frontPageNavPanelLayout.setVerticalGroup(
+            frontPageNavPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPageNavPanelLayout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(frontPageNewBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(frontPageEditBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout frontPagePanelLayout = new javax.swing.GroupLayout(frontPagePanel);
         frontPagePanel.setLayout(frontPagePanelLayout);
         frontPagePanelLayout.setHorizontalGroup(
             frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
+            .addGroup(frontPagePanelLayout.createSequentialGroup()
+                .addComponent(frontPageMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(frontPageNavPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         frontPagePanelLayout.setVerticalGroup(
             frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addComponent(frontPageMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(frontPageNavPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mainPage.add(frontPagePanel, "card2");
@@ -75,11 +188,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         editBookingPanel.setLayout(editBookingPanelLayout);
         editBookingPanelLayout.setHorizontalGroup(
             editBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 1366, Short.MAX_VALUE)
         );
         editBookingPanelLayout.setVerticalGroup(
             editBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
 
         mainPage.add(editBookingPanel, "card4");
@@ -89,20 +202,32 @@ public class CasablancaGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(551, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void frontPageEditBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageEditBookingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_frontPageEditBookingActionPerformed
+
+    private void frontPageNewBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageNewBookingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_frontPageNewBookingActionPerformed
+
+    private void frontPageExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontPageExitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_frontPageExitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +266,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel editBookingPanel;
+    private javax.swing.JButton frontPageEditBooking;
+    private javax.swing.JButton frontPageExitButton;
+    private javax.swing.JButton frontPageLogoutButton;
+    private javax.swing.JPanel frontPageMenuPanel;
+    private javax.swing.JPanel frontPageNavPanel;
+    private javax.swing.JButton frontPageNewBooking;
     private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel mainPage;
     private javax.swing.JPanel newBookingPanel;
