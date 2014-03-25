@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package presentation;
 
+import java.awt.CardLayout;
 import java.awt.Frame;
 
 /**
@@ -14,15 +14,22 @@ import java.awt.Frame;
  */
 public class CasablancaGUI extends javax.swing.JFrame {
 
+    CardLayout cl;
+
     /**
      * Creates new form CasablancaGUI
      */
     public CasablancaGUI() {
         initComponents();
+        cl = (CardLayout) (mainPage.getLayout());
+        cl.addLayoutComponent(frontPagePanel, "FrontPage");
+        cl.addLayoutComponent(newBookingPanel, "NewBooking");
+        cl.addLayoutComponent(editBookingPanel, "EditBooking");
+        cl.show(mainPage, "FrontPage");
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.dispose();
         this.setUndecorated(true);
-        
+
     }
 
     /**
