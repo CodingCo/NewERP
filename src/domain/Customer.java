@@ -2,7 +2,7 @@ package domain;
 
 public class Customer {
     //== Fields
-    private int customerID;
+    private final int customerID;
     private String name;
     private String familyName;
     private int age;
@@ -13,7 +13,20 @@ public class Customer {
     private String street;
     private int zipCode;
     
-    //== Constructor
+    /**
+     *  Customer entity 
+     * 
+     * @param customerID
+     * @param name
+     * @param familyName
+     * @param age
+     * @param eMail
+     * @param phoneNum
+     * @param country
+     * @param city
+     * @param street
+     * @param zipCode
+     */
     public Customer(int customerID, String name, String familyName, int age, String eMail, int phoneNum, String country, String city, String street, int zipCode){
         this.customerID = customerID;
         this.name = name;
@@ -26,8 +39,43 @@ public class Customer {
         this.street = street;
         this.zipCode = zipCode;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public void setPhoneNum(int phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
     
-    //== Methods
     public int getCustomerID(){
         return customerID;
     }

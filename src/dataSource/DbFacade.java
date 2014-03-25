@@ -1,23 +1,37 @@
 package dataSource;
 
+
 /**
  *
  * @author kasper
  */
+
+import java.sql.Connection;
+
 public class DbFacade {
     //== Fields
-    private DbFacade instance;
+    private UnitOfWorkProcess uow;
+    private Connection con;
+    
+    //== Singleton Start
+    private static DbFacade instance;
     
     //== Constructor
     private DbFacade(){
+        uow = UnitOfWorkProcess.getInstance();
+        con = DBConnector.getInstance().getConnection();
     }
     
-    //== Methods
-    public DbFacade getInstance(){
+    public static DbFacade getInstance(){
         if(instance == null)
             instance = new DbFacade();
         return instance;
     }
     
+
+    //== Singleton End
+    
+    //== Methods
+
     
 }

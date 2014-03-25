@@ -16,7 +16,43 @@ public class Controller {
         }
 
         return instance;
-
     }
 
+    
+    public Booking addNewBooking(){
+        return null;
+    }
+    
+    public Booking updateBooking(){
+        return null;
+    }
+    
+    public boolean deleteBooking(){
+        return true;
+    }
+    
+    public Customer addNewCustomer(){
+        return null;
+    }
+    
+    public Customer updateCustomer(){
+        return null;
+    }
+    
+    public Customer deleteCustomer(){
+        return null;
+    }
+    
+    public boolean saveTransaction(){
+        return true;
+    }
+    
+    public void resetTransaction(){
+    
+    }
+    
+    public Booking getBooking(){
+    return null;
+    }
+    
 }
