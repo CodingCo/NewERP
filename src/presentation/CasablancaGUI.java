@@ -297,6 +297,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFindSearchFromTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFindSearchFromTextField.setText("DD-MM-YY");
+        newBookingFindSearchFromTextField.setMaximumSize(new java.awt.Dimension(58, 19));
+        newBookingFindSearchFromTextField.setMinimumSize(new java.awt.Dimension(58, 19));
         newBookingFindSearchFromTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newBookingFindSearchFromTextFieldMouseClicked(evt);
@@ -462,6 +464,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        newBookingAvailComboBox.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         newBookingAvailComboBox.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "DummyItem1", "DummyItem2" };
             public int getSize() { return strings.length; }
