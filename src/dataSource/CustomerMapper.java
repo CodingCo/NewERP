@@ -1,10 +1,12 @@
 package dataSource;
 
+import domain.Booking;
 import domain.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,5 +52,9 @@ public class CustomerMapper {
 	    }
 	}
 	return tmpCu;
+    }
+
+    ArrayList<Customer> getAllCustomers() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
