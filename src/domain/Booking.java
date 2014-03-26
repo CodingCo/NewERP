@@ -31,26 +31,6 @@ public class Booking {
         this.version = 0;
     }
 
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setNum_of_nights(int num_of_nights) {
-        this.num_of_nights = num_of_nights;
-    }
-
-    public void setTravel_agency(String travel_agency) {
-        this.travel_agency = travel_agency;
-    }
-
-    public void setRent(double rent) {
-        this.rent = rent;
-    }
-
     public int getB_id() {
         return b_id;
     }
@@ -67,6 +47,10 @@ public class Booking {
         return num_of_nights;
     }
 
+    public String getDate() {
+        return date;
+    }
+
     public String getTravel_agency() {
         return travel_agency;
     }
@@ -79,9 +63,39 @@ public class Booking {
         return version;
     }
 
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setNum_of_nights(int num_of_nights) {
+        this.num_of_nights = num_of_nights;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTravel_agency(String travel_agency) {
+        this.travel_agency = travel_agency;
+    }
+
+    public void setRent(double rent) {
+        this.rent = rent;
+    }
+
     @Override
     public String toString() {
-        return "Booking{" + "b_id=" + b_id + ", apartment=" + apartment + ", customer=" + customer + ", num_of_nights=" + num_of_nights + ", travel_agency=" + travel_agency + ", rent=" + rent + ", version=" + version + '}';
+        return "Booking{" + "b_id=" + b_id
+                + ", apartment=" + apartment
+                + ", customer=" + customer
+                + ", num_of_nights=" + num_of_nights
+                + ", travel_agency=" + travel_agency
+                + ", rent=" + rent
+                + ", version=" + version + '}';
     }
 
 }

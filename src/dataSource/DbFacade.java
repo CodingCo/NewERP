@@ -1,6 +1,5 @@
 package dataSource;
 
-
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
@@ -11,7 +10,6 @@ public class DbFacade {
 
     private UnitOfWorkProcess uow;
     private Connection con;
-
     private static DbFacade instance;
 
     private DbFacade() {
@@ -27,7 +25,11 @@ public class DbFacade {
     }
 
     public boolean addNewBooking(Booking booking) {
-        return true;
+        boolean status = false;
+        if (uow != null) {
+            status = uow.registerNewBooking(booking);
+        }
+        return status;
     }
 
     public boolean updateBooking(Booking booking) {
@@ -35,15 +37,19 @@ public class DbFacade {
     }
 
     public boolean deleteBooking(int b_id) {
-        
-        if(this.uow != null){
-        // do shit
-        }
-    return true;
+//        if (this.uow != null) {
+//            // do shit
+//        }
+        return true;
     }
 
     public boolean newCustomer(Customer customer) {
-        return true;
+        boolean status = false;
+        if (uow != null) {
+            // registrer new customer
+
+        }
+        return status;
     }
 
     public boolean updateCustomer(Customer customer) {
@@ -63,25 +69,36 @@ public class DbFacade {
     }
 
     public void startNewBusinessTransaction() {
-
+        this.uow = new UnitOfWorkProcess();
     }
 
     public boolean commitBusinessTransaction() {
-        this.uow = null;
-        return true;
+        boolean status = false;
+        if (this.uow != null) {
+            //status = this.uow.commit(con);
+            this.uow = null;
+        }
+        return status;
     }
 
     public boolean loadBookings() {
-        return true;
+        boolean status = false;
+        if (this.con != null) {
+            status = this.uow.loadBookings();
+        }
+        return status;
     }
 
     public boolean loadCustomers() {
-        return true;
+        boolean status = false;
+        if (this.con != null) {
+            status = this.uow.loadCustomers();
+        }
+        return status;
     }
 
     public boolean loadApartments() {
         return true;
     }
-
 
 }
