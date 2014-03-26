@@ -13,9 +13,9 @@ public class Controller {
         this.facade = DbFacade.getInstance();
     }
 
-    public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String travel_agency, double rent) {
+    public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
         if (!processingTransaction) {
-            Booking booking = new Booking(a, cust, num_of_nights, travel_agency, rent);
+            Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
             this.facade.addNewBooking(booking);
             this.processingTransaction = true;
             return true;
@@ -28,11 +28,11 @@ public class Controller {
     }
 
     public boolean deleteBooking(int b_id) {
-        return true;
+        return this.facade.deleteBooking(b_id);
     }
 
     public Customer addNewCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
-        return null;
+        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
     }
 
     public boolean updateCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
@@ -45,8 +45,8 @@ public class Controller {
 
     public int saveTransaction() {
         this.facade.commitBusinessTransaction();
-        
-        return 1; 
+
+        return 1;
     }
 
     public int resetTransaction() {

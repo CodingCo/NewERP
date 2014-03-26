@@ -3,7 +3,7 @@ package domain;
 public class Customer {
 
     //== Fields
-    private final int cust_id;
+    private int cust_id;
     private String name;
     private String family_name;
     private int age;
@@ -13,7 +13,7 @@ public class Customer {
     private String city;
     private String street;
     private int zipcode;
-    private final int version;
+    private int version;
 
     /**
      * Customer entity
@@ -43,6 +43,20 @@ public class Customer {
         this.version = version;
     }
 
+    
+    public Customer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) { 
+        this.name = name;
+        this.family_name = family_name;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+        this.version = 0;
+    }
+    
     public int getCust_id() {
         return cust_id;
     }
