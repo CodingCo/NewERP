@@ -2,36 +2,33 @@ package domain;
 
 public class Apartment {
 
-    //== Fields
     private final int a_num;
-    private String type;
+    private final int cost;
+    private final String type;
 
-    /**
-     *
-     * @param a_num
-     * @param type
-     */
-    public Apartment(int a_num, String type) {
+    public Apartment(int a_num, int cost, String type) {
         this.a_num = a_num;
+        this.cost = cost;
         this.type = type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-    
-    public int getANum() {
+    public int getA_num() {
         return a_num;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     public String getType() {
         return type;
     }
 
+    
+
     @Override
     public String toString() {
-        return "Apartment{" + "a_num=" + a_num 
-                + ", type=" + type + '}';
+        return "Apartment{" + "a_num=" + a_num + ", cost=" + cost + ", type=" + type + '}';
     }
 
 }

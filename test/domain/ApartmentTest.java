@@ -41,43 +41,5 @@ public class ApartmentTest {
     /**
      * Test of getApartmentID method, of class Apartment.
      */
-    @Test
-    public void testGetApartmentID() {
-	System.out.println("getApartmentID");
-	Apartment instance = null;
-	int expResult = 0;
-	int result = instance.getANum();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getType method, of class Apartment.
-     */
-    @Test
-    public void testGetType() {
-	System.out.println("getType");
-	Apartment instance = null;
-	String expResult = "";
-	String result = instance.getType();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Apartment.
-     */
-    @Test
-    public void testToString() {
-	System.out.println("toString");
-	Apartment instance = null;
-	String expResult = "";
-	String result = instance.toString();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
-    
+ 
 }

@@ -15,20 +15,6 @@ public class Customer {
     private int zipcode;
     private int version;
 
-    /**
-     * Customer entity
-     *
-     * @param cust_id
-     * @param name
-     * @param family_name
-     * @param age
-     * @param email
-     * @param phone
-     * @param country
-     * @param city
-     * @param street
-     * @param zipcode
-     */
     public Customer(int cust_id, String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode, int version) {
         this.cust_id = cust_id;
         this.name = name;
@@ -43,8 +29,7 @@ public class Customer {
         this.version = version;
     }
 
-    
-    public Customer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) { 
+    public Customer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
         this.name = name;
         this.family_name = family_name;
         this.age = age;
@@ -56,7 +41,7 @@ public class Customer {
         this.zipcode = zipcode;
         this.version = 0;
     }
-    
+
     public int getCust_id() {
         return cust_id;
     }

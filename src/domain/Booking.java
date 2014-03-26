@@ -11,7 +11,6 @@ public class Booking {
     private double rent;
     private final int version;
 
-  
     public Booking(int b_id, Apartment apartment, Customer customer, int num_of_nights, String date, String travel_agency, double rent, int version) {
         this.apartment = apartment;
         this.customer = customer;
@@ -22,7 +21,7 @@ public class Booking {
         this.version = version;
         this.b_id = b_id;
     }
-    
+
     public Booking(Apartment apartment, Customer customer, int num_of_nights, String date, String travel_agency, double rent) {
         this.apartment = apartment;
         this.customer = customer;
@@ -31,7 +30,6 @@ public class Booking {
         this.rent = rent;
         this.version = 0;
     }
-    
 
     public void setApartment(Apartment apartment) {
         this.apartment = apartment;
