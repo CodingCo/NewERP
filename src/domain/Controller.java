@@ -28,7 +28,7 @@ public class Controller {
     }
 
     public boolean deleteBooking(int b_id) {
-        return this.facade.deleteBooking(b_id);
+        return false;
     }
 
     public Customer addNewCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
@@ -44,9 +44,12 @@ public class Controller {
     }
 
     public int saveTransaction() {
-        this.facade.commitBusinessTransaction();
-
-        return 1;
+        if (this.facade != null) {
+            this.facade.commitBusinessTransaction();
+            this.processingTransaction = false;
+            return 1;
+        }
+        return 0;
     }
 
     public int resetTransaction() {
@@ -62,15 +65,15 @@ public class Controller {
     }
 
     public boolean loadBookings() {
-        return true;
+        return this.facade.loadBookings();
     }
 
     public boolean loadCustomers() {
-        return true;
+        return this.facade.loadCustomers();
     }
 
     public boolean loadApartments() {
-        return true;
+        return this.facade.loadApartments();
     }
 
 }
