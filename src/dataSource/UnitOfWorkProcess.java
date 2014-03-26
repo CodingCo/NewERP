@@ -29,7 +29,7 @@ public class UnitOfWorkProcess {
         this.cleanCustomers = new ArrayList();
         this.cleanApartments = new ArrayList();
         
-        loadApartments();
+        //loadApartments();
     }
     
     //====== Methods to register changes START ==========================
