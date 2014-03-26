@@ -274,18 +274,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="newBookingFindPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="newBookingAvailablePanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="newBookingFormPanel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="newBookingTitlePanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                      <Component id="newBookingFindPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="newBookingAvailablePanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="newBookingFormPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="newBookingTitlePanel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -744,20 +739,18 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="newBookingAvailComboBox">
+                    <Component class="javax.swing.JList" name="newBookingAvailList">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Dialog" size="24" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="DummyItem1"/>
-                            <StringItem index="1" value="DummyItem2"/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingAvailComboBoxMouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingAvailListMouseClicked"/>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="newBookingAvailListValueChanged"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -789,11 +782,12 @@
                           <Component id="newBookingFormTitlePanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Component id="newBookingFormButtonPanel" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="newBookingFormNONLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newBookingFormNOGLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="newBookingFormNOGTextField" max="32767" attributes="0"/>
                               </Group>
@@ -816,32 +810,34 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="newBookingFormPhoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newBookingFormCityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="newBookingFormStreetLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormCityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="newBookingFormPhoneTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="newBookingFormCityTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="newBookingFormStreetTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormCityTextField" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormStreetTextField" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormEmailTextField" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormPhoneTextField" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="newBookingFormNatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="newBookingFormAgenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="36" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="newBookingFormZipTextField" max="32767" attributes="0"/>
                                       <Component id="newBookingFormAgenTextField" pref="143" max="32767" attributes="0"/>
-                                      <Component id="newBookingFormNatTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormNatTextField" alignment="0" pref="143" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="newBookingFormGreyPanel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="newBookingFormButtonPanel" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -865,7 +861,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormNONLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormNOGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormNOGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -875,27 +871,38 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="newBookingFormCityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="newBookingFormCityLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="newBookingFormStreetLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="newBookingFormCityTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="newBookingFormStreetTextField" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormStreetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="newBookingFormStreetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormZipTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormNatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormNatTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormNatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormAgenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormAgenTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormAgenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="newBookingFormGreyPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="76" max="32767" attributes="0"/>
+                          <EmptySpace pref="10" max="32767" attributes="0"/>
                           <Component id="newBookingFormButtonPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -988,7 +995,7 @@
                     <Property name="text" type="java.lang.String" value="Gender:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="newBookingFormNONLabel">
+                <Component class="javax.swing.JLabel" name="newBookingFormNOGLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -1077,12 +1084,15 @@
                               <Component id="newBookingFormPreviousButton" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="newBookingFormGreyPanel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <Component id="newBookingFormGreyPanel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newBookingFormPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newBookingFormCreateButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1132,7 +1142,103 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Save All"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormButtonSaveButtonActionPerformed"/>
+                      </Events>
                     </Component>
+                    <Container class="javax.swing.JPanel" name="newBookingFormGreyPanel">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="newBookingFormRoomLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormNONLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormADateLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="newBookingFormRoomTextField" alignment="0" pref="122" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormADateTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormNONTextField" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="newBookingFormADateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormADateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="newBookingFormNONLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormNONTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="newBookingFormRoomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormRoomTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="newBookingFormADateLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Arrival Date:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="newBookingFormNONLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Number of Nights:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="newBookingFormRoomLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Room:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="newBookingFormADateTextField">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormADateTextFieldActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="newBookingFormNONTextField">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="newBookingFormRoomTextField">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="newBookingFormAgenLabel">
@@ -1151,99 +1257,26 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormAgenTextFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JPanel" name="newBookingFormGreyPanel">
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="newBookingFormRoomLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormDDateLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormADateLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="newBookingFormRoomTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="newBookingFormDDateTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="newBookingFormADateTextField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="newBookingFormADateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormADateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="newBookingFormDDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormDDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="newBookingFormRoomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormRoomTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="newBookingFormADateLabel">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Dialog" size="14" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Arrival Date:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="newBookingFormDDateLabel">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Dialog" size="14" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Depature Date:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="newBookingFormRoomLabel">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Dialog" size="14" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Room:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="newBookingFormADateTextField">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormADateTextFieldActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="newBookingFormDDateTextField">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="newBookingFormRoomTextField">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
+                <Component class="javax.swing.JLabel" name="newBookingFormEmailLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Email:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="newBookingFormEmailTextField">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="ZipCode:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="newBookingFormZipTextField">
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
