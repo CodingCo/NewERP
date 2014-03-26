@@ -2,70 +2,72 @@ package domain;
 
 public class Booking {
 
-    
     private final int b_id;
-    private int a_num;
-    private int cust_id;
+    private Apartment apartment;
+    private Customer customer;
     private int num_of_nights;
     private int travel_agency;
     private double rent;
+    private final int version;
 
     /**
-     * Booking entity
+     * booking entity
      * 
      * @param b_id
-     * @param a_num
-     * @param cust_id
+     * @param apartment
+     * @param customer
      * @param num_of_nights
      * @param travel_agency
      * @param rent
+     * @param version
      */
-    public Booking(int b_id, int a_num, int cust_id, int num_of_nights, int travel_agency, int rent) {
+    public Booking(int b_id, Apartment apartment, Customer customer, int num_of_nights, int travel_agency, int rent, int version) {
         this.b_id = b_id;
-        this.a_num = a_num;
-        this.cust_id = cust_id;
+        this.apartment = apartment;
+        this.customer = customer;
         this.num_of_nights = num_of_nights;
         this.travel_agency = travel_agency;
         this.rent = rent;
+        this.version = version;
     }
 
-    public void setApartmentID(int apartmentID) {
-        this.a_num = apartmentID;
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
     }
 
-    public void setCustomerID(int customerID) {
-        this.cust_id = customerID;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setNumberOfNights(int numberOfNights) {
-        this.num_of_nights = numberOfNights;
+    public void setNum_of_nights(int num_of_nights) {
+        this.num_of_nights = num_of_nights;
     }
 
-    public void setTravelAgency(int travelAgency) {
-        this.travel_agency = travelAgency;
+    public void setTravel_agency(int travel_agency) {
+        this.travel_agency = travel_agency;
     }
 
-    public void setRent(int rent) {
+    public void setRent(double rent) {
         this.rent = rent;
     }
-    
-    public int getBookingID() {
+
+    public int getB_id() {
         return b_id;
     }
 
-    public int getApartmentID() {
-        return a_num;
+    public Apartment getApartment() {
+        return apartment;
     }
 
-    public int getCustomerID() {
-        return cust_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public int getNumberOfNights() {
+    public int getNum_of_nights() {
         return num_of_nights;
     }
 
-    public int getTravelAgency() {
+    public int getTravel_agency() {
         return travel_agency;
     }
 
@@ -73,14 +75,13 @@ public class Booking {
         return rent;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
     @Override
     public String toString() {
-        return "Booking{" + "bookingID=" + b_id
-                + ", apartmentID=" + a_num
-                + ", customerID=" + cust_id
-                + ", numberOfNights=" + num_of_nights
-                + ", travelAgency=" + travel_agency
-                + ", rent=" + rent + '}';
+        return "Booking{" + "b_id=" + b_id + ", apartment=" + apartment + ", customer=" + customer + ", num_of_nights=" + num_of_nights + ", travel_agency=" + travel_agency + ", rent=" + rent + ", version=" + version + '}';
     }
 
 }

@@ -41,16 +41,7 @@ public class CustomerTest {
     /**
      * Test of getCustomerID method, of class Customer.
      */
-    @Test
-    public void testGetCustomerID() {
-	System.out.println("getCustomerID");
-	Customer instance = null;
-	int expResult = 0;
-	int result = instance.getCustID();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+   
 
     /**
      * Test of getName method, of class Customer.
@@ -69,16 +60,7 @@ public class CustomerTest {
     /**
      * Test of getFamilyName method, of class Customer.
      */
-    @Test
-    public void testGetFamilyName() {
-	System.out.println("getFamilyName");
-	Customer instance = null;
-	String expResult = "";
-	String result = instance.getFamilyName();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+ 
 
     /**
      * Test of getAge method, of class Customer.
@@ -111,16 +93,7 @@ public class CustomerTest {
     /**
      * Test of getPhoneNum method, of class Customer.
      */
-    @Test
-    public void testGetPhoneNum() {
-	System.out.println("getPhoneNum");
-	Customer instance = null;
-	int expResult = 0;
-	int result = instance.getPhoneNum();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+  
 
     /**
      * Test of getCountry method, of class Customer.

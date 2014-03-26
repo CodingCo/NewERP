@@ -41,72 +41,28 @@ public class BookingTest {
     /**
      * Test of getBookingID method, of class Booking.
      */
-    @Test
-    public void testGetBookingID() {
-	System.out.println("getBookingID");
-	Booking instance = null;
-	int expResult = 0;
-	int result = instance.getBookingID();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+  
 
     /**
      * Test of getApartmentID method, of class Booking.
      */
-    @Test
-    public void testGetApartmentID() {
-	System.out.println("getApartmentID");
-	Booking instance = null;
-	int expResult = 0;
-	int result = instance.getApartmentID();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+   
 
     /**
      * Test of getCustomerID method, of class Booking.
      */
-    @Test
-    public void testGetCustomerID() {
-	System.out.println("getCustomerID");
-	Booking instance = null;
-	int expResult = 0;
-	int result = instance.getCustomerID();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+  
 
     /**
      * Test of getNumberOfNights method, of class Booking.
      */
-    @Test
-    public void testGetNumberOfNights() {
-	System.out.println("getNumberOfNights");
-	Booking instance = null;
-	int expResult = 0;
-	int result = instance.getNumberOfNights();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+   
 
     /**
      * Test of getTravelAgency method, of class Booking.
      */
-    @Test
-    public void testGetTravelAgency() {
-	System.out.println("getTravelAgency");
-	Booking instance = null;
-	int expResult = 0;
-	int result = instance.getTravelAgency();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
+   
+   
 
     /**
      * Test of getRent method, of class Booking.

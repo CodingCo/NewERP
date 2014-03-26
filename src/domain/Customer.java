@@ -1,6 +1,7 @@
 package domain;
 
 public class Customer {
+
     //== Fields
     private final int cust_id;
     private String name;
@@ -12,10 +13,11 @@ public class Customer {
     private String city;
     private String street;
     private int zipcode;
-    
+    private final int version;
+
     /**
-     *  Customer entity 
-     * 
+     * Customer entity
+     *
      * @param cust_id
      * @param name
      * @param family_name
@@ -27,7 +29,7 @@ public class Customer {
      * @param street
      * @param zipcode
      */
-    public Customer(int cust_id, String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode){
+    public Customer(int cust_id, String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode, int version) {
         this.cust_id = cust_id;
         this.name = name;
         this.family_name = family_name;
@@ -38,91 +40,65 @@ public class Customer {
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
+        this.version = version;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFamilyName(String familyName) {
-        this.family_name = familyName;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void seteMail(String eMail) {
-        this.email = eMail;
-    }
-
-    public void setPhoneNum(int phoneNum) {
-        this.phone = phoneNum;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipcode = zipCode;
-    }
-    
-    public int getCustID(){
+    public int getCust_id() {
         return cust_id;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public String getFamilyName(){
+
+    public String getFamily_name() {
         return family_name;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    public int getPhoneNum(){
+
+    public int getPhone() {
         return phone;
     }
-    public String getCountry(){
+
+    public String getCountry() {
         return country;
     }
-    public String getCity(){
+
+    public String getCity() {
         return city;
     }
-    public String getStreet(){
+
+    public String getStreet() {
         return street;
     }
-    public int getZipcode(){
+
+    public int getZipcode() {
         return zipcode;
+    }
+
+    public int getVersion() {
+        return version;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "customerID=" + cust_id 
-                + ", name=" + name 
-                + ", familyName=" + family_name 
-                + ", age=" + age 
-                + ", eMail=" + email 
-                + ", phoneNum=" + phone 
-                + ", country=" + country 
-                + ", city=" + city 
-                + ", street=" + street 
+        return "Customer{" + "customerID=" + cust_id
+                + ", name=" + name
+                + ", familyName=" + family_name
+                + ", age=" + age
+                + ", eMail=" + email
+                + ", phoneNum=" + phone
+                + ", country=" + country
+                + ", city=" + city
+                + ", street=" + street
                 + ", zipCode=" + zipcode + '}';
     }
 
-    
-    
-    
-    
 }
