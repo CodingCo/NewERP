@@ -143,7 +143,7 @@ public class UnitOfWorkProcess {
     public boolean loadBookings(){
         ArrayList<Booking> oldBookings = cleanBookings;
         cleanBookings.clear();
-        cleanBookings = new BookingMapper().getAllApartments();
+       // cleanBookings = new BookingMapper().getAllApartments();
         
         if(oldBookings.size() == cleanBookings.size()){
             for (int i = 0; i < oldBookings.size(); i++) {
@@ -157,7 +157,7 @@ public class UnitOfWorkProcess {
     public boolean loadCustomers(){
         ArrayList<Booking> oldBookings = cleanBookings;
         cleanBookings.clear();
-        cleanBookings = new BookingMapper().getAllApartments();
+        //cleanBookings = new BookingMapper().getAllApartments();
         
         if(oldBookings.size() == cleanBookings.size()){
             for (int i = 0; i < oldBookings.size(); i++) {
