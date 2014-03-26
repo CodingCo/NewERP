@@ -29,6 +29,11 @@ public class Controller {
 
     public boolean deleteBooking(int b_id) {
         return this.facade.deleteBooking(b_id);
+
+    }
+    
+    public Booking addNewBooking(){
+        return null;
     }
 
     public Customer addNewCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
@@ -68,6 +73,7 @@ public class Controller {
     public boolean loadCustomers() {
         return true;
     }
+
 
     public boolean loadApartments() {
         return true;

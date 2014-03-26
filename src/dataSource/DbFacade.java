@@ -1,15 +1,12 @@
 package dataSource;
 
+
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-/**
- *
- * @author kasper
- */
 public class DbFacade {
 
     private UnitOfWorkProcess uow;
@@ -18,7 +15,7 @@ public class DbFacade {
     private static DbFacade instance;
 
     private DbFacade() {
-        uow = UnitOfWorkProcess.getInstance();
+        this.uow = new UnitOfWorkProcess();
         con = DBConnector.getInstance().getConnection();
     }
 
@@ -85,5 +82,6 @@ public class DbFacade {
     public boolean loadApartments() {
         return true;
     }
+
 
 }
