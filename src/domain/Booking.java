@@ -2,11 +2,11 @@ package domain;
 
 public class Booking {
 
-    private final int b_id;
+    private int b_id;
     private Apartment apartment;
     private Customer customer;
     private int num_of_nights;
-    private int travel_agency;
+    private String travel_agency;
     private double rent;
     private final int version;
 
@@ -21,15 +21,25 @@ public class Booking {
      * @param rent
      * @param version
      */
-    public Booking(int b_id, Apartment apartment, Customer customer, int num_of_nights, int travel_agency, int rent, int version) {
-        this.b_id = b_id;
+    public Booking(int b_id, Apartment apartment, Customer customer, int num_of_nights, String travel_agency, double rent, int version) {
         this.apartment = apartment;
         this.customer = customer;
         this.num_of_nights = num_of_nights;
         this.travel_agency = travel_agency;
         this.rent = rent;
         this.version = version;
+        this.b_id = b_id;
     }
+    
+    public Booking(Apartment apartment, Customer customer, int num_of_nights, String travel_agency, double rent) {
+        this.apartment = apartment;
+        this.customer = customer;
+        this.num_of_nights = num_of_nights;
+        this.travel_agency = travel_agency;
+        this.rent = rent;
+        this.version = 0;
+    }
+    
 
     public void setApartment(Apartment apartment) {
         this.apartment = apartment;
@@ -43,7 +53,7 @@ public class Booking {
         this.num_of_nights = num_of_nights;
     }
 
-    public void setTravel_agency(int travel_agency) {
+    public void setTravel_agency(String travel_agency) {
         this.travel_agency = travel_agency;
     }
 
@@ -67,7 +77,7 @@ public class Booking {
         return num_of_nights;
     }
 
-    public int getTravel_agency() {
+    public String getTravel_agency() {
         return travel_agency;
     }
 

@@ -1,8 +1,10 @@
 package dataSource;
 
+import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -10,15 +12,11 @@ import java.sql.Connection;
  */
 public class DbFacade {
 
-    //== Fields
     private UnitOfWorkProcess uow;
     private Connection con;
 
-    //== Singleton Start
     private static DbFacade instance;
 
-    
-    
     private DbFacade() {
         uow = UnitOfWorkProcess.getInstance();
         con = DBConnector.getInstance().getConnection();
@@ -31,27 +29,61 @@ public class DbFacade {
         return instance;
     }
 
-    public void addNewBooking(Booking booking) {
+    public boolean addNewBooking(Booking booking) {
+        return true;
+    }
+
+    public boolean updateBooking(Booking booking) {
+        return true;
+    }
+
+    public boolean deleteBooking(int b_id) {
+        
+        if(this.uow != null){
+        // do shit
+        }
+    return true;
+    }
+
+    public boolean newCustomer(Customer customer) {
+        return true;
+    }
+
+    public boolean updateCustomer(Customer customer) {
+        return true;
+    }
+
+    public boolean deleteCustomer(int cust_id) {
+        return true;
+    }
+
+    public Apartment findAvailableApartment(String date, int days, String type) {
+        return null;
+    }
+
+    public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
+        return null;
+    }
+
+    public void startNewBusinessTransaction() {
 
     }
 
-    public void updateBooking(Booking booking) {
-
+    public boolean commitBusinessTransaction() {
+        this.uow = null;
+        return true;
     }
 
-    public void deleteBooking(Booking booking) {
-
+    public boolean loadBookings() {
+        return true;
     }
 
-    public void addNewCustomer(Customer customer) {
-
+    public boolean loadCustomers() {
+        return true;
     }
 
-    public void updateCustomer(Customer customer) {
-
+    public boolean loadApartments() {
+        return true;
     }
 
-    public void deleteCustomer(Customer customer) {
-
-    }
 }

@@ -1,36 +1,28 @@
 package domain;
 
+import dataSource.DbFacade;
 import java.util.ArrayList;
 
 public class Controller {
 
+    private boolean processingTransaction; // flag 
+    private DbFacade facade;
+
     public Controller() {
-
+        this.processingTransaction = false;
+        this.facade = DbFacade.getInstance();
     }
 
-    /**
-     * Create new customer
-     *
-     * @param a_num
-     * @param cust_id
-     * @param num_of_nights
-     * @param travel_agency
-     * @param rent
-     * @return
-     */
-    public boolean addNewBooking(int a_num, int cust_id, int num_of_nights, String travel_agency, double rent) {
-        return true;
+    public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String travel_agency, double rent) {
+        if (!processingTransaction) {
+            Booking booking = new Booking(a, cust, num_of_nights, travel_agency, rent);
+            this.facade.addNewBooking(booking);
+            this.processingTransaction = true;
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Uddate a current booking
-     *
-     * @param a_num
-     * @param cust_id
-     * @param num_of_nights
-     * @param rent
-     * @return
-     */
     public boolean updateBooking(int a_num, int cust_id, int num_of_nights, double rent) {
         return true;
     }
@@ -39,38 +31,10 @@ public class Controller {
         return true;
     }
 
-    /**
-     * Create new customer
-     *
-     * @param name
-     * @param family_name
-     * @param age
-     * @param email
-     * @param phone
-     * @param country
-     * @param city
-     * @param street
-     * @param zipcode
-     * @return
-     */
     public Customer addNewCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
         return null;
     }
 
-    /**
-     * Upate a current customer
-     *
-     * @param name
-     * @param family_name
-     * @param age
-     * @param email
-     * @param phone
-     * @param country
-     * @param city
-     * @param street
-     * @param zipcode
-     * @return
-     */
     public boolean updateCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
         return false;
     }
@@ -80,20 +44,15 @@ public class Controller {
     }
 
     public int saveTransaction() {
-        return 0;
+        this.facade.commitBusinessTransaction();
+        
+        return 1; 
     }
 
     public int resetTransaction() {
         return 1;
     }
 
-    /**
-     * Find available apartments
-     * @param date
-     * @param days
-     * @param type
-     * @return
-     */
     public Apartment findAvailableApartment(String date, int days, String type) {
         return null;
     }
