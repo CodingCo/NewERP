@@ -27,8 +27,8 @@ public class DbFacade {
     
     //== Constructor
     private DbFacade(){
-        uow = UnitOfWorkProcess.getInstance();
-        con = DBConnector.getInstance().getConnection();
+       // uow = UnitOfWorkProcess.getInstance();
+       // con = DBConnector.getInstance().getConnection();
     }
     
     public static DbFacade getInstance(){

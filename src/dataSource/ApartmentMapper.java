@@ -1,5 +1,8 @@
 package dataSource;
 
+import domain.Apartment;
+import java.util.ArrayList;
+
 public class ApartmentMapper {
  
     //== Fields
@@ -10,6 +13,7 @@ public class ApartmentMapper {
     }
     
     //== Methods
+
     
     
 }
