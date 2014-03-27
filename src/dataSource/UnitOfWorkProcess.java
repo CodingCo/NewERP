@@ -28,8 +28,7 @@ public class UnitOfWorkProcess {
         this.deletedCustomers = new ArrayList();
         this.cleanCustomers = new ArrayList();
         this.cleanApartments = new ArrayList();
-        
-        //loadApartments();
+
     }
     
     //====== Methods to register changes START ==========================
@@ -184,7 +183,7 @@ public class UnitOfWorkProcess {
     public boolean loadBookings(){
         ArrayList<Booking> oldBookings = cleanBookings;
         cleanBookings.clear();
-        cleanBookings = new BookingMapper().getAllBookings();
+        //cleanBookings = new BookingMapper().getAllBookings();
         
         if(oldBookings.size() == cleanBookings.size()){
             for (int i = 0; i < oldBookings.size(); i++) {
@@ -198,7 +197,7 @@ public class UnitOfWorkProcess {
     public boolean loadCustomers(){
         ArrayList<Customer> oldCustomers = cleanCustomers;
         cleanCustomers.clear();
-        cleanCustomers = new CustomerMapper().getAllCustomers();
+        //cleanCustomers = new CustomerMapper().getAllCustomers();
         
         if(oldCustomers.size() == cleanCustomers.size()){
             for (int i = 0; i < oldCustomers.size(); i++) {
@@ -212,7 +211,7 @@ public class UnitOfWorkProcess {
     public boolean loadApartments(){
         ArrayList<Apartment> oldApartments = cleanApartments;
         cleanApartments.clear();
-        cleanApartments = new ApartmentMapper().getAllApartments();
+        //cleanApartments = new ApartmentMapper().getAllApartments();
         
         if(oldApartments.size() == cleanApartments.size()){
             for (int i = 0; i < oldApartments.size(); i++) {
