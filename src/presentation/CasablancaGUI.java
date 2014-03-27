@@ -13,6 +13,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -1259,10 +1261,19 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
-        this.listModel.addElement(controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString()));
+        Apartment a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString());
+        if (a == null) {
 
-        this.enableComponents(this.newBookingAvailablePanel, true);
+            this.enableComponents(this, false);
+            JOptionPane.showMessageDialog(this, "No available appartment", "", WIDTH);
+            this.enableComponents(this, true);
+            this.enableComponents(this.newBookingFormPanel, false);
+            this.enableComponents(this.newBookingAvailablePanel, false);
 
+        } else {
+            this.listModel.addElement(a);
+            this.enableComponents(this.newBookingAvailablePanel, true);
+        }
     }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
 
     private void newBookingFindSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchPanelMouseClicked
@@ -1298,13 +1309,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFormFirstTextFieldActionPerformed
 
     private void newBookingFormCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonActionPerformed
-        Customer c = this.controller.addNewCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), Integer.parseInt(this.newBookingFormAgenTextField.getText()), this.newBookingFormEmailTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormStreetTextField.getText(), Integer.parseInt(this.newBookingFormZipTextField.getText()));
-        Apartment a = (Apartment) listModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-        boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
+        //Customer c = this.controller.addNewCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), Integer.parseInt(this.newBookingFormAgenTextField.getText()), this.newBookingFormEmailTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormStreetTextField.getText(), Integer.parseInt(this.newBookingFormZipTextField.getText()));
+        //Apartment a = (Apartment) listModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+        //boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
         //if (success) {
-            //JOptionPane j = new JOptionPane(null, "Booking Created");
-            
-       // }
+        this.enableComponents(this, false);
+        JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
+        this.enableComponents(this, true);
+        this.enableComponents(this.newBookingFormPanel, false);
+        this.enableComponents(this.newBookingAvailablePanel, false);
+        // }
     }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
 
     private void newBookingFormAgenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormAgenTextFieldActionPerformed
