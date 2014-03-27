@@ -327,7 +327,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="625" pref="625" max="-2" attributes="0"/>
                           <Component id="newBookingTitleTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="618" max="32767" attributes="0"/>
+                          <EmptySpace pref="623" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -336,7 +336,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Component id="newBookingTitleTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace pref="6" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -379,7 +379,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="newBookingFindButtonPanel" pref="459" max="32767" attributes="0"/>
+                              <Component id="newBookingFindButtonPanel" max="32767" attributes="0"/>
                               <Component id="newBookingFindSearchPanel" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -420,14 +420,14 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                               <Component id="newBookingFindTitleTitle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="184" max="32767" attributes="0"/>
+                              <EmptySpace pref="195" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="newBookingFindTitleTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -707,7 +707,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="152" max="32767" attributes="0"/>
+                              <EmptySpace pref="165" max="32767" attributes="0"/>
                               <Component id="newBookingAvailTitleTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
                           </Group>
@@ -716,7 +716,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="newBookingAvailTitleTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -789,16 +789,6 @@
                           <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="newBookingFormNameLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormNameTextField" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="newBookingFormGenderLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="newBookingFormGenderComboBox" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
                                   <Component id="newBookingFormNOGLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="newBookingFormNOGTextField" max="32767" attributes="0"/>
@@ -844,6 +834,17 @@
                                       <Component id="newBookingFormNatTextField" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="newBookingFormNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormAGELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="newBookingFormAGETextField" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormNameTextField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace pref="94" max="32767" attributes="0"/>
                       </Group>
@@ -863,12 +864,12 @@
                               <Component id="newBookingFormNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="newBookingFormGenderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="newBookingFormGenderComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormAGELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newBookingFormAGETextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="newBookingFormNOGLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormNOGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -937,7 +938,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="177" max="32767" attributes="0"/>
+                              <EmptySpace pref="187" max="32767" attributes="0"/>
                               <Component id="newBookingFormTitleTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                           </Group>
@@ -946,7 +947,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="newBookingFormTitleTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -993,12 +994,12 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="newBookingFormGenderLabel">
+                <Component class="javax.swing.JLabel" name="newBookingFormAGELabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Gender:"/>
+                    <Property name="text" type="java.lang.String" value="Age:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="newBookingFormNOGLabel">
@@ -1038,16 +1039,6 @@
                 <Component class="javax.swing.JTextField" name="newBookingFormNatTextField">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="newBookingFormGenderComboBox">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Male"/>
-                        <StringItem index="1" value="Female"/>
-                      </StringArray>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="newBookingFormStreetLabel">
@@ -1098,7 +1089,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="newBookingFormGreyPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                              <EmptySpace pref="136" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newBookingFormPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newBookingFormCreateButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1283,6 +1274,8 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="newBookingFormZipTextField">
                 </Component>
+                <Component class="javax.swing.JTextField" name="newBookingFormAGETextField">
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -1364,7 +1357,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="626" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="622" max="32767" attributes="0"/>
+                          <EmptySpace pref="627" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1373,7 +1366,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace pref="6" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1462,7 +1455,7 @@
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="391" max="32767" attributes="0"/>
+                          <EmptySpace pref="423" max="32767" attributes="0"/>
                           <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1502,7 +1495,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1681,7 +1674,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="154" max="32767" attributes="0"/>
+                              <EmptySpace pref="157" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1690,7 +1683,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1797,7 +1790,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="179" max="32767" attributes="0"/>
+                              <EmptySpace pref="183" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1806,7 +1799,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <EmptySpace pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
