@@ -152,7 +152,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
 
         mainPage.setMaximumSize(new java.awt.Dimension(1366, 768));
@@ -994,14 +993,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(56, 56, 56))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(63, 63, 63))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
                             .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                             .addComponent(jTextField2)
