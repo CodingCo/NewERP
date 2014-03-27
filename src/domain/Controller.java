@@ -31,7 +31,7 @@ public class Controller {
         return false;
     }
 
-    public Customer addNewCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
+    public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
         return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
     }
 

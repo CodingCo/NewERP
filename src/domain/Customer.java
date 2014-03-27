@@ -8,14 +8,14 @@ public class Customer {
     private String family_name;
     private int age;
     private String email;
-    private int phone;
+    private String phone;
     private String country;
     private String city;
     private String street;
     private int zipcode;
     private int version;
 
-    public Customer(int cust_id, String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode, int version) {
+    public Customer(int cust_id, String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode, int version) {
         this.cust_id = cust_id;
         this.name = name;
         this.family_name = family_name;
@@ -29,7 +29,7 @@ public class Customer {
         this.version = version;
     }
 
-    public Customer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
+    public Customer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
         this.name = name;
         this.family_name = family_name;
         this.age = age;
@@ -62,7 +62,7 @@ public class Customer {
         return email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 

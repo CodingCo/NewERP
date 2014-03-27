@@ -2,8 +2,12 @@ package dataSource;
 
 import domain.*;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * @author Christopher & Thomas
+ */
 public class UnitOfWorkProcess {
 
     //== Fields
@@ -13,7 +17,6 @@ public class UnitOfWorkProcess {
     private ArrayList<Booking> cleanBookings;
     private ArrayList<Customer> newCustomers;
     private ArrayList<Customer> dirtyCustomers;
-    private ArrayList<Customer> deletedCustomers;
     private ArrayList<Customer> cleanCustomers;
     private ArrayList<Apartment> cleanApartments;
 
@@ -25,17 +28,16 @@ public class UnitOfWorkProcess {
         this.cleanBookings = new ArrayList();
         this.newCustomers = new ArrayList();
         this.dirtyCustomers = new ArrayList();
-        this.deletedCustomers = new ArrayList();
         this.cleanCustomers = new ArrayList();
         this.cleanApartments = new ArrayList();
 
     }
-    
+
     //====== Methods to register changes START ==========================
     /**
      * Adds the current booking if it doesn't exists already
      *
-     * @param currentBooking
+     * @param currentBooking The new Booking object
      * @return boolean
      */
     public boolean registerNewBooking(Booking currentBooking) {
@@ -55,7 +57,7 @@ public class UnitOfWorkProcess {
      * Adds the current updated booking to dirtyBookings, if it exists in
      * cleanBookings, but not in the other lists.
      *
-     * @param currentBooking
+     * @param currentBooking The updated Booking object
      * @return boolean
      */
     public boolean registerDirtyBooking(Booking currentBooking) {
@@ -74,7 +76,7 @@ public class UnitOfWorkProcess {
      * Adds the current booking to the deletedBookings, if it only exists in
      * cleanBookings list
      *
-     * @param currentBooking
+     * @param currentBooking The Booking object to delete
      * @return boolean
      */
     public boolean registerDeletedBooking(Booking currentBooking) {
@@ -88,18 +90,17 @@ public class UnitOfWorkProcess {
         }
         return false;
     }
-    
+
     /**
      * Adds the current customer to newCustomers, if it exists in
      * cleanCustomers, but not in the other lists.
      *
-     * @param currentCustomer
+     * @param currentCustomer The new Customer Object
      * @return boolean
      */
     public boolean registerNewCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
                 && !cleanCustomers.contains(currentCustomer)
                 && !newCustomers.contains(currentCustomer)) {
             newCustomers.add(currentCustomer);
@@ -112,118 +113,174 @@ public class UnitOfWorkProcess {
      * Adds the current updated customer to dirtyCustomers, if it exists in
      * cleanCustomers, but not in the other lists.
      *
-     * @param currentCustomer
+     * @param currentCustomer The updated Customer object
      * @return boolean
      */
     public boolean registerDirtyCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
-                && !cleanCustomers.contains(currentCustomer)) {
+                && !newCustomers.contains(currentCustomer)
+                && cleanCustomers.contains(currentCustomer)) {
             dirtyCustomers.add(currentCustomer);
             return true;
         }
         return false;
     }
 
+    //====== Methods to register END ==========================
     /**
-     * Adds the current booking to the deletedBookings, if it only exists in
-     * cleanBookings list
+     * Calls findAvailableApartment() from ApartmentMapper
+     * to instantiate the Apartment that is the return value. 
      *
-     * @param currentCustomer
+     * @param date The startdate of the particular search
+     * @param days The total number of days
+     * @param type The type of Apartment
+     * @param con Connection object
      * @return boolean
      */
-    public boolean registerDeletedCustomer(Customer currentCustomer) {
-
-        if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
-                && cleanCustomers.contains(currentCustomer)) { // CLEAN HAS TO CONTAIN THIS!!!
-            deletedCustomers.add(currentCustomer);
-            return true;
-        }
-        return false;
+    public Apartment findAvalibleApartment(String date, int days, String type, Connection con) {
+        Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
+        return apartmentToReturn;
     }
-    //====== Methods to register END ==========================
 
-    public Apartment findAvalibleApartment(String date, int days, String type) {
-//        loadBookings();
-//            
-//        ArrayList<Apartment> availableApartments = new ArrayList<>();
-//        
-//        for(Apartment apartment : cleanApartments){
-//            if(apartment.getType().equals(type)){
-//                for(Booking commonBooking : cleanBookings)
-//                    if(!commonBooking.getApartment().getType().equals(apartment.getType()) 
-//                            && commonBooking.get)
-//                        
-//                
-//                
-//            }
-//            
-//        }
-//        
-//        for(Booking commonBooking : cleanBookings)
-//            if(commonBooking.getApartment().getType().equals(type))
-//                for(Booking rightType : cleanBookings)
-//                    if()
-//                
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
+    /**
+     * No logic made yet, returns null. 
+     * 
+     * @param bookingNum The Booking Number
+     * @param name The FirstName of Customer
+     * @param date The Start Date
+     * @param apartmentNum The Apartment Number
+     * @return findBookingsByParams
+     */
+    public ArrayList<Booking> findBookingsByParams(int bookingNum, String name, String date, int apartmentNum) {
+        // Is name == guestName??
         return null;
     }
-    
+
     //====== Methods to update the clean lists to DB ==========================
-    public boolean loadBookings(){
-        ArrayList<Booking> oldBookings = cleanBookings;
+    /**
+     * Uses the BookingMapper to retrieve a full List
+     * of all our existing bookings.
+     * 
+     * Returns false, if no changes were made since last 
+     * update. 
+     *
+     * @param con Connection Object
+     * @return boolean
+     */
+    public boolean loadBookings(Connection con) {
+        ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
         cleanBookings.clear();
-        //cleanBookings = new BookingMapper().getAllBookings();
-        
-        if(oldBookings.size() == cleanBookings.size()){
+        cleanBookings = new BookingMapper().getAllBookings(con);
+
+        if (oldBookings.size() == cleanBookings.size()) {
             for (int i = 0; i < oldBookings.size(); i++) {
-                if(oldBookings.get(i) != cleanBookings.get(i))
-                return true;
-            } return false;
+                if (oldBookings.get(i) != cleanBookings.get(i)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return true;
     }
-    
-    public boolean loadCustomers(){
-        ArrayList<Customer> oldCustomers = cleanCustomers;
+
+    /**
+     * Uses the CustomerMapper to retrieve a full List
+     * of all our existing customers.
+     * 
+     * Returns false, if no changes were made since last 
+     * update. 
+     *
+     * @param con Connection Object
+     * @return boolean
+     */
+    public boolean loadCustomers(Connection con) {
+        ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
         cleanCustomers.clear();
-        //cleanCustomers = new CustomerMapper().getAllCustomers();
-        
-        if(oldCustomers.size() == cleanCustomers.size()){
+        cleanCustomers = new CustomerMapper().getAllCustomers(con);
+
+        if (oldCustomers.size() == cleanCustomers.size()) {
             for (int i = 0; i < oldCustomers.size(); i++) {
-                if(oldCustomers.get(i) != cleanCustomers.get(i))
-                return true;
-            } return false;
+                if (oldCustomers.get(i) != cleanCustomers.get(i)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return true;
     }
-    
-    public boolean loadApartments(){
-        ArrayList<Apartment> oldApartments = cleanApartments;
+
+    /**
+     * Uses the ApartmentMapper to retrieve a full List
+     * of all our existing apartments.
+     * 
+     * Returns false, if no changes were made since last 
+     * update. 
+     *
+     * @param con Connection Object
+     * @return boolean
+     */
+    public boolean loadApartments(Connection con) {
+        ArrayList<Apartment> oldApartments = new ArrayList(cleanApartments);
         cleanApartments.clear();
-        //cleanApartments = new ApartmentMapper().getAllApartments();
-        
-        if(oldApartments.size() == cleanApartments.size()){
+        cleanApartments = new ApartmentMapper().getAllApartments(con);
+
+        if (oldApartments.size() == cleanApartments.size()) {
             for (int i = 0; i < oldApartments.size(); i++) {
-                if(oldApartments.get(i) != cleanApartments.get(i))
-                return true;
-            } return false;
+                if (oldApartments.get(i) != cleanApartments.get(i)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return true;
     }
 
     //====== Method to save changes to DB ==========================
-    public boolean commit(Connection con){
-        return true;
+     /**
+     * Uses the mapperclasses to manipulate and define
+     * the DB, with the data from from all the Lists in UOW
+     * except the clean Lists. 
+     * 
+     * If anything throws an exception, it calls the rollBack()
+     * and returns false. 
+     * 
+     * @throws SQLException
+     *
+     * @param con Connection Object
+     * @return boolean
+     */
+    public boolean commit(Connection con) {
+        boolean status = true;
+
+        try {
+            con.setAutoCommit(false);
+            CustomerMapper customerMapper = new CustomerMapper();
+            BookingMapper bookingMapper = new BookingMapper();
+
+            status = status && customerMapper.insertCustomers(newCustomers, con);
+            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
+            status = status && bookingMapper.insertBookings(newBookings, con);
+            status = status && bookingMapper.updateBookings(dirtyBookings, con);
+            status = status && bookingMapper.deleteBookings(deletedBookings, con);
+
+            if (!status) {
+                throw new Exception("Business Transaction aborted!");
+            }
+            con.commit();
+
+        } catch (Exception ex) {
+            System.out.println("Fail in UnitOfWorkProcess - commit method");
+            System.err.println(ex);
+            try{
+            con.rollback();
+            }catch(SQLException kl){
+                System.out.println(kl);
+            }
+            status = false;
+        }
+
+        return status;
     }
+    
 }

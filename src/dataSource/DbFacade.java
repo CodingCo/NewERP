@@ -83,7 +83,7 @@ public class DbFacade {
     public boolean loadBookings() {
         boolean status = false;
         if (this.con != null) {
-            status = this.uow.loadBookings();
+            status = this.uow.loadBookings(con);
         }
         return status;
     }
@@ -91,7 +91,7 @@ public class DbFacade {
     public boolean loadCustomers() {
         boolean status = false;
         if (this.con != null) {
-            status = this.uow.loadCustomers();
+            status = this.uow.loadCustomers(con);
         }
         return status;
     }
