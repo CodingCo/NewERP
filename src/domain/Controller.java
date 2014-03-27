@@ -24,10 +24,18 @@ public class Controller {
     }
 
     public boolean updateBooking(int a_num, int cust_id, int num_of_nights, double rent) {
-        return true;
+        if (!processingTransaction) {
+            return true;
+        }
+        return false;
     }
 
     public boolean deleteBooking(int b_id) {
+        if (!processingTransaction) {
+            this.facade.deleteBooking(b_id);
+            this.processingTransaction = true;
+            return true;
+        }
         return false;
     }
 
@@ -53,10 +61,14 @@ public class Controller {
     }
 
     public int resetTransaction() {
+        this.processingTransaction = false;
         return 1;
     }
 
     public Apartment findAvailableApartment(String date, int days, String type) {
+        if (this.facade != null) {
+            return this.facade.findAvailableApartment(date, days, type);
+        }
         return null;
     }
 

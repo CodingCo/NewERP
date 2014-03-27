@@ -37,9 +37,9 @@ public class DbFacade {
     }
 
     public boolean deleteBooking(int b_id) {
-//        if (this.uow != null) {
-//            // do shit
-//        }
+        if (this.uow != null) {
+            this.uow.registerDeletedBooking(null);
+        }
         return true;
     }
 
@@ -60,6 +60,9 @@ public class DbFacade {
     }
 
     public Apartment findAvailableApartment(String date, int days, String type) {
+        if (uow != null) {
+            return this.uow.findAvalibleApartment(date, days, type, con);
+        }
         return null;
     }
 

@@ -24,11 +24,9 @@ public class Apartment {
         return type;
     }
 
-    
-
     @Override
     public String toString() {
-        return "Apartment{" + "a_num=" + a_num + ", cost=" + cost + ", type=" + type + '}';
+        return "Number: " + a_num + "    " + " Type: " + type;
     }
 
 }
