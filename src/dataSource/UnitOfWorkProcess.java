@@ -257,8 +257,8 @@ public class UnitOfWorkProcess {
             CustomerMapper customerMapper = new CustomerMapper();
             BookingMapper bookingMapper = new BookingMapper();
 
-            status = status && customerMapper.insertCustomer(newCustomers, con);
-            status = status && customerMapper.updateCustomer(dirtyCustomers, con);
+            status = status && customerMapper.insertCustomers(newCustomers, con);
+            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
             status = status && bookingMapper.insertBookings(newBookings, con);
             status = status && bookingMapper.updateBookings(dirtyBookings, con);
             status = status && bookingMapper.deleteBookings(deletedBookings, con);
