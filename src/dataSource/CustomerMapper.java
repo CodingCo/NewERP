@@ -1,11 +1,7 @@
 package dataSource;
 
-import domain.Booking;
 import domain.Customer;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -13,48 +9,20 @@ import java.util.ArrayList;
  * @author kasper
  */
 public class CustomerMapper {
-    
-    public Customer getCostumer(int cust_id, Connection con){
-	Customer tmpCu = null;
-	PreparedStatement statement = null;
 
-	String SQLString
-		= "select * "
-		+ "from customer"
-		+ "where a_num = ?";
+    public CustomerMapper() {
 
-	try {
-
-	    statement = con.prepareStatement(SQLString);
-
-	    statement.setInt(1, cust_id);     // primary key value
-	    ResultSet rs = statement.executeQuery();
-	    if (rs.next()) {
-//		tmpCu = new Customer(cust_id,
-//			rs.getString(2),
-//			rs.getString(3),
-//			rs.getInt(4),
-//			rs.getString(5),
-//			rs.getInt(6),
-//			rs.getString(7),
-//			rs.getString(8),
-//			rs.getString(9),
-//			rs.getInt(10));
-	    }
-
-	} catch (SQLException e) {
-	    System.err.print(e);
-	} finally {
-	    try {
-		statement.close();
-	    } catch (SQLException e) {
-		System.err.print(e);
-	    }
-	}
-	return tmpCu;
     }
 
-    ArrayList<Customer> getAllCustomers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean insertCustomer(ArrayList<Customer> clist, Connection con) {
+        return true;
+    }
+
+    public boolean updateCustomer(ArrayList<Customer> clist, Connection con) {
+        return true;
+    }
+
+    public ArrayList<Customer> getAllCustomers(Connection con) {
+        return null;
     }
 }
