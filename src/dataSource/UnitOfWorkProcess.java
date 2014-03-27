@@ -13,7 +13,6 @@ public class UnitOfWorkProcess {
     private ArrayList<Booking> cleanBookings;
     private ArrayList<Customer> newCustomers;
     private ArrayList<Customer> dirtyCustomers;
-    private ArrayList<Customer> deletedCustomers;
     private ArrayList<Customer> cleanCustomers;
     private ArrayList<Apartment> cleanApartments;
 
@@ -25,7 +24,6 @@ public class UnitOfWorkProcess {
         this.cleanBookings = new ArrayList();
         this.newCustomers = new ArrayList();
         this.dirtyCustomers = new ArrayList();
-        this.deletedCustomers = new ArrayList();
         this.cleanCustomers = new ArrayList();
         this.cleanApartments = new ArrayList();
     }
@@ -98,7 +96,6 @@ public class UnitOfWorkProcess {
     public boolean registerNewCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
                 && !cleanCustomers.contains(currentCustomer)
                 && !newCustomers.contains(currentCustomer)) {
             newCustomers.add(currentCustomer);
@@ -117,7 +114,6 @@ public class UnitOfWorkProcess {
     public boolean registerDirtyCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
                 && !cleanCustomers.contains(currentCustomer)) {
             dirtyCustomers.add(currentCustomer);
             return true;
@@ -125,64 +121,17 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    /**
-     * Adds the current booking to the deletedBookings, if it only exists in
-     * cleanBookings list
-     *
-     * @param currentCustomer
-     * @return boolean
-     */
-    public boolean registerDeletedCustomer(Customer currentCustomer) {
-
-        if (!dirtyCustomers.contains(currentCustomer)
-                && !deletedCustomers.contains(currentCustomer)
-                && cleanCustomers.contains(currentCustomer)) { // CLEAN HAS TO CONTAIN THIS!!!
-            deletedCustomers.add(currentCustomer);
-            return true;
-        }
-        return false;
-    }
     //====== Methods to register END ==========================
 
     public Apartment findAvalibleApartment(String date, int days, String type) {
-//        loadBookings();
-//            
-//        ArrayList<Apartment> availableApartments = new ArrayList<>();
-//        
-//        for(Apartment apartment : cleanApartments){
-//            if(apartment.getType().equals(type)){
-//                for(Booking commonBooking : cleanBookings)
-//                    if(!commonBooking.getApartment().getType().equals(apartment.getType()) 
-//                            && commonBooking.get)
-//                        
-//                
-//                
-//            }
-//            
-//        }
-//        
-//        for(Booking commonBooking : cleanBookings)
-//            if(commonBooking.getApartment().getType().equals(type))
-//                for(Booking rightType : cleanBookings)
-//                    if()
-//                
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
         return null;
     }
     
     //====== Methods to update the clean lists to DB ==========================
-    public boolean loadBookings(){
-        ArrayList<Booking> oldBookings = cleanBookings;
+    public boolean loadBookings(Connection con){
+        ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
         cleanBookings.clear();
-        //cleanBookings = new BookingMapper().getAllBookings();
+        cleanBookings = new BookingMapper().getAllBookings(con);
         
         if(oldBookings.size() == cleanBookings.size()){
             for (int i = 0; i < oldBookings.size(); i++) {
@@ -193,10 +142,10 @@ public class UnitOfWorkProcess {
         return true;
     }
     
-    public boolean loadCustomers(){
+    public boolean loadCustomers(Connection con){
         ArrayList<Customer> oldCustomers = cleanCustomers;
         cleanCustomers.clear();
-        //cleanCustomers = new CustomerMapper().getAllCustomers();
+        cleanCustomers = new CustomerMapper().getAllCustomers(con);
         
         if(oldCustomers.size() == cleanCustomers.size()){
             for (int i = 0; i < oldCustomers.size(); i++) {
@@ -207,10 +156,10 @@ public class UnitOfWorkProcess {
         return true;
     }
     
-    public boolean loadApartments(){
+    public boolean loadApartments(Connection con){
         ArrayList<Apartment> oldApartments = cleanApartments;
         cleanApartments.clear();
-        //cleanApartments = new ApartmentMapper().getAllApartments();
+        cleanApartments = new ApartmentMapper().getAllApartments(con);
         
         if(oldApartments.size() == cleanApartments.size()){
             for (int i = 0; i < oldApartments.size(); i++) {
@@ -223,6 +172,39 @@ public class UnitOfWorkProcess {
 
     //====== Method to save changes to DB ==========================
     public boolean commit(Connection con){
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         return true;
     }
 }
