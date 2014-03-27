@@ -13,9 +13,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
 import javax.swing.DefaultListModel;
-import javax.swing.JInternalFrame;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.JOptionPane;
 
 /**
  * @author Robert
@@ -1303,8 +1301,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         Customer c = this.controller.addNewCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), Integer.parseInt(this.newBookingFormAgenTextField.getText()), this.newBookingFormEmailTextField.getText(), Integer.parseInt(this.newBookingFormPhoneTextField.getText()), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormStreetTextField.getText(), Integer.parseInt(this.newBookingFormZipTextField.getText()));
         Apartment a = (Apartment) listModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
         boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
-        if (success) {
-        }
+        //if (success) {
+            //JOptionPane j = new JOptionPane(null, "Booking Created");
+            
+       // }
     }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
 
     private void newBookingFormAgenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormAgenTextFieldActionPerformed
