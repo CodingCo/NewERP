@@ -61,18 +61,19 @@ public class Controller {
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
+        this.facade.startNewBusinessTransaction();
         return null;
     }
 
-    public boolean loadBookings() {
+    private boolean loadBookings() {
         return this.facade.loadBookings();
     }
 
-    public boolean loadCustomers() {
+    private boolean loadCustomers() {
         return this.facade.loadCustomers();
     }
 
-    public boolean loadApartments() {
+    private boolean loadApartments() {
         return this.facade.loadApartments();
     }
 
