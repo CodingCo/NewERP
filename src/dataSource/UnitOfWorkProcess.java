@@ -41,7 +41,7 @@ public class UnitOfWorkProcess {
      * @return boolean
      */
     public boolean registerNewBooking(Booking currentBooking) {
-
+        System.out.println(currentBooking);
         if (!newBookings.contains(currentBooking)
                 && !dirtyBookings.contains(currentBooking)
                 && !deletedBookings.contains(currentBooking)
@@ -49,7 +49,6 @@ public class UnitOfWorkProcess {
             newBookings.add(currentBooking);
             return true;
         }
-
         return false;
     }
 
@@ -259,23 +258,25 @@ public class UnitOfWorkProcess {
             BookingMapper bookingMapper = new BookingMapper();
 
             status = status && customerMapper.insertCustomers(newCustomers, con);
+            System.out.println("1"+status);
             status = status && customerMapper.updateCustomers(dirtyCustomers, con);
+            System.out.println("2" + status);
             status = status && bookingMapper.insertBookings(newBookings, con);
+            System.out.println("3" + status);
             status = status && bookingMapper.updateBookings(dirtyBookings, con);
+            System.out.println("4" + status);
             status = status && bookingMapper.deleteBookings(deletedBookings, con);
-
-            if (!status) {
-                throw new Exception("Business Transaction aborted!");
-            }
+            System.out.println("5" + status);
+            
             con.commit();
 
         } catch (Exception ex) {
-            System.out.println("Fail in UnitOfWorkProcess - commit method");
-            System.err.println(ex);
+            
+            ex.printStackTrace();
             try{
-            con.rollback();
+                con.rollback();
             }catch(SQLException kl){
-                System.out.println(kl);
+                kl.printStackTrace();
             }
             status = false;
         }

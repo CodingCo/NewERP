@@ -17,12 +17,8 @@ public class BookingMapper {
         ArrayList<Booking> list = new ArrayList();
 
         String SQLString1 = "select * from bookings";
-
-        String SQLString2 = "select * from customer "
-                + "where cust_id = ?";
-
-        String SQLString3 = "select * from apartment "
-                + "where a_num = ?";
+        String SQLString2 = "select * from customer where cust_id = ?";
+        String SQLString3 = "select * from apartment where a_num = ?";
 
         PreparedStatement statement1 = null;
         PreparedStatement statement2 = null;
@@ -76,8 +72,7 @@ public class BookingMapper {
      */
     public boolean insertBookings(ArrayList<Booking> blist, Connection con) {
 
-        String SQLString = "insert into bookings values (bookings_seq.NEXTVAL, "
-                + "?, ?, ?, ?, ?, ?, ?)";
+        String SQLString = "insert into bookings values (bookings_seq.NEXTVAL,?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
 
         try {
@@ -85,21 +80,21 @@ public class BookingMapper {
                 statement = con.prepareStatement(SQLString);
                 statement.setInt(1, book.getCustomer().getCust_id());
                 statement.setInt(2, book.getApartment().getA_num());
-                statement.setInt(3, book.getB_id());
-                statement.setInt(4, book.getB_id());
-                statement.setInt(5, book.getB_id());
-                statement.setInt(6, book.getB_id());
-                statement.setInt(7, book.getB_id());
+                statement.setString(3, book.getDate());
+                statement.setInt(4, book.getNum_of_nights());
+                statement.setString(5, book.getTravel_agency());
+                statement.setDouble(6, book.getRent());
+                statement.setInt(7, 0);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
-            System.err.println(e);
+            e.printStackTrace();
             return false;
         } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.err.println(e);
+                e.printStackTrace();
             }
         }
         return true;
@@ -134,13 +129,13 @@ public class BookingMapper {
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
-            System.err.println(e);
+            e.printStackTrace();
             return false;
         } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.err.println(e);
+                e.printStackTrace();
             }
         }
         return true;
@@ -154,8 +149,7 @@ public class BookingMapper {
      * @return boolean
      */
     public boolean deleteBookings(ArrayList<Booking> blist, Connection con) {
-        String SQLString = "delete from bookings "
-                + " where b_id = ?";
+        String SQLString = "delete from bookings where b_id = ?";
         PreparedStatement statement = null;
 
         try {

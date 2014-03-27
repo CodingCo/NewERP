@@ -21,43 +21,33 @@ public class CustomerMapper {
      * @return
      */
     public boolean insertCustomers(ArrayList<Customer> clist, Connection con) {
-	String SQLString = "insert into costumer values (customer_seq.NEXTVAL,"
-		+ "first_name = ?,"
-		+ "family_name = ?,"
-		+ "age = ?,"
-		+ "email = ?,"
-		+ "phone = ?,"
-		+ "country = ?,"
-		+ "city = ?,"
-		+ "zipcode = ?,"
-		+ "street = ?,"
-		+ "version_num = ?)";
+	String SQLString = "insert into costumer values (customer_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
 	PreparedStatement statement = null;
 
 	try {
 	    for (Customer cust : clist) {
 		statement = con.prepareStatement(SQLString);
-		statement.setInt(1, cust.getCust_id());
-		statement.setString(2, cust.getName());
-		statement.setString(3, cust.getFamily_name());
-		statement.setInt(4, cust.getAge());
-		statement.setString(5, cust.getEmail());
-		statement.setString(6, cust.getPhone());
-		statement.setString(7, cust.getCountry());
-		statement.setString(8, cust.getCity());
-		statement.setInt(9, cust.getZipcode());
-		statement.setString(10, cust.getStreet());
-		statement.setInt(11, cust.getVersion());
-		statement.executeUpdate();
+		statement.setString(1, cust.getName());
+		statement.setString(2, cust.getFamily_name());
+		statement.setInt(3, cust.getAge());
+		statement.setString(4, cust.getEmail());
+		statement.setString(5, cust.getPhone());
+		statement.setString(6, cust.getCountry());
+		statement.setString(7, cust.getCity());
+		statement.setInt(8, cust.getZipcode());
+		statement.setString(9, cust.getStreet());
+		statement.setInt(10, 0);
+		int c = statement.executeUpdate();
+                System.out.println(c);
 	    }
 	} catch (SQLException e) {
-	    System.err.println(e);
+	    e.printStackTrace();
 	    return false;
 	} finally {
 	    try {
 		statement.close();
 	    } catch (SQLException e) {
-		System.err.println(e);
+		e.printStackTrace();
 	    }
 	}
 	return true;

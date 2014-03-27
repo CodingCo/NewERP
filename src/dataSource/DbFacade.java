@@ -27,6 +27,7 @@ public class DbFacade {
     public boolean addNewBooking(Booking booking) {
         boolean status = false;
         if (uow != null) {
+            newCustomer(booking.getCustomer());
             status = uow.registerNewBooking(booking);
         }
         return status;
@@ -43,7 +44,7 @@ public class DbFacade {
         return true;
     }
 
-    public boolean newCustomer(Customer customer) {
+    private boolean newCustomer(Customer customer) {
         boolean status = false;
         if (uow != null) {
             this.uow.registerNewCustomer(customer);
@@ -77,7 +78,7 @@ public class DbFacade {
     public boolean commitBusinessTransaction() {
         boolean status = false;
         if (this.uow != null) {
-            this.uow.commit(con);
+                this.uow.commit(con);
             this.uow = null;
         }
         return status;

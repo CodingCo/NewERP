@@ -14,13 +14,13 @@ public class Controller {
     }
 
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
+        boolean status = false;
         if (!processingTransaction) {
             Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
-            this.facade.addNewBooking(booking);
+            status = this.facade.addNewBooking(booking);
             this.processingTransaction = true;
-            return true;
         }
-        return false;
+        return status;
     }
 
     public boolean updateBooking(int a_num, int cust_id, int num_of_nights, double rent) {
