@@ -11,7 +11,7 @@ public class DbFacade {
     private UnitOfWorkProcess uow;
     private Connection con;
     private static DbFacade instance;
-    
+
     private DbFacade() {
         this.uow = new UnitOfWorkProcess();
         con = DBConnector.getInstance().getConnection();
@@ -22,6 +22,31 @@ public class DbFacade {
             instance = new DbFacade();
         }
         return instance;
+    }
+
+    private boolean newCustomer(Customer customer) {
+        boolean status = false;
+        if (uow != null) {
+            this.uow.registerNewCustomer(customer);
+        }
+        return status;
+    }
+
+    public Apartment findAvailableApartment(String date, int days, String type) {
+        if (uow != null) {
+            return this.uow.findAvalibleApartment(date, days, type, con);
+        }
+        return null;
+    }
+
+    public void startNewBusinessTransaction() {
+        this.uow = new UnitOfWorkProcess();
+    }
+
+    public boolean commitBusinessTransaction() {
+        boolean status = false;
+        status = this.uow.commit(con);
+        return status;
     }
 
     public boolean addNewBooking(Booking booking) {
@@ -44,14 +69,6 @@ public class DbFacade {
         return true;
     }
 
-    private boolean newCustomer(Customer customer) {
-        boolean status = false;
-        if (uow != null) {
-            this.uow.registerNewCustomer(customer);
-        }
-        return status;
-    }
-
     public boolean updateCustomer(Customer customer) {
         return true;
     }
@@ -60,28 +77,8 @@ public class DbFacade {
         return true;
     }
 
-    public Apartment findAvailableApartment(String date, int days, String type) {
-        if (uow != null) {
-            return this.uow.findAvalibleApartment(date, days, type, con);
-        }
-        return null;
-    }
-
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
         return null;
-    }
-
-    public void startNewBusinessTransaction() {
-        this.uow = new UnitOfWorkProcess();
-    }
-
-    public boolean commitBusinessTransaction() {
-        boolean status = false;
-        if (this.uow != null) {
-                this.uow.commit(con);
-            this.uow = null;
-        }
-        return status;
     }
 
     public boolean loadBookings() {
