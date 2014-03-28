@@ -12,6 +12,7 @@ public class Apartment {
         this.type = type;
     }
 
+    
     public int getA_num() {
         return a_num;
     }

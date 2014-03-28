@@ -44,8 +44,8 @@ public class DbFacade {
     }
 
     public boolean commitBusinessTransaction() {
-        boolean status = false;
-        status = this.uow.commit(con);
+
+        boolean status = this.uow.commit(con);
         return status;
     }
 
@@ -98,7 +98,31 @@ public class DbFacade {
     }
 
     public boolean loadApartments() {
-        return true;
+        boolean status = false;
+        if (this.con != null) {
+            status = this.uow.loadApartments(con);
+        }
+        return status;
+    }
+
+    public Apartment getApartment(int a_num) {
+        ArrayList<Apartment> list = this.uow.getApartment();
+        for (Apartment x : list) {
+            if (x.getA_num() == a_num) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    public Customer getCustomer(int cust_id) {
+        ArrayList<Customer> list = this.uow.getCustomer();
+        for (Customer x : list) {
+            if (x.getCust_id() == cust_id) {
+                return x;
+            }
+        }
+        return null;
     }
 
 }
