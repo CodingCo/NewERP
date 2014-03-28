@@ -33,13 +33,6 @@ public class UnitOfWorkProcess {
 
     }
 
-    //====== Methods to register changes START ==========================
-    /**
-     * Adds the current booking if it doesn't exists already
-     *
-     * @param currentBooking The new Booking object
-     * @return boolean
-     */
     public boolean registerNewBooking(Booking currentBooking) {
         System.out.println(currentBooking);
         if (!newBookings.contains(currentBooking)
@@ -52,13 +45,6 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    /**
-     * Adds the current updated booking to dirtyBookings, if it exists in
-     * cleanBookings, but not in the other lists.
-     *
-     * @param currentBooking The updated Booking object
-     * @return boolean
-     */
     public boolean registerDirtyBooking(Booking currentBooking) {
 
         if (!newBookings.contains(currentBooking)
@@ -71,13 +57,6 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    /**
-     * Adds the current booking to the deletedBookings, if it only exists in
-     * cleanBookings list
-     *
-     * @param currentBooking The Booking object to delete
-     * @return boolean
-     */
     public boolean registerDeletedBooking(Booking currentBooking) {
 
         if (!newBookings.contains(currentBooking)
@@ -90,13 +69,6 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    /**
-     * Adds the current customer to newCustomers, if it exists in
-     * cleanCustomers, but not in the other lists.
-     *
-     * @param currentCustomer The new Customer Object
-     * @return boolean
-     */
     public boolean registerNewCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
@@ -108,13 +80,6 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    /**
-     * Adds the current updated customer to dirtyCustomers, if it exists in
-     * cleanCustomers, but not in the other lists.
-     *
-     * @param currentCustomer The updated Customer object
-     * @return boolean
-     */
     public boolean registerDirtyCustomer(Customer currentCustomer) {
 
         if (!dirtyCustomers.contains(currentCustomer)
@@ -126,47 +91,16 @@ public class UnitOfWorkProcess {
         return false;
     }
 
-    //====== Methods to register END ==========================
-    /**
-     * Calls findAvailableApartment() from ApartmentMapper
-     * to instantiate the Apartment that is the return value. 
-     *
-     * @param date The startdate of the particular search
-     * @param days The total number of days
-     * @param type The type of Apartment
-     * @param con Connection object
-     * @return boolean
-     */
     public Apartment findAvalibleApartment(String date, int days, String type, Connection con) {
         Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
         return apartmentToReturn;
     }
 
-    /**
-     * No logic made yet, returns null. 
-     * 
-     * @param bookingNum The Booking Number
-     * @param name The FirstName of Customer
-     * @param date The Start Date
-     * @param apartmentNum The Apartment Number
-     * @return findBookingsByParams
-     */
     public ArrayList<Booking> findBookingsByParams(int bookingNum, String name, String date, int apartmentNum) {
         // Is name == guestName??
         return null;
     }
 
-    //====== Methods to update the clean lists to DB ==========================
-    /**
-     * Uses the BookingMapper to retrieve a full List
-     * of all our existing bookings.
-     * 
-     * Returns false, if no changes were made since last 
-     * update. 
-     *
-     * @param con Connection Object
-     * @return boolean
-     */
     public boolean loadBookings(Connection con) {
         ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
         cleanBookings.clear();
@@ -183,16 +117,6 @@ public class UnitOfWorkProcess {
         return true;
     }
 
-    /**
-     * Uses the CustomerMapper to retrieve a full List
-     * of all our existing customers.
-     * 
-     * Returns false, if no changes were made since last 
-     * update. 
-     *
-     * @param con Connection Object
-     * @return boolean
-     */
     public boolean loadCustomers(Connection con) {
         ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
         cleanCustomers.clear();
@@ -209,16 +133,6 @@ public class UnitOfWorkProcess {
         return true;
     }
 
-    /**
-     * Uses the ApartmentMapper to retrieve a full List
-     * of all our existing apartments.
-     * 
-     * Returns false, if no changes were made since last 
-     * update. 
-     *
-     * @param con Connection Object
-     * @return boolean
-     */
     public boolean loadApartments(Connection con) {
         ArrayList<Apartment> oldApartments = new ArrayList(cleanApartments);
         cleanApartments.clear();
@@ -235,20 +149,6 @@ public class UnitOfWorkProcess {
         return true;
     }
 
-    //====== Method to save changes to DB ==========================
-     /**
-     * Uses the mapperclasses to manipulate and define
-     * the DB, with the data from from all the Lists in UOW
-     * except the clean Lists. 
-     * 
-     * If anything throws an exception, it calls the rollBack()
-     * and returns false. 
-     * 
-     * @throws SQLException
-     *
-     * @param con Connection Object
-     * @return boolean
-     */
     public boolean commit(Connection con) {
         boolean status = true;
 
@@ -258,24 +158,14 @@ public class UnitOfWorkProcess {
             BookingMapper bookingMapper = new BookingMapper();
 
             status = status && customerMapper.insertCustomers(newCustomers, con);
-            System.out.println("1"+status);
-            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
-            System.out.println("2" + status);
             status = status && bookingMapper.insertBookings(newBookings, con);
-            System.out.println("3" + status);
-            status = status && bookingMapper.updateBookings(dirtyBookings, con);
-            System.out.println("4" + status);
-            status = status && bookingMapper.deleteBookings(deletedBookings, con);
-            System.out.println("5" + status);
-            
             con.commit();
 
         } catch (Exception ex) {
-            
             ex.printStackTrace();
-            try{
+            try {
                 con.rollback();
-            }catch(SQLException kl){
+            } catch (SQLException kl) {
                 kl.printStackTrace();
             }
             status = false;
@@ -283,5 +173,5 @@ public class UnitOfWorkProcess {
 
         return status;
     }
-    
+
 }

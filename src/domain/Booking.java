@@ -28,6 +28,7 @@ public class Booking {
         this.num_of_nights = num_of_nights;
         this.travel_agency = travel_agency;
         this.rent = rent;
+        this.date = date;
         this.version = 0;
     }
 

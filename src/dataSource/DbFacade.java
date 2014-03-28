@@ -11,10 +11,10 @@ public class DbFacade {
     private UnitOfWorkProcess uow;
     private Connection con;
     private static DbFacade instance;
-    
+
     private DbFacade() {
+        this.con = DBConnector.getInstance().getConnection();
         this.uow = new UnitOfWorkProcess();
-        con = DBConnector.getInstance().getConnection();
     }
 
     public static DbFacade getInstance() {
@@ -30,18 +30,8 @@ public class DbFacade {
             newCustomer(booking.getCustomer());
             status = uow.registerNewBooking(booking);
         }
+        System.out.println(status);
         return status;
-    }
-
-    public boolean updateBooking(Booking booking) {
-        return true;
-    }
-
-    public boolean deleteBooking(int b_id) {
-        if (this.uow != null) {
-            this.uow.registerDeletedBooking(null);
-        }
-        return true;
     }
 
     private boolean newCustomer(Customer customer) {
@@ -52,22 +42,10 @@ public class DbFacade {
         return status;
     }
 
-    public boolean updateCustomer(Customer customer) {
-        return true;
-    }
-
-    public boolean deleteCustomer(int cust_id) {
-        return true;
-    }
-
     public Apartment findAvailableApartment(String date, int days, String type) {
         if (uow != null) {
             return this.uow.findAvalibleApartment(date, days, type, con);
         }
-        return null;
-    }
-
-    public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
         return null;
     }
 
@@ -77,31 +55,8 @@ public class DbFacade {
 
     public boolean commitBusinessTransaction() {
         boolean status = false;
-        if (this.uow != null) {
-                this.uow.commit(con);
-            this.uow = null;
-        }
+        status = this.uow.commit(con);
         return status;
-    }
-
-    public boolean loadBookings() {
-        boolean status = false;
-        if (this.con != null) {
-            status = this.uow.loadBookings(con);
-        }
-        return status;
-    }
-
-    public boolean loadCustomers() {
-        boolean status = false;
-        if (this.con != null) {
-            status = this.uow.loadCustomers(con);
-        }
-        return status;
-    }
-
-    public boolean loadApartments() {
-        return true;
     }
 
 }
