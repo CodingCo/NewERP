@@ -72,7 +72,7 @@ public class BookingMapper {
      */
     public boolean insertBookings(ArrayList<Booking> blist, Connection con) {
 
-        String SQLString = "insert into bookings values (bookings_seq.NEXTVAL,?, ?, ?, ?, ?, ?, ?)";
+        String SQLString = "insert into bookings values (booking_seq.NEXTVAL,?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
 
         try {
