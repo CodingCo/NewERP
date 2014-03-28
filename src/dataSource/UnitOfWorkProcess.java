@@ -33,6 +33,14 @@ public class UnitOfWorkProcess {
 
     }
 
+    public ArrayList<Apartment> getApartment() {
+        return this.cleanApartments;
+    }
+
+    public ArrayList<Customer> getCustomer() {
+        return this.cleanCustomers;
+    }
+
     public boolean registerNewBooking(Booking currentBooking) {
         System.out.println(currentBooking);
         if (!newBookings.contains(currentBooking)
@@ -62,7 +70,7 @@ public class UnitOfWorkProcess {
         if (!newBookings.contains(currentBooking)
                 && !dirtyBookings.contains(currentBooking)
                 && !deletedBookings.contains(currentBooking)
-                && cleanBookings.contains(currentBooking)) { 
+                && cleanBookings.contains(currentBooking)) {
             deletedBookings.add(currentBooking);
             return true;
         }

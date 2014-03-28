@@ -5,52 +5,45 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    private boolean processingTransaction; // flag 
     private DbFacade facade;
 
     public Controller() {
-        this.processingTransaction = false;
+
         this.facade = DbFacade.getInstance();
     }
 
+    // ======= BOOKING
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
-        boolean status = false;
-        System.out.println(date);
+        boolean status;
         Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
         status = this.facade.addNewBooking(booking);
         return status;
     }
 
-    public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
-        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
+    public boolean updateBooking(Booking b, int a_num, int cust_id, int num_of_nights, double rent) {
+        b.setApartment(this.facade.getApartment(a_num));
+        b.setCustomer(this.facade.getCustomer(cust_id));
+        b.setNum_of_nights(num_of_nights);
+        b.setRent(rent);
+        this.facade.updateBooking(null);
+        return true;
     }
 
-    public int saveTransaction() {
-        this.facade.commitBusinessTransaction();
-        return 1;
-    }
-
-    public Apartment findAvailableApartment(String date, int days, String type) {
-        if (this.facade != null) {
-            return this.facade.findAvailableApartment(date, days, type);
-        }
-        return null;
-    }
-
-    public boolean updateBooking(int a_num, int cust_id, int num_of_nights, double rent) {
-        if (!processingTransaction) {
-            return true;
-        }
-        return false;
+    private Apartment getApartment(int a_num) {
+        return this.facade.getApartment(a_num);
     }
 
     public boolean deleteBooking(int b_id) {
-        if (!processingTransaction) {
-            this.facade.deleteBooking(b_id);
-            this.processingTransaction = true;
-            return true;
-        }
+
+        this.facade.deleteBooking(b_id);
+
         return false;
+    }
+    // ======= 
+
+    // ====== CUSTOMER
+    public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
+        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
     }
 
     public boolean updateCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
@@ -60,14 +53,27 @@ public class Controller {
     public boolean deleteCustomer(int cust_id) {
         return true;
     }
+    //=======  
 
-    public int resetTransaction() {
-        this.processingTransaction = false;
-        return 1;
+    public boolean resetTransaction() {
+
+        return true;
+    }
+
+    public boolean saveTransaction() {
+        this.facade.commitBusinessTransaction();
+        return true;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
         this.facade.startNewBusinessTransaction();
+        return null;
+    }
+
+    public Apartment findAvailableApartment(String date, int days, String type) {
+        if (this.facade != null) {
+            return this.facade.findAvailableApartment(date, days, type);
+        }
         return null;
     }
 
