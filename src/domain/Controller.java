@@ -15,12 +15,26 @@ public class Controller {
 
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
         boolean status = false;
-        if (!processingTransaction) {
-            Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
-            status = this.facade.addNewBooking(booking);
-            this.processingTransaction = true;
-        }
+        System.out.println(date);
+        Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
+        status = this.facade.addNewBooking(booking);
         return status;
+    }
+
+    public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
+        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
+    }
+
+    public int saveTransaction() {
+        this.facade.commitBusinessTransaction();
+        return 1;
+    }
+
+    public Apartment findAvailableApartment(String date, int days, String type) {
+        if (this.facade != null) {
+            return this.facade.findAvailableApartment(date, days, type);
+        }
+        return null;
     }
 
     public boolean updateBooking(int a_num, int cust_id, int num_of_nights, double rent) {
@@ -39,10 +53,6 @@ public class Controller {
         return false;
     }
 
-    public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
-        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
-    }
-
     public boolean updateCustomer(String name, String family_name, int age, String email, int phone, String country, String city, String street, int zipcode) {
         return false;
     }
@@ -51,25 +61,9 @@ public class Controller {
         return true;
     }
 
-    public int saveTransaction() {
-        if (this.facade != null) {
-            this.facade.commitBusinessTransaction();
-            this.processingTransaction = false;
-            return 1;
-        }
-        return 0;
-    }
-
     public int resetTransaction() {
         this.processingTransaction = false;
         return 1;
-    }
-
-    public Apartment findAvailableApartment(String date, int days, String type) {
-        if (this.facade != null) {
-            return this.facade.findAvailableApartment(date, days, type);
-        }
-        return null;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
