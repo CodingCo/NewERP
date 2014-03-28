@@ -22,7 +22,9 @@ public class Controller {
 
         System.out.println(ct.loadLists());
         Customer c = ct.facade.getCustomer(1);
+        System.out.println(c);
         ct.updateCustomer(c, "DUMMY", "DUMMY", 66, "@DUMMY", "888888", "DUMMY", "dummy", "dummy", 9999);
+        System.out.println(c);
         ct.saveTransaction();
         
     }

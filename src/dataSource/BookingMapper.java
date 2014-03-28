@@ -75,26 +75,28 @@ public class BookingMapper {
         String SQLString = "insert into bookings values (booking_seq.NEXTVAL,?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
 
-        try {
-            for (Booking book : blist) {
-                statement = con.prepareStatement(SQLString);
-                statement.setInt(1, book.getCustomer().getCust_id());
-                statement.setInt(2, book.getApartment().getA_num());
-                statement.setString(3, book.getDate());
-                statement.setInt(4, book.getNum_of_nights());
-                statement.setString(5, book.getTravel_agency());
-                statement.setDouble(6, book.getRent());
-                statement.setInt(7, 0);
-                statement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        } finally {
+        if (!blist.isEmpty()) {
             try {
-                statement.close();
+                for (Booking book : blist) {
+                    statement = con.prepareStatement(SQLString);
+                    statement.setInt(1, book.getCustomer().getCust_id());
+                    statement.setInt(2, book.getApartment().getA_num());
+                    statement.setString(3, book.getDate());
+                    statement.setInt(4, book.getNum_of_nights());
+                    statement.setString(5, book.getTravel_agency());
+                    statement.setDouble(6, book.getRent());
+                    statement.setInt(7, 0);
+                    statement.executeUpdate();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
+                return false;
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return true;

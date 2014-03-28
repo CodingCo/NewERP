@@ -180,8 +180,7 @@ public class UnitOfWorkProcess {
             con.setAutoCommit(false);
             CustomerMapper customerMapper = new CustomerMapper();
             BookingMapper bookingMapper = new BookingMapper();
-
-            // Call method from BokingMapper alterDate
+            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
             status = status && customerMapper.insertCustomers(newCustomers, con);
             status = status && bookingMapper.insertBookings(newBookings, con);
             con.commit();
