@@ -50,8 +50,8 @@ version_num NUMBER
 
 
 CREATE TABLE bookings(
-b_id number(8,0) PRIMARY KEY,
-cust_id number(8,0) NOT NULL REFERENCES customer(cust_id),
+b_id number(8) PRIMARY KEY,
+cust_id number(8) NOT NULL REFERENCES customer(cust_id),
 a_num number NOT NULL REFERENCES apartment(a_num),
 date_from DATE NOT NULL,
 number_of_nights NUMBER(4) NOT NULL,
@@ -84,7 +84,7 @@ BEGIN
       INSERT INTO apartment VALUES(i,'Family');
    END LOOP;
 END;  
-/  
+/
 
 -- HUSK DEN FUCKING BACKSLASH VED PL/SQL
 
