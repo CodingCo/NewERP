@@ -1292,6 +1292,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
+        this.listModel.clear();
+
         Apartment a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString());
         if (a == null) {
 
@@ -1345,19 +1347,24 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFormFirstTextFieldActionPerformed
 
     private void newBookingFormCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonActionPerformed
-        Customer c = this.controller.addNewCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), Integer.parseInt(this.newBookingFormAGETextField.getText()), this.newBookingFormEmailTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormStreetTextField.getText(), Integer.parseInt(this.newBookingFormZipTextField.getText()));
-        Apartment a = (Apartment) listModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-        boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
-        if (success) {
-            this.createCounter++;
-            this.enableComponents(this, false);
-            JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
-            this.enableComponents(this, true);
-            this.enableComponents(this.newBookingFormPanel, false);
-            this.enableComponents(this.newBookingFormButtonPanel, true);
-            this.enableComponents(this.newBookingFormGreyPanel, false);
-            this.enableComponents(this.newBookingAvailablePanel, false);
-            this.clearNewBookingFields();
+
+        try {
+            Customer c = this.controller.addNewCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), Integer.parseInt(this.newBookingFormAGETextField.getText()), this.newBookingFormEmailTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormStreetTextField.getText(), Integer.parseInt(this.newBookingFormZipTextField.getText()));
+            Apartment a = (Apartment) listModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+            boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
+            if (success) {
+                this.createCounter++;
+                this.enableComponents(this, false);
+                JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
+                this.enableComponents(this, true);
+                this.enableComponents(this.newBookingFormPanel, false);
+                this.enableComponents(this.newBookingFormButtonPanel, true);
+                this.enableComponents(this.newBookingFormGreyPanel, false);
+                this.enableComponents(this.newBookingAvailablePanel, false);
+                this.clearNewBookingFields();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Wrong input type", "", WIDTH);
         }
     }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
 
@@ -1375,6 +1382,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormButtonSaveButtonActionPerformed
         if (this.controller.saveTransaction()) {
             this.createCounter = 0;
+        } else {
+            JOptionPane.showMessageDialog(this, "Nothing to save", "", WIDTH);
         }
     }//GEN-LAST:event_newBookingFormButtonSaveButtonActionPerformed
 
