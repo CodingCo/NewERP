@@ -29,6 +29,7 @@ public class Booking {
         this.travel_agency = travel_agency;
         this.rent = rent;
         this.version = 0;
+        this.date = date;
     }
 
     public int getB_id() {
