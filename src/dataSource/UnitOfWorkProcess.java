@@ -183,6 +183,8 @@ public class UnitOfWorkProcess {
             status = status && customerMapper.updateCustomers(dirtyCustomers, con);
             status = status && customerMapper.insertCustomers(newCustomers, con);
             status = status && bookingMapper.insertBookings(newBookings, con);
+            status = status && bookingMapper.insertBookings(dirtyBookings, con);
+            status = status && bookingMapper.insertBookings(deletedBookings, con);
             con.commit();
 
         } catch (Exception ex) {

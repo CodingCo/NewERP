@@ -86,13 +86,6 @@ public class Controller {
         return status;
     }
 
-    public boolean deleteCustomer(int cust_id) {
-        boolean status = false;
-        if (!this.transaction) {
-            status = this.facade.deleteCustomer(cust_id);
-        }
-        return status;
-    }
     //=======  
 
     public boolean resetTransaction() {

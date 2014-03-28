@@ -60,14 +60,6 @@ public class DbFacade {
         return status;
     }
 
-    public boolean deleteCustomer(int cust_id) {
-        boolean status = false;
-        if (this.uow != null) {
-
-        }
-        return status;
-    }
-
     public Apartment findAvailableApartment(String date, int days, String type) {
         if (uow != null) {
             return this.uow.findAvalibleApartment(date, days, type, con);
@@ -84,7 +76,6 @@ public class DbFacade {
     }
 
     public boolean commitBusinessTransaction() {
-
         boolean status = this.uow.commit(con);
         return status;
     }

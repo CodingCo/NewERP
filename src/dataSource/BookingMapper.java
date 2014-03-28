@@ -83,6 +83,7 @@ public class BookingMapper {
 		   e.printStackTrace();
 	    }
 	}
+        System.out.println(list);
 	return list;
     }
 
