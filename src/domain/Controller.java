@@ -26,7 +26,7 @@ public class Controller {
         ct.updateCustomer(c, "DUMMY", "DUMMY", 66, "@DUMMY", "888888", "DUMMY", "dummy", "dummy", 9999);
         System.out.println(c);
         ct.saveTransaction();
-        
+
     }
 
     // ======= BOOKING
@@ -122,7 +122,7 @@ public class Controller {
         boolean status = true;
         if (this.facade != null) {
             status = status && this.facade.loadApartments();
-            // status = status && this.facade.loadBookings();
+            status = status && this.facade.loadBookings();
             status = status && this.facade.loadCustomers();
         }
         return status;
