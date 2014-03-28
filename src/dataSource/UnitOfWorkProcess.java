@@ -105,8 +105,22 @@ public class UnitOfWorkProcess {
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNum, String name, String date, int apartmentNum) {
-        // Is name == guestName??
-        return null;
+        ArrayList<Booking> relevantBookings = new ArrayList();
+
+        for (Booking cleanBooking : cleanBookings) {
+            if (bookingNum == cleanBooking.getB_id()) {
+                relevantBookings.clear();
+                relevantBookings.add(cleanBooking);
+                return relevantBookings;
+            }
+            if (cleanBooking.getCustomer().getName().equalsIgnoreCase(name)
+                    || cleanBooking.getDate().equalsIgnoreCase(date)
+                    || cleanBooking.getApartment().getA_num() == apartmentNum) {
+                relevantBookings.add(cleanBooking);
+            }
+        }
+
+        return relevantBookings;
     }
 
     public boolean loadBookings(Connection con) {
@@ -165,6 +179,7 @@ public class UnitOfWorkProcess {
             CustomerMapper customerMapper = new CustomerMapper();
             BookingMapper bookingMapper = new BookingMapper();
 
+            // Call method from BokingMapper alterDate
             status = status && customerMapper.insertCustomers(newCustomers, con);
             status = status && bookingMapper.insertBookings(newBookings, con);
             con.commit();
