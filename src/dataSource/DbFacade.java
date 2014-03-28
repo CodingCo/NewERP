@@ -70,11 +70,19 @@ public class DbFacade {
     }
 
     public boolean updateCustomer(Customer customer) {
-        return true;
+        boolean status = false;
+        if (this.uow != null) {
+            status = this.uow.registerDirtyCustomer(customer);
+        }
+        return status;
     }
 
     public boolean deleteCustomer(int cust_id) {
-        return true;
+        boolean status = false;
+        if (this.uow != null) {
+
+        }
+        return status;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
@@ -94,6 +102,7 @@ public class DbFacade {
         if (this.con != null) {
             status = this.uow.loadCustomers(con);
         }
+        System.out.println(status);
         return status;
     }
 
