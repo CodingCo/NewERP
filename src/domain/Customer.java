@@ -42,6 +42,10 @@ public class Customer {
         this.version = 0;
     }
 
+    public void setCust_id(int cust_id) {
+        this.cust_id = cust_id;
+    }
+
     public int getCust_id() {
         return cust_id;
     }
@@ -88,16 +92,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "customerID=" + cust_id
-                + ", name=" + name
-                + ", familyName=" + family_name
-                + ", age=" + age
-                + ", eMail=" + email
-                + ", phoneNum=" + phone
-                + ", country=" + country
-                + ", city=" + city
-                + ", street=" + street
-                + ", zipCode=" + zipcode + '}';
+        return "Customer{" + "cust_id=" + cust_id + ", name=" + name + ", family_name=" + family_name + ", age=" + age + ", email=" + email + ", phone=" + phone + ", country=" + country + ", city=" + city + ", street=" + street + ", zipcode=" + zipcode + ", version=" + version + '}';
     }
 
 }
