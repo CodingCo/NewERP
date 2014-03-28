@@ -42,6 +42,46 @@ public class Customer {
         this.version = 0;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFamily_name(String family_name) {
+        this.family_name = family_name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public void setCust_id(int cust_id) {
         this.cust_id = cust_id;
     }

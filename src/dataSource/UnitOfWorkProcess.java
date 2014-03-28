@@ -129,15 +129,17 @@ public class UnitOfWorkProcess {
         ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
         cleanCustomers.clear();
         cleanCustomers = new CustomerMapper().getAllCustomers(con);
-
+        
         if (oldCustomers.size() == cleanCustomers.size()) {
             for (int i = 0; i < oldCustomers.size(); i++) {
                 if (oldCustomers.get(i) != cleanCustomers.get(i)) {
+                    System.out.println(cleanCustomers);
                     return true;
                 }
             }
             return false;
         }
+        System.out.println(cleanCustomers);
         return true;
     }
 

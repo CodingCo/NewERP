@@ -118,7 +118,7 @@ public class CustomerMapper {
      */
     public ArrayList<Customer> getAllCustomers(Connection con) {
         ArrayList<Customer> list = new ArrayList();
-        String SQLString = "select * from bookings";
+        String SQLString = "select * from customer";
         PreparedStatement statement = null;
 
         try {

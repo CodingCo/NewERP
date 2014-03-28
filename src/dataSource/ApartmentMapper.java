@@ -79,7 +79,8 @@ public class ApartmentMapper {
                 statement = con.prepareStatement(SQLString2);
                 statement.setString(1, rs1.getString(2));
                 ResultSet rs2 = statement.executeQuery();
-
+                    rs2.next();
+                
                 list.add(new Apartment(rs1.getInt(1), rs2.getInt(2), rs1.getString(2)));
             }
         } catch (SQLException e) {
