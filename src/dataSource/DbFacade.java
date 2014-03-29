@@ -34,14 +34,19 @@ public class DbFacade {
     }
 
     public boolean updateBooking(Booking booking) {
-        return true;
+        boolean status = false;
+        if (this.uow != null) {
+            status = this.uow.registerDirtyBooking(booking);
+        }
+        return status;
     }
 
     public boolean deleteBooking(int b_id) {
+        boolean status = false;
         if (this.uow != null) {
-            this.uow.registerDeletedBooking(null);
+            status = this.uow.registerDeletedBooking(getBooking(b_id));
         }
-        return true;
+        return status;
     }
 
     private boolean newCustomer(Customer customer) {
@@ -68,6 +73,9 @@ public class DbFacade {
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
+        if (this.uow != null) {
+            return this.uow.findBookingsByParams(bookingNr, name, date, roomNr);
+        }
         return null;
     }
 
@@ -93,7 +101,6 @@ public class DbFacade {
         if (this.con != null) {
             status = this.uow.loadCustomers(con);
         }
-        System.out.println(status);
         return status;
     }
 
@@ -103,6 +110,27 @@ public class DbFacade {
             status = this.uow.loadApartments(con);
         }
         return status;
+    }
+
+    public boolean loadMerger() {
+        int errorCount = 0;
+        ArrayList<Booking> b = this.uow.getBooking();
+        ArrayList<Apartment> a = this.uow.getApartment();
+        ArrayList<Customer> c = this.uow.getCustomer();
+        for (Booking x : b) {
+            int anum = x.getApartment().getA_num();
+            x.setApartment(a.get(anum - 1));
+            int custid = x.getCustomer().getCust_id();
+            for (int y = 0; y < c.size(); ++y) {
+                if (c.get(y).getCust_id() == custid) {
+                    x.setCustomer(c.get(y));
+                    break;
+                } else if (y == c.size() - 1) {
+                    errorCount++;
+                }
+            }
+        }
+        return errorCount == 0;
     }
 
     public Apartment getApartment(int a_num) {
@@ -119,6 +147,16 @@ public class DbFacade {
         ArrayList<Customer> list = this.uow.getCustomer();
         for (Customer x : list) {
             if (x.getCust_id() == cust_id) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    public Booking getBooking(int b_id) {
+        ArrayList<Booking> list = this.uow.getBooking();
+        for (Booking x : list) {
+            if (x.getB_id() == b_id) {
                 return x;
             }
         }

@@ -9,26 +9,24 @@ public class Controller {
     private boolean transaction;
 
     public Controller() {
-        this.transaction = false;
+        this.transaction = true;
         this.facade = DbFacade.getInstance();
     }
 
-    public static void main(String[] args) {
-        Controller ct = new Controller();
-//        Customer c = ct.addNewCustomer("Simon", "java", 20, "@mail", "23232323", "denmark", "city", "street", 8888);
+//    public static void main(String[] args) {
+//        Controller ct = new Controller();
+//        ct.loadLists();
+//        Customer c = ct.addNewCustomer("Robert", "APL", 20, "@mail", "23232323", "denmark", "city", "street", 8888);
+//        ct.saveTransaction();
 //        Apartment p = ct.findAvailableApartment("23-10-13", 5, "Single");
 //        ct.addNewBooking(c, p, 5, "23-10-13", "agency", 200);
 //        ct.saveTransaction();
-
-        System.out.println(ct.loadLists());
-        Customer c = ct.facade.getCustomer(1);
-        System.out.println(c);
-        ct.updateCustomer(c, "DUMMY", "DUMMY", 66, "@DUMMY", "888888", "DUMMY", "dummy", "dummy", 9999);
-        System.out.println(c);
-        ct.saveTransaction();
-
-    }
-
+//        System.out.println(ct.loadLists());
+//        System.out.println(ct.facade.getCustomer(1));
+//        Booking b = ct.facade.getBooking(1);
+//        b.getCustomer().setName("testname");
+//        System.out.println(ct.facade.getCustomer(1));
+//    }
     // ======= BOOKING
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
         boolean status = false;
@@ -51,12 +49,12 @@ public class Controller {
             status = this.facade.updateBooking(b);
         }
         return status;
-
     }
 
     public boolean deleteBooking(int b_id) {
         boolean status = false;
         if (!this.transaction) {
+            this.transaction = true;
             status = this.facade.deleteBooking(b_id);
         }
         return status;
@@ -87,7 +85,6 @@ public class Controller {
     }
 
     //=======  
-
     public boolean resetTransaction() {
         return this.transaction = false;
     }
@@ -100,7 +97,9 @@ public class Controller {
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
-        this.facade.startNewBusinessTransaction();
+        if (this.facade != null) {
+            this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
+        }
         return null;
     }
 
@@ -117,6 +116,7 @@ public class Controller {
             status = status && this.facade.loadApartments();
             status = status && this.facade.loadBookings();
             status = status && this.facade.loadCustomers();
+            status = status && this.facade.loadMerger();
         }
         return status;
     }

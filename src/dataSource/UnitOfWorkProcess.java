@@ -41,8 +41,11 @@ public class UnitOfWorkProcess {
         return this.cleanCustomers;
     }
 
+    public ArrayList<Booking> getBooking() {
+        return this.cleanBookings;
+    }
+
     public boolean registerNewBooking(Booking currentBooking) {
-        System.out.println(currentBooking);
         if (!newBookings.contains(currentBooking)
                 && !dirtyBookings.contains(currentBooking)
                 && !deletedBookings.contains(currentBooking)
@@ -143,17 +146,15 @@ public class UnitOfWorkProcess {
         ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
         cleanCustomers.clear();
         cleanCustomers = new CustomerMapper().getAllCustomers(con);
-        
+
         if (oldCustomers.size() == cleanCustomers.size()) {
             for (int i = 0; i < oldCustomers.size(); i++) {
                 if (oldCustomers.get(i) != cleanCustomers.get(i)) {
-                    System.out.println(cleanCustomers);
                     return true;
                 }
             }
             return false;
         }
-        System.out.println(cleanCustomers);
         return true;
     }
 
@@ -183,10 +184,11 @@ public class UnitOfWorkProcess {
             status = status && customerMapper.updateCustomers(dirtyCustomers, con);
             status = status && customerMapper.insertCustomers(newCustomers, con);
             status = status && bookingMapper.insertBookings(newBookings, con);
-            status = status && bookingMapper.insertBookings(dirtyBookings, con);
-            status = status && bookingMapper.insertBookings(deletedBookings, con);
-            con.commit();
-
+            status = status && bookingMapper.updateBookings(dirtyBookings, con);
+            status = status && bookingMapper.deleteBookings(deletedBookings, con);
+            if (!status) {
+                con.commit();
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
             try {

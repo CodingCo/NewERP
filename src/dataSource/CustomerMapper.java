@@ -17,43 +17,45 @@ public class CustomerMapper {
         String SQLString = "insert into customer values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
 
-        String SQLID = "select customer_seq.NEXTVAL from dual";
-        int id = 0;
-        try {
-            statement = con.prepareStatement(SQLID);
-            ResultSet s = statement.executeQuery();
-            while (s.next()) {
-                id = s.getInt(1);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            for (Customer cust : clist) {
-                cust.setCust_id(id);
-                statement = con.prepareStatement(SQLString);
-                statement.setInt(1, cust.getCust_id());
-                statement.setString(2, cust.getName());
-                statement.setString(3, cust.getFamily_name());
-                statement.setInt(4, cust.getAge());
-                statement.setString(5, cust.getEmail());
-                statement.setString(6, cust.getPhone());
-                statement.setString(7, cust.getCountry());
-                statement.setString(8, cust.getCity());
-                statement.setInt(9, cust.getZipcode());
-                statement.setString(10, cust.getStreet());
-                statement.setInt(11, 0);
-                statement.executeUpdate();
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        } finally {
+        if (!clist.isEmpty()) {
+            String SQLID = "select customer_seq.NEXTVAL from dual";
+            int id = 0;
             try {
-                statement.close();
+                statement = con.prepareStatement(SQLID);
+                ResultSet s = statement.executeQuery();
+                while (s.next()) {
+                    id = s.getInt(1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                statement = con.prepareStatement(SQLString);
+                for (Customer cust : clist) {
+                    cust.setCust_id(id);
+                    statement.setInt(1, cust.getCust_id());
+                    statement.setString(2, cust.getName());
+                    statement.setString(3, cust.getFamily_name());
+                    statement.setInt(4, cust.getAge());
+                    statement.setString(5, cust.getEmail());
+                    statement.setString(6, cust.getPhone());
+                    statement.setString(7, cust.getCountry());
+                    statement.setString(8, cust.getCity());
+                    statement.setInt(9, cust.getZipcode());
+                    statement.setString(10, cust.getStreet());
+                    statement.setInt(11, 0);
+                    statement.executeUpdate();
+
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
+                return false;
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return true;
@@ -71,8 +73,8 @@ public class CustomerMapper {
         String SQLString = "update customer set first_name = ?,family_name = ?, age = ?, email = ?,phone = ?,country = ?, city = ?, zipcode = ? ,street = ? where cust_id = ? and version_num = ?";
         PreparedStatement statement = null;
         try {
+            statement = con.prepareStatement(SQLString);
             for (Customer cust : clist) {
-                statement = con.prepareStatement(SQLString);
                 statement.setString(1, cust.getName());
                 statement.setString(2, cust.getFamily_name());
                 statement.setInt(3, cust.getAge());
@@ -113,7 +115,6 @@ public class CustomerMapper {
         try {
             statement = con.prepareStatement(SQLString);
             ResultSet rs = statement.executeQuery();
-
             while (rs.next()) {
                 list.add(new Customer(rs.getInt(1),
                         rs.getString(2),
