@@ -88,14 +88,14 @@ END;
 
 -- HUSK DEN FUCKING BACKSLASH VED PL/SQL
 
-INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 1, 1, CURRENT_DATE, 6, 'CODESNIPPETS', 2000.42,0);
-INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 2, 10, CURRENT_DATE, 3, 'ASSEMBLE', 2900.42,0);
-INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 3, 42, CURRENT_DATE, 5, 'SATURN REJSER', 100.42,0);
-INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 4, 100, CURRENT_DATE, 1, 'CODEBLOCKS', 500.42,0);
+INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 1, 1, '23-10-13', 6, 'CODESNIPPETS', 2000.42,0);
+INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 2, 10, '23-10-13', 3, 'ASSEMBLE', 2900.42,0);
+INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 3, 42, '23-10-13', 5, 'SATURN REJSER', 100.42,0);
+INSERT INTO bookings VALUES(booking_seq.NEXTVAL, 4, 100, '23-10-13', 1, 'CODEBLOCKS', 500.42,0);
 
 --select * from apartment;
 --select * from apartment_type;
 --select * from bookings;
 --select * from customer;
 
-
+commit;

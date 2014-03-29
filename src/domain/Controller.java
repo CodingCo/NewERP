@@ -80,7 +80,7 @@ public class Controller {
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
         if (this.facade != null) {
-            this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
+            return this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
         }
         return null;
     }
