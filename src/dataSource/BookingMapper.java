@@ -18,17 +18,18 @@ public class BookingMapper {
         String SQLString2 = "select * from customer where cust_id = ?";
         String SQLString3 = "select * from apartment where a_num = ?";
         String SQLString4 = "select* from apartment_type where type = ?";
-
+        String alterString = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
+        PreparedStatement statement = null;
         PreparedStatement statement1 = null;
         PreparedStatement statement2 = null;
         PreparedStatement statement3 = null;
         PreparedStatement statement4 = null;
 
         try {
-
+            statement = con.prepareStatement(alterString);
             statement1 = con.prepareStatement(SQLString1);
             ResultSet rs1 = statement1.executeQuery();
-
+            statement.execute();
             while (rs1.next()) {
                 statement2 = con.prepareStatement(SQLString2);
                 statement2.setInt(1, rs1.getInt(2));
@@ -142,8 +143,12 @@ public class BookingMapper {
                 + "version_num = ?,"
                 + " where b_id = ?";
         PreparedStatement statement = null;
+        String alterString = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
 
         try {
+
+            statement = con.prepareStatement(alterString);
+            statement.execute();
             statement = con.prepareStatement(SQLString);
             for (Booking booking : blist) {
                 statement.setString(1, booking.getDate());

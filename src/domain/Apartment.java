@@ -12,7 +12,6 @@ public class Apartment {
         this.type = type;
     }
 
-    
     public int getA_num() {
         return a_num;
     }
@@ -27,7 +26,6 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Number: " + a_num + "    " + " Type: " + type;
+        return "Number " + a_num + "  " + " Type " + type;
     }
-
 }

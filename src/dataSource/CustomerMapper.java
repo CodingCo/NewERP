@@ -16,6 +16,7 @@ public class CustomerMapper {
     public boolean insertCustomers(ArrayList<Customer> clist, Connection con) {
         String SQLString = "insert into customer values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
+        String alterString = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
 
         if (!clist.isEmpty()) {
             String SQLID = "select customer_seq.NEXTVAL from dual";
@@ -30,6 +31,9 @@ public class CustomerMapper {
                 e.printStackTrace();
             }
             try {
+
+                statement = con.prepareStatement(alterString);
+                statement.execute();
                 statement = con.prepareStatement(SQLString);
                 for (Customer cust : clist) {
                     cust.setCust_id(id);

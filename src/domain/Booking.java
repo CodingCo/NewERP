@@ -90,6 +90,7 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" + "b_id=" + b_id + ", apartment=" + apartment + ", customer=" + customer + ", num_of_nights=" + num_of_nights + ", date=" + date + ", travel_agency=" + travel_agency + ", rent=" + rent + ", version=" + version + '}';
+        return "ID " + b_id + "room " + apartment.getA_num() +" "+ customer.getName();
     }
+
 }
