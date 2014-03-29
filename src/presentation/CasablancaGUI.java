@@ -1556,7 +1556,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
      * @param enable set true to enable components in container
      * @author Robert Elving
      */
-    private  void enableComponents(Container container, boolean enable) {
+    private void enableComponents(Container container, boolean enable) {
         Component[] components = container.getComponents();
         for (Component component : components) {
             component.setEnabled(enable);
@@ -1712,12 +1712,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFindButtonFindButtonActionPerformed
 
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
-        
-        Booking b = (Booking)eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-        
+
+        Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+
         controller.updateCustomer(b.getCustomer(), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), Integer.parseInt(this.eBFormAgeTextField.getText()), this.eBFormEmailTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormStreetTextField.getText(), Integer.parseInt(this.eBFormZipTextField.getText()));
-        controller.updateBooking(b, tempA ,Integer.parseInt(this.eBFormNONTextField.getText()), 00);
-        
+        controller.updateBooking(b, tempA, Integer.parseInt(this.eBFormNONTextField.getText()), 00);
+
         boolean status = controller.saveTransaction();
         if (status) {
             this.clearEditBookingsFields();
@@ -1778,14 +1778,27 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFormButtonCancelButtonActionPerformed
 
     private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
-        int textLength = this.newBookingFindSearchFromTextField.getText().length();
+        JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS 
+        String candidates = "1234567890";
+        boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
+        if (hit) {
+            int textLength = selectedTextField.getText().length();
             //== Controls "bindestreg"
-            if (textLength == 2 || (textLength % 2 == 1 && textLength > 1) && textLength < 7){
-                this.newBookingFindSearchFromTextField.setText(this.newBookingFindSearchFromTextField.getText() + "-");
+            if (textLength == 2 || (textLength % 2 == 1 && textLength > 1) && textLength < 7) {
+                selectedTextField.setText(selectedTextField.getText() + "-");
             }
+            //== Controls maxlength
+            if (textLength > 7) {
+                char[] firstChars = selectedTextField.getText().toCharArray();
+                selectedTextField.setText("");
+                for (int i = 0; i < 7; i++) {
+                    selectedTextField.setText(selectedTextField.getText() + firstChars[i]);
+                }
+            }
+        }
     }//GEN-LAST:event_newBookingFindSearchFromTextFieldKeyTyped
 
-    private  void clearEditBookingsFields() {
+    private void clearEditBookingsFields() {
         this.eBFormADateTextField.setText("");
         this.eBFormANRTextField.setText("");
         this.eBFormAgeTextField.setText("");
@@ -1811,7 +1824,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }
 
-    private  void setUpTextFields(Booking b) {
+    private void setUpTextFields(Booking b) {
         this.eBFormADateTextField.setText(b.getDate());
         this.eBFormANRTextField.setText("" + b.getApartment().getA_num());
         this.eBFormAgeTextField.setText("" + b.getCustomer().getAge());
@@ -1819,7 +1832,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormCombo.setSelectedItem(b.getApartment().getType());
         this.eBFormEmailTextField.setText(b.getCustomer().getEmail());
         this.eBFormFirstTextField.setText(b.getCustomer().getName());
-        //this.eBFormNOGTextField.setText(b.g);
+        //this.eBFormNOGTextField.setText(b.);
         this.eBFormNONTextField.setText("" + b.getNum_of_nights());
         this.eBFormNameTextField.setText(b.getCustomer().getFamily_name());
         //this.eBFormNatTextField.setText(b.getCustomer().);
@@ -1842,16 +1855,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CasablancaGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CasablancaGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CasablancaGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CasablancaGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
