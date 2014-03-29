@@ -28,6 +28,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     DefaultListModel nBListModel;
     DefaultListModel eBListModel;
     int createCounter = 0;
+    int dateCounter = 0;
+    Apartment tempA = null;
 
     /**
      * Creates new form CasablancaGUI
@@ -390,6 +392,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFindSearchFromTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newBookingFindSearchFromTextFieldActionPerformed(evt);
+            }
+        });
+        newBookingFindSearchFromTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newBookingFindSearchFromTextFieldKeyTyped(evt);
             }
         });
 
@@ -1515,6 +1522,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         if (this.createCounter == 0) {
             cl.show(mainPage, "FrontPage");
             this.clearNewBookingFields();
+            this.newBookingFindSearchFromTextField.setText("DD-MM-YY");
         } else {
             JOptionPane.showMessageDialog(this, "Save All Please", "", WIDTH);
         }
@@ -1634,7 +1642,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 this.enableComponents(this.newBookingAvailablePanel, false);
                 this.clearNewBookingFields();
             }
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Wrong input type", "", WIDTH);
         }
     }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
@@ -1702,6 +1710,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFindButtonFindButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        Booking b = (Booking)eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+        
+        controller.updateCustomer(b.getCustomer(), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), Integer.parseInt(this.eBFormAgeTextField.getText()), this.eBFormEmailTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormStreetTextField.getText(), Integer.parseInt(this.eBFormZipTextField.getText()));
+        controller.updateBooking(b, tempA ,Integer.parseInt(this.eBFormNONTextField.getText()), 00);
+        
         boolean status = controller.saveTransaction();
         if (status) {
             this.clearEditBookingsFields();
@@ -1735,16 +1749,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Apartment a = controller.findAvailableApartment(this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), this.eBFormCombo.getSelectedItem().toString());
+        tempA = controller.findAvailableApartment(this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), this.eBFormCombo.getSelectedItem().toString());
 
-        if (a.getA_num() == Integer.parseInt(this.eBFormANRTextField.getText())) {
+        if (tempA.getA_num() == Integer.parseInt(this.eBFormANRTextField.getText())) {
             this.enableComponents(this.eBFormPanel, true);
-        } else if (a == null) {
+        } else if (tempA == null) {
             JOptionPane.showMessageDialog(this, "No Available apartment", "", WIDTH);
         } else {
             JOptionPane.showMessageDialog(this, "Previous apartment " + this.eBFormANRTextField.getText() + " Not Available /n"
-                    + "                           Apartment " + a.getA_num() + " is chosen instead", "", WIDTH);
-            this.eBFormANRTextField.setText(a.getA_num() + "");
+                    + "                           Apartment " + tempA.getA_num() + " is chosen instead", "", WIDTH);
+            this.eBFormANRTextField.setText(tempA.getA_num() + "");
             this.enableComponents(this.eBFormGrey, true);
         }
 
@@ -1760,6 +1774,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.enableComponents(this.eBFormPanel, false);
         this.enableComponents(this.eBMatchPanel, false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
+        dateCounter++;
+        if (dateCounter < 4) {
+            if (dateCounter % 3 == 0) {
+                this.newBookingFindSearchFromTextField.setText(this.newBookingFindSearchFromTextField.getText() + "-");
+            } else if (dateCounter % 2 == 0) {
+                this.newBookingFindSearchFromTextField.setText(this.newBookingFindSearchFromTextField.getText() + "-");
+                dateCounter = 0;
+            }
+        }
+    }//GEN-LAST:event_newBookingFindSearchFromTextFieldKeyTyped
 
     public void clearEditBookingsFields() {
         this.eBFormADateTextField.setText("");

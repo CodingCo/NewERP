@@ -40,12 +40,11 @@ public class Controller {
         return status;
     }
 
-    public boolean updateBooking(Booking b, int a_num, int cust_id, int num_of_nights, double rent) {
+    public boolean updateBooking(Booking b, Apartment a, int num_of_nights, double rent) {
         boolean status = false;
         if (!this.transaction) {
             this.transaction = true;
-            b.setApartment(this.facade.getApartment(a_num));
-            b.setCustomer(this.facade.getCustomer(cust_id));
+            b.setApartment(a);
             b.setNum_of_nights(num_of_nights);
             b.setRent(rent);
             status = this.facade.updateBooking(b);
