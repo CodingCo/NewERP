@@ -11,24 +11,9 @@ public class Controller {
     public Controller() {
         this.transaction = false;
         this.facade = DbFacade.getInstance();
+        loadLists();
     }
 
-    public static void main(String[] args) {
-        Controller ct = new Controller();
-        //ct.loadLists();
-
-//        Customer c = ct.addNewCustomer("Robert", "APL", 20, "@mail", "23232323", "denmark", "city", "street", 8888);
-//        Apartment p = ct.findAvailableApartment("23-10-13", 5, "Family");
-//        ct.addNewBooking(c, p, 5, "23-10-13", "agency", 200);
-//        System.out.println(ct.saveTransaction());
-        //System.out.println(ct.loadLists());
-        //System.out.println(ct.facade.getCustomer(1));
-        //Booking b = ct.facade.getBooking(1);
-        //b.getCustomer().setName("testname");
-        //System.out.println(ct.facade.getCustomer(1));
-    }
-
-    // ======= BOOKING
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
         boolean status = false;
         if (!this.transaction) {
@@ -60,9 +45,7 @@ public class Controller {
         }
         return status;
     }
-    // ======= 
 
-    // ====== CUSTOMER
     public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
         return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
     }
@@ -85,16 +68,14 @@ public class Controller {
         return status;
     }
 
-    //=======  
-    public boolean resetTransaction() {
-        return this.transaction = false;
-    }
-
     public boolean saveTransaction() {
+        boolean status = false;
         if (this.transaction) {
-            return this.facade.commitBusinessTransaction();
+            this.transaction = false;
+            status = this.facade.commitBusinessTransaction();
+            loadLists();
         }
-        return false;
+        return status;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
