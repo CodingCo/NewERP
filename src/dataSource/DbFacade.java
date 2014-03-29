@@ -135,26 +135,6 @@ public class DbFacade {
         return errorCount == 0;
     }
 
-    public Apartment getApartment(int a_num) {
-        ArrayList<Apartment> list = this.uow.getApartment();
-        for (Apartment x : list) {
-            if (x.getA_num() == a_num) {
-                return x;
-            }
-        }
-        return null;
-    }
-
-    public Customer getCustomer(int cust_id) {
-        ArrayList<Customer> list = this.uow.getCustomer();
-        for (Customer x : list) {
-            if (x.getCust_id() == cust_id) {
-                return x;
-            }
-        }
-        return null;
-    }
-
     public Booking getBooking(int b_id) {
         ArrayList<Booking> list = this.uow.getBooking();
         for (Booking x : list) {
