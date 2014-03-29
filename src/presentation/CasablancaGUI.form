@@ -1730,6 +1730,9 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBMatchListMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1791,6 +1794,9 @@
                           <Dimension value="[100, 30]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBMAtchButtonDeleteButtonActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1813,6 +1819,9 @@
                   <Dimension value="[456, 728]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFormPanelMouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -1839,7 +1848,7 @@
                               <Component id="jPanel7" min="-2" pref="483" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="eBFormGrey" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1871,7 +1880,7 @@
                               <Component id="eBFormANRTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" pref="312" max="-2" attributes="0"/>
+                          <Component id="eBFormGrey" min="-2" pref="312" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" max="32767" attributes="0"/>
                       </Group>
@@ -1989,6 +1998,9 @@
                           <Dimension value="[80, 30]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton5">
                       <Properties>
@@ -2003,6 +2015,9 @@
                           <Dimension value="[80, 30]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2038,7 +2053,7 @@
                     <Property name="text" type="java.lang.String" value="Apartment Number:"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel2">
+                <Container class="javax.swing.JPanel" name="eBFormGrey">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[456, 446]"/>
@@ -2071,17 +2086,15 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="eBFormNatTextField" pref="156" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="eBFormZipTextField" pref="156" max="32767" attributes="0"/>
-                                      <Component id="eBFormStreetTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormCityTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormEmailTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormPhoneTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormNOGTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormAgeTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormNameTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFormFirstTextField" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="eBFormZipTextField" alignment="1" pref="156" max="32767" attributes="0"/>
+                                  <Component id="eBFormStreetTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormCityTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormEmailTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormPhoneTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormNOGTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormAgeTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormNameTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="eBFormFirstTextField" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
@@ -2248,9 +2261,6 @@
                     <Component class="javax.swing.JTextField" name="eBFormZipTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="eBFormNatTextField">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormNatTextFieldActionPerformed"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
