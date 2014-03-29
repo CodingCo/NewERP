@@ -100,7 +100,7 @@ public class BookingMapper {
 
         try {
             statement = con.prepareStatement(alterString);
-            statement.executeUpdate();
+            statement.execute();
             statement = con.prepareStatement(SQLString);
 
             for (Booking book : blist) {

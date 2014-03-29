@@ -9,24 +9,25 @@ public class Controller {
     private boolean transaction;
 
     public Controller() {
-        this.transaction = true;
+        this.transaction = false;
         this.facade = DbFacade.getInstance();
     }
 
-//    public static void main(String[] args) {
-//        Controller ct = new Controller();
-//        ct.loadLists();
+    public static void main(String[] args) {
+        Controller ct = new Controller();
+        //ct.loadLists();
+
 //        Customer c = ct.addNewCustomer("Robert", "APL", 20, "@mail", "23232323", "denmark", "city", "street", 8888);
-//        ct.saveTransaction();
-//        Apartment p = ct.findAvailableApartment("23-10-13", 5, "Single");
+//        Apartment p = ct.findAvailableApartment("23-10-13", 5, "Family");
 //        ct.addNewBooking(c, p, 5, "23-10-13", "agency", 200);
-//        ct.saveTransaction();
-//        System.out.println(ct.loadLists());
-//        System.out.println(ct.facade.getCustomer(1));
-//        Booking b = ct.facade.getBooking(1);
-//        b.getCustomer().setName("testname");
-//        System.out.println(ct.facade.getCustomer(1));
-//    }
+//        System.out.println(ct.saveTransaction());
+        //System.out.println(ct.loadLists());
+        //System.out.println(ct.facade.getCustomer(1));
+        //Booking b = ct.facade.getBooking(1);
+        //b.getCustomer().setName("testname");
+        //System.out.println(ct.facade.getCustomer(1));
+    }
+
     // ======= BOOKING
     public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
         boolean status = false;
@@ -35,6 +36,7 @@ public class Controller {
             Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
             status = this.facade.addNewBooking(booking);
         }
+        System.out.println(status);
         return status;
     }
 

@@ -24,9 +24,13 @@ public class ApartmentMapper {
                 + "date_from between to_date(?) and (to_date(?)+?)) and type = ? and rownum <= 1";
         PreparedStatement statement = null;
 
-        try {
-            statement = con.prepareStatement(SQLString);
+        String alterString = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
 
+        try {
+            statement = con.prepareStatement(alterString);
+            statement.execute();
+
+            statement = con.prepareStatement(SQLString);
             statement.setString(1, date);
             statement.setString(2, date);
             statement.setInt(3, days);
@@ -79,8 +83,8 @@ public class ApartmentMapper {
                 statement = con.prepareStatement(SQLString2);
                 statement.setString(1, rs1.getString(2));
                 ResultSet rs2 = statement.executeQuery();
-                    rs2.next();
-                
+                rs2.next();
+
                 list.add(new Apartment(rs1.getInt(1), rs2.getInt(2), rs1.getString(2)));
             }
         } catch (SQLException e) {

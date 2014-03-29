@@ -29,7 +29,9 @@ public class DbFacade {
         if (uow != null) {
             newCustomer(booking.getCustomer());
             status = uow.registerNewBooking(booking);
+
         }
+        System.out.println(status);
         return status;
     }
 
