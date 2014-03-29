@@ -193,6 +193,11 @@ public class UnitOfWorkProcess {
             System.out.println("5" + status);
             if (status) {
                 con.commit();
+                newBookings.clear();
+                dirtyBookings.clear();
+                deletedBookings.clear();
+                newCustomers.clear();
+                dirtyCustomers.clear();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
