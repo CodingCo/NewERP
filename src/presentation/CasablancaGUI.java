@@ -47,7 +47,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
-
+        this.newBookingFormButtonSaveButton.setVisible(false);
+        
         nBListModel = new DefaultListModel();
         this.newBookingAvailList.setModel(nBListModel);
         eBListModel = new DefaultListModel();
@@ -1634,7 +1635,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
             boolean success = this.controller.addNewBooking(c, a, Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormADateTextField.getText(), this.newBookingFormAgenTextField.getText(), a.getCost());
             if (success) {
-                this.createCounter++;
+                //this.createCounter++;
                 this.enableComponents(this, false);
                 JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
                 this.enableComponents(this, true);
@@ -1643,6 +1644,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 this.enableComponents(this.newBookingFormGreyPanel, false);
                 this.enableComponents(this.newBookingAvailablePanel, false);
                 this.clearNewBookingFields();
+                this.controller.saveTransaction();
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Wrong input type", "", WIDTH);

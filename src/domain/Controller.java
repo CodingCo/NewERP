@@ -73,7 +73,7 @@ public class Controller {
         if (this.transaction) {
             this.transaction = false;
             status = this.facade.commitBusinessTransaction();
-            loadLists();
+            //loadLists();
         }
         return status;
     }
