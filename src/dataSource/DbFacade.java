@@ -75,73 +75,73 @@ public class DbFacade {
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
-        if (this.uow != null) {
-            return this.uow.findBookingsByParams(bookingNr, name, date, roomNr);
-        }
+//        if (this.uow != null) {
+//            return this.uow.findBookingsByParams(bookingNr, name, date, roomNr);
+//        }
         return null;
     }
 
     public void startNewBusinessTransaction() {
-        this.uow = new UnitOfWorkProcess();
+        //this.uow = new UnitOfWorkProcess();
     }
 
     public boolean commitBusinessTransaction() {
-        boolean status = this.uow.commit(con);
-        return status;
+        //boolean status = this.uow.commit(con);
+        return false;
     }
 
     public boolean loadBookings() {
         boolean status = false;
-        if (this.con != null) {
-            status = this.uow.loadBookings(con);
-        }
+//        if (this.con != null) {
+//            status = this.uow.loadBookings(con);
+//        }
         return status;
     }
 
     public boolean loadCustomers() {
         boolean status = false;
-        if (this.con != null) {
-            status = this.uow.loadCustomers(con);
-        }
+//        if (this.con != null) {
+//            status = this.uow.loadCustomers(con);
+//        }
         return status;
     }
 
     public boolean loadApartments() {
         boolean status = false;
-        if (this.con != null) {
-            status = this.uow.loadApartments(con);
-        }
+//        if (this.con != null) {
+//            status = this.uow.loadApartments(con);
+//        }
         return status;
     }
 
     public boolean loadMerger() {
         int errorCount = 0;
-        ArrayList<Booking> b = this.uow.getBooking();
-        ArrayList<Apartment> a = this.uow.getApartment();
-        ArrayList<Customer> c = this.uow.getCustomer();
-        for (Booking x : b) {
-            int anum = x.getApartment().getA_num();
-            x.setApartment(a.get(anum - 1));
-            int custid = x.getCustomer().getCust_id();
-            for (int y = 0; y < c.size(); ++y) {
-                if (c.get(y).getCust_id() == custid) {
-                    x.setCustomer(c.get(y));
-                    break;
-                } else if (y == c.size() - 1) {
-                    errorCount++;
-                }
-            }
-        }
+//        ArrayList<Booking> b = this.uow.getBooking();
+//        ArrayList<Apartment> a = this.uow.getApartment();
+//        ArrayList<Customer> c = this.uow.getCustomer();
+//        for (Booking x : b) {
+//            int anum = x.getApartment().getA_num();
+//            x.setApartment(a.get(anum - 1));
+//            int custid = x.getCustomer().getCust_id();
+//            for (int y = 0; y < c.size(); ++y) {
+//                if (c.get(y).getCust_id() == custid) {
+//                    x.setCustomer(c.get(y));
+//                    break;
+//                } else if (y == c.size() - 1) {
+//                    errorCount++;
+//                }
+//            }
+//        }
         return errorCount == 0;
     }
 
     public Booking getBooking(int b_id) {
-        ArrayList<Booking> list = this.uow.getBooking();
-        for (Booking x : list) {
-            if (x.getB_id() == b_id) {
-                return x;
-            }
-        }
+//        ArrayList<Booking> list = this.uow.getBooking();
+//        for (Booking x : list) {
+//            if (x.getB_id() == b_id) {
+//                return x;
+//            }
+//        }
         return null;
     }
 

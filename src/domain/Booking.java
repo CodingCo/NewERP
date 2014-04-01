@@ -2,6 +2,9 @@ package domain;
 
 public class Booking {
 
+    
+    // DELETE THIS NIGGUH MOTHERFUCKER
+    
     private int b_id;
     private Apartment apartment;
     private Customer customer;

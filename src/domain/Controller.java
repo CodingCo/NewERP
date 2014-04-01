@@ -70,18 +70,18 @@ public class Controller {
 
     public boolean saveTransaction() {
         boolean status = false;
-        if (this.transaction) {
-            this.transaction = false;
-            status = this.facade.commitBusinessTransaction();
-            //loadLists();
-        }
+//        if (this.transaction) {
+//            this.transaction = false;
+//            status = this.facade.commitBusinessTransaction();
+//            //loadLists();
+//        }
         return status;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
-        if (this.facade != null) {
-            return this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
-        }
+//        if (this.facade != null) {
+//            return this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
+//        }
         return null;
     }
 
@@ -94,12 +94,12 @@ public class Controller {
 
     private boolean loadLists() {
         boolean status = true;
-        if (this.facade != null) {
-            status = status && this.facade.loadApartments();
-            status = status && this.facade.loadBookings();
-            status = status && this.facade.loadCustomers();
-            status = status && this.facade.loadMerger();
-        }
+//        if (this.facade != null) {
+//            status = status && this.facade.loadApartments();
+//            status = status && this.facade.loadBookings();
+//            status = status && this.facade.loadCustomers();
+//            status = status && this.facade.loadMerger();
+//        }
         return status;
     }
 }

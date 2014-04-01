@@ -33,181 +33,170 @@ public class UnitOfWorkProcess {
 
     }
 
-    public ArrayList<Apartment> getApartment() {
-        return this.cleanApartments;
-    }
-
-    public ArrayList<Customer> getCustomer() {
-        return this.cleanCustomers;
-    }
-
-    public ArrayList<Booking> getBooking() {
-        return this.cleanBookings;
-    }
-
     public boolean registerNewBooking(Booking currentBooking) {
-        if (!newBookings.contains(currentBooking)
-                && !dirtyBookings.contains(currentBooking)
-                && !deletedBookings.contains(currentBooking)
-                && !cleanBookings.contains(currentBooking)) {
-            newBookings.add(currentBooking);
-            return true;
-        }
+//        if (!newBookings.contains(currentBooking)
+//                && !dirtyBookings.contains(currentBooking)
+//                && !deletedBookings.contains(currentBooking)
+//                && !cleanBookings.contains(currentBooking)) {
+//            newBookings.add(currentBooking);
+//            return true;
+//        }
         return false;
     }
 
     public boolean registerDirtyBooking(Booking currentBooking) {
 
-        if (!newBookings.contains(currentBooking)
-                && !dirtyBookings.contains(currentBooking)
-                && !deletedBookings.contains(currentBooking)
-                && !cleanBookings.contains(currentBooking)) {
-            dirtyBookings.add(currentBooking);
-            return true;
-        }
+//        if (!newBookings.contains(currentBooking)
+//                && !dirtyBookings.contains(currentBooking)
+//                && !deletedBookings.contains(currentBooking)
+//                && !cleanBookings.contains(currentBooking)) {
+//            dirtyBookings.add(currentBooking);
+//            return true;
+//        }
         return false;
     }
 
     public boolean registerDeletedBooking(Booking currentBooking) {
 
-        if (!newBookings.contains(currentBooking)
-                && !dirtyBookings.contains(currentBooking)
-                && !deletedBookings.contains(currentBooking)
-                && cleanBookings.contains(currentBooking)) {
-            deletedBookings.add(currentBooking);
-            return true;
-        }
+//        if (!newBookings.contains(currentBooking)
+//                && !dirtyBookings.contains(currentBooking)
+//                && !deletedBookings.contains(currentBooking)
+//                && cleanBookings.contains(currentBooking)) {
+//            deletedBookings.add(currentBooking);
+//            return true;
+//        }
         return false;
     }
 
     public boolean registerNewCustomer(Customer currentCustomer) {
 
-        if (!dirtyCustomers.contains(currentCustomer)
-                && !cleanCustomers.contains(currentCustomer)
-                && !newCustomers.contains(currentCustomer)) {
-            newCustomers.add(currentCustomer);
-            return true;
-        }
+//        if (!dirtyCustomers.contains(currentCustomer)
+//                && !cleanCustomers.contains(currentCustomer)
+//                && !newCustomers.contains(currentCustomer)) {
+//            newCustomers.add(currentCustomer);
+//            return true;
+//        }
         return false;
     }
 
     public boolean registerDirtyCustomer(Customer currentCustomer) {
 
-        if (!dirtyCustomers.contains(currentCustomer)
-                && !newCustomers.contains(currentCustomer)
-                && cleanCustomers.contains(currentCustomer)) {
-            dirtyCustomers.add(currentCustomer);
-            return true;
-        }
+//        if (!dirtyCustomers.contains(currentCustomer)
+//                && !newCustomers.contains(currentCustomer)
+//                && cleanCustomers.contains(currentCustomer)) {
+//            dirtyCustomers.add(currentCustomer);
+//            return true;
+//        }
         return false;
     }
 
     public Apartment findAvalibleApartment(String date, int days, String type, Connection con) {
-        Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
-        return apartmentToReturn;
+//        Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
+//        return apartmentToReturn;
+        return null;
     }
 
     public ArrayList<Booking> findBookingsByParams(int bookingNum, String name, String date, int apartmentNum) {
         ArrayList<Booking> relevantBookings = new ArrayList();
 
-        for (Booking cleanBooking : cleanBookings) {
-            if (bookingNum == cleanBooking.getB_id()) {
-                relevantBookings.clear();
-                relevantBookings.add(cleanBooking);
-                return relevantBookings;
-            }
-            if (cleanBooking.getCustomer().getName().equalsIgnoreCase(name)
-                    || cleanBooking.getDate().equalsIgnoreCase(date)
-                    || cleanBooking.getApartment().getA_num() == apartmentNum) {
-                relevantBookings.add(cleanBooking);
-            }
-        }
+//        for (Booking cleanBooking : cleanBookings) {
+//            if (bookingNum == cleanBooking.getB_id()) {
+//                relevantBookings.clear();
+//                relevantBookings.add(cleanBooking);
+//                return relevantBookings;
+//            }
+//            if (cleanBooking.getCustomer().getName().equalsIgnoreCase(name)
+//                    || cleanBooking.getDate().equalsIgnoreCase(date)
+//                    || cleanBooking.getApartment().getA_num() == apartmentNum) {
+//                relevantBookings.add(cleanBooking);
+//            }
+//        }
 
         return relevantBookings;
     }
 
     public boolean loadBookings(Connection con) {
-        ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
-        cleanBookings.clear();
-        cleanBookings = new BookingMapper().getAllBookings(con);
-
-        if (oldBookings.size() == cleanBookings.size()) {
-            for (int i = 0; i < oldBookings.size(); i++) {
-                if (oldBookings.get(i) != cleanBookings.get(i)) {
-                    return true;
-                }
-            }
-            return false;
-        }
+       // ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
+//        cleanBookings.clear();
+//        cleanBookings = new BookingMapper().getAllBookings(con);
+//
+//        if (oldBookings.size() == cleanBookings.size()) {
+//            for (int i = 0; i < oldBookings.size(); i++) {
+//                if (oldBookings.get(i) != cleanBookings.get(i)) {
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }
         return true;
     }
 
     public boolean loadCustomers(Connection con) {
-        ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
-        cleanCustomers.clear();
-        cleanCustomers = new CustomerMapper().getAllCustomers(con);
-
-        if (oldCustomers.size() == cleanCustomers.size()) {
-            for (int i = 0; i < oldCustomers.size(); i++) {
-                if (oldCustomers.get(i) != cleanCustomers.get(i)) {
-                    return true;
-                }
-            }
-            return false;
-        }
+//        ArrayList<Customer> oldCustomers = new ArrayList(cleanCustomers);
+//        cleanCustomers.clear();
+//        cleanCustomers = new CustomerMapper().getAllCustomers(con);
+//
+//        if (oldCustomers.size() == cleanCustomers.size()) {
+//            for (int i = 0; i < oldCustomers.size(); i++) {
+//                if (oldCustomers.get(i) != cleanCustomers.get(i)) {
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }
         return true;
     }
 
     public boolean loadApartments(Connection con) {
-        ArrayList<Apartment> oldApartments = new ArrayList(cleanApartments);
-        cleanApartments.clear();
-        cleanApartments = new ApartmentMapper().getAllApartments(con);
-
-        if (oldApartments.size() == cleanApartments.size()) {
-            for (int i = 0; i < oldApartments.size(); i++) {
-                if (oldApartments.get(i) != cleanApartments.get(i)) {
-                    return true;
-                }
-            }
-            return false;
-        }
+//        ArrayList<Apartment> oldApartments = new ArrayList(cleanApartments);
+//        cleanApartments.clear();
+//        cleanApartments = new ApartmentMapper().getAllApartments(con);
+//
+//        if (oldApartments.size() == cleanApartments.size()) {
+//            for (int i = 0; i < oldApartments.size(); i++) {
+//                if (oldApartments.get(i) != cleanApartments.get(i)) {
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }
         return true;
     }
 
     public boolean commit(Connection con) {
         boolean status = true;
-
-        try {
-            con.setAutoCommit(false);
-            CustomerMapper customerMapper = new CustomerMapper();
-            BookingMapper bookingMapper = new BookingMapper();
-            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
-            System.out.println("1" + status);
-            status = status && customerMapper.insertCustomers(newCustomers, con);
-            System.out.println("2" + status);
-            status = status && bookingMapper.insertBookings(newBookings, con);
-            System.out.println("3" + status);
-            status = status && bookingMapper.updateBookings(dirtyBookings, con);
-            System.out.println("4" + status);
-            status = status && bookingMapper.deleteBookings(deletedBookings, con);
-            System.out.println("5" + status);
-            if (status) {
-                con.commit();
-                newBookings.clear();
-                dirtyBookings.clear();
-                deletedBookings.clear();
-                newCustomers.clear();
-                dirtyCustomers.clear();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            try {
-                con.rollback();
-            } catch (SQLException kl) {
-                kl.printStackTrace();
-            }
-            status = false;
-        }
+//
+//        try {
+//            con.setAutoCommit(false);
+//            CustomerMapper customerMapper = new CustomerMapper();
+//            BookingMapper bookingMapper = new BookingMapper();
+//            status = status && customerMapper.updateCustomers(dirtyCustomers, con);
+//            System.out.println("1" + status);
+//            status = status && customerMapper.insertCustomers(newCustomers, con);
+//            System.out.println("2" + status);
+//            status = status && bookingMapper.insertBookings(newBookings, con);
+//            System.out.println("3" + status);
+//            status = status && bookingMapper.updateBookings(dirtyBookings, con);
+//            System.out.println("4" + status);
+//            status = status && bookingMapper.deleteBookings(deletedBookings, con);
+//            System.out.println("5" + status);
+//            if (status) {
+//                con.commit();
+//                newBookings.clear();
+//                dirtyBookings.clear();
+//                deletedBookings.clear();
+//                newCustomers.clear();
+//                dirtyCustomers.clear();
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            try {
+//                con.rollback();
+//            } catch (SQLException kl) {
+//                kl.printStackTrace();
+//            }
+//            status = false;
+//        }
 
         return status;
     }

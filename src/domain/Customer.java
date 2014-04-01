@@ -2,6 +2,9 @@ package domain;
 
 public class Customer {
 
+    
+    // DELETE THIS SHIT
+    
     //== Fields
     private int cust_id;
     private String name;

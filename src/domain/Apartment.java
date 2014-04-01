@@ -2,6 +2,9 @@ package domain;
 
 public class Apartment {
 
+    
+    //WHAT ABOUT YOUR WIFE.. NIGGUH FUCK MY WIFE I'M JUST TRYNA run and SAVE MY MOTHERFUCKING LIFE!
+    
     private final int a_num;
     private final int cost;
     private final String type;
