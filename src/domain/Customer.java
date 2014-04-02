@@ -2,140 +2,113 @@ package domain;
 
 public class Customer {
 
-    
-    // DELETE THIS SHIT
-    
-    //== Fields
     private int cust_id;
-    private String name;
-    private String family_name;
-    private int age;
-    private String email;
+    private String first_name;
+    private String last_name;
     private String phone;
+    private String email;
     private String country;
     private String city;
+    private long zipcode;
     private String street;
-    private int zipcode;
     private int version;
 
-    public Customer(int cust_id, String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode, int version) {
-        this.cust_id = cust_id;
-        this.name = name;
-        this.family_name = family_name;
-        this.age = age;
-        this.email = email;
-        this.phone = phone;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
-        this.version = version;
-    }
-
-    public Customer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
-        this.name = name;
-        this.family_name = family_name;
-        this.age = age;
-        this.email = email;
-        this.phone = phone;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
-        this.version = 0;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFamily_name(String family_name) {
-        this.family_name = family_name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
+    public Customer(int cust_id, String first_name, String last_name, String phone, String email, String country, String city, long zipcode, String street, int version) {
+	this.cust_id = cust_id;
+	this.first_name = first_name;
+	this.last_name = last_name;
+	this.phone = phone;
+	this.email = email;
+	this.country = country;
+	this.city = city;
+	this.zipcode = zipcode;
+	this.street = street;
+	this.version = version;
     }
 
     public void setCust_id(int cust_id) {
-        this.cust_id = cust_id;
+	this.cust_id = cust_id;
+    }
+
+    public void setFirst_name(String first_name) {
+	this.first_name = first_name;
+    }
+
+    public void setLast_name(String last_name) {
+	this.last_name = last_name;
+    }
+
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public void setCountry(String country) {
+	this.country = country;
+    }
+
+    public void setCity(String city) {
+	this.city = city;
+    }
+
+    public void setZipcode(long zipcode) {
+	this.zipcode = zipcode;
+    }
+
+    public void setStreet(String street) {
+	this.street = street;
+    }
+
+    public void setVersion(int version) {
+	this.version = version;
     }
 
     public int getCust_id() {
-        return cust_id;
+	return cust_id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+	return first_name;
     }
 
-    public String getFamily_name() {
-        return family_name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getEmail() {
-        return email;
+    public String getLast_name() {
+	return last_name;
     }
 
     public String getPhone() {
-        return phone;
+	return phone;
+    }
+
+    public String getEmail() {
+	return email;
     }
 
     public String getCountry() {
-        return country;
+	return country;
     }
 
     public String getCity() {
-        return city;
+	return city;
+    }
+
+    public long getZipcode() {
+	return zipcode;
     }
 
     public String getStreet() {
-        return street;
-    }
-
-    public int getZipcode() {
-        return zipcode;
+	return street;
     }
 
     public int getVersion() {
-        return version;
+	return version;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "cust_id=" + cust_id + ", name=" + name + ", family_name=" + family_name + ", age=" + age + ", email=" + email + ", phone=" + phone + ", country=" + country + ", city=" + city + ", street=" + street + ", zipcode=" + zipcode + ", version=" + version + '}';
+	return cust_id + ": " + first_name + " " + last_name;
     }
 
 }
