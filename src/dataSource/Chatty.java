@@ -45,7 +45,7 @@ public class Chatty {
             //== is it available --> We expect a boolean
 //            if (bookingMapper.checkApartmentAvailability(con)) {
             customerStatus = customerMapper.insertNewCustomer(c, con);
-            bookingStatus = bookingMapper.insertNewBooking(b, con);
+            bookingStatus = bookingMapper.insertNewBooking(b,customerStatus ,con);
 //            }
             if (customerStatus == 0 || bookingStatus == 0) {
                 con.rollback();
