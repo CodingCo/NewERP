@@ -1411,11 +1411,6 @@
             </Container>
             <Container class="javax.swing.JPanel" name="eBFindPanel">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[453, 728]"/>
                 </Property>
@@ -1430,31 +1425,36 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="eBFindTitlePanel" max="32767" attributes="0"/>
+                      <Component id="eBFindTitlePanel" pref="453" max="32767" attributes="0"/>
                       <Component id="eBFindButtonPanel" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="63" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="37" max="32767" attributes="0"/>
-                                  <Component id="eBFindBookingNRTextField" min="-2" pref="171" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                                      <Component id="eBFindBookingNRTextField" min="-2" pref="171" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="eBFindDateTextField" alignment="1" pref="171" max="32767" attributes="0"/>
-                                      <Component id="eBFindNameTextField" max="32767" attributes="0"/>
-                                      <Component id="eBFindRoomNrTextField" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="eBFindDateTextField" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="eBFindNameTextField" max="32767" attributes="0"/>
+                                          <Component id="eBFindRoomNrTextField" min="-2" pref="171" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1462,7 +1462,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="eBFindTitlePanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="eBFindBookingNRTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1482,7 +1488,7 @@
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="eBFindRoomNrTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="423" max="32767" attributes="0"/>
+                          <EmptySpace pref="368" max="32767" attributes="0"/>
                           <Component id="eBFindButtonPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1491,11 +1497,6 @@
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="eBFindTitlePanel">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[451, 40]"/>
                     </Property>
@@ -1522,7 +1523,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="eBFindTitleTitleLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1546,7 +1547,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="eBFindButtonBackButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                               <Component id="eBFindButtonFindButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
@@ -1580,6 +1581,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFindButtonBackButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFindButtonBackButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -1597,6 +1599,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFindButtonFindButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFindButtonFindButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -1642,15 +1645,25 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFindBookingNRTextField">
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel27">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1. Enter Search Criterias in fields below."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel28">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="2. Press &quot;Find&quot; and select Booking required."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel29">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="3. Edit/Delete as needed."/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="eBMatchPanel">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[453, 728]"/>
                 </Property>
@@ -1665,7 +1678,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="eBMatchTitlePanel" max="32767" attributes="0"/>
+                      <Component id="eBMatchTitlePanel" pref="453" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       <Component id="eBMatchButtonPanel" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -1685,11 +1698,6 @@
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="eBMatchTitlePanel">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[451, 40]"/>
                     </Property>
@@ -1707,7 +1715,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="157" max="32767" attributes="0"/>
+                              <EmptySpace pref="161" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1716,7 +1724,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1762,7 +1770,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="eBMatchButtonEditButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                               <Component id="eBMAtchButtonDeleteButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
@@ -1796,6 +1804,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBMatchButtonEditButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBMatchButtonEditButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -1813,6 +1822,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBMAtchButtonDeleteButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBMAtchButtonDeleteButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -1822,11 +1832,6 @@
             </Container>
             <Container class="javax.swing.JPanel" name="eBFormPanel">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[456, 728]"/>
                 </Property>
@@ -1910,11 +1915,6 @@
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="eBFormTitlePanel">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[458, 40]"/>
                     </Property>
@@ -1932,7 +1932,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="199" max="32767" attributes="0"/>
+                              <EmptySpace pref="201" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1941,7 +1941,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1977,7 +1977,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="eBFormGrey" min="-2" pref="373" max="-2" attributes="0"/>
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="eBFormButtonCancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="eBFormButtonSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2002,6 +2002,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFormButtonSaveButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormButtonSaveButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -2019,6 +2020,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFormButtonCancelButtonMouseEntered"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormButtonCancelButtonActionPerformed"/>
                       </Events>
                     </Component>
@@ -2043,7 +2045,6 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2052,7 +2053,7 @@
                                       <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                                  <EmptySpace pref="18" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="eBFormNatTextField" pref="156" max="32767" attributes="0"/>
                                       <Component id="eBFormZipTextField" alignment="1" pref="156" max="32767" attributes="0"/>
@@ -2061,7 +2062,6 @@
                                       <Component id="eBFormEmailTextField" alignment="1" max="32767" attributes="0"/>
                                       <Component id="eBFormPhoneTextField" alignment="1" max="32767" attributes="0"/>
                                       <Component id="eBFormNOGTextField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="eBFormAgeTextField" alignment="1" max="32767" attributes="0"/>
                                       <Component id="eBFormNameTextField" alignment="1" max="32767" attributes="0"/>
                                       <Component id="eBFormFirstTextField" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -2082,12 +2082,7 @@
                                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="eBFormNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="eBFormAgeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="eBFormNOGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2133,15 +2128,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="First name:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel18">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Dialog" size="14" style="1"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Age:"/>
+                            <Property name="text" type="java.lang.String" value="First name*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel14">
@@ -2149,7 +2136,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Family name:"/>
+                            <Property name="text" type="java.lang.String" value="Family name*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -2157,7 +2144,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Number of guests:"/>
+                            <Property name="text" type="java.lang.String" value="Number of guests*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel21">
@@ -2165,7 +2152,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Phone:"/>
+                            <Property name="text" type="java.lang.String" value="Phone*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel19">
@@ -2173,7 +2160,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Email:"/>
+                            <Property name="text" type="java.lang.String" value="Email*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -2181,7 +2168,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="City:"/>
+                            <Property name="text" type="java.lang.String" value="City*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -2189,7 +2176,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Street:"/>
+                            <Property name="text" type="java.lang.String" value="Street*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel20">
@@ -2197,7 +2184,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Zip Code:"/>
+                            <Property name="text" type="java.lang.String" value="Zip Code*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel22">
@@ -2205,17 +2192,12 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Dialog" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Nationality:"/>
+                            <Property name="text" type="java.lang.String" value="Nationality*:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="eBFormFirstTextField">
                         </Component>
                         <Component class="javax.swing.JTextField" name="eBFormNameTextField">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="eBFormAgeTextField">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormAgeTextFieldActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="eBFormNOGTextField">
                         </Component>
@@ -2240,7 +2222,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Arrival Date:"/>
+                    <Property name="text" type="java.lang.String" value="Arrival Date*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -2248,7 +2230,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Number of nights:"/>
+                    <Property name="text" type="java.lang.String" value="Number of nights*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -2256,7 +2238,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Apartment type:"/>
+                    <Property name="text" type="java.lang.String" value="Apartment type*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
@@ -2264,7 +2246,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Apartment Number:"/>
+                    <Property name="text" type="java.lang.String" value="Apartment Number*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFormADateTextField">
@@ -2298,6 +2280,7 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBFormButtonCheckButtonMouseEntered"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormButtonCheckButtonActionPerformed"/>
                   </Events>
                 </Component>
