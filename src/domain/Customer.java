@@ -26,6 +26,17 @@ public class Customer {
 	this.version = version;
     }
 
+    public Customer(String first_name, String last_name, String phone, String email, String country, String city, long zipcode, String street) {
+	this.first_name = first_name;
+	this.last_name = last_name;
+	this.phone = phone;
+	this.email = email;
+	this.country = country;
+	this.city = city;
+	this.zipcode = zipcode;
+	this.street = street;
+    }
+    
     public void setCust_id(int cust_id) {
 	this.cust_id = cust_id;
     }

@@ -1,7 +1,7 @@
 package domain;
 
 public class Booking {
-    
+
     private int b_id;
     private int cust_id;
     private int a_num;
@@ -22,6 +22,16 @@ public class Booking {
 	this.number_of_guests = number_of_guests;
 	this.price = price;
 	this.version = version;
+    }
+
+    public Booking(int cust_id, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price) {
+	this.cust_id = cust_id;
+	this.a_num = a_num;
+	this.date_from = date_from;
+	this.num_of_nights = num_of_nights;
+	this.travel_agency = travel_agency;
+	this.number_of_guests = number_of_guests;
+	this.price = price;
     }
 
     public void setB_id(int b_id) {
@@ -59,46 +69,46 @@ public class Booking {
     public void setVersion(int version) {
 	this.version = version;
     }
-    
+
     public int getB_id() {
-        return b_id;
+	return b_id;
     }
 
-    public int getCust_id(){
+    public int getCust_id() {
 	return cust_id;
     }
-    
-    public int getA_num(){
+
+    public int getA_num() {
 	return a_num;
     }
-    
+
     public String getDate_from() {
-        return date_from;
+	return date_from;
     }
 
     public int getNum_of_nights() {
-        return num_of_nights;
+	return num_of_nights;
     }
 
     public String getTravel_agency() {
-        return travel_agency;
+	return travel_agency;
     }
-    
-    public int getNumber_of_guests(){
+
+    public int getNumber_of_guests() {
 	return number_of_guests;
     }
 
     public double getPrice() {
-        return price;
+	return price;
     }
 
     public int getVersion() {
-        return version;
+	return version;
     }
 
     @Override
     public String toString() {
-        return b_id + ": " + cust_id + " in room " + a_num;
+	return b_id + ": " + cust_id + " in room " + a_num;
     }
 
 }
