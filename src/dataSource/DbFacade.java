@@ -27,7 +27,7 @@ public class DbFacade {
     public boolean addNewBooking(Booking booking, Customer customer) {
         boolean status = false;
         if (uow != null) {
-            this.uow.createNewBookingTransaction(booking, customer);
+            status = this.uow.createNewBookingTransaction(booking, customer);
         }
         return status;
     }
