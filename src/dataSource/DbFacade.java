@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class DbFacade {
 
-    private UnitOfWhat uow;
+    private Chatty uow;
     private Connection con;
     private static DbFacade instance;
 
     private DbFacade() {
-        this.uow = new UnitOfWhat();
+        this.uow = new Chatty();
         con = DBConnector.getInstance().getConnection();
     }
 
@@ -69,7 +69,7 @@ public class DbFacade {
 
     public Apartment findAvailableApartment(String date, int days, String type) {
         if (uow != null) {
-            return this.uow.findAvalibleApartment(date, days, type, con);
+            return this.uow.findAvailableApartment(date, days, type, con);
         }
         return null;
     }
