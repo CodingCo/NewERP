@@ -15,9 +15,12 @@ public class Controller {
     }
 
     public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) {
-
-        this.facade.addNewBooking(null);
-        return true;
+        boolean status = false;
+        if (facade != null) {
+            Booking b = new Booking(a_num, date_from, num_of_nights, travel_agency, number_of_guests, (price * num_of_nights), first_name, last_name, phone);
+            status = this.facade.addNewBooking(b, c);
+        }
+        return status;
     }
 
     public Customer newCustomer(String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
@@ -63,31 +66,19 @@ public class Controller {
      }
      return status;
      }*/
-    public boolean saveTransaction() {
-        boolean status = false;
-//        if (this.transaction) {
-//            this.transaction = false;
-//            status = this.facade.commitBusinessTransaction();
-//            //loadLists();
-//        }
-        return status;
-    }
-
     public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
-//        if (this.facade != null) {
-//            return this.facade.findBookingsByParams(bookingNr, name, date, roomNr);
-//        }
+
         return null;
     }
 
     public Apartment findAvailableApartment(String date, int days, String type, int room) {
         if (this.facade != null) {
-            return this.facade.findAvailableApartment(date, days, type);
+            return this.facade.findAvailableApartment(date, days, type, room);
         }
         return null;
     }
 
-    private boolean loadLists() {
+    public boolean loadLists() {
         boolean status = true;
 //        if (this.facade != null) {
 //            status = status && this.facade.loadApartments();

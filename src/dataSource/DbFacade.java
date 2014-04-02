@@ -24,22 +24,15 @@ public class DbFacade {
         return instance;
     }
 
-    public boolean addNewBooking(Booking booking) {
+    public boolean addNewBooking(Booking booking, Customer customer) {
         boolean status = false;
         if (uow != null) {
-            newCustomer(booking.getCustomer());
-            status = uow.registerNewBooking(booking);
-
+            this.uow.createNewBookingTransaction(booking, customer);
         }
-        System.out.println(status);
         return status;
     }
 
     public boolean updateBooking(Booking booking) {
-//        boolean status = false;
-//        if (this.uow != null) {
-//            status = this.uow.registerDirtyBooking(booking);
-//        }
         return true;
     }
 
@@ -47,14 +40,6 @@ public class DbFacade {
         boolean status = false;
 //        if (this.uow != null) {
 //            status = this.uow.registerDeletedBooking(getBooking(b_id));
-//        }
-        return status;
-    }
-
-    private boolean newCustomer(Customer customer) {
-        boolean status = false;
-//        if (uow != null) {
-//            this.uow.registerNewCustomer(customer);
 //        }
         return status;
     }
@@ -67,7 +52,7 @@ public class DbFacade {
         return status;
     }
 
-    public Apartment findAvailableApartment(String date, int days, String type) {
+    public Apartment findAvailableApartment(String date, int days, String type, int room) {
         if (uow != null) {
             return this.uow.findAvalibleApartment(date, days, type, con);
         }
