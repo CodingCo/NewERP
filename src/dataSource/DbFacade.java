@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class DbFacade {
 
-    private UnitOfWorkProcess uow;
+    private UnitOfWhat uow;
     private Connection con;
     private static DbFacade instance;
 
     private DbFacade() {
-        this.uow = new UnitOfWorkProcess();
+        this.uow = new UnitOfWhat();
         con = DBConnector.getInstance().getConnection();
     }
 
@@ -24,7 +24,7 @@ public class DbFacade {
         return instance;
     }
 
-    public boolean addNewBooking(Booking booking) {
+    /*public boolean addNewBooking(Booking booking) {
         boolean status = false;
         if (uow != null) {
             newCustomer(booking.getCustomer());
@@ -33,37 +33,37 @@ public class DbFacade {
         }
         System.out.println(status);
         return status;
-    }
+    }*/
 
     public boolean updateBooking(Booking booking) {
-        boolean status = false;
-        if (this.uow != null) {
-            status = this.uow.registerDirtyBooking(booking);
-        }
-        return status;
+//        boolean status = false;
+//        if (this.uow != null) {
+//            status = this.uow.registerDirtyBooking(booking);
+//        }
+        return true;
     }
 
     public boolean deleteBooking(int b_id) {
         boolean status = false;
-        if (this.uow != null) {
-            status = this.uow.registerDeletedBooking(getBooking(b_id));
-        }
+//        if (this.uow != null) {
+//            status = this.uow.registerDeletedBooking(getBooking(b_id));
+//        }
         return status;
     }
 
     private boolean newCustomer(Customer customer) {
         boolean status = false;
-        if (uow != null) {
-            this.uow.registerNewCustomer(customer);
-        }
+//        if (uow != null) {
+//            this.uow.registerNewCustomer(customer);
+//        }
         return status;
     }
 
     public boolean updateCustomer(Customer customer) {
         boolean status = false;
-        if (this.uow != null) {
-            status = this.uow.registerDirtyCustomer(customer);
-        }
+//        if (this.uow != null) {
+//            status = this.uow.registerDirtyCustomer(customer);
+//        }
         return status;
     }
 

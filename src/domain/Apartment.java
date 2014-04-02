@@ -1,34 +1,37 @@
 package domain;
 
 public class Apartment {
-
-    
-    //WHAT ABOUT YOUR WIFE.. NIGGUH FUCK MY WIFE I'M JUST TRYNA run and SAVE MY MOTHERFUCKING LIFE!
     
     private final int a_num;
-    private final int cost;
     private final String type;
+    private final int price;
+    private final int capacity;
 
-    public Apartment(int a_num, int cost, String type) {
+    public Apartment(int a_num, int price, String type, int capacity) {
         this.a_num = a_num;
-        this.cost = cost;
+        this.price = price;
         this.type = type;
+	this.capacity = capacity;
     }
 
     public int getA_num() {
         return a_num;
     }
 
-    public int getCost() {
-        return cost;
-    }
-
     public String getType() {
         return type;
     }
 
+    public int getPrice() {
+        return price;
+    }
+    
+    public int getCapacity(){
+	return capacity;
+    }
+
     @Override
     public String toString() {
-        return "Number " + a_num + "  " + " Type " + type;
+        return "Nr " + a_num + ": " + type + " room";
     }
 }
