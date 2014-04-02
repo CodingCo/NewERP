@@ -15,16 +15,8 @@ public class BookingMapper {
         return null;
     }
 
-    public boolean insertBookings(ArrayList<Booking> blist, Connection con) {
-        return true;
+    public int insertNewBooking(Booking booking, Connection con) {
+        return 0;
     }
 
-    public boolean updateBookings(ArrayList<Booking> blist, Connection con) {
-        return true;
-    }
-
-   
-    public boolean deleteBookings(ArrayList<Booking> blist, Connection con) {
-        return true;
-    }
 }

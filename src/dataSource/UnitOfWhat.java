@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class UnitOfWhat {
 
     //== Fields
-   private ArrayList<Booking> bookings;
-   private ArrayList<Booking> history;
-   
+    private ArrayList<Booking> bookings;
+    private ArrayList<Booking> history;
+
     //== Constructor
     public UnitOfWhat() {
         this.bookings = new ArrayList();
@@ -26,35 +26,9 @@ public class UnitOfWhat {
         return null;
     }
 
-    public ArrayList<Booking> findBookingsByParams(int bookingNum, String name, String date, int apartmentNum) {
-        ArrayList<Booking> relevantBookings = new ArrayList();
+    public boolean createNewBookingTransaction(Booking b, Customer c) {
 
-        return relevantBookings;
-    }
-
-    public boolean updateBookings(Connection con) {
-       // ArrayList<Booking> oldBookings = new ArrayList(cleanBookings);
-//        cleanBookings.clear();
-//        cleanBookings = new BookingMapper().getAllBookings(con);
-//
-//        if (oldBookings.size() == cleanBookings.size()) {
-//            for (int i = 0; i < oldBookings.size(); i++) {
-//                if (oldBookings.get(i) != cleanBookings.get(i)) {
-//                    return true;
-//                }
-//            }
-//            return false;
-//        }
-        return true;
-    }
-    
-    public boolean updateHistory(Connection con){
         return true;
     }
 
-    public boolean commit(Connection con) {
-        boolean status = true;
-
-        return status;
-    }
 }

@@ -16,9 +16,4 @@ public class ApartmentMapper {
     public Apartment findAvailableApartment(String date, int days, String type, Connection con) {
         return null;
     }
-
-    public ArrayList<Apartment> getAllApartments(Connection con) {
-        return null;
-    }
-
 }

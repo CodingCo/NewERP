@@ -13,15 +13,8 @@ import java.util.ArrayList;
  */
 public class CustomerMapper {
 
-    public boolean insertCustomers(ArrayList<Customer> clist, Connection con) {
-        return true;
+    public int insertNewCustomer(Customer customer, Connection con) {
+        return 0;
     }
 
-    public boolean updateCustomers(ArrayList<Customer> clist, Connection con) {
-        return true;
-    }
-
-    public ArrayList<Customer> getAllCustomers(Connection con) {
-        return null;
-    }
 }
