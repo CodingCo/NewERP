@@ -14,28 +14,26 @@ public class Controller {
         loadLists();
     }
 
-    public boolean addNewBooking(Customer cust, Apartment a, int num_of_nights, String date, String travel_agency, double rent) {
-       /* boolean status = false;
-        if (!this.transaction) {
-            this.transaction = true;
-            Booking booking = new Booking(a, cust, num_of_nights, date, travel_agency, rent);
-            status = this.facade.addNewBooking(booking);
-        }
-        System.out.println(status);
-        return status;*/
+    public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) {
+
+        this.facade.addNewBooking(null);
         return true;
     }
 
+    public Customer newCustomer(String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
+        return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
+    }
+
     public boolean updateBooking(Booking b, Apartment a, int num_of_nights, double rent) {
-       /* boolean status = false;
-        if (!this.transaction) {
-            this.transaction = true;
-            b.setApartment(a);
-            b.setNum_of_nights(num_of_nights);
-            b.setRent(rent);
-            status = this.facade.updateBooking(b);
-        }
-        return status;*/
+        /* boolean status = false;
+         if (!this.transaction) {
+         this.transaction = true;
+         b.setApartment(a);
+         b.setNum_of_nights(num_of_nights);
+         b.setRent(rent);
+         status = this.facade.updateBooking(b);
+         }
+         return status;*/
         return true;
     }
 
@@ -48,28 +46,23 @@ public class Controller {
         return status;
     }
 
-    /*public Customer addNewCustomer(String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
-        return new Customer(name, family_name, age, email, phone, country, city, street, zipcode);
-    }*/
-
     /*public boolean updateCustomer(Customer c, String name, String family_name, int age, String email, String phone, String country, String city, String street, int zipcode) {
-        boolean status = false;
-        if (!this.transaction) {
-            this.transaction = true;
-            c.setName(name);
-            c.setFamily_name(family_name);
-            c.setAge(age);
-            c.setEmail(email);
-            c.setPhone(phone);
-            c.setCountry(country);
-            c.setCity(city);
-            c.setStreet(street);
-            c.setZipcode(zipcode);
-            status = this.facade.updateCustomer(c);
-        }
-        return status;
-    }*/
-
+     boolean status = false;
+     if (!this.transaction) {
+     this.transaction = true;
+     c.setName(name);
+     c.setFamily_name(family_name);
+     c.setAge(age);
+     c.setEmail(email);
+     c.setPhone(phone);
+     c.setCountry(country);
+     c.setCity(city);
+     c.setStreet(street);
+     c.setZipcode(zipcode);
+     status = this.facade.updateCustomer(c);
+     }
+     return status;
+     }*/
     public boolean saveTransaction() {
         boolean status = false;
 //        if (this.transaction) {

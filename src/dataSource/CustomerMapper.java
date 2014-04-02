@@ -25,7 +25,7 @@ public class CustomerMapper {
             statement.setString(4, customer.getEmail());
             statement.setString(5, customer.getCountry());
             statement.setString(6, customer.getCity());
-            statement.setLong(7, customer.getZipcode());
+            statement.setString(7, customer.getZipcode());
             statement.setString(8, customer.getStreet());
             rowsInserted = statement.executeUpdate();
 

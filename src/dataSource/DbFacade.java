@@ -24,7 +24,7 @@ public class DbFacade {
         return instance;
     }
 
-    /*public boolean addNewBooking(Booking booking) {
+    public boolean addNewBooking(Booking booking) {
         boolean status = false;
         if (uow != null) {
             newCustomer(booking.getCustomer());
@@ -33,7 +33,7 @@ public class DbFacade {
         }
         System.out.println(status);
         return status;
-    }*/
+    }
 
     public boolean updateBooking(Booking booking) {
 //        boolean status = false;

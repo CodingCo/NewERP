@@ -9,11 +9,11 @@ public class Customer {
     private String email;
     private String country;
     private String city;
-    private long zipcode;
+    private String zipcode;
     private String street;
     private int version;
 
-    public Customer(int cust_id, String first_name, String last_name, String phone, String email, String country, String city, long zipcode, String street, int version) {
+    public Customer(int cust_id, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street, int version) {
 	this.cust_id = cust_id;
 	this.first_name = first_name;
 	this.last_name = last_name;
@@ -26,7 +26,7 @@ public class Customer {
 	this.version = version;
     }
 
-    public Customer(String first_name, String last_name, String phone, String email, String country, String city, long zipcode, String street) {
+    public Customer(String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
 	this.first_name = first_name;
 	this.last_name = last_name;
 	this.phone = phone;
@@ -65,7 +65,7 @@ public class Customer {
 	this.city = city;
     }
 
-    public void setZipcode(long zipcode) {
+    public void setZipcode(String zipcode) {
 	this.zipcode = zipcode;
     }
 
@@ -105,7 +105,7 @@ public class Customer {
 	return city;
     }
 
-    public long getZipcode() {
+    public String getZipcode() {
 	return zipcode;
     }
 
