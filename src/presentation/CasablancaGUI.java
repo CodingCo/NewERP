@@ -153,6 +153,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         eBMatchPanel = new javax.swing.JPanel();
         eBMatchTitlePanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -1120,6 +1121,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel29.setText("3. Edit/Delete as needed.");
 
+        jLabel18.setText("All fields are optional, fill at least one.");
+
         javax.swing.GroupLayout eBFindPanelLayout = new javax.swing.GroupLayout(eBFindPanel);
         eBFindPanel.setLayout(eBFindPanelLayout);
         eBFindPanelLayout.setHorizontalGroup(
@@ -1129,6 +1132,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGroup(eBFindPanelLayout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
                     .addComponent(jLabel29)
                     .addComponent(jLabel28)
                     .addComponent(jLabel27)
@@ -1175,7 +1179,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(eBFindRoomNrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 347, Short.MAX_VALUE)
                 .addComponent(eBFindButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -2099,6 +2105,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
