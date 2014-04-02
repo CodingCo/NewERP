@@ -1663,7 +1663,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindButtonBackButtonActionPerformed
 
     public void clearNewBookingFields() {
-        this.newBookingFormFirstTextField.setText("");
+        /*this.newBookingFormFirstTextField.setText("");
         this.newBookingFormADateTextField.setText("");
         this.newBookingFormAgenTextField.setText("");
         this.newBookingFormCityTextField.setText("");
@@ -1678,7 +1678,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.newBookingFormEmailTextField.setText("");
         this.nBListModel.clear();
         this.newBookingFindSearchNONTextField.setText("");
-        this.newBookingFindSearchFromTextField.setText("");
+        this.newBookingFindSearchFromTextField.setText("");*/
 
     }
 
@@ -1704,7 +1704,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
-        this.nBListModel.clear();
+       /* this.nBListModel.clear();
         Apartment a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString());
 
         if (a == null) {
@@ -1717,7 +1717,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         } else {
             this.nBListModel.addElement(a);
             this.enableComponents(this.newBookingAvailablePanel, true);
-        }
+        }*/
     }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
 
     private void newBookingFindSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchPanelMouseClicked
@@ -1740,14 +1740,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindSearchTypeComboBoxMouseClicked
 
     private void newBookingAvailListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailListMouseClicked
-
+/*
         this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
         this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
         Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
 
         this.newBookingFormRoomTextField.setText("" + a.getA_num());
         this.enableComponents(this.newBookingFormPanel, true);
-        this.enableComponents(this.newBookingFormGreyPanel, false);
+        this.enableComponents(this.newBookingFormGreyPanel, false);*/
     }//GEN-LAST:event_newBookingAvailListMouseClicked
 
     private void newBookingFormADateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormADateTextFieldActionPerformed
@@ -1812,7 +1812,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBMatchButtonEditButtonActionPerformed
 
     private void eBFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFindButtonFindButtonActionPerformed
-        int bNr = 0;
+        /*int bNr = 0;
         int roomNr = 0;
 
         try {
@@ -1840,7 +1840,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
             this.enableComponents(this.eBMatchPanel, true);
         }
-
+*/
     }//GEN-LAST:event_eBFindButtonFindButtonActionPerformed
 
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
@@ -1866,7 +1866,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBMatchListMouseClicked
 
     private void eBMAtchButtonDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBMAtchButtonDeleteButtonActionPerformed
-        Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+        /*Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
         boolean status = controller.deleteBooking(b.getB_id());
         if (status) {
             JOptionPane.showMessageDialog(this, "Booking Deleted", "", WIDTH);
@@ -1874,12 +1874,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Booking Not Deleted", "", WIDTH);
         }
 
-        this.clearEditBookingsFields();
+        this.clearEditBookingsFields();*/
 
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
 
     private void eBFormButtonCheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonCheckButtonActionPerformed
-        tempA = controller.findAvailableApartment(this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), this.eBFormCombo.getSelectedItem().toString());
+        /*tempA = controller.findAvailableApartment(this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), this.eBFormCombo.getSelectedItem().toString());
 
         if (tempA.getA_num() == Integer.parseInt(this.eBFormANRTextField.getText())) {
             this.enableComponents(this.eBFormPanel, true);
@@ -1890,7 +1890,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                     + "                           Apartment " + tempA.getA_num() + " is chosen instead", "", WIDTH);
             this.eBFormANRTextField.setText(tempA.getA_num() + "");
             this.enableComponents(this.eBFormGrey, true);
-        }
+        }*/
 
 
     }//GEN-LAST:event_eBFormButtonCheckButtonActionPerformed
@@ -1906,7 +1906,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFormButtonCancelButtonActionPerformed
 
     private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
-        JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS 
+       /* JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS 
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
         if (hit) {
@@ -1923,7 +1923,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                     selectedTextField.setText(selectedTextField.getText() + firstChars[i]);
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_newBookingFindSearchFromTextFieldKeyTyped
 
     private void frontPageLogoutButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontPageLogoutButtonMouseEntered
@@ -1995,7 +1995,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFormButtonCancelButtonMouseEntered
 
     private void clearEditBookingsFields() {
-        this.eBFormADateTextField.setText("");
+       /* this.eBFormADateTextField.setText("");
         this.eBFormANRTextField.setText("");
         
         this.eBFormCityTextField.setText("");
@@ -2008,7 +2008,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         //this.eBFormNatTextField.setText(b.getCustomer().);
         this.eBFormPhoneTextField.setText("");
         this.eBFormStreetTextField.setText("");
-        this.eBFormZipTextField.setText("");
+        this.eBFormZipTextField.setText("");*/
     }
 
     private void resetAllJTextFields(Container c) {
@@ -2021,7 +2021,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     private void setUpTextFields(Booking b) {
-        this.eBFormADateTextField.setText(b.getDate());
+       /* this.eBFormADateTextField.setText(b.getDate());
         this.eBFormANRTextField.setText("" + b.getApartment().getA_num());
         this.eBFormCityTextField.setText(b.getCustomer().getCity());
         this.eBFormCombo.setSelectedItem(b.getApartment().getType());
@@ -2034,6 +2034,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormPhoneTextField.setText(b.getCustomer().getPhone());
         this.eBFormStreetTextField.setText(b.getCustomer().getStreet());
         this.eBFormZipTextField.setText("" + b.getCustomer().getZipcode());
+        */
     }
 
     /**
