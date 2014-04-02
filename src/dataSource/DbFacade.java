@@ -52,7 +52,7 @@ public class DbFacade {
         return status;
     }
 
-    public Apartment findAvailableApartment(String date, int days, String type, int room) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int room) {
         if (uow != null) {
             return this.uow.findAvailableApartment(date, days, type, con);
         }

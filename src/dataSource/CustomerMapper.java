@@ -16,8 +16,9 @@ public class CustomerMapper {
         String insertCustomerSQL = "INSERT INTO CUSTOMER VALUES(customer_seq.NEXTVAL,?,?,?,?,?,?,?,?,0)";
         int rowsInserted = 0;
         PreparedStatement statement = null;
-        
+
         try {
+
             statement = (PreparedStatement) con.prepareStatement(insertCustomerSQL);
             statement.setString(1, customer.getFirst_name());
             statement.setString(2, customer.getLast_name());

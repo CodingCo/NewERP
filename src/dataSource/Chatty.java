@@ -27,8 +27,8 @@ public class Chatty {
         this.apartmentMapper = new ApartmentMapper();
     }
 
-    public Apartment findAvailableApartment(String date, int days, String type, Connection con) {
-        Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, Connection con) {
+        ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
         return apartmentToReturn;
     }
 
@@ -37,15 +37,15 @@ public class Chatty {
         int customerStatus = 0;
 
         try {
-            String lock = "LOCK TABLE BOOKING IN SHARE MODE";
+            String lock = "LOCK TABLE booking IN SHARE MODE";
             con.setAutoCommit(false);
             Statement statement = con.createStatement();
             statement.execute(lock);
 
             //== is it available --> We expect a boolean
 //            if (bookingMapper.checkApartmentAvailability(con)) {
-                customerStatus = customerMapper.insertNewCustomer(c, con);
-                bookingStatus = bookingMapper.insertNewBooking(b, con);
+            customerStatus = customerMapper.insertNewCustomer(c, con);
+            bookingStatus = bookingMapper.insertNewBooking(b, con);
 //            }
             if (customerStatus == 0 || bookingStatus == 0) {
                 con.rollback();

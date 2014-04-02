@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  * @author Robert
  */
 public class CasablancaGUI extends javax.swing.JFrame {
-
+    
     private CardLayout cl;
     private Controller controller;
     private DefaultListModel nBListModel;
@@ -48,7 +48,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
         this.newBookingFormButtonSaveButton.setVisible(false);
-
+        
         nBListModel = new DefaultListModel();
         this.newBookingAvailList.setModel(nBListModel);
         eBListModel = new DefaultListModel();
@@ -1652,7 +1652,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_frontPageExitButtonActionPerformed
 
     private void newBookingFindButtonBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonBackButtonActionPerformed
-
+        
         if (this.createCounter == 0) {
             cl.show(mainPage, "FrontPage");
             this.clearNewBookingFields();
@@ -1661,7 +1661,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Save All Please", "", WIDTH);
         }
     }//GEN-LAST:event_newBookingFindButtonBackButtonActionPerformed
-
+    
     public void clearNewBookingFields() {
         /*this.newBookingFormFirstTextField.setText("");
          this.newBookingFormADateTextField.setText("");
@@ -1679,7 +1679,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
          this.nBListModel.clear();
          this.newBookingFindSearchNONTextField.setText("");
          this.newBookingFindSearchFromTextField.setText("");*/
-
+        
     }
 
     /**
@@ -1703,21 +1703,26 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindSearchFromTextFieldActionPerformed
 
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
+        
+        this.nBListModel.clear();
+        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), Integer.parseInt(this.newBookingFindRoomNRTextField.getText()));
+        
+        if (a == null) {
+            
+            this.enableComponents(this, false);
+            JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
+            this.enableComponents(this, true);
+            this.enableComponents(this.newBookingFormPanel, false);
+            this.enableComponents(this.newBookingAvailablePanel, false);
+            
+        } else {
+            for (int x = 0; x < a.size(); ++x) {
+                this.nBListModel.addElement(a.get(x));
+                this.enableComponents(this.newBookingAvailablePanel, true);
+            }
+        }
+        
 
-         this.nBListModel.clear();
-         Apartment a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), Integer.parseInt(this.newBookingFindRoomNRTextField.getText()));
-
-         if (a == null) {
-         this.enableComponents(this, false);
-         JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
-         this.enableComponents(this, true);
-         this.enableComponents(this.newBookingFormPanel, false);
-         this.enableComponents(this.newBookingAvailablePanel, false);
-
-         } else {
-         this.nBListModel.addElement(a);
-         this.enableComponents(this.newBookingAvailablePanel, true);
-         }
     }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
 
     private void newBookingFindSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchPanelMouseClicked
@@ -1741,13 +1746,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void newBookingAvailListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailListMouseClicked
         
-         this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
-         this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
-         Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-
-         this.newBookingFormRoomTextField.setText("" + a.getA_num());
-         this.enableComponents(this.newBookingFormPanel, true);
-         this.enableComponents(this.newBookingFormGreyPanel, false);
+        this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
+        this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
+        Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+        
+        this.newBookingFormRoomTextField.setText("" + a.getA_num());
+        this.enableComponents(this.newBookingFormPanel, true);
+        this.enableComponents(this.newBookingFormGreyPanel, false);
     }//GEN-LAST:event_newBookingAvailListMouseClicked
 
     private void newBookingFormADateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormADateTextFieldActionPerformed
@@ -1759,12 +1764,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFormFirstTextFieldActionPerformed
 
     private void newBookingFormCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonActionPerformed
-
+        
         try {
             Customer c = this.controller.newCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormEmailTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormZipTextField.getText(), this.newBookingFormStreetTextField.getText());
             
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-            boolean success = this.controller.newBooking(c, a.getA_num(), this.newBookingFormADateTextField.getText(), Integer.parseInt(this.newBookingFormNONTextField.getText()),this.newBookingFormAgenTextField.getText(), Integer.parseInt(this.newBookingFormNOGTextField.getText()),Integer.parseInt(this.newBookingFormNONTextField.getText())*a.getPrice(),c.getFirst_name(),c.getLast_name(),c.getPhone());
+            boolean success = this.controller.newBooking(c, a.getA_num(), this.newBookingFormADateTextField.getText(), Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormAgenTextField.getText(), Integer.parseInt(this.newBookingFormNOGTextField.getText()), Integer.parseInt(this.newBookingFormNONTextField.getText()) * a.getPrice(), c.getFirst_name(), c.getLast_name(), c.getPhone());
             if (success) {
                 //this.createCounter++;
                 this.enableComponents(this, false);
@@ -1892,7 +1897,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
          this.eBFormANRTextField.setText(tempA.getA_num() + "");
          this.enableComponents(this.eBFormGrey, true);
          }*/
-
+        
 
     }//GEN-LAST:event_eBFormButtonCheckButtonActionPerformed
 
@@ -1994,7 +1999,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void eBFormButtonCancelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eBFormButtonCancelButtonMouseEntered
         this.eBFormButtonCancelButton.setToolTipText("Press to Cancel Changes");
     }//GEN-LAST:event_eBFormButtonCancelButtonMouseEntered
-
+    
     private void clearEditBookingsFields() {
         /* this.eBFormADateTextField.setText("");
          this.eBFormANRTextField.setText("");
@@ -2011,7 +2016,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
          this.eBFormStreetTextField.setText("");
          this.eBFormZipTextField.setText("");*/
     }
-
+    
     private void resetAllJTextFields(Container c) {
         for (Component component : c.getComponents()) {
             if (component instanceof JTextField) {
@@ -2020,7 +2025,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         }
     }
-
+    
     private void setUpTextFields(Booking b) {
         /* this.eBFormADateTextField.setText(b.getDate());
          this.eBFormANRTextField.setText("" + b.getApartment().getA_num());
@@ -2052,7 +2057,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
