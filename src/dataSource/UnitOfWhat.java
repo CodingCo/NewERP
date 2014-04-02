@@ -19,7 +19,7 @@ public class UnitOfWhat {
         this.bookings = new ArrayList();
         this.history = new ArrayList();
     }
-
+    
     public Apartment findAvalibleApartment(String date, int days, String type, Connection con) {
 //        Apartment apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
 //        return apartmentToReturn;
