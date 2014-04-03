@@ -2,6 +2,7 @@ package domain;
 
 import dataSource.DbFacade;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Controller {
 
@@ -53,9 +54,10 @@ public class Controller {
         return status;
     }
 
-    public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int roomNr) {
 
-        return null;
+        return this.facade.findBookings(bookingNr, name, date, roomNr);
+
     }
 
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int room) {
