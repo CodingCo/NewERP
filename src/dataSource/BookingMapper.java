@@ -42,7 +42,7 @@ public class BookingMapper {
 
     public int insertNewBooking(Booking bo, int id, Connection con) {
         int rowsInserted = 0;
-        String SQLString = "insert into booking values (booking_seq.NEXTVAL,?,?,?,?,?,?,?,0)";
+        String SQLString = "insert into booking values (booking_seq.NEXTVAL,?,?,to_date(?,'DD-MM-YY'),?,?,?,?,0)";
         PreparedStatement st = null;
 
         try {
@@ -68,7 +68,6 @@ public class BookingMapper {
     }
 
     public int updateBooking(Booking b, Connection con) {
-
         int rowsIns = 0;
         String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = ?, number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
