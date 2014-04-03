@@ -8,18 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BookingMapper {
-
-    
-    public static void main(String[] args) {
-        BookingMapper bm = new BookingMapper();
-        DBConnector dcon = DBConnector.getInstance();
-        Connection con = DBConnector.getConnection();
-        ArrayList<Booking> al = bm.getAllBookings(con);
-        
-        for(Booking x: al){
-            System.out.println(x);
-        }
-    }
     
     public ArrayList<Booking> getAllBookings(Connection con) {
 
@@ -136,4 +124,26 @@ public class BookingMapper {
         return avail;
     }
 
+    public int deleteBooking(Connection con, int b_id){
+	int rowDel = 0;
+	String SQLString = "delete from booking where b_id = ?";
+	PreparedStatement stat = null;
+	
+	try {
+	    stat = con.prepareStatement(SQLString);
+	    stat.setInt(1, b_id);
+	    rowDel = stat.executeUpdate();
+	    
+	} catch (SQLException e){
+	    System.err.println(e);
+	    e.printStackTrace();
+	} finally {
+	    try {
+		stat.close();
+	    } catch (SQLException e){
+		e.printStackTrace();
+	    }
+	}
+	return rowDel;
+    }
 }
