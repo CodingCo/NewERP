@@ -36,7 +36,7 @@ public class DbFacade {
     public boolean updateBooking(Booking booking, Customer customer) {
         boolean status = false;
         if (this.chatty != null) {
-            this.chatty.updateBookingTransaction(booking, customer, con);
+            status = this.chatty.updateBookingTransaction(booking, customer, con);
         }
         return status;
     }
@@ -58,7 +58,7 @@ public class DbFacade {
 
     public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int roomNr) {
         if (this.chatty != null) {
-            return this.chatty.findBookings(roomNr, name, date, bookingNr, con);
+            return this.chatty.findBookings(bookingNr, name, date, roomNr, con);
         }
         return null;
     }

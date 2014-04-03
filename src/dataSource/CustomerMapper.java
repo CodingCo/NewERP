@@ -54,7 +54,7 @@ public class CustomerMapper {
 		ex.printStackTrace();
 	    }
 	}
-	return rowsInserted;
+	return id;
     }
 
     public int updateCustomer(Connection con, Customer cus) {

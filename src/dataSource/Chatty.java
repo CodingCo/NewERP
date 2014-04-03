@@ -82,7 +82,7 @@ public class Chatty {
         int customerStatus = 0;
 
         try {
-            String lock = "LOCK TABLE booking IN SHARE MODE";
+            String lock = "LOCK TABLE booking IN EXCLUSIVE MODE";
             con.setAutoCommit(false);
             Statement statement = con.createStatement();
             statement.execute(lock);

@@ -60,7 +60,7 @@ public class ApartmentMapper {
         String SQL = "select a_num from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights) or ((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?)) and a_num = ?";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
         PreparedStatement statement = null;
-
+        System.out.println(a_num);
         try {
             statement = con.prepareStatement(SQL2);
             statement.executeQuery();
@@ -80,7 +80,8 @@ public class ApartmentMapper {
             ResultSet st = statement.executeQuery();
 
             if (st.next()) {
-                status = st.getInt(a_num) == a_num;
+                System.out.println();
+                status = st.getInt(1) == a_num;
             }
 
         } catch (SQLException ex) {
