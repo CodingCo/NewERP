@@ -44,7 +44,7 @@ public class DbFacade {
     public boolean deleteBooking(int b_id) {
         boolean status = false;
         if (this.chatty != null) {
-
+            status = this.chatty.deleteBookingTransaction(b_id, con);
         }
         return status;
     }

@@ -29,35 +29,37 @@ public class Controller {
 
     public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
         boolean status = false;
-        b.setA_num(a_num);
-        b.setDate_from(date_from);
-        b.setNum_of_nights(number_of_nights);
-        b.setPrice(price);
-        c.setFirst_name(first_name);
-        c.setLast_name(last_name);
-        c.setEmail(email);
-        c.setPhone(phone);
-        c.setCountry(country);
-        c.setCity(city);
-        c.setStreet(street);
-        c.setZipcode(zipcode);
-        status = this.facade.updateBooking(b, c);
+        if (this.facade != null) {
+            b.setA_num(a_num);
+            b.setDate_from(date_from);
+            b.setNum_of_nights(number_of_nights);
+            b.setPrice(price);
+            c.setFirst_name(first_name);
+            c.setLast_name(last_name);
+            c.setEmail(email);
+            c.setPhone(phone);
+            c.setCountry(country);
+            c.setCity(city);
+            c.setStreet(street);
+            c.setZipcode(zipcode);
+            status = this.facade.updateBooking(b, c);
+        }
         return status;
     }
 
     public boolean deleteBooking(int b_id) {
         boolean status = false;
-        if (!this.transaction) {
-            this.transaction = true;
+        if (this.facade != null) {
             status = this.facade.deleteBooking(b_id);
         }
         return status;
     }
 
     public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int roomNr) {
-
-        return this.facade.findBookings(bookingNr, name, date, roomNr);
-
+        if (this.facade != null) {
+            return this.facade.findBookings(bookingNr, name, date, roomNr);
+        }
+        return null;
     }
 
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int room) {

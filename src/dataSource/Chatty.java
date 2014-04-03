@@ -128,4 +128,10 @@ public class Chatty {
         return true;
     }
 
+    public boolean deleteBookingTransaction(int b_id, Connection con) {
+        int status;
+        status = bookingMapper.deleteBooking(con, b_id);
+        return status != 0;
+    }
+
 }

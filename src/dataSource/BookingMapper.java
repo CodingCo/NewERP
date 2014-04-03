@@ -98,4 +98,28 @@ public class BookingMapper {
         }
         return rowsIns;
     }
+
+    public int deleteBooking(Connection con, int b_id) {
+        int rowDel = 0;
+        String SQLString = "delete from booking where b_id = ?";
+        PreparedStatement stat = null;
+
+        try {
+            stat = con.prepareStatement(SQLString);
+            stat.setInt(1, b_id);
+            rowDel = stat.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println(e);
+            e.printStackTrace();
+        } finally {
+            try {
+                stat.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return rowDel;
+    }
+
 }
