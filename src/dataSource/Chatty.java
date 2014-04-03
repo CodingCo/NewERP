@@ -62,6 +62,7 @@ public class Chatty {
                     }
                 }
             }
+            
         }
         return relevantBooking;
     }
@@ -94,16 +95,36 @@ public class Chatty {
         return true;
     }
 
-    public boolean commit() {
-        return true;
-    }
-
     public void updateBookingsList(Connection con) {
         bookings = bookingMapper.getAllBookings(con);
     }
 
     public void updateCustomersList(Connection con) {
         customers = customerMapper.getAllCustomers(con);
+    }
+    
+    public boolean updateBookingTransaction(Booking booking, Customer customer, Connection con){
+        int bookingStatus;
+        int customerStatus;
+        
+        try{
+            con.setAutoCommit(false);
+        
+        bookingStatus = bookingMapper.updateBooking(booking, con);
+        customerStatus = customerMapper.updateCustomer(con, customer);
+        
+        if (bookingStatus == 0 || customerStatus == 0) {
+                con.rollback();
+                return false;
+            } else {
+                con.commit();
+            }
+        } catch(SQLException ex){
+            System.err.println("Fail in updateBooking - Hilsen Thomas og Christopher");
+            System.out.println(ex);
+        }
+        
+        return true;
     }
     
 }
