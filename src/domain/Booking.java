@@ -140,6 +140,6 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" + "b_id=" + b_id + ", cust_id=" + cust_id + ", a_num=" + a_num + ", date_from=" + date_from + ", num_of_nights=" + num_of_nights + ", travel_agency=" + travel_agency + ", number_of_guests=" + number_of_guests + ", price=" + price + ", version=" + version + ", first_name=" + first_name + ", last_name=" + last_name + ", phone=" + phone + '}';
+        return  b_id + " customer" + cust_id + " apartment" + a_num + ", date_from=" + date_from + ", num_of_nights=" + num_of_nights;
     }
 }
