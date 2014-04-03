@@ -30,6 +30,7 @@ public class Chatty {
         this.customers = new ArrayList();
     }
 
+    /////////////////////////////////////////// FINDERS
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, Connection con) {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
         return apartmentToReturn;
@@ -62,11 +63,20 @@ public class Chatty {
                     }
                 }
             }
-            
+
         }
         return relevantBooking;
     }
 
+    public void updateBookingsList(Connection con) {
+        bookings = bookingMapper.getAllBookings(con);
+    }
+
+    public void updateCustomersList(Connection con) {
+        customers = customerMapper.getAllCustomers(con);
+    }
+
+    ///////////////////////////////////////////////// TRANSACTIONS
     public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) {
         int bookingStatus = 0;
         int customerStatus = 0;
@@ -77,11 +87,10 @@ public class Chatty {
             Statement statement = con.createStatement();
             statement.execute(lock);
 
-            //== is it available --> We expect a boolean
-//            if (bookingMapper.checkApartmentAvailability(con)) {
-            customerStatus = customerMapper.insertNewCustomer(c, con);
-            bookingStatus = bookingMapper.insertNewBooking(b, customerStatus, con);
-//            }
+            if (apartmentMapper.checkAvailAbleApartment(b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
+                customerStatus = customerMapper.insertNewCustomer(c, con);
+                bookingStatus = bookingMapper.insertNewBooking(b, customerStatus, con);
+            }
             if (customerStatus == 0 || bookingStatus == 0) {
                 con.rollback();
                 return false;
@@ -95,36 +104,28 @@ public class Chatty {
         return true;
     }
 
-    public void updateBookingsList(Connection con) {
-        bookings = bookingMapper.getAllBookings(con);
-    }
-
-    public void updateCustomersList(Connection con) {
-        customers = customerMapper.getAllCustomers(con);
-    }
-    
-    public boolean updateBookingTransaction(Booking booking, Customer customer, Connection con){
+    public boolean updateBookingTransaction(Booking booking, Customer customer, Connection con) {
         int bookingStatus;
         int customerStatus;
-        
-        try{
+
+        try {
             con.setAutoCommit(false);
-        
-        bookingStatus = bookingMapper.updateBooking(booking, con);
-        customerStatus = customerMapper.updateCustomer(con, customer);
-        
-        if (bookingStatus == 0 || customerStatus == 0) {
+
+            bookingStatus = bookingMapper.updateBooking(booking, con);
+            customerStatus = customerMapper.updateCustomer(con, customer);
+
+            if (bookingStatus == 0 || customerStatus == 0) {
                 con.rollback();
                 return false;
             } else {
                 con.commit();
             }
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             System.err.println("Fail in updateBooking - Hilsen Thomas og Christopher");
             System.out.println(ex);
         }
-        
+
         return true;
     }
-    
+
 }
