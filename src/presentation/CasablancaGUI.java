@@ -1689,7 +1689,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.nBListModel.clear();
 
         int roomNr = 0;
-        
+
         try {
             roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
         } catch (Exception e) {
@@ -1866,15 +1866,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBMatchListMouseClicked
 
     private void eBMAtchButtonDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBMAtchButtonDeleteButtonActionPerformed
-        /*Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-         boolean status = controller.deleteBooking(b.getB_id());
-         if (status) {
-         JOptionPane.showMessageDialog(this, "Booking Deleted", "", WIDTH);
-         } else {
-         JOptionPane.showMessageDialog(this, "Booking Not Deleted", "", WIDTH);
-         }
+        
+        Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+        boolean status = controller.deleteBooking(b.getB_id());
+        if (status) {
+            JOptionPane.showMessageDialog(this, "Booking Deleted", "", WIDTH);
+        } else {
+            JOptionPane.showMessageDialog(this, "Booking Not Deleted", "", WIDTH);
+        }
 
-         this.clearEditBookingsFields();*/
+        this.clearEditBookingsFields();
 
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
 
