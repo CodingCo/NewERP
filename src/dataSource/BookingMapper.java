@@ -8,26 +8,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BookingMapper {
-    
+
     public ArrayList<Booking> getAllBookings(Connection con) {
 
         ArrayList<Booking> aB = new ArrayList();
 
         String SQLString = "SELECT booking.*, to_char(booking.DATE_FROM, 'DD-MM-YY'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "
-                         + "FROM booking, customer "
-                         + "WHERE booking.cust_id = customer.cust_id";
+                + "FROM booking, customer "
+                + "WHERE booking.cust_id = customer.cust_id";
         PreparedStatement st = null;
         ResultSet rs = null;
 
         try {
-            
+
             st = con.prepareStatement(SQLString);
             rs = st.executeQuery();
-            
-            
-            while(rs.next()){
-                aB.add(new Booking(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(10),rs.getInt(5),rs.getString(6),rs.getInt(7),rs.getDouble(8),rs.getInt(9),rs.getString(11),rs.getString(12),rs.getString(13)));
-            }            
+
+            while (rs.next()) {
+                aB.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(10), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getDouble(8), rs.getInt(9), rs.getString(11), rs.getString(12), rs.getString(13)));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -100,29 +99,6 @@ public class BookingMapper {
         return rowsIns;
     }
 
-    public boolean checkRoomAvailability(Connection con) {
-        boolean avail = false;
-        String SQLString = ""; // TODO Indsæt korrekt sql-sætning
-        PreparedStatement st = null;
-
-        try {
-            st = con.prepareStatement(SQLString);
-
-            // TODO Set statement korrekt
-            ResultSet rs = st.executeQuery();
-
-            // TODO Håndter 'avail' returnerer det korrekte
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                st.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return avail;
-    }
 
     public int deleteBooking(Connection con, int b_id){
 	int rowDel = 0;
@@ -146,4 +122,5 @@ public class BookingMapper {
 	}
 	return rowDel;
     }
+
 }

@@ -5,15 +5,16 @@ import domain.Booking;
 import domain.Customer;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DbFacade {
 
-    private Chatty uow;
+    private Chatty chatty;
     private Connection con;
     private static DbFacade instance;
 
     private DbFacade() {
-        this.uow = new Chatty();
+        this.chatty = new Chatty();
         con = DBConnector.getInstance().getConnection();
     }
 
@@ -24,110 +25,41 @@ public class DbFacade {
         return instance;
     }
 
-    public boolean addNewBooking(Booking booking, Customer customer) {
+    public boolean newBooking(Booking booking, Customer customer) {
         boolean status = false;
-        if (uow != null) {
-            status = this.uow.createNewBookingTransaction(booking, customer, con);
+        if (this.chatty != null) {
+            status = this.chatty.createNewBookingTransaction(booking, customer, con);
         }
         return status;
     }
 
-    public boolean updateBooking(Booking booking) {
-        return true;
+    public boolean updateBooking(Booking booking, Customer customer) {
+        boolean status = false;
+        if (this.chatty != null) {
+            this.chatty.updateBookingTransaction(booking, customer, con);
+        }
+        return status;
     }
 
     public boolean deleteBooking(int b_id) {
         boolean status = false;
-//        if (this.uow != null) {
-//            status = this.uow.registerDeletedBooking(getBooking(b_id));
-//        }
-        return status;
-    }
+        if (this.chatty != null) {
 
-    public boolean updateCustomer(Customer customer) {
-        boolean status = false;
-//        if (this.uow != null) {
-//            status = this.uow.registerDirtyCustomer(customer);
-//        }
+        }
         return status;
     }
 
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int room) {
-        if (uow != null) {
-            return this.uow.findAvailableApartment(date, days, type, con);
+        if (chatty != null) {
+            return this.chatty.findAvailableApartment(date, days, type, con);
         }
         return null;
     }
 
-    public ArrayList<Booking> findBookingsByParams(int bookingNr, String name, String date, int roomNr) {
-//        if (this.uow != null) {
-//            return this.uow.findBookingsByParams(bookingNr, name, date, roomNr);
-//        }
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int roomNr) {
+        if (this.chatty != null) {
+            return this.chatty.findBookings(roomNr, name, date, bookingNr, con);
+        }
         return null;
     }
-
-    public void startNewBusinessTransaction() {
-        //this.uow = new UnitOfWorkProcess();
-    }
-
-    public boolean commitBusinessTransaction() {
-        //boolean status = this.uow.commit(con);
-        return false;
-    }
-
-    public boolean loadBookings() {
-        boolean status = false;
-//        if (this.con != null) {
-//            status = this.uow.loadBookings(con);
-//        }
-        return status;
-    }
-
-    public boolean loadCustomers() {
-        boolean status = false;
-//        if (this.con != null) {
-//            status = this.uow.loadCustomers(con);
-//        }
-        return status;
-    }
-
-    public boolean loadApartments() {
-        boolean status = false;
-//        if (this.con != null) {
-//            status = this.uow.loadApartments(con);
-//        }
-        return status;
-    }
-
-    public boolean loadMerger() {
-        int errorCount = 0;
-//        ArrayList<Booking> b = this.uow.getBooking();
-//        ArrayList<Apartment> a = this.uow.getApartment();
-//        ArrayList<Customer> c = this.uow.getCustomer();
-//        for (Booking x : b) {
-//            int anum = x.getApartment().getA_num();
-//            x.setApartment(a.get(anum - 1));
-//            int custid = x.getCustomer().getCust_id();
-//            for (int y = 0; y < c.size(); ++y) {
-//                if (c.get(y).getCust_id() == custid) {
-//                    x.setCustomer(c.get(y));
-//                    break;
-//                } else if (y == c.size() - 1) {
-//                    errorCount++;
-//                }
-//            }
-//        }
-        return errorCount == 0;
-    }
-
-    public Booking getBooking(int b_id) {
-//        ArrayList<Booking> list = this.uow.getBooking();
-//        for (Booking x : list) {
-//            if (x.getB_id() == b_id) {
-//                return x;
-//            }
-//        }
-        return null;
-    }
-
 }
