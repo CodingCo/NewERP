@@ -31,7 +31,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private int createCounter = 0;
     private int dateCounter = 0;
     private Apartment tempA = null;
-    private HashMap<Booking,Customer> bcHM = null;
+    private HashMap<Booking, Customer> bcHM = null;
 
     /**
      * Creates new form CasablancaGUI
@@ -55,7 +55,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.newBookingAvailList.setModel(nBListModel);
         eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
-        
+
         bcHM = new HashMap();
     }
 
@@ -1687,7 +1687,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
         this.nBListModel.clear();
-        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), Integer.parseInt(this.newBookingFindRoomNRTextField.getText()));
+
+        int roomNr = 0;
+        
+        try {
+            roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
 
         if (a == null) {
 
@@ -1840,8 +1849,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
 
-        boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()) , b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormEmailTextField.getText(),this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(),this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
-                 
+        boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
+
         if (status) {
             this.clearEditBookingsFields();
             JOptionPane.showMessageDialog(this, "Booking Updated", "", WIDTH);
@@ -1991,7 +2000,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     private void setUpTextFields(Booking b) {
-         /*this.eBFormADateTextField.setText(b.getDate_from());
+        /*this.eBFormADateTextField.setText(b.getDate_from());
          this.eBFormANRTextField.setText("" + b.getA_num());
          
          this.eBFormCityTextField.setText(b.getCustomer().getCity());
