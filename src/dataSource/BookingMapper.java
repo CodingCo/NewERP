@@ -3,6 +3,7 @@ package dataSource;
 import domain.Booking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,6 +38,32 @@ public class BookingMapper {
             }
         }
         return rowsInserted;
+    }
+    
+    public boolean checkRoomAvailability(Connection con){
+	boolean avail = false;
+	String SQLString = ""; // TODO Indsæt korrekt sql-sætning
+	PreparedStatement st = null;
+	
+	try {
+	    st = con.prepareStatement(SQLString);
+	    
+	    // TODO Set statement korrekt
+	    
+	    ResultSet rs = st.executeQuery();
+	    
+	    // TODO Håndter 'avail' returnerer det korrekte
+	    
+	} catch (Exception e){
+	    e.printStackTrace();
+	} finally {
+	    try {
+		st.close();
+	    } catch (Exception e){
+		e.printStackTrace();
+	    }
+	}
+	return avail;
     }
 
 }
