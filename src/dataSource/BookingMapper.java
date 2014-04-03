@@ -9,8 +9,48 @@ import java.util.ArrayList;
 
 public class BookingMapper {
 
+    
+    public static void main(String[] args) {
+        BookingMapper bm = new BookingMapper();
+        DBConnector dcon = DBConnector.getInstance();
+        Connection con = DBConnector.getConnection();
+        ArrayList<Booking> al = bm.getAllBookings(con);
+        
+        for(Booking x: al){
+            System.out.println(x);
+        }
+    }
+    
     public ArrayList<Booking> getAllBookings(Connection con) {
-        return null;
+
+        ArrayList<Booking> aB = new ArrayList();
+
+        String SQLString = "SELECT booking.*, to_char(booking.DATE_FROM, 'DD-MM-YY'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "
+                         + "FROM booking, customer "
+                         + "WHERE booking.cust_id = customer.cust_id";
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            
+            st = con.prepareStatement(SQLString);
+            rs = st.executeQuery();
+            
+            
+            while(rs.next()){
+                aB.add(new Booking(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(10),rs.getInt(5),rs.getString(6),rs.getInt(7),rs.getDouble(8),rs.getInt(9),rs.getString(11),rs.getString(12),rs.getString(13)));
+            }            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                st.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return aB;
     }
 
     public int insertNewBooking(Booking bo, int id, Connection con) {
@@ -40,18 +80,6 @@ public class BookingMapper {
         return rowsInserted;
     }
 
-    public static void main(String[] args) {
-        DBConnector dbcon = DBConnector.getInstance();
-        Connection con = DBConnector.getConnection();
-        
-        Booking b = new Booking(1,1,1,"27-11-14",6,"CODESNUPPETS",1,200.3,1,"Peter","Peter","phone");
-        
-        BookingMapper bm = new BookingMapper();
-        
-        bm.updateBooking(b, con);
-        
-    }
-       
     public int updateBooking(Booking b, Connection con) {
 
         int rowsIns = 0;
