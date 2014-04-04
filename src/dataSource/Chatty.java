@@ -29,7 +29,7 @@ public class Chatty {
         this.apartmentMapper = new ApartmentMapper();
         this.customers = new ArrayList();
     }
-
+    
     /////////////////////////////////////////// FINDERS
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
@@ -146,6 +146,19 @@ public class Chatty {
         int status;
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;
+    }
+    
+    public ArrayList<Customer> searchForCustomers(String keyword){
+	ArrayList<Customer> tmpList = new ArrayList();
+	
+	for (Customer c : customers){
+	    if (c.getFirst_name().toLowerCase().contains(keyword) ||
+		    c.getLast_name().toLowerCase().contains(keyword) ||
+		    c.getPhone().toLowerCase().contains(keyword)){
+		tmpList.add(c);
+	    }
+	}
+	return tmpList;
     }
 
 }
