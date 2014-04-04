@@ -14,7 +14,7 @@ public class Chatty {
 
     //== Fields
     private ArrayList<Booking> bookings;
-    private ArrayList<Booking> history;
+    private ArrayList<History> history;
     private ArrayList<Customer> customers;
     private BookingMapper bookingMapper;
     private CustomerMapper customerMapper;
