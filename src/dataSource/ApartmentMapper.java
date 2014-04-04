@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class ApartmentMapper {
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, Connection con) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
         ArrayList<Apartment> aplist = new ArrayList();
 
         String SQLString = "select * "
@@ -22,19 +22,36 @@ public class ApartmentMapper {
                 + "where (to_date(?) between (date_from) and date_from + number_of_nights) or "
                 + "((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or "
                 + "date_from between to_date(?) and (to_date(?)+?)) and type = ?";
+
+        String withNr = "select * from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights) or ((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?)) and a_num = ?";
+        String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
+
         PreparedStatement statement = null;
+
+        if (apartment_nr != 0) {
+            SQLString = withNr;
+        }
+
+        try {
+            statement = con.prepareStatement(SQL2);
+            statement.executeQuery();
+        } catch (Exception d) {
+        }
 
         try {
             statement = con.prepareStatement(SQLString);
-
             statement.setString(1, date);
             statement.setString(2, date);
             statement.setInt(3, days);
             statement.setString(4, date);
             statement.setString(5, date);
             statement.setInt(6, days);
-            statement.setString(7, type);
 
+            if (apartment_nr != 0) {
+                statement.setInt(7, apartment_nr);
+            } else {
+                statement.setString(7, type);
+            }
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -50,7 +67,6 @@ public class ApartmentMapper {
                 System.err.println(e);
             }
         }
-
         return aplist;
     }
 
@@ -60,7 +76,6 @@ public class ApartmentMapper {
         String SQL = "select a_num from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights) or ((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?)) and a_num = ?";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
         PreparedStatement statement = null;
-        System.out.println(a_num);
         try {
             statement = con.prepareStatement(SQL2);
             statement.executeQuery();
@@ -80,7 +95,6 @@ public class ApartmentMapper {
             ResultSet st = statement.executeQuery();
 
             if (st.next()) {
-                System.out.println();
                 status = st.getInt(1) == a_num;
             }
 

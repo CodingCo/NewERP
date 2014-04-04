@@ -55,9 +55,9 @@ public class Controller {
         return status;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int roomNr) {
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
         if (this.facade != null) {
-            return this.facade.findBookings(bookingNr, name, date, roomNr);
+            return this.facade.findBookings(bookingNr, name, date, apartment_nr);
         }
         return null;
     }

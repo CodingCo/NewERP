@@ -31,8 +31,8 @@ public class Chatty {
     }
 
     /////////////////////////////////////////// FINDERS
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, Connection con) {
-        ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, con);
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
+        ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
         return apartmentToReturn;
     }
 

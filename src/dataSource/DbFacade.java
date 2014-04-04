@@ -49,9 +49,9 @@ public class DbFacade {
         return status;
     }
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int room) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr) {
         if (chatty != null) {
-            return this.chatty.findAvailableApartment(date, days, type, con);
+            return this.chatty.findAvailableApartment(date, days, type, apartment_nr, con);
         }
         return null;
     }
