@@ -36,7 +36,7 @@ public class Chatty {
         return apartmentToReturn;
     }
 
-    public HashMap findBookings(int b_id, String name, String date, int num_nights, int apartment_nr, Connection con) {
+    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateBookingsList(con);
         updateCustomersList(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
@@ -55,7 +55,6 @@ public class Chatty {
             //== Compares the remaining params --> First filtering
             if (booking.getFirst_name().equalsIgnoreCase(name)
                     || booking.getDate_from().equalsIgnoreCase(date)
-                    || booking.getNum_of_nights() == num_nights
                     || booking.getA_num() == apartment_nr) {
 
                 for (Customer customer : customers) {
@@ -71,10 +70,7 @@ public class Chatty {
                 if (!name.isEmpty() && !bKey.getFirst_name().equalsIgnoreCase(name)) {
                     relevantBooking.remove(bKey);
                 }
-                if (!date.equalsIgnoreCase("dd-mm-yy") && !bKey.getDate_from().equalsIgnoreCase(date)) {
-                    relevantBooking.remove(bKey);
-                }
-                if (num_nights != 0 && bKey.getNum_of_nights() != num_nights) {
+                if (!date.isEmpty() && !bKey.getDate_from().equalsIgnoreCase(date)) {
                     relevantBooking.remove(bKey);
                 }
                 if (apartment_nr != 0 && bKey.getA_num() != apartment_nr) {

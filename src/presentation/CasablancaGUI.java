@@ -1403,7 +1403,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel20.setText("Zip Code*:");
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel22.setText("Nationality*:");
+        jLabel22.setText("Country*:");
 
         jLabel30.setText("*Required Fields");
 
@@ -1807,9 +1807,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.enableComponents(this.eBFormGrey, true);
 
         Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-        setUpTextFields(null, null);
-
-
+        Customer c = this.bcHM.get(b);
+        setUpTextFields(b, c);
+        
     }//GEN-LAST:event_eBMatchButtonEditButtonActionPerformed
 
     private void eBFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFindButtonFindButtonActionPerformed
@@ -1852,12 +1852,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
 
         Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-
         boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
 
         if (status) {
             this.clearEditBookingsFields();
             JOptionPane.showMessageDialog(this, "Booking Updated", "", WIDTH);
+            clearEditBookingsFields();
+            this.eBListModel.clear();
         } else {
             JOptionPane.showMessageDialog(this, "Booking Not Updated", "", WIDTH);
         }
@@ -1985,10 +1986,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormCombo.setSelectedItem("");
         this.eBFormEmailTextField.setText("");
         this.eBFormFirstTextField.setText("");
-        //this.eBFormNOGTextField.setText(b.g);
+        this.eBFormNOGTextField.setText("");
         this.eBFormNONTextField.setText("");
         this.eBFormNameTextField.setText("");
-        //this.eBFormNatTextField.setText(b.getCustomer().);
+        this.eBFormNatTextField.setText("");
         this.eBFormPhoneTextField.setText("");
         this.eBFormStreetTextField.setText("");
         this.eBFormZipTextField.setText("");
@@ -2007,13 +2008,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormADateTextField.setText(b.getDate_from());
         this.eBFormANRTextField.setText("" + b.getA_num());
         this.eBFormCityTextField.setText(c.getCity());
-        //this.eBFormCombo.setSelectedItem(b.getApartment().getType());
+        //this.eBFormCombo.setSelectedItem("");
         this.eBFormEmailTextField.setText(c.getEmail());
         this.eBFormFirstTextField.setText(c.getFirst_name());
-        //this.eBFormNOGTextField.setText(b.);
+        this.eBFormNOGTextField.setText("" + b.getNumber_of_guests());
         this.eBFormNONTextField.setText("" + b.getNum_of_nights());
         this.eBFormNameTextField.setText(c.getLast_name());
-        //this.eBFormNatTextField.setText(b.getCustomer().);
+        this.eBFormNatTextField.setText(c.getCountry());
         this.eBFormPhoneTextField.setText(c.getPhone());
         this.eBFormStreetTextField.setText(c.getStreet());
         this.eBFormZipTextField.setText("" + c.getZipcode());
