@@ -20,7 +20,7 @@ public class HistoryMapper {
 
     public ArrayList<History> getAllBookings(Connection con) {
         ArrayList<History> historyList = new ArrayList();
-        String SQLString = "SELECT history.*, to_char(history.DATE_FROM, 'dd/mm/yy'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "
+        String SQLString = "SELECT history.*, to_char(history.DATE_FROM, 'DD-MM-YY'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "
                 + "FROM history, customer "
                 + "WHERE history.cust_id = customer.cust_id";
 
