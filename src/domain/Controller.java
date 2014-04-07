@@ -27,7 +27,7 @@ public class Controller {
         return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
     }
 
-    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
+    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) /*throws UpdateBookingException*/ {
         boolean status = false;
         if (this.facade != null) {
             b.setA_num(a_num);

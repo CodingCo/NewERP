@@ -1,5 +1,6 @@
 package dataSource;
 
+import Exception.UpdateBookingException;
 import domain.Booking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,7 +68,7 @@ public class BookingMapper {
         return rowsInserted;
     }
 
-    public int updateBooking(Booking b, Connection con) {
+    public int updateBooking(Booking b, Connection con) /*throws UpdateBookingException*/{
         int rowsIns = 0;
         String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = ?, number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
@@ -88,6 +89,7 @@ public class BookingMapper {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            //throw new UpdateBookingException();
         } finally {
             try {
                 st.close();

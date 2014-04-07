@@ -33,7 +33,7 @@ public class DbFacade {
         return status;
     }
 
-    public boolean updateBooking(Booking booking, Customer customer) {
+    public boolean updateBooking(Booking booking, Customer customer) /*throws UpdateBookingException*/ {
         boolean status = false;
         if (this.chatty != null) {
             status = this.chatty.updateBookingTransaction(booking, customer, con);
