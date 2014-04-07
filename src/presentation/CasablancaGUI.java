@@ -12,10 +12,13 @@ import domain.Customer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.DisplayMode;
 import java.awt.Frame;
+import java.awt.GraphicsDevice;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -32,21 +35,30 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private int dateCounter = 0;
     private Apartment tempA = null;
     private HashMap<Booking, Customer> bcHM = null;
+    
+    
+    private boolean isFullScreen = false;
+    private GraphicsDevice device;
+    private DisplayMode originalDM;
+    public static final int INDEX_WIDTH = 0;
+    public static final int INDEX_HEIGHT = 1;
+
 
     /**
      * Creates new form CasablancaGUI
      */
-    public CasablancaGUI() {
+    public CasablancaGUI(GraphicsDevice device) {
+        super(device.getDefaultConfiguration());
+        this.device = device;
         initComponents();
         this.controller = new Controller();
         cl = (CardLayout) (mainPage.getLayout());
         cl.addLayoutComponent(frontPagePanel, "FrontPage");
         cl.addLayoutComponent(newBookingPanel, "NewBooking");
         cl.addLayoutComponent(editBookingPanel, "EditBooking");
-        cl.show(mainPage, "FrontPage");
-        this.setExtendedState(Frame.MAXIMIZED_BOTH);
+        cl.show(mainPage, "FrontPage");   
         this.dispose();
-        this.setUndecorated(true);
+        
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
         this.newBookingFormButtonSaveButton.setVisible(false);
@@ -55,10 +67,29 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.newBookingAvailList.setModel(nBListModel);
         eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
-
         bcHM = new HashMap();
+        originalDM = device.getDisplayMode();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
     }
-
+    
+    public void begin() {
+        isFullScreen = device.isFullScreenSupported();
+        setUndecorated(isFullScreen);
+        setResizable(!isFullScreen);
+        if (isFullScreen) {
+            // Full-screen mode
+            device.setFullScreenWindow(this);
+            validate();
+        } else {
+            // Windowed mode
+            pack();
+            setVisible(true);
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2020,46 +2051,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormZipTextField.setText("" + c.getZipcode());
 
     }
+    
+ 
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
 
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CasablancaGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CasablancaGUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField eBFindBookingNRTextField;
