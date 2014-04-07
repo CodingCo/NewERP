@@ -29,7 +29,7 @@ public class Chatty {
         this.apartmentMapper = new ApartmentMapper();
         this.customers = new ArrayList();
     }
-    
+
     /////////////////////////////////////////// FINDERS
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
@@ -37,8 +37,7 @@ public class Chatty {
     }
 
     public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
-        updateBookingsList(con);
-        updateCustomersList(con);
+        updateLists(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
 
         for (Booking booking : bookings) {
@@ -82,11 +81,8 @@ public class Chatty {
         return relevantBooking;
     }
 
-    public void updateBookingsList(Connection con) {
+    public void updateLists(Connection con) {
         bookings = bookingMapper.getAllBookings(con);
-    }
-
-    public void updateCustomersList(Connection con) {
         customers = customerMapper.getAllCustomers(con);
     }
 
@@ -147,18 +143,52 @@ public class Chatty {
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;
     }
-    
-    public ArrayList<Customer> searchForCustomers(String keyword){
-	ArrayList<Customer> tmpList = new ArrayList();
-	
-	for (Customer c : customers){
-	    if (c.getFirst_name().toLowerCase().contains(keyword) ||
-		    c.getLast_name().toLowerCase().contains(keyword) ||
-		    c.getPhone().toLowerCase().contains(keyword)){
-		tmpList.add(c);
-	    }
-	}
-	return tmpList;
+
+    public ArrayList<Customer> searchForCustomers(String keyword) {
+        ArrayList<Customer> tmpList = new ArrayList();
+
+        for (Customer c : customers) {
+            if (c.getFirst_name().toLowerCase().contains(keyword)
+                    || c.getLast_name().toLowerCase().contains(keyword)
+                    || c.getPhone().toLowerCase().contains(keyword)) {
+                tmpList.add(c);
+            }
+        }
+        return tmpList;
+    }
+
+    //======== Sotring method underneath
+    public ArrayList<Booking> getBookingsBySpecificDate(String date, Connection con) {
+//        ArrayList<Booking> relevantBookings = new ArrayList();
+//        ArrayList<Booking> sortedRelevantBookings = new ArrayList();
+//        updateLists(con);
+//
+//        for (Booking booking : bookings) {
+//            if (booking.getDate_from().equalsIgnoreCase(date)) {
+//                relevantBookings.add(booking);
+//            }
+//        }
+//
+//        for (Booking booking : relevantBookings) {
+//            int max = 0;
+//            for (int i = 0; i < 104; i++) {
+//                if (booking.getA_num() == max) {
+//
+//                }
+//
+//            }
+//            max++;
+//        }
+
+        return null;
+    }
+
+    public ArrayList<Booking> getBookingsBySpecificMonth(String month, Connection con) {
+        return null;
+    }
+
+    public ArrayList<Booking> getBookingsByApartment(int a_nr, Connection con) {
+        return null;
     }
 
 }

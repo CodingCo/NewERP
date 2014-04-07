@@ -75,5 +75,31 @@ public class Controller {
         }
         return null;
     }
-
+    
+    public ArrayList<Booking> getBookingsBySpecificDate(String date) {
+        if (this.facade != null) {
+            return this.facade.getBookingsBySpecificDate(date);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsBySpecificMonth(String month) {
+        if (this.facade != null) {
+            return this.facade.getBookingsBySpecificMonth(month);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsByApartment(int a_num) {
+        if (this.facade != null) {
+            return this.facade.getBookingsByApartment(a_num);
+        }
+        return null;
+    }
+    
+    public void updateLists(){
+	if (this.facade != null) {
+            this.facade.updateLists();
+        }
+    }
 }
