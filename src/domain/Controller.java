@@ -69,4 +69,11 @@ public class Controller {
         return null;
     }
 
+    public ArrayList<Customer> searchForCustomers(String keyword) {
+        if (this.facade != null) {
+            return this.facade.searchForCustomers(keyword);
+        }
+        return null;
+    }
+
 }
