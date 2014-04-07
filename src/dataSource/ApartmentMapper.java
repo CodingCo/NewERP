@@ -12,6 +12,34 @@ import java.sql.SQLException;
  * @author kasper
  */
 public class ApartmentMapper {
+    
+    public ArrayList<Apartment> getAllApartments(Connection con) {
+	ArrayList<Apartment> list = new ArrayList();
+	String SQLString = "select * from apartment";
+	PreparedStatement stat = null;
+	
+	try {
+	    stat = con.prepareStatement(SQLString);
+	    ResultSet rs = stat.executeQuery();
+	    
+	    while (rs.next()){
+		list.add(new Apartment(rs.getInt(1), rs.getInt(3), rs.getString(2), rs.getInt(4)));
+	    }
+	    
+	}catch (SQLException e){
+	    System.out.println(e);
+	    e.printStackTrace();
+	} finally {
+	    try {
+		stat.close();
+	    } catch (SQLException e){
+		System.out.println(e);
+		e.printStackTrace();
+	    }
+	}
+	
+	return list;
+    }
 
     public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
         ArrayList<Apartment> aplist = new ArrayList();
@@ -35,7 +63,7 @@ public class ApartmentMapper {
         try {
             statement = con.prepareStatement(SQL2);
             statement.executeQuery();
-        } catch (Exception d) {
+        } catch (SQLException d) {
         }
 
         try {
