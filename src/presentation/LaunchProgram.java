@@ -24,9 +24,7 @@ public class LaunchProgram {
         GraphicsDevice[] devices = env.getScreenDevices();
         setLookAndFeel();
         CasablancaGUI g = new CasablancaGUI(devices[0]);
-        g.begin();
-        g.setVisible(true);
-
+        
     }
 
     private static void setLookAndFeel() {

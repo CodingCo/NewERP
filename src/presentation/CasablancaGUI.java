@@ -15,6 +15,7 @@ import java.awt.Container;
 import java.awt.DisplayMode;
 import java.awt.Frame;
 import java.awt.GraphicsDevice;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
@@ -40,8 +41,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private boolean isFullScreen = false;
     private GraphicsDevice device;
     private DisplayMode originalDM;
-    public static final int INDEX_WIDTH = 0;
-    public static final int INDEX_HEIGHT = 1;
+    public static int INDEX_WIDTH = 0;
+    public static int INDEX_HEIGHT = 1;
 
 
     /**
@@ -50,28 +51,41 @@ public class CasablancaGUI extends javax.swing.JFrame {
     public CasablancaGUI(GraphicsDevice device) {
         super(device.getDefaultConfiguration());
         this.device = device;
+        originalDM = device.getDisplayMode();
+        INDEX_HEIGHT = originalDM.getHeight();
+        INDEX_WIDTH = originalDM.getWidth();
+        this.setSize(INDEX_WIDTH, INDEX_HEIGHT);
+        System.out.println(getSize());
         initComponents();
+        
+        
         this.controller = new Controller();
         cl = (CardLayout) (mainPage.getLayout());
         cl.addLayoutComponent(frontPagePanel, "FrontPage");
         cl.addLayoutComponent(newBookingPanel, "NewBooking");
         cl.addLayoutComponent(editBookingPanel, "EditBooking");
-        cl.show(mainPage, "FrontPage");   
+        //cl.show(mainPage, "FrontPage");   
+        
+        
         this.dispose();
+        
+        begin();
         
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
         this.newBookingFormButtonSaveButton.setVisible(false);
-
+System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
         nBListModel = new DefaultListModel();
         this.newBookingAvailList.setModel(nBListModel);
         eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
         bcHM = new HashMap();
+        System.out.println(getSize());
         originalDM = device.getDisplayMode();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         System.out.println(originalDM.getHeight());
         System.out.println(originalDM.getWidth());
+        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
     }
     
     public void begin() {
@@ -79,11 +93,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         setUndecorated(isFullScreen);
         setResizable(!isFullScreen);
         if (isFullScreen) {
-            // Full-screen mode
+            
             device.setFullScreenWindow(this);
             validate();
+            
+            
         } else {
-            // Windowed mode
+            
             pack();
             setVisible(true);
         }
