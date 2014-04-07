@@ -70,7 +70,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         bcHM = new HashMap();
         originalDM = device.getDisplayMode();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        System.out.println(originalDM.getHeight());
+        System.out.println(originalDM.getWidth());
     }
     
     public void begin() {
