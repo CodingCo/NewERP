@@ -62,4 +62,12 @@ public class DbFacade {
         }
         return null;
     }
+    
+        public ArrayList<Customer> searchForCustomers(String keyword) {
+        if (this.chatty != null) {
+            return this.chatty.searchForCustomers(keyword);
+        }
+        return null;
+    }
+
 }
