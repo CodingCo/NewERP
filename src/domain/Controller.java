@@ -27,7 +27,7 @@ public class Controller {
         return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
     }
 
-    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) {
+    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) /*throws UpdateBookingException*/ {
         boolean status = false;
         if (this.facade != null) {
             b.setA_num(a_num);
@@ -75,5 +75,31 @@ public class Controller {
         }
         return null;
     }
-
+    
+    public ArrayList<Booking> getBookingsBySpecificDate(String date) {
+        if (this.facade != null) {
+            return this.facade.getBookingsBySpecificDate(date);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsBySpecificMonth(String month) {
+        if (this.facade != null) {
+            return this.facade.getBookingsBySpecificMonth(month);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsByApartment(int a_num) {
+        if (this.facade != null) {
+            return this.facade.getBookingsByApartment(a_num);
+        }
+        return null;
+    }
+    
+    public void updateLists(){
+	if (this.facade != null) {
+            this.facade.updateLists();
+        }
+    }
 }
