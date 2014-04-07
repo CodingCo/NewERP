@@ -63,11 +63,37 @@ public class DbFacade {
         return null;
     }
     
-        public ArrayList<Customer> searchForCustomers(String keyword) {
+    public ArrayList<Customer> searchForCustomers(String keyword) {
         if (this.chatty != null) {
             return this.chatty.searchForCustomers(keyword);
         }
         return null;
     }
-
+    
+    public ArrayList<Booking> getBookingsBySpecificDate(String date){
+	if (this.chatty != null) {
+            return this.chatty.getBookingsBySpecificDate(date, con);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsBySpecificMonth(String month){
+	if (this.chatty != null) {
+            return this.chatty.getBookingsBySpecificMonth(month, con);
+        }
+        return null;
+    }
+    
+    public ArrayList<Booking> getBookingsByApartment(int a_num){
+	if (this.chatty != null) {
+            return this.chatty.getBookingsByApartment(a_num, con);
+        }
+        return null;
+    }
+    
+    public void updateLists(){
+	if (this.chatty != null) {
+            this.chatty.updateLists(con);
+        }
+    }
 }
