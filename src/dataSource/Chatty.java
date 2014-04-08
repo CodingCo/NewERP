@@ -86,6 +86,11 @@ public class Chatty {
         customers = customerMapper.getAllCustomers(con);
     }
 
+    
+    public ArrayList<Apartment> getApartments(Connection con){
+      return  this.apartmentMapper.getAllApartments(con);
+    }
+    
     ///////////////////////////////////////////////// TRANSACTIONS
     public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) {
         int bookingStatus = 0;
