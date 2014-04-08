@@ -65,7 +65,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         //cl.show(mainPage, "FrontPage");   
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
-        this.newBookingFormButtonSaveButton.setVisible(false);
+        
         this.nBListModel = new DefaultListModel();
         this.newBookingAvailList.setModel(nBListModel);
         this.eBListModel = new DefaultListModel();
@@ -99,11 +99,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         mainPage = new javax.swing.JPanel();
         newBookingPanel = new javax.swing.JPanel();
-        newBookingTitlePanel = new javax.swing.JPanel();
-        newBookingTitleTitle = new javax.swing.JLabel();
         newBookingFindPanel = new javax.swing.JPanel();
-        newBookingFindTitlePanel = new javax.swing.JPanel();
-        newBookingFindTitleTitle = new javax.swing.JLabel();
         newBookingFindSearchPanel = new javax.swing.JPanel();
         newBookingFindSearchFromLabel = new javax.swing.JLabel();
         newBookingFindSearchNONLabel = new javax.swing.JLabel();
@@ -111,22 +107,20 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFindSearchNONTextField = new javax.swing.JTextField();
         newBookingFindSearchTypeComboBox = new javax.swing.JComboBox();
         newBookingFindSearchTypeLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         newBookingFindRoomNRTextField = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         newBookingFindButtonBackButton = new javax.swing.JButton();
         newBookingFindButtonFindButton = new javax.swing.JButton();
+        newBookingFindTitleTitle = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         newBookingAvailablePanel = new javax.swing.JPanel();
-        newBookingAvailTitlePanel = new javax.swing.JPanel();
-        newBookingAvailTitleTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         newBookingAvailList = new javax.swing.JList();
+        newBookingAvailTitleTitle = new javax.swing.JLabel();
         newBookingFormPanel = new javax.swing.JPanel();
-        newBookingFormTitlePanel = new javax.swing.JPanel();
-        newBookingFormTitleTitle = new javax.swing.JLabel();
         newBookingFormFirstLabel = new javax.swing.JLabel();
         newBookingFormFirstTextField = new javax.swing.JTextField();
         newBookingFormNameLabel = new javax.swing.JLabel();
@@ -144,7 +138,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormButtonPanel = new javax.swing.JPanel();
         newBookingFormCreateButton = new javax.swing.JButton();
         newBookingFormPreviousButton = new javax.swing.JButton();
-        newBookingFormButtonSaveButton = new javax.swing.JButton();
         newBookingFormGreyPanel = new javax.swing.JPanel();
         newBookingFormADateLabel = new javax.swing.JLabel();
         newBookingFormNONLabel = new javax.swing.JLabel();
@@ -160,6 +153,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormEmailTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         newBookingFormZipTextField = new javax.swing.JTextField();
+        newBookingFormTitleTitle = new javax.swing.JLabel();
+        newBookingTitleTitle = new javax.swing.JLabel();
+        frontPagePanel = new javax.swing.JPanel();
+        frontPageNewBooking = new javax.swing.JButton();
+        frontPageEditBooking = new javax.swing.JButton();
+        frontPageExitButton = new javax.swing.JButton();
+        frontPageLogoutButton = new javax.swing.JButton();
         editBookingPanel = new javax.swing.JPanel();
         eBTitlePanel = new javax.swing.JPanel();
         eBTitleTitleLabel = new javax.swing.JLabel();
@@ -223,11 +223,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormNONTextField = new javax.swing.JTextField();
         eBFormANRTextField = new javax.swing.JTextField();
         eBFormCombo = new javax.swing.JComboBox();
-        frontPagePanel = new javax.swing.JPanel();
-        frontPageNewBooking = new javax.swing.JButton();
-        frontPageEditBooking = new javax.swing.JButton();
-        frontPageExitButton = new javax.swing.JButton();
-        frontPageLogoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 22, 1024, 720));
@@ -241,64 +236,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
         mainPage.setLayout(new java.awt.CardLayout());
 
         newBookingPanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
-        newBookingPanel.setMinimumSize(new java.awt.Dimension(1280, 720));
-        newBookingPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
+        newBookingPanel.setMinimumSize(new java.awt.Dimension(1024, 720));
+        newBookingPanel.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        newBookingTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        newBookingTitlePanel.setMaximumSize(new java.awt.Dimension(1366, 40));
-        newBookingTitlePanel.setMinimumSize(new java.awt.Dimension(1280, 40));
-        newBookingTitlePanel.setPreferredSize(new java.awt.Dimension(1280, 40));
-
-        newBookingTitleTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        newBookingTitleTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        newBookingTitleTitle.setText("New Booking");
-
-        javax.swing.GroupLayout newBookingTitlePanelLayout = new javax.swing.GroupLayout(newBookingTitlePanel);
-        newBookingTitlePanel.setLayout(newBookingTitlePanelLayout);
-        newBookingTitlePanelLayout.setHorizontalGroup(
-            newBookingTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(574, Short.MAX_VALUE)
-                .addComponent(newBookingTitleTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(583, Short.MAX_VALUE))
-        );
-        newBookingTitlePanelLayout.setVerticalGroup(
-            newBookingTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingTitlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(newBookingTitleTitle)
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-
+        newBookingFindPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         newBookingFindPanel.setMaximumSize(new java.awt.Dimension(455, 728));
-        newBookingFindPanel.setMinimumSize(new java.awt.Dimension(455, 728));
-        newBookingFindPanel.setPreferredSize(new java.awt.Dimension(455, 728));
-
-        newBookingFindTitlePanel.setMinimumSize(new java.awt.Dimension(453, 40));
-        newBookingFindTitlePanel.setPreferredSize(new java.awt.Dimension(453, 40));
-
-        newBookingFindTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        newBookingFindTitleTitle.setText("Find Apartment");
-
-        javax.swing.GroupLayout newBookingFindTitlePanelLayout = new javax.swing.GroupLayout(newBookingFindTitlePanel);
-        newBookingFindTitlePanel.setLayout(newBookingFindTitlePanelLayout);
-        newBookingFindTitlePanelLayout.setHorizontalGroup(
-            newBookingFindTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingFindTitlePanelLayout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(newBookingFindTitleTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        newBookingFindTitlePanelLayout.setVerticalGroup(
-            newBookingFindTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFindTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(newBookingFindTitleTitle)
-                .addContainerGap())
-        );
+        newBookingFindPanel.setMinimumSize(new java.awt.Dimension(340, 0));
+        newBookingFindPanel.setPreferredSize(new java.awt.Dimension(340, 728));
 
         newBookingFindSearchPanel.setMaximumSize(new java.awt.Dimension(453, 630));
-        newBookingFindSearchPanel.setMinimumSize(new java.awt.Dimension(453, 630));
+        newBookingFindSearchPanel.setMinimumSize(new java.awt.Dimension(340, 630));
         newBookingFindSearchPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newBookingFindSearchPanelMouseClicked(evt);
@@ -309,7 +256,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFindSearchFromLabel.setText("From:");
 
         newBookingFindSearchNONLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        newBookingFindSearchNONLabel.setText("Number of nights*:");
+        newBookingFindSearchNONLabel.setText("Nights*:");
 
         newBookingFindSearchFromTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFindSearchFromTextField.setText("DD-MM-YY");
@@ -348,12 +295,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFindSearchTypeLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newBookingFindSearchTypeLabel.setText("Type*:");
 
-        jLabel2.setText("1. Enter search criterias in fields below.");
-
-        jLabel23.setText("2. Press \"Find\" and select apartment if any.");
-
-        jLabel24.setText("3. Fill out Form and press \"Create Booking\".");
-
         jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel25.setText("Room nr:");
 
@@ -389,133 +330,122 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
+        newBookingFindTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        newBookingFindTitleTitle.setText("Find Apartment");
+
         javax.swing.GroupLayout newBookingFindSearchPanelLayout = new javax.swing.GroupLayout(newBookingFindSearchPanel);
         newBookingFindSearchPanel.setLayout(newBookingFindSearchPanelLayout);
         newBookingFindSearchPanelLayout.setHorizontalGroup(
             newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(newBookingFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(newBookingFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFindSearchTypeLabel)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newBookingFindSearchTypeComboBox, 0, 163, Short.MAX_VALUE)
-                            .addComponent(newBookingFindRoomNRTextField)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFindSearchPanelLayout.createSequentialGroup()
-                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFindSearchNONLabel)
-                            .addComponent(newBookingFindSearchFromLabel))
-                        .addGap(30, 30, 30)
-                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFindSearchNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newBookingFindSearchFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel26)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFindSearchPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel26)
                 .addGap(105, 105, 105))
             .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel23))
+                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFindSearchPanelLayout.createSequentialGroup()
+                                .addComponent(newBookingFindSearchFromLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newBookingFindSearchFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFindSearchPanelLayout.createSequentialGroup()
+                                .addComponent(newBookingFindSearchNONLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(newBookingFindSearchNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
+                                .addComponent(newBookingFindSearchTypeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newBookingFindSearchTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(newBookingFindRoomNRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(newBookingFindTitleTitle))
+                    .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(newBookingFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111)
+                        .addComponent(newBookingFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newBookingFindSearchPanelLayout.setVerticalGroup(
             newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24)
-                .addGap(18, 18, 18)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFindSearchFromLabel)
                     .addComponent(newBookingFindSearchFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newBookingFindSearchNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newBookingFindSearchNONLabel))
-                .addGap(13, 13, 13)
+                    .addComponent(newBookingFindSearchNONLabel)
+                    .addComponent(newBookingFindSearchNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFindSearchTypeLabel)
                     .addComponent(newBookingFindSearchTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addGap(18, 18, 18)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(newBookingFindRoomNRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel26)
-                .addGap(120, 120, 120)
+                .addGap(69, 69, 69)
+                .addComponent(newBookingFindTitleTitle)
+                .addGap(75, 75, 75)
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel2.setText("1. Enter search criterias in fields below.");
+
+        jLabel23.setText("2. Press \"Find\" and select apartment if any.");
+
+        jLabel24.setText("3. Fill out Form and press \"Create Booking\".");
+
         javax.swing.GroupLayout newBookingFindPanelLayout = new javax.swing.GroupLayout(newBookingFindPanel);
         newBookingFindPanel.setLayout(newBookingFindPanelLayout);
         newBookingFindPanelLayout.setHorizontalGroup(
             newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFindPanelLayout.createSequentialGroup()
-                .addGroup(newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(newBookingFindTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(newBookingFindSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(newBookingFindSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
+            .addGroup(newBookingFindPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel23))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newBookingFindPanelLayout.setVerticalGroup(
             newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFindPanelLayout.createSequentialGroup()
-                .addComponent(newBookingFindTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addGap(25, 25, 25)
                 .addComponent(newBookingFindSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        newBookingAvailablePanel.setMaximumSize(new java.awt.Dimension(455, 728));
-        newBookingAvailablePanel.setMinimumSize(new java.awt.Dimension(455, 728));
-        newBookingAvailablePanel.setPreferredSize(new java.awt.Dimension(455, 728));
+        newBookingAvailablePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        newBookingAvailablePanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
+        newBookingAvailablePanel.setMinimumSize(new java.awt.Dimension(320, 0));
+        newBookingAvailablePanel.setPreferredSize(new java.awt.Dimension(320, 200));
         newBookingAvailablePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newBookingAvailablePanelMouseEntered(evt);
             }
         });
-
-        newBookingAvailTitlePanel.setMaximumSize(new java.awt.Dimension(453, 40));
-        newBookingAvailTitlePanel.setMinimumSize(new java.awt.Dimension(453, 40));
-        newBookingAvailTitlePanel.setPreferredSize(new java.awt.Dimension(453, 40));
-
-        newBookingAvailTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        newBookingAvailTitleTitle.setText("Available Apartments");
-
-        javax.swing.GroupLayout newBookingAvailTitlePanelLayout = new javax.swing.GroupLayout(newBookingAvailTitlePanel);
-        newBookingAvailTitlePanel.setLayout(newBookingAvailTitlePanelLayout);
-        newBookingAvailTitlePanelLayout.setHorizontalGroup(
-            newBookingAvailTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingAvailTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
-                .addComponent(newBookingAvailTitleTitle)
-                .addGap(165, 165, 165))
-        );
-        newBookingAvailTitlePanelLayout.setVerticalGroup(
-            newBookingAvailTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingAvailTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(newBookingAvailTitleTitle)
-                .addContainerGap())
-        );
 
         newBookingAvailList.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         newBookingAvailList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -530,48 +460,32 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(newBookingAvailList);
 
+        newBookingAvailTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        newBookingAvailTitleTitle.setText("Available Apartments");
+
         javax.swing.GroupLayout newBookingAvailablePanelLayout = new javax.swing.GroupLayout(newBookingAvailablePanel);
         newBookingAvailablePanel.setLayout(newBookingAvailablePanelLayout);
         newBookingAvailablePanelLayout.setHorizontalGroup(
             newBookingAvailablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newBookingAvailTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+            .addGroup(newBookingAvailablePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newBookingAvailTitleTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         newBookingAvailablePanelLayout.setVerticalGroup(
             newBookingAvailablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingAvailablePanelLayout.createSequentialGroup()
-                .addComponent(newBookingAvailTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addContainerGap()
+                .addComponent(newBookingAvailTitleTitle)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1))
         );
 
-        newBookingFormPanel.setMaximumSize(new java.awt.Dimension(456, 728));
-        newBookingFormPanel.setMinimumSize(new java.awt.Dimension(456, 720));
-        newBookingFormPanel.setPreferredSize(new java.awt.Dimension(456, 720));
-
-        newBookingFormTitlePanel.setMaximumSize(new java.awt.Dimension(453, 40));
-        newBookingFormTitlePanel.setMinimumSize(new java.awt.Dimension(453, 40));
-        newBookingFormTitlePanel.setPreferredSize(new java.awt.Dimension(453, 40));
-
-        newBookingFormTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        newBookingFormTitleTitle.setText("Booking Form");
-
-        javax.swing.GroupLayout newBookingFormTitlePanelLayout = new javax.swing.GroupLayout(newBookingFormTitlePanel);
-        newBookingFormTitlePanel.setLayout(newBookingFormTitlePanelLayout);
-        newBookingFormTitlePanelLayout.setHorizontalGroup(
-            newBookingFormTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingFormTitlePanelLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(newBookingFormTitleTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        newBookingFormTitlePanelLayout.setVerticalGroup(
-            newBookingFormTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFormTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(newBookingFormTitleTitle)
-                .addContainerGap())
-        );
+        newBookingFormPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        newBookingFormPanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
+        newBookingFormPanel.setMinimumSize(new java.awt.Dimension(340, 0));
+        newBookingFormPanel.setPreferredSize(new java.awt.Dimension(340, 200));
 
         newBookingFormFirstLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newBookingFormFirstLabel.setText("First Name*:");
@@ -613,10 +527,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormStreetTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        newBookingFormCreateButton.setText("Create Booking");
-        newBookingFormCreateButton.setMaximumSize(new java.awt.Dimension(107, 30));
-        newBookingFormCreateButton.setMinimumSize(new java.awt.Dimension(107, 30));
-        newBookingFormCreateButton.setPreferredSize(new java.awt.Dimension(107, 30));
+        newBookingFormCreateButton.setText("Create");
+        newBookingFormCreateButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        newBookingFormCreateButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        newBookingFormCreateButton.setPreferredSize(new java.awt.Dimension(150, 30));
         newBookingFormCreateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newBookingFormCreateButtonMouseEntered(evt);
@@ -629,9 +543,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
 
         newBookingFormPreviousButton.setText("Previous Customer");
-        newBookingFormPreviousButton.setMaximumSize(new java.awt.Dimension(125, 30));
-        newBookingFormPreviousButton.setMinimumSize(new java.awt.Dimension(125, 30));
-        newBookingFormPreviousButton.setPreferredSize(new java.awt.Dimension(125, 30));
+        newBookingFormPreviousButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        newBookingFormPreviousButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        newBookingFormPreviousButton.setPreferredSize(new java.awt.Dimension(150, 30));
         newBookingFormPreviousButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 newBookingFormPreviousButtonMouseEntered(evt);
@@ -640,18 +554,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormPreviousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newBookingFormPreviousButtonActionPerformed(evt);
-            }
-        });
-
-        newBookingFormButtonSaveButton.setText("Save All");
-        newBookingFormButtonSaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                newBookingFormButtonSaveButtonMouseEntered(evt);
-            }
-        });
-        newBookingFormButtonSaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBookingFormButtonSaveButtonActionPerformed(evt);
             }
         });
 
@@ -674,6 +576,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormNONTextField.setEditable(false);
         newBookingFormNONTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        newBookingFormNONTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newBookingFormNONTextFieldActionPerformed(evt);
+            }
+        });
 
         newBookingFormRoomTextField.setEditable(false);
         newBookingFormRoomTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -683,22 +590,26 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormGreyPanelLayout.setHorizontalGroup(
             newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
                 .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel31)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel31))
                     .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormRoomLabel)
-                            .addComponent(newBookingFormNONLabel)
-                            .addComponent(newBookingFormADateLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(newBookingFormADateTextField)
-                            .addComponent(newBookingFormNONTextField)
-                            .addComponent(newBookingFormRoomTextField))))
-                .addContainerGap())
+                            .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
+                                .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newBookingFormNONLabel)
+                                    .addComponent(newBookingFormRoomLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newBookingFormNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(newBookingFormRoomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
+                                .addComponent(newBookingFormADateLabel)
+                                .addGap(48, 48, 48)
+                                .addComponent(newBookingFormADateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         newBookingFormGreyPanelLayout.setVerticalGroup(
             newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -727,34 +638,34 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormButtonPanelLayout.setHorizontalGroup(
             newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
-                .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(53, 53, 53))
-            .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
                 .addGroup(newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel32))
+                        .addComponent(jLabel32)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(newBookingFormCreateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newBookingFormButtonSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newBookingFormCreateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         newBookingFormButtonPanelLayout.setVerticalGroup(
             newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormCreateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newBookingFormButtonSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         newBookingFormAgenLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -777,135 +688,239 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormZipTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        newBookingFormTitleTitle.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        newBookingFormTitleTitle.setText("Booking Form");
+
         javax.swing.GroupLayout newBookingFormPanelLayout = new javax.swing.GroupLayout(newBookingFormPanel);
         newBookingFormPanel.setLayout(newBookingFormPanelLayout);
         newBookingFormPanelLayout.setHorizontalGroup(
             newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addComponent(newBookingFormNOGLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newBookingFormNOGTextField))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addComponent(newBookingFormStreetLabel)
-                                .addGap(29, 29, 29)
-                                .addComponent(newBookingFormStreetTextField))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addComponent(newBookingFormFirstLabel)
-                                .addGap(30, 30, 30)
-                                .addComponent(newBookingFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addComponent(newBookingFormNameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newBookingFormNameTextField))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newBookingFormPhoneLabel)
-                                    .addComponent(newBookingFormEmailLabel)
-                                    .addComponent(newBookingFormCityLabel))
-                                .addGap(27, 27, 27)
-                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newBookingFormCityTextField)
-                                    .addComponent(newBookingFormEmailTextField)
-                                    .addComponent(newBookingFormPhoneTextField)))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newBookingFormNatLabel)
-                                    .addComponent(jLabel1)
-                                    .addComponent(newBookingFormAgenLabel))
-                                .addGap(36, 36, 36)
-                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newBookingFormAgenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(newBookingFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(newBookingFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newBookingFormEmailLabel)
+                            .addComponent(newBookingFormPhoneLabel)
+                            .addComponent(newBookingFormCityLabel)
+                            .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(newBookingFormPanelLayout.createSequentialGroup()
+                                    .addComponent(newBookingFormStreetLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(newBookingFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFormPanelLayout.createSequentialGroup()
+                                    .addComponent(newBookingFormNOGLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(newBookingFormNOGTextField))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFormPanelLayout.createSequentialGroup()
+                                    .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(newBookingFormNatLabel)
+                                        .addComponent(jLabel1)
+                                        .addComponent(newBookingFormAgenLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(newBookingFormZipTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(newBookingFormNatTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(newBookingFormAgenTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFormPanelLayout.createSequentialGroup()
+                                    .addComponent(newBookingFormNameLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(newBookingFormTitleTitle)
+                                        .addComponent(newBookingFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(newBookingFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(newBookingFormEmailTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                    .addComponent(newBookingFormPhoneTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(newBookingFormCityTextField))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(newBookingFormButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(newBookingFormTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(newBookingFormFirstLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(newBookingFormButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         newBookingFormPanelLayout.setVerticalGroup(
             newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                .addComponent(newBookingFormTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(newBookingFormTitleTitle)
+                .addGap(11, 11, 11)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormFirstLabel)
                     .addComponent(newBookingFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormNameLabel)
                     .addComponent(newBookingFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormNOGLabel)
                     .addComponent(newBookingFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormPhoneLabel))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormEmailLabel)
                     .addComponent(newBookingFormEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormCityLabel))
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormStreetLabel))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(newBookingFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormNatLabel))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormAgenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormAgenLabel))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(newBookingFormButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
+
+        newBookingTitleTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        newBookingTitleTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        newBookingTitleTitle.setText("New Booking");
 
         javax.swing.GroupLayout newBookingPanelLayout = new javax.swing.GroupLayout(newBookingPanel);
         newBookingPanel.setLayout(newBookingPanelLayout);
         newBookingPanelLayout.setHorizontalGroup(
             newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingPanelLayout.createSequentialGroup()
-                .addComponent(newBookingFindPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newBookingAvailablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newBookingFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(newBookingTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(newBookingPanelLayout.createSequentialGroup()
+                        .addComponent(newBookingFindPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newBookingAvailablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newBookingFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(newBookingPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newBookingTitleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         newBookingPanelLayout.setVerticalGroup(
             newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingPanelLayout.createSequentialGroup()
-                .addComponent(newBookingTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(12, 12, 12)
+                .addComponent(newBookingTitleTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(newBookingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newBookingAvailablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(newBookingFindPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(newBookingPanelLayout.createSequentialGroup()
-                        .addComponent(newBookingFormPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
-                        .addGap(6, 6, 6)))
-                .addGap(0, 0, 0))
+                    .addComponent(newBookingFormPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                    .addComponent(newBookingFindPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                    .addComponent(newBookingAvailablePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         mainPage.add(newBookingPanel, "card3");
+
+        frontPagePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frontPagePanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
+        frontPagePanel.setMinimumSize(new java.awt.Dimension(1024, 720));
+        frontPagePanel.setPreferredSize(new java.awt.Dimension(1024, 720));
+
+        frontPageNewBooking.setText("New Booking");
+        frontPageNewBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frontPageNewBooking.setMaximumSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.setMinimumSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.setPreferredSize(new java.awt.Dimension(150, 50));
+        frontPageNewBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                frontPageNewBookingMouseEntered(evt);
+            }
+        });
+        frontPageNewBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageNewBookingActionPerformed(evt);
+            }
+        });
+
+        frontPageEditBooking.setText("Edit Booking");
+        frontPageEditBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frontPageEditBooking.setMaximumSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.setMinimumSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.setPreferredSize(new java.awt.Dimension(150, 50));
+        frontPageEditBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                frontPageEditBookingMouseEntered(evt);
+            }
+        });
+        frontPageEditBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageEditBookingActionPerformed(evt);
+            }
+        });
+
+        frontPageExitButton.setText("Exit");
+        frontPageExitButton.setMaximumSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.setMinimumSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.setPreferredSize(new java.awt.Dimension(76, 25));
+        frontPageExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                frontPageExitButtonMouseEntered(evt);
+            }
+        });
+        frontPageExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontPageExitButtonActionPerformed(evt);
+            }
+        });
+
+        frontPageLogoutButton.setText("Logout");
+        frontPageLogoutButton.setMaximumSize(new java.awt.Dimension(76, 25));
+        frontPageLogoutButton.setMinimumSize(new java.awt.Dimension(76, 25));
+        frontPageLogoutButton.setPreferredSize(new java.awt.Dimension(76, 25));
+        frontPageLogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                frontPageLogoutButtonMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frontPagePanelLayout = new javax.swing.GroupLayout(frontPagePanel);
+        frontPagePanel.setLayout(frontPagePanelLayout);
+        frontPagePanelLayout.setHorizontalGroup(
+            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPagePanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPagePanelLayout.createSequentialGroup()
+                .addContainerGap(451, Short.MAX_VALUE)
+                .addGroup(frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(frontPageEditBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frontPageNewBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(419, Short.MAX_VALUE))
+        );
+        frontPagePanelLayout.setVerticalGroup(
+            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frontPagePanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105)
+                .addComponent(frontPageNewBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(frontPageEditBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(407, Short.MAX_VALUE))
+        );
+
+        mainPage.add(frontPagePanel, "card2");
 
         editBookingPanel.setMaximumSize(new java.awt.Dimension(1366, 768));
         editBookingPanel.setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -1491,101 +1506,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         mainPage.add(editBookingPanel, "card4");
 
-        frontPagePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        frontPagePanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
-        frontPagePanel.setMinimumSize(new java.awt.Dimension(1024, 720));
-        frontPagePanel.setPreferredSize(new java.awt.Dimension(1024, 720));
-
-        frontPageNewBooking.setText("New Booking");
-        frontPageNewBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        frontPageNewBooking.setMaximumSize(new java.awt.Dimension(150, 50));
-        frontPageNewBooking.setMinimumSize(new java.awt.Dimension(150, 50));
-        frontPageNewBooking.setPreferredSize(new java.awt.Dimension(150, 50));
-        frontPageNewBooking.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                frontPageNewBookingMouseEntered(evt);
-            }
-        });
-        frontPageNewBooking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frontPageNewBookingActionPerformed(evt);
-            }
-        });
-
-        frontPageEditBooking.setText("Edit Booking");
-        frontPageEditBooking.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        frontPageEditBooking.setMaximumSize(new java.awt.Dimension(150, 50));
-        frontPageEditBooking.setMinimumSize(new java.awt.Dimension(150, 50));
-        frontPageEditBooking.setPreferredSize(new java.awt.Dimension(150, 50));
-        frontPageEditBooking.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                frontPageEditBookingMouseEntered(evt);
-            }
-        });
-        frontPageEditBooking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frontPageEditBookingActionPerformed(evt);
-            }
-        });
-
-        frontPageExitButton.setText("Exit");
-        frontPageExitButton.setMaximumSize(new java.awt.Dimension(76, 25));
-        frontPageExitButton.setMinimumSize(new java.awt.Dimension(76, 25));
-        frontPageExitButton.setPreferredSize(new java.awt.Dimension(76, 25));
-        frontPageExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                frontPageExitButtonMouseEntered(evt);
-            }
-        });
-        frontPageExitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frontPageExitButtonActionPerformed(evt);
-            }
-        });
-
-        frontPageLogoutButton.setText("Logout");
-        frontPageLogoutButton.setMaximumSize(new java.awt.Dimension(76, 25));
-        frontPageLogoutButton.setMinimumSize(new java.awt.Dimension(76, 25));
-        frontPageLogoutButton.setPreferredSize(new java.awt.Dimension(76, 25));
-        frontPageLogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                frontPageLogoutButtonMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout frontPagePanelLayout = new javax.swing.GroupLayout(frontPagePanel);
-        frontPagePanel.setLayout(frontPagePanelLayout);
-        frontPagePanelLayout.setHorizontalGroup(
-            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frontPagePanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPagePanelLayout.createSequentialGroup()
-                .addContainerGap(451, Short.MAX_VALUE)
-                .addGroup(frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(frontPageEditBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontPageNewBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(419, Short.MAX_VALUE))
-        );
-        frontPagePanelLayout.setVerticalGroup(
-            frontPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frontPagePanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(frontPageExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(frontPageLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(frontPageNewBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(frontPageEditBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(407, Short.MAX_VALUE))
-        );
-
-        mainPage.add(frontPagePanel, "card2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1601,17 +1521,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void newBookingFindButtonBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonBackButtonActionPerformed
-
-        if (this.createCounter == 0) {
-            cl.show(mainPage, "FrontPage");
-            this.clearNewBookingFields();
-            this.newBookingFindSearchFromTextField.setText("DD-MM-YY");
-        } else {
-            JOptionPane.showMessageDialog(this, "Save All Please", "", WIDTH);
-        }
-    }//GEN-LAST:event_newBookingFindButtonBackButtonActionPerformed
 
     public void clearNewBookingFields() {
         this.newBookingFormFirstTextField.setText("");
@@ -1646,121 +1555,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         }
     }
-
-    private void newBookingFindSearchFromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldActionPerformed
-        this.enableComponents(this.newBookingAvailablePanel, false);
-        this.enableComponents(this.newBookingFormPanel, false);
-    }//GEN-LAST:event_newBookingFindSearchFromTextFieldActionPerformed
-
-    private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
-
-        this.nBListModel.clear();
-
-        int roomNr = 0;
-
-        try {
-            roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
-
-        if (a == null) {
-
-            this.enableComponents(this, false);
-            JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
-            this.enableComponents(this, true);
-            this.enableComponents(this.newBookingFormPanel, false);
-            this.enableComponents(this.newBookingAvailablePanel, false);
-
-        } else {
-            for (int x = 0; x < a.size(); ++x) {
-                this.nBListModel.addElement(a.get(x));
-                this.enableComponents(this.newBookingAvailablePanel, true);
-            }
-        }
-
-
-    }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
-
-    private void newBookingFindSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchPanelMouseClicked
-    }//GEN-LAST:event_newBookingFindSearchPanelMouseClicked
-
-    private void newBookingFindSearchFromTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldMouseClicked
-        this.newBookingFindSearchFromTextField.setText("");
-        this.enableComponents(this.newBookingAvailablePanel, false);
-        this.enableComponents(this.newBookingFormPanel, false);
-    }//GEN-LAST:event_newBookingFindSearchFromTextFieldMouseClicked
-
-    private void newBookingFindSearchNONTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchNONTextFieldMouseClicked
-        this.enableComponents(this.newBookingAvailablePanel, false);
-        this.enableComponents(this.newBookingFormPanel, false);
-    }//GEN-LAST:event_newBookingFindSearchNONTextFieldMouseClicked
-
-    private void newBookingFindSearchTypeComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchTypeComboBoxMouseClicked
-        this.enableComponents(this.newBookingAvailablePanel, false);
-        this.enableComponents(this.newBookingFormPanel, false);
-    }//GEN-LAST:event_newBookingFindSearchTypeComboBoxMouseClicked
-
-    private void newBookingAvailListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailListMouseClicked
-
-        this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
-        this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
-        Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-
-        this.newBookingFormRoomTextField.setText("" + a.getA_num());
-        this.enableComponents(this.newBookingFormPanel, true);
-        this.enableComponents(this.newBookingFormGreyPanel, false);
-    }//GEN-LAST:event_newBookingAvailListMouseClicked
-
-    private void newBookingFormFirstTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormFirstTextFieldActionPerformed
-        //not supported
-    }//GEN-LAST:event_newBookingFormFirstTextFieldActionPerformed
-
-    private void newBookingFormCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonActionPerformed
-
-        try {
-            Customer c = this.controller.newCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormEmailTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormZipTextField.getText(), this.newBookingFormStreetTextField.getText());
-
-            Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-            boolean success = this.controller.newBooking(c, a.getA_num(), this.newBookingFormADateTextField.getText(), Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormAgenTextField.getText(), Integer.parseInt(this.newBookingFormNOGTextField.getText()), Integer.parseInt(this.newBookingFormNONTextField.getText()) * a.getPrice(), c.getFirst_name(), c.getLast_name(), c.getPhone());
-            if (success) {
-                //this.createCounter++;
-                this.enableComponents(this, false);
-                JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
-                this.enableComponents(this, true);
-                this.enableComponents(this.newBookingFormPanel, false);
-                this.enableComponents(this.newBookingFormButtonPanel, true);
-                this.enableComponents(this.newBookingFormGreyPanel, false);
-                this.enableComponents(this.newBookingAvailablePanel, false);
-                this.clearNewBookingFields();
-
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Wrong input type", "", WIDTH);
-        }
-    }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
-
-    private void newBookingFormAgenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormAgenTextFieldActionPerformed
-        //not supported
-    }//GEN-LAST:event_newBookingFormAgenTextFieldActionPerformed
-
-    private void newBookingFormPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newBookingFormPreviousButtonActionPerformed
-
-    private void newBookingAvailListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_newBookingAvailListValueChanged
-    }//GEN-LAST:event_newBookingAvailListValueChanged
-
-    private void newBookingFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormButtonSaveButtonActionPerformed
-        if (true) {
-            this.createCounter = 0;
-            JOptionPane.showMessageDialog(this, "All Saved", "", WIDTH);
-        } else {
-            JOptionPane.showMessageDialog(this, "Nothing to save", "", WIDTH);
-        }
-    }//GEN-LAST:event_newBookingFormButtonSaveButtonActionPerformed
 
     private void eBFindButtonBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFindButtonBackButtonActionPerformed
         cl.show(mainPage, "FrontPage");
@@ -1859,51 +1653,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.enableComponents(this.eBMatchPanel, false);
     }//GEN-LAST:event_eBFormButtonCancelButtonActionPerformed
 
-    private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
-        /* JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS 
-         String candidates = "1234567890";
-         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
-         if (hit) {
-         int textLength = selectedTextField.getText().length();
-         //== Controls "bindestreg"
-         if (textLength == 2 || (textLength % 2 == 1 && textLength > 1) && textLength < 7) {
-         selectedTextField.setText(selectedTextField.getText() + "-");
-         }
-         //== Controls maxlength
-         if (textLength > 7) {
-         char[] firstChars = selectedTextField.getText().toCharArray();
-         selectedTextField.setText("");
-         for (int i = 0; i < 7; i++) {
-         selectedTextField.setText(selectedTextField.getText() + firstChars[i]);
-         }
-         }
-         }*/
-    }//GEN-LAST:event_newBookingFindSearchFromTextFieldKeyTyped
-
-    private void newBookingFindButtonBackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonBackButtonMouseEntered
-        this.newBookingFindButtonBackButton.setToolTipText("Press to go to Front Page");
-    }//GEN-LAST:event_newBookingFindButtonBackButtonMouseEntered
-
-    private void newBookingFindButtonFindButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonMouseEntered
-        this.newBookingFindButtonFindButton.setToolTipText("Press to search for available apartment");
-    }//GEN-LAST:event_newBookingFindButtonFindButtonMouseEntered
-
-    private void newBookingAvailablePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailablePanelMouseEntered
-        this.newBookingAvailablePanel.setToolTipText("Select Apartment");
-    }//GEN-LAST:event_newBookingAvailablePanelMouseEntered
-
-    private void newBookingFormCreateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonMouseEntered
-        this.newBookingFormCreateButton.setToolTipText("Press to Create Booking");
-    }//GEN-LAST:event_newBookingFormCreateButtonMouseEntered
-
-    private void newBookingFormButtonSaveButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormButtonSaveButtonMouseEntered
-        this.newBookingFormButtonSaveButton.setToolTipText("Press to Save All");
-    }//GEN-LAST:event_newBookingFormButtonSaveButtonMouseEntered
-
-    private void newBookingFormPreviousButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonMouseEntered
-        this.newBookingFormPreviousButton.setToolTipText("Press to load Previous Customer");
-    }//GEN-LAST:event_newBookingFormPreviousButtonMouseEntered
-
     private void eBFindButtonBackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eBFindButtonBackButtonMouseEntered
         this.eBFindButtonBackButton.setToolTipText("Press to go to Front Page");
     }//GEN-LAST:event_eBFindButtonBackButtonMouseEntered
@@ -1927,10 +1676,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void eBFormButtonCancelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eBFormButtonCancelButtonMouseEntered
         this.eBFormButtonCancelButton.setToolTipText("Press to Cancel Changes");
     }//GEN-LAST:event_eBFormButtonCancelButtonMouseEntered
-
-    private void newBookingFormADateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormADateTextFieldActionPerformed
-        //not supported
-    }//GEN-LAST:event_newBookingFormADateTextFieldActionPerformed
 
     private void frontPageLogoutButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontPageLogoutButtonMouseEntered
         this.frontPageLogoutButton.setToolTipText("Press to Logout");
@@ -1963,6 +1708,173 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void frontPageNewBookingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontPageNewBookingMouseEntered
         this.frontPageNewBooking.setToolTipText("Press to go to New Booking Page");
     }//GEN-LAST:event_frontPageNewBookingMouseEntered
+
+    private void newBookingFormAgenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormAgenTextFieldActionPerformed
+        //not supported
+    }//GEN-LAST:event_newBookingFormAgenTextFieldActionPerformed
+
+    private void newBookingFormNONTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormNONTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newBookingFormNONTextFieldActionPerformed
+
+    private void newBookingFormADateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormADateTextFieldActionPerformed
+        //not supported
+    }//GEN-LAST:event_newBookingFormADateTextFieldActionPerformed
+
+    private void newBookingFormPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newBookingFormPreviousButtonActionPerformed
+
+    private void newBookingFormPreviousButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonMouseEntered
+        this.newBookingFormPreviousButton.setToolTipText("Press to load Previous Customer");
+    }//GEN-LAST:event_newBookingFormPreviousButtonMouseEntered
+
+    private void newBookingFormCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonActionPerformed
+
+        try {
+            Customer c = this.controller.newCustomer(this.newBookingFormFirstTextField.getText(), this.newBookingFormNameTextField.getText(), this.newBookingFormPhoneTextField.getText(), this.newBookingFormEmailTextField.getText(), this.newBookingFormNatTextField.getText(), this.newBookingFormCityTextField.getText(), this.newBookingFormZipTextField.getText(), this.newBookingFormStreetTextField.getText());
+
+            Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+            boolean success = this.controller.newBooking(c, a.getA_num(), this.newBookingFormADateTextField.getText(), Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormAgenTextField.getText(), Integer.parseInt(this.newBookingFormNOGTextField.getText()), Integer.parseInt(this.newBookingFormNONTextField.getText()) * a.getPrice(), c.getFirst_name(), c.getLast_name(), c.getPhone());
+            if (success) {
+                //this.createCounter++;
+                this.enableComponents(this, false);
+                JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
+                this.enableComponents(this, true);
+                this.enableComponents(this.newBookingFormPanel, false);
+                this.enableComponents(this.newBookingFormButtonPanel, true);
+                this.enableComponents(this.newBookingFormGreyPanel, false);
+                this.enableComponents(this.newBookingAvailablePanel, false);
+                this.clearNewBookingFields();
+
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Wrong input type", "", WIDTH);
+        }
+    }//GEN-LAST:event_newBookingFormCreateButtonActionPerformed
+
+    private void newBookingFormCreateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormCreateButtonMouseEntered
+        this.newBookingFormCreateButton.setToolTipText("Press to Create Booking");
+    }//GEN-LAST:event_newBookingFormCreateButtonMouseEntered
+
+    private void newBookingFormFirstTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormFirstTextFieldActionPerformed
+        //not supported
+    }//GEN-LAST:event_newBookingFormFirstTextFieldActionPerformed
+
+    private void newBookingAvailablePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailablePanelMouseEntered
+        this.newBookingAvailablePanel.setToolTipText("Select Apartment");
+    }//GEN-LAST:event_newBookingAvailablePanelMouseEntered
+
+    private void newBookingAvailListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_newBookingAvailListValueChanged
+
+    }//GEN-LAST:event_newBookingAvailListValueChanged
+
+    private void newBookingAvailListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailListMouseClicked
+
+        this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
+        this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
+        Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+
+        this.newBookingFormRoomTextField.setText("" + a.getA_num());
+        this.enableComponents(this.newBookingFormPanel, true);
+        this.enableComponents(this.newBookingFormGreyPanel, false);
+    }//GEN-LAST:event_newBookingAvailListMouseClicked
+
+    private void newBookingFindSearchPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchPanelMouseClicked
+
+    }//GEN-LAST:event_newBookingFindSearchPanelMouseClicked
+
+    private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
+
+        this.nBListModel.clear();
+
+        int roomNr = 0;
+
+        try {
+            roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
+
+        if (a == null) {
+
+            this.enableComponents(this, false);
+            JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
+            this.enableComponents(this, true);
+            this.enableComponents(this.newBookingFormPanel, false);
+            this.enableComponents(this.newBookingAvailablePanel, false);
+
+        } else {
+            for (int x = 0; x < a.size(); ++x) {
+                this.nBListModel.addElement(a.get(x));
+                this.enableComponents(this.newBookingAvailablePanel, true);
+            }
+        }
+
+    }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
+
+    private void newBookingFindButtonFindButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonMouseEntered
+        this.newBookingFindButtonFindButton.setToolTipText("Press to search for available apartment");
+    }//GEN-LAST:event_newBookingFindButtonFindButtonMouseEntered
+
+    private void newBookingFindButtonBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonBackButtonActionPerformed
+
+        if (this.createCounter == 0) {
+            cl.show(mainPage, "FrontPage");
+            this.clearNewBookingFields();
+            this.newBookingFindSearchFromTextField.setText("DD-MM-YY");
+        } else {
+            JOptionPane.showMessageDialog(this, "Save All Please", "", WIDTH);
+        }
+    }//GEN-LAST:event_newBookingFindButtonBackButtonActionPerformed
+
+    private void newBookingFindButtonBackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonBackButtonMouseEntered
+        this.newBookingFindButtonBackButton.setToolTipText("Press to go to Front Page");
+    }//GEN-LAST:event_newBookingFindButtonBackButtonMouseEntered
+
+    private void newBookingFindSearchTypeComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchTypeComboBoxMouseClicked
+        this.enableComponents(this.newBookingAvailablePanel, false);
+        this.enableComponents(this.newBookingFormPanel, false);
+    }//GEN-LAST:event_newBookingFindSearchTypeComboBoxMouseClicked
+
+    private void newBookingFindSearchNONTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchNONTextFieldMouseClicked
+        this.enableComponents(this.newBookingAvailablePanel, false);
+        this.enableComponents(this.newBookingFormPanel, false);
+    }//GEN-LAST:event_newBookingFindSearchNONTextFieldMouseClicked
+
+    private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
+        /* JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS
+        String candidates = "1234567890";
+        boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
+        if (hit) {
+            int textLength = selectedTextField.getText().length();
+            //== Controls "bindestreg"
+            if (textLength == 2 || (textLength % 2 == 1 && textLength > 1) && textLength < 7) {
+                selectedTextField.setText(selectedTextField.getText() + "-");
+            }
+            //== Controls maxlength
+            if (textLength > 7) {
+                char[] firstChars = selectedTextField.getText().toCharArray();
+                selectedTextField.setText("");
+                for (int i = 0; i < 7; i++) {
+                    selectedTextField.setText(selectedTextField.getText() + firstChars[i]);
+                }
+            }
+        }*/
+    }//GEN-LAST:event_newBookingFindSearchFromTextFieldKeyTyped
+
+    private void newBookingFindSearchFromTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldActionPerformed
+        this.enableComponents(this.newBookingAvailablePanel, false);
+        this.enableComponents(this.newBookingFormPanel, false);
+    }//GEN-LAST:event_newBookingFindSearchFromTextFieldActionPerformed
+
+    private void newBookingFindSearchFromTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldMouseClicked
+        this.newBookingFindSearchFromTextField.setText("");
+        this.enableComponents(this.newBookingAvailablePanel, false);
+        this.enableComponents(this.newBookingFormPanel, false);
+    }//GEN-LAST:event_newBookingFindSearchFromTextFieldMouseClicked
 
     private void clearEditBookingsFields() {
         this.eBFormADateTextField.setText("");
@@ -2087,7 +1999,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel mainPage;
     private javax.swing.JList newBookingAvailList;
-    private javax.swing.JPanel newBookingAvailTitlePanel;
     private javax.swing.JLabel newBookingAvailTitleTitle;
     private javax.swing.JPanel newBookingAvailablePanel;
     private javax.swing.JButton newBookingFindButtonBackButton;
@@ -2101,14 +2012,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JPanel newBookingFindSearchPanel;
     private javax.swing.JComboBox newBookingFindSearchTypeComboBox;
     private javax.swing.JLabel newBookingFindSearchTypeLabel;
-    private javax.swing.JPanel newBookingFindTitlePanel;
     private javax.swing.JLabel newBookingFindTitleTitle;
     private javax.swing.JLabel newBookingFormADateLabel;
     private javax.swing.JTextField newBookingFormADateTextField;
     private javax.swing.JLabel newBookingFormAgenLabel;
     private javax.swing.JTextField newBookingFormAgenTextField;
     private javax.swing.JPanel newBookingFormButtonPanel;
-    private javax.swing.JButton newBookingFormButtonSaveButton;
     private javax.swing.JLabel newBookingFormCityLabel;
     private javax.swing.JTextField newBookingFormCityTextField;
     private javax.swing.JButton newBookingFormCreateButton;
@@ -2133,11 +2042,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField newBookingFormRoomTextField;
     private javax.swing.JLabel newBookingFormStreetLabel;
     private javax.swing.JTextField newBookingFormStreetTextField;
-    private javax.swing.JPanel newBookingFormTitlePanel;
     private javax.swing.JLabel newBookingFormTitleTitle;
     private javax.swing.JTextField newBookingFormZipTextField;
     private javax.swing.JPanel newBookingPanel;
-    private javax.swing.JPanel newBookingTitlePanel;
     private javax.swing.JLabel newBookingTitleTitle;
     // End of variables declaration//GEN-END:variables
 }
