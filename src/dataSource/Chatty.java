@@ -159,28 +159,26 @@ public class Chatty {
 
     //======== Sotring method underneath
     public ArrayList<Booking> getBookingsBySpecificDate(String date, Connection con) {
-//        ArrayList<Booking> relevantBookings = new ArrayList();
-//        ArrayList<Booking> sortedRelevantBookings = new ArrayList();
-//        updateLists(con);
-//
-//        for (Booking booking : bookings) {
-//            if (booking.getDate_from().equalsIgnoreCase(date)) {
-//                relevantBookings.add(booking);
-//            }
-//        }
-//
-//        for (Booking booking : relevantBookings) {
-//            int max = 0;
-//            for (int i = 0; i < 104; i++) {
-//                if (booking.getA_num() == max) {
-//
-//                }
-//
-//            }
-//            max++;
-//        }
+        ArrayList<Booking> relevantBookings = new ArrayList();
+        ArrayList<Booking> sortedRelevantBookings = new ArrayList();
+        updateLists(con);
 
-        return null;
+        for (Booking booking : bookings) {
+            if (booking.getDate_from().equalsIgnoreCase(date)) {
+                relevantBookings.add(booking);
+            }
+        }
+
+        for (int i = 0; i <= 104; i++) {
+
+            for (Booking booking : relevantBookings) {
+                if (booking.getA_num() == i) {
+                    sortedRelevantBookings.add(booking);
+                }
+            }
+        }
+
+        return sortedRelevantBookings;
     }
 
     public ArrayList<Booking> getBookingsBySpecificMonth(String month, Connection con) {
