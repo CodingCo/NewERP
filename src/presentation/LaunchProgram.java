@@ -5,12 +5,8 @@
  */
 package presentation;
 
-import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.UIManager;
 
 /**
  *
