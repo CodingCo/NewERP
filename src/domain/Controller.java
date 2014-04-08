@@ -55,6 +55,13 @@ public class Controller {
         return status;
     }
 
+    public ArrayList<Apartment> getApartments(){
+        if(this.facade != null){
+            return this.facade.getApartments();
+        }
+        return null;
+    }
+    
     public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
         if (this.facade != null) {
             return this.facade.findBookings(bookingNr, name, date, apartment_nr);

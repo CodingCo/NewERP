@@ -4,7 +4,12 @@ import domain.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 /**
@@ -86,6 +91,11 @@ public class Chatty {
         customers = customerMapper.getAllCustomers(con);
     }
 
+    
+    public ArrayList<Apartment> getApartments(Connection con){
+      return  this.apartmentMapper.getAllApartments(con);
+    }
+    
     ///////////////////////////////////////////////// TRANSACTIONS
     public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) {
         int bookingStatus = 0;
@@ -169,8 +179,8 @@ public class Chatty {
             }
         }
 
+        //== Sort by Apartment-Num
         for (int i = 0; i <= 104; i++) {
-
             for (Booking booking : relevantBookings) {
                 if (booking.getA_num() == i) {
                     sortedRelevantBookings.add(booking);
@@ -181,12 +191,75 @@ public class Chatty {
         return sortedRelevantBookings;
     }
 
-    public ArrayList<Booking> getBookingsBySpecificMonth(String month, Connection con) {
-        return null;
+    public ArrayList<Booking> getBookingsBySpecificMonth(String date, Connection con) {
+        updateLists(con);
+        ArrayList<Booking> relevantBookings = new ArrayList();
+        ArrayList<Booking> sortedBookings = new ArrayList();
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+
+            Calendar desiredDate = new GregorianCalendar();
+            desiredDate.setTime(sdf.parse(date));
+
+            for (Booking currentBooking : bookings) {
+                Calendar currentDate = new GregorianCalendar();
+                currentDate.setTime(sdf.parse(currentBooking.getDate_from()));
+
+                if (desiredDate.get(2) == currentDate.get(2)) {
+                    relevantBookings.add(currentBooking);
+                } else {
+                    currentDate.add(Calendar.DATE, currentBooking.getNum_of_nights());
+                    if (desiredDate.get(2) == currentDate.get(2)) {
+                        relevantBookings.add(currentBooking);
+                    }
+                }
+            }
+        } catch (ParseException ex) {
+            System.out.println("Fail in Chatty getBookingsBySpecificMonth()");
+            ex.printStackTrace();
+        }
+
+        //== Sort by Apartment-Num
+        for (int i = 0; i <= 104; i++) {
+            for (Booking booking : relevantBookings) {
+                if (booking.getA_num() == i) {
+                    sortedBookings.add(booking);
+                }
+            }
+        }
+
+        return sortedBookings;
     }
 
     public ArrayList<Booking> getBookingsByApartment(int a_nr, Connection con) {
-        return null;
+        updateLists(con);
+        
+        ArrayList<Booking> relevantBookings = new ArrayList();
+       
+        Calendar endDate = new GregorianCalendar();
+        endDate.setTime(Calendar.getInstance().getTime());
+        endDate.add(2, 3); 
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        
+        try{
+            for(Booking currentBooking : bookings){
+            Calendar currentDate = new GregorianCalendar();
+            currentDate.setTime(sdf.parse(currentBooking.getDate_from()));
+            if(currentBooking.getA_num() == a_nr && currentDate.get(2) <= endDate.get(2)){
+                relevantBookings.add(currentBooking);
+            }
+        }
+        }catch(ParseException ex){
+            System.out.println("Fail in getBookingsByApartment");
+            ex.printStackTrace();
+        }
+        
+        //== Sort by date beneith
+        Collections.sort(relevantBookings); 
+        
+        return relevantBookings;
     }
 
 }

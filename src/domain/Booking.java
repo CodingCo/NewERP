@@ -1,6 +1,6 @@
 package domain;
 
-public class Booking {
+public class Booking implements Comparable {
 
     private int b_id;
     private int cust_id;
@@ -141,5 +141,40 @@ public class Booking {
     @Override
     public String toString() {
         return b_id + ", " + first_name + ", Apartment " + a_num + ", Date " + date_from + ", Nights " + num_of_nights;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+
+        Booking compareBooking = (Booking) o;
+        String[] thisDate = this.getDate_from().split("-");
+        int thisDay = Integer.parseInt(thisDate[0]);
+        int thisMonth = Integer.parseInt(thisDate[1]);
+        int thisYear = Integer.parseInt(thisDate[2]);
+
+        String[] compareDate = compareBooking.getDate_from().split("-");
+        int compareDay = Integer.parseInt(compareDate[0]);
+        int compareMonth = Integer.parseInt(compareDate[1]);
+        int compareYear = Integer.parseInt(compareDate[2]);
+
+        if (thisYear > compareYear) {
+            return 1;
+        } else if (thisYear < compareYear) {
+            return -1;
+        } else {
+            if (thisMonth > compareMonth) {
+                return 1;
+            } else if (thisMonth < compareMonth) {
+                return -1;
+            } else {
+                if (thisDay > compareDay) {
+                    return 1;
+                } else if (thisDay < compareDay) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
     }
 }
