@@ -86,6 +86,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         isFullScreen = device.isFullScreenSupported();
         if (!System.getProperty("os.name").startsWith("Mac")) {
             setUndecorated(isFullScreen);
+            dispose();
         }
         setResizable(!isFullScreen);
         if (isFullScreen) {
