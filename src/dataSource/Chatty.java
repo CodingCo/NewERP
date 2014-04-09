@@ -91,13 +91,13 @@ public class Chatty {
         customers = customerMapper.getAllCustomers(con);
     }
 
-    
-    public ArrayList<Apartment> getApartments(Connection con){
-      return  this.apartmentMapper.getAllApartments(con);
+    public ArrayList<Apartment> getApartments(Connection con) {
+        return this.apartmentMapper.getAllApartments(con);
     }
-    
+
     ///////////////////////////////////////////////// TRANSACTIONS
     public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) {
+
         int bookingStatus = 0;
         int customerStatus = 0;
 
@@ -105,47 +105,60 @@ public class Chatty {
             String lock = "LOCK TABLE booking IN EXCLUSIVE MODE";
             con.setAutoCommit(false);
             Statement statement = con.createStatement();
-            statement.execute(lock);
+            boolean lockStatus = statement.execute(lock);
 
-            if (apartmentMapper.checkAvailAbleApartment(b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
-                customerStatus = customerMapper.insertNewCustomer(c, con);
-                bookingStatus = bookingMapper.insertNewBooking(b, customerStatus, con);
+            if (!lockStatus) {
+
+                if (apartmentMapper.checkAvailAbleApartment(b.getB_id(), b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
+                    customerStatus = customerMapper.insertNewCustomer(c, con);
+                    bookingStatus = bookingMapper.insertNewBooking(b, customerStatus, con);
+                }
+                if (customerStatus == 0 || bookingStatus == 0) {
+                    con.rollback();
+                    return false;
+                } else {
+                    con.commit();
+                    return true;
+                }
             }
-            if (customerStatus == 0 || bookingStatus == 0) {
-                con.rollback();
-                return false;
-            } else {
-                con.commit();
-            }
+
         } catch (SQLException ex) {
             System.err.println("Fail in createNewBooking()");
             System.out.println(ex);
         }
-        return true;
+        return false;
     }
 
-    public boolean updateBookingTransaction(Booking booking, Customer customer, Connection con) {
-        int bookingStatus;
-        int customerStatus;
+    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) {
+        int bookingStatus = 0;
+        int customerStatus = 0;
 
         try {
+            String lock = "LOCK TABLE booking IN EXCLUSIVE MODE";
             con.setAutoCommit(false);
+            Statement statement = con.createStatement();
+            boolean lockStatus = statement.execute(lock);
 
-            bookingStatus = bookingMapper.updateBooking(booking, con);
-            customerStatus = customerMapper.updateCustomer(con, customer);
-
-            if (bookingStatus == 0 || customerStatus == 0) {
-                con.rollback();
-                return false;
-            } else {
-                con.commit();
+            if (!lockStatus) {
+                if (apartmentMapper.checkAvailAbleApartment(b.getB_id(), b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
+                    bookingStatus = bookingMapper.updateBooking(b, con);
+                    customerStatus = customerMapper.updateCustomer(con, customer);
+                }
+                
+                if (bookingStatus == 0 || customerStatus == 0) {
+                    con.rollback();
+                    return false;
+                } else {
+                    con.commit();
+                    return true;
+                }
             }
         } catch (SQLException ex) {
             System.err.println("Fail in updateBooking - Hilsen Thomas og Christopher");
             System.out.println(ex);
         }
 
-        return true;
+        return false;
     }
 
     public boolean deleteBookingTransaction(int b_id, Connection con) {
@@ -234,31 +247,31 @@ public class Chatty {
 
     public ArrayList<Booking> getBookingsByApartment(int a_nr, Connection con) {
         updateLists(con);
-        
+
         ArrayList<Booking> relevantBookings = new ArrayList();
-       
+
         Calendar endDate = new GregorianCalendar();
         endDate.setTime(Calendar.getInstance().getTime());
-        endDate.add(2, 3); 
-        
+        endDate.add(2, 3);
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
-        
-        try{
-            for(Booking currentBooking : bookings){
-            Calendar currentDate = new GregorianCalendar();
-            currentDate.setTime(sdf.parse(currentBooking.getDate_from()));
-            if(currentBooking.getA_num() == a_nr && currentDate.get(2) <= endDate.get(2)){
-                relevantBookings.add(currentBooking);
+
+        try {
+            for (Booking currentBooking : bookings) {
+                Calendar currentDate = new GregorianCalendar();
+                currentDate.setTime(sdf.parse(currentBooking.getDate_from()));
+                if (currentBooking.getA_num() == a_nr && currentDate.get(2) <= endDate.get(2)) {
+                    relevantBookings.add(currentBooking);
+                }
             }
-        }
-        }catch(ParseException ex){
+        } catch (ParseException ex) {
             System.out.println("Fail in getBookingsByApartment");
             ex.printStackTrace();
         }
-        
+
         //== Sort by date beneith
-        Collections.sort(relevantBookings); 
-        
+        Collections.sort(relevantBookings);
+
         return relevantBookings;
     }
 
