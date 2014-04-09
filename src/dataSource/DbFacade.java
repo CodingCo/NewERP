@@ -16,6 +16,8 @@ public class DbFacade {
     private DbFacade() {
         this.chatty = new Chatty();
         con = DBConnector.getInstance().getConnection();
+        CronThreader c = new CronThreader(con);
+        new Thread(c).start();
     }
 
     public static DbFacade getInstance() {

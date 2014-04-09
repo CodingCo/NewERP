@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Robert
  */
-public class CronThreader {
+public class CronThreader implements Runnable {
 
     ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     Connection con;
@@ -29,10 +29,20 @@ public class CronThreader {
         this.con = con;
     }
 
-    public void runThread() {
+    @Override
+    public void run() {
+        System.out.println("hej");
         this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.HOURS);
     }
 
+    public static void main(String[] args) {
+        DBConnector dcon = DBConnector.getInstance();
+        Connection con = dcon.getConnection();
+        CronThreader c = new CronThreader(con);
+        new Thread(c).start();
+    }
+    
+    
     public void doCronJob() {
 
         String SQL1 = "BEGIN CPHRE31.MOVEBOOKING; END;";
@@ -61,18 +71,8 @@ public class CronThreader {
         }
     }
 
-    public static void main(String[] args) {
-
-        DBConnector dcon = DBConnector.getInstance();
-        Connection con = dcon.getConnection();
-        CronThreader c = new CronThreader(con);
-        c.runThread();
-
-    }
-
     Runnable periodicTask = new Runnable() {
         public void run() {
-
             doCronJob();
 
             c++;
