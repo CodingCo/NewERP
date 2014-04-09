@@ -34,14 +34,6 @@ public class CronThreader implements Runnable {
         System.out.println("hej");
         this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.HOURS);
     }
-
-    public static void main(String[] args) {
-        DBConnector dcon = DBConnector.getInstance();
-        Connection con = dcon.getConnection();
-        CronThreader c = new CronThreader(con);
-        new Thread(c).start();
-    }
-    
     
     public void doCronJob() {
 
