@@ -1,7 +1,11 @@
 package domain;
 
 import dataSource.DbFacade;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class Controller {
@@ -55,13 +59,13 @@ public class Controller {
         return status;
     }
 
-    public ArrayList<Apartment> getApartments(){
-        if(this.facade != null){
+    public ArrayList<Apartment> getApartments() {
+        if (this.facade != null) {
             return this.facade.getApartments();
         }
         return null;
     }
-    
+
     public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
         if (this.facade != null) {
             return this.facade.findBookings(bookingNr, name, date, apartment_nr);
@@ -82,31 +86,54 @@ public class Controller {
         }
         return null;
     }
-    
+
     public ArrayList<Booking> getBookingsBySpecificDate(String date) {
         if (this.facade != null) {
             return this.facade.getBookingsBySpecificDate(date);
         }
         return null;
     }
-    
+
     public ArrayList<Booking> getBookingsBySpecificMonth(String month) {
         if (this.facade != null) {
             return this.facade.getBookingsBySpecificMonth(month);
         }
         return null;
     }
-    
+
     public ArrayList<Booking> getBookingsByApartment(int a_num) {
         if (this.facade != null) {
             return this.facade.getBookingsByApartment(a_num);
         }
         return null;
     }
-    
-    public void updateLists(){
-	if (this.facade != null) {
+
+    public void updateLists() {
+        if (this.facade != null) {
             this.facade.updateLists();
         }
+    }
+
+    //== No booking back in time - method
+    public static boolean isDateValid(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        Calendar currentDate = null;
+        Calendar dateToCheck = null;
+
+        try {
+            currentDate = new GregorianCalendar();
+            dateToCheck = new GregorianCalendar();
+            currentDate.setTime(Calendar.getInstance().getTime());
+            currentDate.add(Calendar.DAY_OF_MONTH, -1);
+            dateToCheck.setTime(sdf.parse(date));
+            
+            
+            if(dateToCheck.compareTo(currentDate) == 1)
+                return true;
+            
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }
