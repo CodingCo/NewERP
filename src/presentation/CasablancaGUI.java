@@ -978,7 +978,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingTodayjButton.setMaximumSize(new java.awt.Dimension(120, 30));
         listBookingTodayjButton.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingTodayjButton.setPreferredSize(new java.awt.Dimension(120, 30));
-        listBookingTodayjButton.setSize(new java.awt.Dimension(120, 30));
         listBookingTodayjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingTodayjButtonActionPerformed(evt);
@@ -991,13 +990,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingDatejTextField1.setText("DD-MM-YY");
         listBookingDatejTextField1.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingDatejTextField1.setPreferredSize(new java.awt.Dimension(120, 30));
-        listBookingDatejTextField1.setSize(new java.awt.Dimension(120, 30));
 
         listBookingSearchjButton.setText("Search");
         listBookingSearchjButton.setMaximumSize(new java.awt.Dimension(120, 30));
         listBookingSearchjButton.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingSearchjButton.setPreferredSize(new java.awt.Dimension(120, 30));
-        listBookingSearchjButton.setSize(new java.awt.Dimension(120, 30));
         listBookingSearchjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingSearchjButtonActionPerformed(evt);
@@ -1012,7 +1009,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingBackButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingBackButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingBackButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        listBookingBackButton.setSize(new java.awt.Dimension(100, 30));
         listBookingBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingBackButtonActionPerformed(evt);
@@ -1025,17 +1021,17 @@ public class CasablancaGUI extends javax.swing.JFrame {
             menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
                 .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listBookingTodayjButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listBookingBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 71, Short.MAX_VALUE))
+                    .addComponent(listBookingTodayjButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listBookingDatejTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(listBookingSearchjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                            .addComponent(listBookingDatejTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                                .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(listBookingBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listBookingSearchjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuOptionsjPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1085,7 +1081,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         );
         listBookingDrawingPanelLayout.setVerticalGroup(
             listBookingDrawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         listBookingDisplayTypejLabel.setText("Display");
@@ -1094,7 +1090,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingRefreshjButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingRefreshjButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingRefreshjButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        listBookingRefreshjButton.setSize(new java.awt.Dimension(100, 30));
         listBookingRefreshjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingRefreshjButtonActionPerformed(evt);
@@ -1107,7 +1102,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingPreviousListButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingPreviousListButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingPreviousListButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        listBookingPreviousListButton.setSize(new java.awt.Dimension(100, 30));
         listBookingPreviousListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingPreviousListButtonActionPerformed(evt);
@@ -1118,7 +1112,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingNextListButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingNextListButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingNextListButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        listBookingNextListButton.setSize(new java.awt.Dimension(100, 30));
         listBookingNextListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBookingNextListButtonActionPerformed(evt);
@@ -1148,12 +1141,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listOptionjPanelLayout.setVerticalGroup(
             listOptionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listOptionjPanelLayout.createSequentialGroup()
-                .addGroup(listOptionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listOptionjPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(listOptionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listBookingLastUpdatedjLabel)))
+                .addContainerGap()
+                .addGroup(listOptionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listBookingLastUpdatedjLabel)
                     .addComponent(listBookingDisplayTypejLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(listBookingDrawingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
