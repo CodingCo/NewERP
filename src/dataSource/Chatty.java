@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
@@ -144,7 +145,7 @@ public class Chatty {
                     bookingStatus = bookingMapper.updateBooking(b, con);
                     customerStatus = customerMapper.updateCustomer(con, customer);
                 }
-                
+
                 if (bookingStatus == 0 || customerStatus == 0) {
                     con.rollback();
                     return false;
@@ -181,27 +182,68 @@ public class Chatty {
     }
 
     //======== Sotring method underneath
-    public ArrayList<Booking> getBookingsBySpecificDate(String date, Connection con) {
-        ArrayList<Booking> relevantBookings = new ArrayList();
-        ArrayList<Booking> sortedRelevantBookings = new ArrayList();
-        updateLists(con);
+    public ArrayList<Booking[]> getBookingsToDay(Connection con) {
+        ArrayList<Booking> oldBookings = new ArrayList();
+        ArrayList<Booking> newBookings = new ArrayList();
+        ArrayList<Booking[]> BookingPairs = new ArrayList(); // The list to return
+        String toDay;
 
-        for (Booking booking : bookings) {
-            if (booking.getDate_from().equalsIgnoreCase(date)) {
-                relevantBookings.add(booking);
+        updateLists(con);
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        Date date = new Date();
+        toDay = sdf.format(date);
+
+        for (Booking currentBooking : bookings) {
+
+            if (currentBooking.getDate_from().equals(toDay)) {
+                newBookings.add(currentBooking);
+            } else {
+                int num_nights = currentBooking.getNum_of_nights();
+                String bookingDateBegin = currentBooking.getDate_from();
+
+                try {
+                    c.setTime(sdf.parse(bookingDateBegin));
+                } catch (ParseException ex) {
+                    System.out.println("Error in method getBookingsToDay");
+                    ex.printStackTrace();
+                }
+
+                c.add(Calendar.DATE, num_nights);
+                String bookingDateEnd = sdf.format(c.getTime());
+
+                if (bookingDateEnd.equals(toDay)) {
+                    oldBookings.add(currentBooking);
+                }
+
             }
+
         }
 
-        //== Sort by Apartment-Num
-        for (int i = 0; i <= 104; i++) {
-            for (Booking booking : relevantBookings) {
-                if (booking.getA_num() == i) {
-                    sortedRelevantBookings.add(booking);
+        int i = 0;
+        while (i <= 104) {
+            Booking[] bookingPair = new Booking[2];
+
+            for (Booking current : oldBookings) {
+                if (current.getA_num() == i) {
+                    bookingPair[0] = current;
                 }
             }
-        }
 
-        return sortedRelevantBookings;
+            for (Booking current : newBookings) {
+                if (current.getA_num() == i) {
+                    bookingPair[1] = current;
+                }
+            }
+
+            if (bookingPair[0] != null || bookingPair[1] != null) {
+                BookingPairs.add(bookingPair);
+            }
+
+            i++;
+        }
+        return BookingPairs;
     }
 
     public ArrayList<Booking> getBookingsBySpecificMonth(String date, Connection con) {
