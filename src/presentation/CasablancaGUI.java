@@ -49,6 +49,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private DrawToday drawToday;
     private DrawMonth drawMonth;
+    private DrawApartment drawApartment;
     private Graphics g;
 
     /**
@@ -81,6 +82,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.bcHM = new HashMap();
         this.drawToday = new DrawToday(this.listBookingDrawingPanel);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
+        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
 
         //pack();
         //setVisible(true);
@@ -993,6 +995,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel33.setText("Apartment List");
 
+        listBookingApartmentjList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listBookingApartmentjListMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(listBookingApartmentjList);
 
         listBookingBackButton.setText("Back");
@@ -1737,7 +1744,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
         boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
-
         if (status) {
             this.clearEditBookingsFields();
             JOptionPane.showMessageDialog(this, "Booking Updated", "", WIDTH);
@@ -2030,15 +2036,17 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
 
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
+        this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
         this.drawToday.setVisible(true);
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
-        this.listBookingDrawingPanel.add(this.drawToday);
+        this.listBookingDrawingPanel.removeAll();
+        this.listBookingDrawingPanel.add(this.drawMonth);
         this.listBookingDrawingPanel.repaint();
-        this.drawToday.setVisible(true);
+        this.drawMonth.setVisible(true);
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
 
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
@@ -2046,36 +2054,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.removeAll();
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
 
+    private void listBookingApartmentjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingApartmentjListMouseClicked
+        
+        Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
+        
+        
+        this.listBookingDrawingPanel.removeAll();
+        this.listBookingDrawingPanel.add(this.drawApartment);
+        this.listBookingDrawingPanel.repaint();
+        this.drawApartment.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_listBookingApartmentjListMouseClicked
+
     public void paintCalenderBorder(Graphics page) {
-        Graphics2D graphics2D = (Graphics2D) g;
-        //Set  anti-alias!
-        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        // Set anti-alias for text
-        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-
-        int width = this.listBookingDrawingPanel.getWidth() - 1;
-        System.out.println(width);
-        int rSize = width / 31;
-
-        int xPos = 1;
-        int yPos = 2;
-
-        for (int i = 0; i < 31; i++) {
-
-            page.setColor(Color.GRAY);
-            page.fillRect(xPos, yPos, rSize - 2, 40);
-            page.setColor(Color.WHITE);
-            page.drawString("" + (i + 1), xPos + 5, yPos + 20);
-
-            if (i % 2 == 0) {
-                xPos = xPos + rSize + 1;
-            } else {
-                xPos = xPos + rSize;
-            }
-        }
-
     }
 
     private void setFullScreenSettings() {

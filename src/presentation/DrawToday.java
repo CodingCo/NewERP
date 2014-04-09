@@ -21,16 +21,16 @@ import javax.swing.JPanel;
 public class DrawToday extends JPanel {
 
     private JPanel panel;
-    private final Color red;
+    private final Color blue;
     private final Color green;
-    private final Color grey;
+    private final Color orange;
 
     public DrawToday(JPanel panel) {
         this.panel = panel;
         this.setSize(panel.getSize());
-        this.red = new Color(204, 0, 0);
-        this.green = new Color(102, 153, 0);
-        this.grey = new Color(153, 153, 153);
+        this.blue = new Color(0, 153, 204);
+        this.green = new Color(112,186,52);
+        this.orange = new Color(255,204,51);
     }
 
     @Override
@@ -59,19 +59,19 @@ public class DrawToday extends JPanel {
         int xTwoPos = boxLength + (xSpaceBuffer * 2);
         int yBoxPos = 0;
 
-        page.setColor(grey);
+        page.setColor(orange);
         page.fillRect(0, 0, width, boxHeight);
         yBoxPos = boxHeight + ySpaceBuffer;
 
         for (int i = 0; i < numOfRows; ++i) {
             if (i == 1) {
-                page.setColor(red);
+                page.setColor(blue);
                 page.fillRect(xOnePos, yBoxPos, fullBoxlength, boxHeight);
             } else if (i == 3) {
                 page.setColor(green);
                 page.fillRect(xOnePos, yBoxPos, fullBoxlength, boxHeight);
             } else {
-                page.setColor(red);
+                page.setColor(blue);
                 page.fillRect(xOnePos, yBoxPos, boxLength, boxHeight);
 
                 page.setColor(green);
@@ -81,7 +81,7 @@ public class DrawToday extends JPanel {
             yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
         }
 
-        page.setColor(Color.white);
+        page.setColor(Color.black);
         page.setFont(new Font("Arial", 1, 18));
         page.drawString("Guests Today", 10, 35);
 
