@@ -10,15 +10,13 @@ import domain.Booking;
 import domain.Controller;
 import domain.Customer;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,8 +48,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private DrawToday drawToday;
     private DrawMonth drawMonth;
     private DrawApartment drawApartment;
-    private Graphics g;
-
+    
+    
     /**
      * Creates new form CasablancaGUI
      */
@@ -83,7 +81,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawToday = new DrawToday(this.listBookingDrawingPanel);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-
         //pack();
         //setVisible(true);
         setFullScreenSettings();
