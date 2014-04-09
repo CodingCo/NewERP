@@ -12,7 +12,6 @@ import domain.Customer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.Graphics;
@@ -38,6 +37,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private int dateCounter = 0;
     private Apartment tempA = null;
     private HashMap<Booking, Customer> bcHM = null;
+    private ArrayList<Booking[]> todayDrawList = null;
 
     private boolean isFullScreen = false;
     private GraphicsDevice device;
@@ -48,8 +48,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private DrawToday drawToday;
     private DrawMonth drawMonth;
     private DrawApartment drawApartment;
-    
-    
+
     /**
      * Creates new form CasablancaGUI
      */
@@ -78,12 +77,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
+        this.todayDrawList = this.controller.getBookingsBySpecificDate();
         this.drawToday = new DrawToday(this.listBookingDrawingPanel);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-        //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        this.drawToday.loadInList(todayDrawList);
+        pack();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1917,19 +1918,15 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
         this.nBListModel.clear();
-
         int roomNr = 0;
-
         try {
             roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
 
         if (a == null) {
-
             this.enableComponents(this, false);
             JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
             this.enableComponents(this, true);
@@ -2012,15 +2009,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void listBookingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingPageButtonActionPerformed
         cl.show(mainPage, "ListBooking");
-        ArrayList<Apartment> list = this.controller.getApartments();
-        for (Apartment a : list) {
-            this.lBlistModel.addElement(a);
-        }
     }//GEN-LAST:event_listBookingPageButtonActionPerformed
 
     private void listBookingRefreshjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingRefreshjButtonActionPerformed
         this.listBookingLastUpdatedjLabel.setText("Updated 1 minute ago");
-
+        ArrayList<Apartment> list = this.controller.getApartments();
+        for (Apartment a : list) {
+            this.lBlistModel.addElement(a);
+        }
 
     }//GEN-LAST:event_listBookingRefreshjButtonActionPerformed
 
@@ -2037,6 +2033,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
         this.drawToday.setVisible(true);
+
+
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
@@ -2052,17 +2050,15 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
 
     private void listBookingApartmentjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingApartmentjListMouseClicked
-        
+
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-        
-        
+
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
         this.drawApartment.setVisible(true);
-        
-        
-        
+
+
     }//GEN-LAST:event_listBookingApartmentjListMouseClicked
 
     public void paintCalenderBorder(Graphics page) {

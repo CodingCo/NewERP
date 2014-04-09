@@ -7,7 +7,6 @@ package presentation;
 
 import domain.Booking;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +14,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -31,7 +31,8 @@ public class DrawToday extends JPanel {
     private final Color hoverBlue;
     private final Color hoverGreen;
 
-    private Graphics graphics;
+    private ArrayList<Booking[]> list;
+    private int index;
 
     public DrawToday(JPanel panel) {
         this.panel = panel;
@@ -41,6 +42,11 @@ public class DrawToday extends JPanel {
         this.orange = new Color(255, 204, 51);
         this.hoverBlue = new Color(0, 127, 178);
         this.hoverGreen = new Color(116, 160, 0);
+        this.list = new ArrayList();
+    }
+
+    public void loadInList(ArrayList<Booking[]> list) {
+        this.list = list;
     }
 
     @Override
@@ -48,16 +54,11 @@ public class DrawToday extends JPanel {
         this.setSize(this.panel.getWidth(), this.panel.getHeight());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
-
         Graphics2D graphics2D = (Graphics2D) page;
-        //Set  anti-alias!
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        // Set anti-alias for text
         graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-
-        ArrayList<Booking[]> list;
 
         int xSpaceBuffer = width / 20;
         int ySpaceBuffer = 20;
@@ -73,36 +74,36 @@ public class DrawToday extends JPanel {
         page.fillRect(0, 0, width, boxHeight);
         yBoxPos = boxHeight + ySpaceBuffer;
 
-        for (int i = 0; i < numOfRows; ++i) {
-            if (i == 1) {
-                //page.setColor(blue);
-                //page.fillRect(xOnePos, yBoxPos, fullBoxlength, boxHeight);
-                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue);
-            } else if (i == 3) {
-                //page.setColor(green);
-                //page.fillRect(xOnePos, yBoxPos, fullBoxlength, boxHeight);
-                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight,green);
+        for (int i = 0; i < this.list.size(); ++i) {
+            Booking b1 = list.get(i)[0];
+            Booking b2 = list.get(i)[1];
+
+            if (b1 != null && b2 != null) {
+                // draw two small check -in/out                
+                inBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue);
+                inBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hoverGreen);
+            } else if (b1 != null) {
+                // draw long checkout
+                inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hoverBlue);
+
             } else {
-                //page.setColor(blue);
-                addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight,blue);
-
-                //page.setColor(green);
-                addBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight,green);
-
+                // draw long checkin
+                inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hoverGreen);
             }
             yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
         }
-
         page.setColor(Color.black);
         page.setFont(new Font("Arial", 1, 18));
         page.drawString("Guests Today", 10, 35);
-        //paintComponentss(this.graphics);
     }
 
-    private void addBookingPanel(int x, int y, int width, int height, Color c) {
+    
+    
+    
+    private void inBookingPanel(int x, int y, int width, int height, Color c, Color hover) {
         JPanel p = new JPanel();
-        this.graphics = p.getGraphics();
-
+        JLabel l = new JLabel();
+        JLabel k = new JLabel();
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -111,25 +112,31 @@ public class DrawToday extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                p.setBackground(hoverBlue);
+                p.setBackground(hover);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                p.setBackground(blue);
+                p.setBackground(c);
             }
 
         });
         this.panel.add(p);
+        p.add(l);
+        p.add(k);
+        
+        k.setText("jesus mu nigguh");
+        k.setLocation(x+100, y+20);
+        k.setSize(20, 20);
+        k.setBackground(Color.black);
+        
+        l.setText("hej med jer");
+        l.setLocation(x, y);
+        l.setSize(20, 20);
+        l.setBackground(Color.black);
         p.setLocation(x, y);
         p.setSize(width, height);
         p.setBackground(c);
-        p.setVisible(true);
-    }
-
-    public void paintComponentss(Graphics page) {
-        page.setColor(Color.black);
-        page.drawString("This is my custom Panel!", 5, 5);
     }
 
 }

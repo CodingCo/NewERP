@@ -99,12 +99,7 @@ public class ApartmentMapper {
     }
 
     
-    public static void main(String[] args) {
-        DBConnector dcon = DBConnector.getInstance();
-        Connection con = dcon.getConnection();
-        ApartmentMapper a = new ApartmentMapper();
-        System.out.println(a.checkAvailAbleApartment(1149, "26-11-13", 8, 1, con));
-    }
+    
     
     public boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
         boolean status = false;
