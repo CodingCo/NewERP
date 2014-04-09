@@ -72,9 +72,9 @@ public class DbFacade {
         return null;
     }
 
-    public ArrayList<Booking> getBookingsBySpecificDate(String date) {
+    public ArrayList<Booking[]> getBookingsBySpecificDate() {
         if (this.chatty != null) {
-            return this.chatty.getBookingsBySpecificDate(date, con);
+            return this.chatty.getBookingsToDay(con);
         }
         return null;
     }

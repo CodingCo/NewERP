@@ -87,9 +87,9 @@ public class Controller {
         return null;
     }
 
-    public ArrayList<Booking> getBookingsBySpecificDate(String date) {
+    public ArrayList<Booking[]> getBookingsBySpecificDate() {
         if (this.facade != null) {
-            return this.facade.getBookingsBySpecificDate(date);
+            return this.facade.getBookingsBySpecificDate();
         }
         return null;
     }
