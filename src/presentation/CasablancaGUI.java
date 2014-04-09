@@ -62,7 +62,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         INDEX_WIDTH = d.width;
         INDEX_HEIGHT = d.height;
         setSize(d.width, d.height);
-
+        
         this.controller = new Controller();
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
