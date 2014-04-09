@@ -72,7 +72,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         //cl.show(mainPage, "FrontPage");   
         this.frontPageLogoutButton.setVisible(false);
         this.newBookingFormPreviousButton.setVisible(false);
-
         this.lBlistModel = new DefaultListModel();
         this.listBookingApartmentjList.setModel(lBlistModel);
         this.nBListModel = new DefaultListModel();
@@ -81,12 +80,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
         begin();
-        System.out.println(getSize());
     }
 
     private void begin() {
         isFullScreen = device.isFullScreenSupported();
-        //setUndecorated(isFullScreen);
+        if (!System.getProperty("os.name").startsWith("Mac")) {
+            setUndecorated(isFullScreen);
+        }
         setResizable(!isFullScreen);
         if (isFullScreen) {
             device.setFullScreenWindow(this);
@@ -2087,7 +2087,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
 
         g = this.listBookingDrawingPanel.getGraphics();
-        this.paintComponents(g);
+        this.paintBookingToday(g);
 
         //this.listBookingDrawingPanel.add(this);
 
@@ -2101,28 +2101,43 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.cl.show(mainPage, "FrontPage");
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
 
-    
-    
-    public void paintBookingToday(Graphics page){
-    
-        
-        
-        int width = this.listBookingDrawingPanel.getWidth() -1;
-        int spaceBuffer = width / 5;
-        
-        int xBoxPos = 0;
-        int yBoxPos = 0;
+    public void paintBookingToday(Graphics page) {
+
+        int width = this.listBookingDrawingPanel.getWidth() - 1;
+        int height = this.listBookingDrawingPanel.getHeight() - 1;
+
+        // box sizes
+        int xSpaceBuffer = width / 20;
+        int ySpaceBuffer = 20;
+        int boxHeight = 70;
+        int boxLength = (width / 2) - xSpaceBuffer;
+
+        ArrayList<Booking[]> list;
+
+        int numOfRows = height / (boxHeight + ySpaceBuffer);
+
+        int xOnePos = 0;
+        int xTwoPos = boxLength + (xSpaceBuffer*2);
+        int yBoxPos = 2;
         int xTextPos = 0;
         int yTextPos = 0;
+
+        page.fillRect(0, 0, width, boxHeight);
         
-        
-        
-    
-    
+
+        for (int i = 0; i < numOfRows; ++i) {
+
+            page.setColor(Color.RED);
+            page.fillRect(xOnePos, yBoxPos, boxLength, boxHeight);
+
+            page.setColor(Color.GREEN);
+            page.fillRect(xTwoPos, yBoxPos, boxLength, boxHeight);
+            
+
+            yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
+        }
     }
-    
-    
-    
+
     public void paintCalenderBorder(Graphics page) {
         Graphics2D graphics2D = (Graphics2D) g;
         //Set  anti-alias!
@@ -2131,7 +2146,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         // Set anti-alias for text
         graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        
+
         int width = this.listBookingDrawingPanel.getWidth() - 1;
         System.out.println(width);
         int rSize = width / 31;
