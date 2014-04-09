@@ -98,10 +98,21 @@ public class ApartmentMapper {
         return aplist;
     }
 
-    public boolean checkAvailAbleApartment(String date, int days, int a_num, Connection con) {
+    
+    public static void main(String[] args) {
+        DBConnector dcon = DBConnector.getInstance();
+        Connection con = dcon.getConnection();
+        ApartmentMapper a = new ApartmentMapper();
+        System.out.println(a.checkAvailAbleApartment(1149, "26-11-13", 8, 1, con));
+    }
+    
+    public boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
         boolean status = false;
         days = days - 1;
-        String SQL = "select a_num from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights) or ((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?)) and a_num = ?";
+        String SQL = "select a_num from apartment where a_num not in (select a_num from (SELECT * from booking where b_id <> ?) " +
+                     "where ((to_date(?) between (date_from) and date_from + number_of_nights - 1) or " +
+                     "((to_date(?)+?) between (date_from) and (date_from + number_of_nights - 1)) or " +
+                     "date_from between to_date(?) and (to_date(?)+?))) and a_num = ?";  
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
         PreparedStatement statement = null;
         try {
@@ -112,13 +123,14 @@ public class ApartmentMapper {
         }
         try {
             statement = con.prepareStatement(SQL);
-            statement.setString(1, date);
+            statement.setInt(1, id);
             statement.setString(2, date);
-            statement.setInt(3, days);
-            statement.setString(4, date);
+            statement.setString(3, date);
+            statement.setInt(4, days);
             statement.setString(5, date);
-            statement.setInt(6, days);
-            statement.setInt(7, a_num);
+            statement.setString(6, date);
+            statement.setInt(7, days);
+            statement.setInt(8, a_num);
 
             ResultSet st = statement.executeQuery();
 
