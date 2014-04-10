@@ -70,7 +70,7 @@ public class BookingMapper {
 
     public int updateBooking(Booking b, Connection con) /*throws UpdateBookingException*/{
         int rowsIns = 0;
-        String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = ?, number_of_nights = ?, "
+        String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = TO_DATE(?,'DD-MM-YY'), number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
                 + "WHERE b_id = ? AND version_num = ?";
         PreparedStatement st = null;
