@@ -56,6 +56,13 @@ public class DrawToday extends JPanel {
         this.list = list;
     }
 
+    
+    public void next(){
+    
+    
+    
+    }
+    
     @Override
     public void paintComponent(Graphics page) {
         this.setSize(this.panel.getWidth(), this.panel.getHeight());
@@ -74,7 +81,8 @@ public class DrawToday extends JPanel {
         int xOnePos = 0;
         int xTwoPos = boxLength + (xSpaceBuffer * 2);
         int yBoxPos = 0;
-
+        String date = "";
+        
         page.setColor(Color.WHITE);
         page.fillRect(0, 0, width, boxHeight);
         yBoxPos = boxHeight + ySpaceBuffer;
@@ -88,7 +96,7 @@ public class DrawToday extends JPanel {
         }
         
         int numberOfGuests = 0;
-        String date = "";
+        
         
         //[0] checkout booking
         //[1] checkin booking
@@ -130,7 +138,7 @@ public class DrawToday extends JPanel {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showConfirmDialog(panel, "not yet implemented");
+                JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
             }
             @Override
             public void mouseEntered(MouseEvent e) {

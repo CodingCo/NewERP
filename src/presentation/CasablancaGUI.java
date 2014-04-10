@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.Toolkit;
@@ -40,6 +41,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private boolean isFullScreen = false;
     private final GraphicsDevice device;
+    private DisplayMode originalDM;
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 1;
 
@@ -49,18 +51,19 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CasablancaGUI
+     *
      * @param device
      */
     public CasablancaGUI(GraphicsDevice device) {
         super(device.getDefaultConfiguration());
         this.device = device;
         initComponents();
-        //originalDM = device.getDisplayMode();
+        originalDM = device.getDisplayMode();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         INDEX_WIDTH = d.width;
         INDEX_HEIGHT = d.height;
         setSize(d.width, d.height);
-        
+
         this.controller = new Controller();
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
@@ -1740,7 +1743,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
 
         Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-        boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(),this.eBFormPhoneTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
+        boolean status = controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bcHM.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
         if (status) {
             this.clearEditBookingsFields();
             JOptionPane.showMessageDialog(this, "Booking Updated", "", WIDTH);
@@ -2024,7 +2027,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
 
     private void listBookingNextListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingNextListButtonActionPerformed
-        // TODO add your handling code here:
+        //this.drawToday
+
+
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
 
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
