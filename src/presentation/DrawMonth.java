@@ -59,7 +59,7 @@ public class DrawMonth extends JPanel {
         }
         
         
-       // page.fillRect(coor[0], 200, rSize, 40);
+        page.fillRect(coor[0], 200, rSize, 40);
         
 
     }

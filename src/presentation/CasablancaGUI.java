@@ -12,8 +12,10 @@ import domain.Customer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
@@ -53,6 +55,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
         super(device.getDefaultConfiguration());
         this.device = device;
         initComponents();
+        //originalDM = device.getDisplayMode();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        INDEX_WIDTH = d.width;
+        INDEX_HEIGHT = d.height;
+        setSize(d.width, d.height);
+        
         this.controller = new Controller();
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");

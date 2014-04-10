@@ -15,17 +15,16 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author simon
  */
+
 public class DrawToday extends JPanel {
 
     private JPanel panel;
@@ -36,7 +35,8 @@ public class DrawToday extends JPanel {
     private final Color hoverGreen;
     private String checkOut = "Check out";
     private String checkIn = "Check in";
-
+    private int pointer;
+    
     private ArrayList<Booking[]> list;
     private int index;
 
@@ -49,6 +49,7 @@ public class DrawToday extends JPanel {
         this.hoverBlue = new Color(0, 127, 178);
         this.hoverGreen = new Color(100, 184, 31);
         this.list = new ArrayList();
+        this.pointer = 0;
     }
 
     public void loadInList(ArrayList<Booking[]> list) {
@@ -61,10 +62,8 @@ public class DrawToday extends JPanel {
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         Graphics2D graphics2D = (Graphics2D) page;
-        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         int xSpaceBuffer = width / 20;
         int ySpaceBuffer = 20;
@@ -80,15 +79,20 @@ public class DrawToday extends JPanel {
         page.fillRect(0, 0, width, boxHeight);
         yBoxPos = boxHeight + ySpaceBuffer;
 
-        page.setColor(Color.black);
-        page.setFont(new Font("Arial", 1, 18));
-        page.drawString("Guests Today", 10, 35);
         
-        System.out.println(this.list.size());
+        
+        if(numOfRows < this.list.size()){
+                this.index = numOfRows;
+        }else{
+            this.index = this.list.size();
+        }
+        
+        int numberOfGuests = 0;
+        String date = "";
         
         //[0] checkout booking
         //[1] checkin booking
-        for (int i = 0; i < this.list.size(); ++i) {
+        for (int i = 0; i < index; ++i) {
             Booking b1 = list.get(i)[0];
             Booking b2 = list.get(i)[1];
 
@@ -96,17 +100,25 @@ public class DrawToday extends JPanel {
                 // draw two small check -in/out                
                 inBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1,checkOut);
                 inBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hoverGreen,b2,checkIn);
+                numberOfGuests = numberOfGuests + b1.getNumber_of_guests() + b2.getNumber_of_guests();
+                
             } else if (b1 != null) {
                 // draw long checkout
                 inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hoverBlue,b1,checkOut);
+                numberOfGuests = numberOfGuests + b1.getNumber_of_guests();
+                date = b1.getDate_from();
 
             } else {
                 // draw long checkin
                 inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hoverGreen,b2,checkIn);
+                numberOfGuests = numberOfGuests + b2.getNumber_of_guests();
             }
             yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
         }
         
+        page.setColor(Color.black);
+        page.setFont(new Font("Arial", 1, 18));
+        page.drawString("Guests Today " + numberOfGuests + "    --    Todays date " + date, 10, 35);
     }
 
     private void inBookingPanel(int x, int y, int width, int height, Color c, Color hover, Booking b, String check) {
