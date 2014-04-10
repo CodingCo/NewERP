@@ -66,6 +66,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         setSize(d.width, d.height);
 
         this.controller = new Controller();
+        this.controller.updateLists();
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
         this.cl.addLayoutComponent(newBookingPanel, "NewBooking");
