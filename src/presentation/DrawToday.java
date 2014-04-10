@@ -36,6 +36,7 @@ public class DrawToday extends JPanel {
     private String checkOut = "Check out";
     private String checkIn = "Check in";
     private int pointer;
+    private int rows;
     
     private ArrayList<Booking[]> list;
     private int index;
@@ -50,6 +51,7 @@ public class DrawToday extends JPanel {
         this.hoverGreen = new Color(100, 184, 31);
         this.list = new ArrayList();
         this.pointer = 0;
+        this.rows = 5;
     }
 
     public void loadInList(ArrayList<Booking[]> list) {
@@ -58,9 +60,8 @@ public class DrawToday extends JPanel {
 
     
     public void next(){
-    
-    
-    
+        this.index++;
+        this.repaint();
     }
     
     @Override
@@ -89,18 +90,19 @@ public class DrawToday extends JPanel {
 
         
         
-        if(numOfRows < this.list.size()){
-                this.index = numOfRows;
-        }else{
-            this.index = this.list.size();
-        }
+//        if(numOfRows < this.list.size()){
+//                this.index = numOfRows;
+//        }else{
+//            this.index = this.list.size();
+//        }
         
         int numberOfGuests = 0;
         
         
         //[0] checkout booking
         //[1] checkin booking
-        for (int i = 0; i < index; ++i) {
+        System.out.println(index);
+        for (int i = index; i < this.list.size(); ++i) {
             Booking b1 = list.get(i)[0];
             Booking b2 = list.get(i)[1];
 

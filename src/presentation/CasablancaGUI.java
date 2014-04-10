@@ -2028,8 +2028,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
 
     private void listBookingNextListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingNextListButtonActionPerformed
-        //this.drawToday
-
+        this.listBookingDrawingPanel.removeAll();
+        this.listBookingDrawingPanel.add(this.drawToday);
+        this.drawToday.next();
 
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
 
@@ -2071,18 +2072,20 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void setFullScreenSettings() {
         isFullScreen = device.isFullScreenSupported();
+        setResizable(!isFullScreen);
+
         if (!System.getProperty("os.name").startsWith("Mac")) {
             this.setExtendedState(Frame.MAXIMIZED_BOTH);
             dispose();
             setUndecorated(isFullScreen);
-        }
-        setResizable(!isFullScreen);
-        if (isFullScreen) {
-            device.setFullScreenWindow(this);
-            validate();
         } else {
-            pack();
-            setVisible(true);
+            if (isFullScreen) {
+                device.setFullScreenWindow(this);
+                validate();
+            } else {
+                pack();
+                setVisible(true);
+            }
         }
     }
 
