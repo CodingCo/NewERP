@@ -34,6 +34,7 @@ public class DrawToday extends JPanel {
     private final Color orange;
     private final Color hoverBlue;
     private final Color hoverGreen;
+    private final Font font;
     private String checkOut = "Check out";
     private String checkIn = "Check in";
     private String date;
@@ -49,6 +50,7 @@ public class DrawToday extends JPanel {
         this.orange = new Color(255, 204, 51);
         this.hoverBlue = new Color(0, 127, 178);
         this.hoverGreen = new Color(100, 184, 31);
+        this.font = new Font("Areal", 1, 12);
         this.list = new ArrayList();
         this.pointer = 0;
         this.list = list;
@@ -82,7 +84,7 @@ public class DrawToday extends JPanel {
 
     @Override
     public void paintComponent(Graphics page) {
-        this.setSize(this.panel.getWidth(), this.panel.getHeight());
+        //this.setSize(this.panel.getWidth(), this.panel.getHeight());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         Graphics2D graphics2D = (Graphics2D) page;
@@ -176,6 +178,7 @@ public class DrawToday extends JPanel {
         l.setBackground(Color.black);
 
         h.setHorizontalAlignment(SwingConstants.CENTER);
+        h.setFont(font);
         h.setText(check);
         h.setBackground(Color.black);
 

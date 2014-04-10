@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import domain.Apartment;
@@ -38,7 +33,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private int dateCounter = 0;
     private Apartment tempA = null;
     private HashMap<Booking, Customer> bcHM = null;
-    private ArrayList<Booking[]> todayDrawList = null;
+    
 
     private boolean isFullScreen = false;
     private final GraphicsDevice device;
@@ -81,8 +76,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
-        this.todayDrawList = this.controller.getBookingsToDay();
-        this.drawToday = new DrawToday(this.listBookingDrawingPanel,todayDrawList);
+        
+        this.drawToday = new DrawToday(this.listBookingDrawingPanel,this.controller.getBookingsToDay());
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
         //pack();
@@ -965,9 +960,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         menuOptionsjPanel.setMinimumSize(new java.awt.Dimension(200, 100));
         menuOptionsjPanel.setPreferredSize(new java.awt.Dimension(200, 100));
 
-        jLabel34.setText("Bookings Today");
+        jLabel34.setText("Show Bookings Today");
 
-        listBookingTodayjButton.setText("Show Today");
+        listBookingTodayjButton.setText("Show");
         listBookingTodayjButton.setMaximumSize(new java.awt.Dimension(120, 30));
         listBookingTodayjButton.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingTodayjButton.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -977,10 +972,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel35.setText("Search by months");
+        jLabel35.setText("Search Bookings by month");
 
         listBookingDatejTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        listBookingDatejTextField1.setText("DD-MM-YY");
+        listBookingDatejTextField1.setText("10-04-14");
         listBookingDatejTextField1.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingDatejTextField1.setPreferredSize(new java.awt.Dimension(120, 30));
 
@@ -1017,30 +1012,31 @@ public class CasablancaGUI extends javax.swing.JFrame {
         menuOptionsjPanel.setLayout(menuOptionsjPanelLayout);
         menuOptionsjPanelLayout.setHorizontalGroup(
             menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuOptionsjPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuOptionsjPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuOptionsjPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(41, 41, 41))))
             .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel33)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listBookingTodayjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listBookingDatejTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
                         .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listBookingBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listBookingSearchjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel33))
+                            .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel34)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(listBookingTodayjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listBookingDatejTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                                .addGroup(menuOptionsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(listBookingBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listBookingSearchjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(menuOptionsjPanelLayout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jLabel35)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         menuOptionsjPanelLayout.setVerticalGroup(
@@ -2039,6 +2035,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
 
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
+        this.listBookingDisplayTypejLabel.setText("Bookings for today");
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
@@ -2047,9 +2044,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
         this.listBookingDrawingPanel.removeAll();
+        this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
         this.listBookingDrawingPanel.add(this.drawMonth);
         this.listBookingDrawingPanel.repaint();
         this.drawMonth.setVisible(true);
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
 
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
