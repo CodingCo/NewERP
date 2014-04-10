@@ -14,6 +14,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.Toolkit;
@@ -2071,6 +2072,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void setFullScreenSettings() {
         isFullScreen = device.isFullScreenSupported();
         if (!System.getProperty("os.name").startsWith("Mac")) {
+            this.setExtendedState(Frame.MAXIMIZED_BOTH);
             dispose();
             setUndecorated(isFullScreen);
         }
