@@ -81,10 +81,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
         this.todayDrawList = this.controller.getBookingsBySpecificDate();
-        this.drawToday = new DrawToday(this.listBookingDrawingPanel);
+        this.drawToday = new DrawToday(this.listBookingDrawingPanel,todayDrawList);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-        this.drawToday.loadInList(todayDrawList);
         //pack();
         //setVisible(true);
         setFullScreenSettings();
@@ -2024,12 +2023,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingRefreshjButtonActionPerformed
 
     private void listBookingPreviousListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingPreviousListButtonActionPerformed
-        // TODO add your handling code here:
+        this.listBookingDrawingPanel.removeAll();
+        this.listBookingDrawingPanel.add(this.drawToday);
+        this.listBookingDrawingPanel.repaint();
+        this.drawToday.previous();
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
 
     private void listBookingNextListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingNextListButtonActionPerformed
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
+        this.listBookingDrawingPanel.repaint();
         this.drawToday.next();
 
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
@@ -2038,9 +2041,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
-        this.drawToday.setVisible(true);
-
-
+        this.drawToday.reset();
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
@@ -2063,8 +2064,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
         this.drawApartment.setVisible(true);
-
-
     }//GEN-LAST:event_listBookingApartmentjListMouseClicked
 
     public void paintCalenderBorder(Graphics page) {
@@ -2072,7 +2071,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void setFullScreenSettings() {
         isFullScreen = device.isFullScreenSupported();
-        setResizable(!isFullScreen);
         if (!System.getProperty("os.name").startsWith("Mac")) {
             this.setExtendedState(Frame.MAXIMIZED_BOTH);
             dispose();
@@ -2080,6 +2078,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.setVisible(true);
         } else {
             if (isFullScreen) {
+                setResizable(!isFullScreen);
                 device.setFullScreenWindow(this);
                 validate();
             } else {
