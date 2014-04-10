@@ -7,9 +7,15 @@ package presentation;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -21,6 +27,7 @@ public class DrawMonth extends JPanel {
     private final Color blue;
     private final Color green;
     private final Color orange;
+    private int boxWidth;
     private int pointer;
     private int month;
     private int[] coor;
@@ -35,6 +42,7 @@ public class DrawMonth extends JPanel {
         this.list = new ArrayList();
         this.coor = new int[31];
         this.pointer = 0;
+        this.boxWidth = 0;
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -52,50 +60,100 @@ public class DrawMonth extends JPanel {
         int height = this.panel.getHeight() - 1;
         int ySpaceBuffer = 5;
         int boxHeight = 60;
-        int boxLength = width / 31;
+        boxWidth = (width / 31);
         int numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
         /////// draw
         drawCalendarBar(page);
         calcScreenCoor();
         ///////
-        
-        int size = (width / 31);
+
         int x = 0;
         int y = boxHeight + ySpaceBuffer;
-        
-        
-        
-        
-        
-        int rIndex = pointer;
-        int index = 1 + pointer;
-        int aSize = list.size();
-        int to = (aSize - (aSize - (numOfRows * index)));
-        int from = numOfRows * rIndex;
-        if (to > list.size()) {
-            to = list.size();
-        }
-        
-        
-        
-        
-        for (int g = 0; g < numOfRows; ++g) {
 
-            if (g == 1) {
-
-                page.fillRect(coor[0], y, ((size) * 3), boxHeight);
-                page.fillRect(coor[3], y, ((size) * 5) + 4, boxHeight);
-                page.fillRect(coor[10], y, (size) * 3, boxHeight);
-                page.fillRect(coor[13], y, (size) * 8, boxHeight);
-
-            } else {
-                for (int m = 0; m < 31; ++m) {
-                    page.fillRect(coor[m], y, size, boxHeight);
-                }
+        for (int k = 0; k < 8; ++k) {
+            for (int c : list.get(k)) {
+                System.out.println(c);
             }
 
-            y = y + boxHeight + ySpaceBuffer;
         }
+
+        int row = 0;
+        int number = 0;
+
+        while (number < 14) {
+            int n = list.get(number)[5];
+
+            if (list.get(number)[0] == 0) {
+                addBookingPanel(coor[0], y, width, boxHeight, orange, "none this month");
+                y = y + boxHeight + ySpaceBuffer;
+                ++number;
+            } else {
+
+                while (list.get(row)[5] == n) {
+                    int[] info = list.get(row);
+
+                    if ((info[0] + info[4]) > info[3] && this.month > info[1]) {
+                        addBookingPanel(coor[0], y, width, boxHeight, orange, "full");
+                    } else if (info[1] < this.month) {
+
+                        int nights = ((info[0] + info[4]) - info[3]);
+                        addBookingPanel(coor[0], y, calcSize(nights) + (nights - 1), boxHeight, orange, "in");
+                    } else if ((info[0] + info[4]) > info[3]) {
+
+                        int nights = ((info[0] + info[4]) - info[3]);
+                        addBookingPanel(coor[info[0] - 1], y, calcSize(nights), boxHeight, orange, "out");
+                    } else {
+
+                        addBookingPanel(coor[info[0] - 1], y, calcSize(info[4]), boxHeight, blue, "date");
+                    }
+
+                    if (info[5] != n) {
+                        number = list.get(row)[5];
+                        y = y + boxHeight + ySpaceBuffer;
+                    }
+                    row++;
+                }
+                row = 0;
+                number++;
+            }
+        }
+
+        
+    }
+
+    private void addBookingPanel(int x, int y, int width, int height, Color c, String message) {
+        JPanel p = new JPanel();
+        JLabel h = new JLabel();
+        p.setLayout(new GridLayout(3, 1));
+
+        p.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+
+        this.panel.add(p);
+        p.add(h);
+        h.setHorizontalAlignment(SwingConstants.CENTER);
+        h.setText(message);
+        h.setBackground(Color.black);
+
+        p.setLocation(x, y);
+        p.setSize(width, height);
+        p.setBackground(c);
+    }
+
+    private int calcSize(int nights) {
+        return (this.boxWidth * nights) + (nights - 1);
     }
 
     private void drawCalendarBar(Graphics page) {

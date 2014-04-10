@@ -127,21 +127,21 @@ public class DrawToday extends JPanel {
 
             if (b1 != null && b2 != null) {
                 // draw two small check -in/out                
-                inBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1, checkOut);
-                inBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hoverGreen, b2, checkIn);
+                addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1, checkOut);
+                addBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hoverGreen, b2, checkIn);
             } else if (b1 != null) {
                 // draw long checkout
-                inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hoverBlue, b1, checkOut);
+                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hoverBlue, b1, checkOut);
             } else {
                 // draw long checkin
-                inBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hoverGreen, b2, checkIn);
+                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hoverGreen, b2, checkIn);
             }
             yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
         }
 
     }
 
-    private void inBookingPanel(int x, int y, int width, int height, Color c, Color hover, Booking b, String check) {
+    private void addBookingPanel(int x, int y, int width, int height, Color c, Color hover, Booking b, String check) {
         JPanel p = new JPanel();
         JLabel l = new JLabel();
         JLabel k = new JLabel();

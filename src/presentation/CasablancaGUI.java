@@ -80,9 +80,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawToday = new DrawToday(this.listBookingDrawingPanel,this.controller.getBookingsToDay());
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-        //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        pack();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
