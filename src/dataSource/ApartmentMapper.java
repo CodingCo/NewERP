@@ -47,11 +47,11 @@ public class ApartmentMapper {
         String SQLString = "select * "
                 + "from apartment "
                 + "where a_num not in(select a_num from booking "
-                + "where (to_date(?) between (date_from) and date_from + number_of_nights) or "
-                + "((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or "
-                + "date_from between to_date(?) and (to_date(?)+?)) and type = ?";
+                + "where (to_date(?) between (date_from) and date_from + number_of_nights - 1) or "
+                + "((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or "
+                + "date_from between to_date(?) and (to_date(?)+?-1)) and type = ?";
 
-        String withNr = "select * from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights) or ((to_date(?)+?) between (date_from) and (date_from +number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?)) and a_num = ?";
+        String withNr = "select * from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights - 1) or ((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?-1)) and a_num = ?";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
 
         PreparedStatement statement = null;
@@ -106,8 +106,8 @@ public class ApartmentMapper {
         days = days - 1;
         String SQL = "select a_num from apartment where a_num not in (select a_num from (SELECT * from booking where b_id <> ?) " +
                      "where ((to_date(?) between (date_from) and date_from + number_of_nights - 1) or " +
-                     "((to_date(?)+?) between (date_from) and (date_from + number_of_nights - 1)) or " +
-                     "date_from between to_date(?) and (to_date(?)+?))) and a_num = ?";  
+                     "((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or " +
+                     "date_from between to_date(?) and (to_date(?)+? - 1))) and a_num = ?";  
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
         PreparedStatement statement = null;
         try {
