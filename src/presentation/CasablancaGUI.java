@@ -12,11 +12,8 @@ import domain.Customer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
@@ -40,8 +37,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private ArrayList<Booking[]> todayDrawList = null;
 
     private boolean isFullScreen = false;
-    private GraphicsDevice device;
-    private DisplayMode originalDM;
+    private final GraphicsDevice device;
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 1;
 
@@ -51,17 +47,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CasablancaGUI
+     * @param device
      */
     public CasablancaGUI(GraphicsDevice device) {
         super(device.getDefaultConfiguration());
         this.device = device;
         initComponents();
-        originalDM = device.getDisplayMode();
-        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-        INDEX_WIDTH = d.width;
-        INDEX_HEIGHT = d.height;
-        setSize(d.width, d.height);
-
         this.controller = new Controller();
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
@@ -82,9 +73,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
         this.drawToday.loadInList(todayDrawList);
-        pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //pack();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1922,7 +1913,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         try {
             roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
 

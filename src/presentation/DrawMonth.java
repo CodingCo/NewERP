@@ -59,14 +59,13 @@ public class DrawMonth extends JPanel {
         }
         
         
-        page.fillRect(coor[0], 200, rSize, 40);
+       // page.fillRect(coor[0], 200, rSize, 40);
         
 
     }
 
     private void drawCalendarBar(Graphics page) {
-        int width = this.panel.getWidth() - 1;
-        int rSize = width / 31;
+        int rSize = this.panel.getWidth() - 1 / 31;
         int xPos = 3;
         int yPos = 2;
 
