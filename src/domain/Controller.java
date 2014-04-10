@@ -87,21 +87,21 @@ public class Controller {
         return null;
     }
 
-    public ArrayList<Booking[]> getBookingsBySpecificDate() {
+    public ArrayList<Booking[]> getBookingsToDay() {
         if (this.facade != null) {
-            return this.facade.getBookingsBySpecificDate();
+            return this.facade.getBookingsToDay();
         }
         return null;
     }
 
-    public ArrayList<Booking> getBookingsBySpecificMonth(String month) {
+    public ArrayList<int[]> getBookingsBySpecificMonth(String date) {
         if (this.facade != null) {
-            return this.facade.getBookingsBySpecificMonth(month);
+            return this.facade.getBookingsBySpecificMonth(date);
         }
         return null;
     }
 
-    public ArrayList<Booking> getBookingsByApartment(int a_num) {
+    public ArrayList<int[]> getBookingsByApartment(int a_num) {
         if (this.facade != null) {
             return this.facade.getBookingsByApartment(a_num);
         }

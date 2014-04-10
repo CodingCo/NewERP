@@ -80,7 +80,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
-        this.todayDrawList = this.controller.getBookingsBySpecificDate();
+        this.todayDrawList = this.controller.getBookingsToDay();
         this.drawToday = new DrawToday(this.listBookingDrawingPanel,todayDrawList);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);

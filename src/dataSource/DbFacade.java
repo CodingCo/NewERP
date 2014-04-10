@@ -72,23 +72,23 @@ public class DbFacade {
         return null;
     }
 
-    public ArrayList<Booking[]> getBookingsBySpecificDate() {
+    public ArrayList<Booking[]> getBookingsToDay() {
         if (this.chatty != null) {
-            return this.chatty.getBookingsToDay(con);
+            return this.chatty.getBookingsToDay();
         }
         return null;
     }
 
-    public ArrayList<Booking> getBookingsBySpecificMonth(String month) {
+    public ArrayList<int[]> getBookingsBySpecificMonth(String month) {
         if (this.chatty != null) {
-            return this.chatty.getBookingsBySpecificMonth(month, con);
+            return this.chatty.getBookingsByMonth(month);
         }
         return null;
     }
 
-    public ArrayList<Booking> getBookingsByApartment(int a_num) {
+    public ArrayList<int[]> getBookingsByApartment(int a_num) {
         if (this.chatty != null) {
-            return this.chatty.getBookingsByApartment(a_num, con);
+            return this.chatty.getBookingsByApartment(a_num);
         }
         return null;
     }
