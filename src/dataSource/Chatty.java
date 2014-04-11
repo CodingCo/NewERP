@@ -89,7 +89,7 @@ public class Chatty {
 
     public void updateLists(Connection con) {
         bookings = bookingMapper.getAllBookings(con);
-        customers = customerMapper.getAllCustomers(con);
+        customers = customerMapper.getAllCustomers(con); 
     }
 
     public ArrayList<Apartment> getApartments(Connection con) {
@@ -271,7 +271,7 @@ public class Chatty {
 
             if (bookingMonth == month && bookingYear == year) {
                 relevantBookings.add(current);
-            } else {
+            } else if(bookingMonth < month){
                 int num_nights = current.getNum_of_nights();
                 String bookingDateBegin = current.getDate_from();
 
@@ -288,7 +288,7 @@ public class Chatty {
                 int bookingEndYear = Integer.parseInt(bookingDateEnd.substring(6, 8));
 
                 // Then they reache into the next month
-                if (bookingEndMonth == month && bookingEndYear == year) {
+                if (bookingEndMonth >= month && bookingEndYear >= year) {
                     relevantBookings.add(current);
                 }
             }
@@ -308,6 +308,7 @@ public class Chatty {
             }
 
             bookingValues[3] = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+            
             bookingValues[4] = current.getNum_of_nights();
             bookingValues[5] = current.getA_num();
             bookingValues[6] = current.getB_id();
