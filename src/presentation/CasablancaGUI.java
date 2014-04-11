@@ -90,10 +90,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-        pack();
-        setVisible(true);
-        //
-        //setFullScreenSettings();
+        //pack();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1141,9 +1140,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
                     .addComponent(listBookingDrawingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(listOptionjPanelLayout.createSequentialGroup()
                         .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(listBookingDisplayTypejLabel)
-                        .addGap(156, 156, 156)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(listBookingLastUpdatedjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(listOptionjPanelLayout.createSequentialGroup()
                         .addComponent(listBookingPreviousListButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

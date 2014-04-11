@@ -126,22 +126,22 @@ public class DrawMonth extends JPanel {
 
             if (tmp[0] == 0) {
                 // empty
-                addBookingPanel(coor[0], y, width, boxHeight, Color.WHITE, " No bookings this month " + tmp[5]);
+                addBookingPanel(coor[0], y, width, boxHeight, Color.WHITE, " No bookings this month - nr. " + tmp[5], "");
 
             } else if (this.month > tmp[1] && (tmp[4] - (this.cdm + (tmp[3] - tmp[0]))) > 0) {
                 // whole month
-                addBookingPanel(coor[0], y, width, boxHeight, orange, " continious - a " + tmp[5]);
+                addBookingPanel(coor[0], y, width, boxHeight, orange, " continious - Nr. " + tmp[5],"" +tmp[4]);
             } else if (this.month > tmp[1]) {
                 // ind i
                 int nights = (tmp[0] + tmp[4]) - tmp[3];
-                addBookingPanel(coor[0], y, calcSize(nights), boxHeight, orange, " <<a " + tmp[5]);
+                addBookingPanel(coor[0], y, calcSize(nights), boxHeight, orange, " << - nr. " + tmp[5],"" +tmp[4]);
             } else if ((tmp[0] + tmp[4]) > tmp[3]) {
                 //ud af måneden
                 int nights = (tmp[3] - tmp[0]) + 1;
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(nights), boxHeight, orange, "" + tmp[5] + " a>> ");
+                addBookingPanel(coor[tmp[0] - 1], y, calcSize(nights), boxHeight, orange, "nr. " + tmp[5] + ">> ","" +tmp[4]);
             } else {
                 // this month
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, "a" + tmp[5]);
+                addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, "nr. " + tmp[5],"" +tmp[4]);
             }
 
             if (!(showings < numOfRows)) {
@@ -163,10 +163,11 @@ public class DrawMonth extends JPanel {
 
     }
 
-    private void addBookingPanel(int x, int y, int width, int height, Color c, String message) {
+    private void addBookingPanel(int x, int y, int width, int height, Color c, String message, String message2) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
-        p.setLayout(new GridLayout(1, 1));
+        JLabel k = new JLabel();
+        p.setLayout(new GridLayout(2, 1));
 
         p.addMouseListener(new MouseAdapter() {
             @Override
@@ -185,9 +186,15 @@ public class DrawMonth extends JPanel {
 
         this.panel.add(p);
         p.add(h);
+        p.add(k);
+        
         h.setHorizontalAlignment(SwingConstants.CENTER);
         h.setText(message);
         h.setBackground(Color.black);
+        
+        k.setHorizontalAlignment(SwingConstants.CENTER);
+        k.setText(message2);
+        k.setBackground(Color.black);
 
         p.setLocation(x, y);
         p.setSize(width, height);
