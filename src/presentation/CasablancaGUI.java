@@ -33,7 +33,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private int dateCounter = 0;
     private Apartment tempA = null;
     private HashMap<Booking, Customer> bcHM = null;
-    
+
+    private boolean drawTodayFlag = false;
+    private boolean drawMonthFlag = false;
+    private boolean drawApartmentFlag = false;
 
     private boolean isFullScreen = false;
     private final GraphicsDevice device;
@@ -76,12 +79,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
         this.bcHM = new HashMap();
-        
-        this.drawToday = new DrawToday(this.listBookingDrawingPanel,this.controller.getBookingsToDay());
+
+        this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
         pack();
         setVisible(true);
+        //
         //setFullScreenSettings();
     }
 
@@ -2021,21 +2025,44 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingRefreshjButtonActionPerformed
 
     private void listBookingPreviousListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingPreviousListButtonActionPerformed
-        this.listBookingDrawingPanel.removeAll();
-        this.listBookingDrawingPanel.add(this.drawToday);
-        this.listBookingDrawingPanel.repaint();
-        this.drawToday.previous();
+
+        if (this.drawTodayFlag) {
+            this.listBookingDrawingPanel.removeAll();
+            this.listBookingDrawingPanel.add(this.drawToday);
+            this.listBookingDrawingPanel.repaint();
+            this.drawToday.previous();
+        }
+        if (this.drawMonthFlag) {
+            this.listBookingDrawingPanel.removeAll();
+            this.listBookingDrawingPanel.add(this.drawMonth);
+            this.listBookingDrawingPanel.repaint();
+            this.drawMonth.previous();
+        }
+
+
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
 
     private void listBookingNextListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingNextListButtonActionPerformed
-        this.listBookingDrawingPanel.removeAll();
-        this.listBookingDrawingPanel.add(this.drawToday);
-        this.listBookingDrawingPanel.repaint();
-        this.drawToday.next();
+
+        if (this.drawTodayFlag) {
+            this.listBookingDrawingPanel.removeAll();
+            this.listBookingDrawingPanel.add(this.drawToday);
+            this.listBookingDrawingPanel.repaint();
+            this.drawToday.next();
+        }
+        if (this.drawMonthFlag) {
+            this.listBookingDrawingPanel.removeAll();
+            this.listBookingDrawingPanel.add(this.drawMonth);
+            this.listBookingDrawingPanel.repaint();
+            this.drawMonth.next();
+        }
 
     }//GEN-LAST:event_listBookingNextListButtonActionPerformed
 
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
+        this.drawTodayFlag = true;
+        this.drawApartmentFlag = false;
+        this.drawMonthFlag = false;
         this.listBookingDisplayTypejLabel.setText("Bookings for today");
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
@@ -2044,17 +2071,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
+        this.drawTodayFlag = false;
+        this.drawApartmentFlag = false;
+        this.drawMonthFlag = true;
         this.listBookingDrawingPanel.removeAll();
         this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
         this.listBookingDrawingPanel.add(this.drawMonth);
         this.listBookingDrawingPanel.repaint();
-        this.drawMonth.setVisible(true);
-        
-        
-        
-        
-        
-        
+        this.drawMonth.reset();
+
+
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
 
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
