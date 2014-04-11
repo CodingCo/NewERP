@@ -8,10 +8,13 @@ package presentation;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import static java.awt.SystemColor.info;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,6 +33,7 @@ public class DrawMonth extends JPanel {
     private int boxWidth;
     private int pointer;
     private int month;
+    private int cdm;
     private int[] coor;
     private ArrayList<int[]> list;
 
@@ -49,6 +53,14 @@ public class DrawMonth extends JPanel {
         this.list = list;
         try {
             month = Integer.parseInt(date.substring(3, 5));
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+            try {
+                c.setTime(sdf.parse(date));
+                this.cdm = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+            } catch (ParseException e) {
+
+            }
         } catch (NumberFormatException ex) {
 
         }
@@ -70,55 +82,46 @@ public class DrawMonth extends JPanel {
         int x = 0;
         int y = boxHeight + ySpaceBuffer;
 
-        for (int k = 0; k < 8; ++k) {
-            for (int c : list.get(k)) {
-                System.out.println(c);
-            }
+        int showings = 0;
+        int anum = 1;
 
-        }
+        while (showings < numOfRows) {
 
-        int row = 0;
-        int number = 0;
+            int increment = 0;
+            while (list.get(increment)[5] == anum) {
+                int[] tmp = list.get(increment);
 
-        while (number < 14) {
-            int n = list.get(number)[5];
+                if (tmp[0] == 0) {
+                    // draw empty
 
-            if (list.get(number)[0] == 0) {
-                addBookingPanel(coor[0], y, width, boxHeight, orange, "none this month");
-                y = y + boxHeight + ySpaceBuffer;
-                ++number;
-            } else {
+                } else if (this.month > tmp[1] && (tmp[4] - (this.cdm + (tmp[3] - tmp[0]))) > 0) {
+                    // hele måneden
 
-                while (list.get(row)[5] == n) {
-                    int[] info = list.get(row);
+                } else if (this.month > tmp[1]) {
+                    // ind i måned
 
-                    if ((info[0] + info[4]) > info[3] && this.month > info[1]) {
-                        addBookingPanel(coor[0], y, width, boxHeight, orange, "full");
-                    } else if (info[1] < this.month) {
+                } else if ((tmp[0] + tmp[4]) > tmp[3]) {
+                    //ud af månedne 
 
-                        int nights = ((info[0] + info[4]) - info[3]);
-                        addBookingPanel(coor[0], y, calcSize(nights) + (nights - 1), boxHeight, orange, "in");
-                    } else if ((info[0] + info[4]) > info[3]) {
-
-                        int nights = ((info[0] + info[4]) - info[3]);
-                        addBookingPanel(coor[info[0] - 1], y, calcSize(nights), boxHeight, orange, "out");
-                    } else {
-
-                        addBookingPanel(coor[info[0] - 1], y, calcSize(info[4]), boxHeight, blue, "date");
-                    }
-
-                    if (info[5] != n) {
-                        number = list.get(row)[5];
-                        y = y + boxHeight + ySpaceBuffer;
-                    }
-                    row++;
+                } else {
+                    addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, "a" +tmp[5]);
                 }
-                row = 0;
-                number++;
+
+                if (!((increment +1) > list.size()-1)) {
+                    if (list.get(increment + 1)[5] != anum) {
+                        y = y + boxHeight + ySpaceBuffer;
+                        anum++;
+                        showings++;
+
+                    }
+                }else{
+                    break;
+                }
+                increment++;
             }
+
         }
 
-        
     }
 
     private void addBookingPanel(int x, int y, int width, int height, Color c, String message) {
@@ -162,7 +165,7 @@ public class DrawMonth extends JPanel {
         int y = 0;
         for (int i = 0; i < 31; i++) {
             page.setColor(Color.GRAY);
-            page.fillRect(x, y, size, 60);
+            page.fillRect(x, y, size, (this.panel.getHeight() - 1));
             page.setColor(Color.WHITE);
             page.drawString("" + (i + 1), x + 5, y + 20);
             x = x + size + 1;

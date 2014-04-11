@@ -2012,6 +2012,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void listBookingRefreshjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingRefreshjButtonActionPerformed
         this.listBookingLastUpdatedjLabel.setText("Updated 1 minute ago");
+        this.controller.updateLists();
         ArrayList<Apartment> list = this.controller.getApartments();
         for (Apartment a : list) {
             this.lBlistModel.addElement(a);
