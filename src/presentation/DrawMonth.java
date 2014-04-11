@@ -38,11 +38,11 @@ public class DrawMonth extends JPanel {
     private int showings;
     private int apartment;
     private int increment;
+    private int numOfRows;
 
     private int lastIncrement;
     private int lastApartment;
-    
-    
+
     public DrawMonth(JPanel panel) {
         this.panel = panel;
         this.setSize(panel.getSize());
@@ -76,10 +76,10 @@ public class DrawMonth extends JPanel {
     }
 
     public void previous() {
-        
-        
-        
-        
+
+
+        showings = 0;
+        repaint();
 
     }
 
@@ -104,7 +104,7 @@ public class DrawMonth extends JPanel {
         int ySpaceBuffer = 5;
         int boxHeight = 60;
         boxWidth = (width / this.cdm);
-        int numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
+        this.numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
         /////// draw
         drawCalendarBar(page);
         calcScreenCoor();
@@ -113,9 +113,6 @@ public class DrawMonth extends JPanel {
         int x = 0;
         int y = boxHeight + ySpaceBuffer;
 
-        
-        
-        
         while (list.get(increment)[5] == apartment) {
             int[] tmp = list.get(increment);
 

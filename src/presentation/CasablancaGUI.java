@@ -1094,7 +1094,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         listBookingLastUpdatedjLabel.setText("last updated");
 
-        listBookingPreviousListButton.setText("previous");
+        listBookingPreviousListButton.setText("Up");
         listBookingPreviousListButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingPreviousListButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingPreviousListButton.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -1104,7 +1104,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
-        listBookingNextListButton.setText("Next");
+        listBookingNextListButton.setText("Down");
         listBookingNextListButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingNextListButton.setMinimumSize(new java.awt.Dimension(100, 30));
         listBookingNextListButton.setPreferredSize(new java.awt.Dimension(100, 30));

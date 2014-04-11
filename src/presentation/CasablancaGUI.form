@@ -1512,7 +1512,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="listBookingPreviousListButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="previous"/>
+                    <Property name="text" type="java.lang.String" value="Up"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
                     </Property>
@@ -1529,7 +1529,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="listBookingNextListButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Next"/>
+                    <Property name="text" type="java.lang.String" value="Down"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
                     </Property>
