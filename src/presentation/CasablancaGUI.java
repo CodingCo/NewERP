@@ -13,7 +13,10 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -29,6 +32,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private DefaultListModel nBListModel;
     private DefaultListModel eBListModel;
     private DefaultListModel lBlistModel;
+    private DefaultListModel cBListModel;
     private int createCounter = 0;
     private int dateCounter = 0;
     private Apartment tempA = null;
@@ -70,14 +74,17 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.cl.addLayoutComponent(newBookingPanel, "NewBooking");
         this.cl.addLayoutComponent(editBookingPanel, "EditBooking");
         this.cl.addLayoutComponent(listBookingPanel, "ListBooking");
+        this.cl.addLayoutComponent(previousCustomerPanel, "PreviousCustomer");
         this.frontPageLogoutButton.setVisible(false);
-        this.newBookingFormPreviousButton.setVisible(false);
+
         this.lBlistModel = new DefaultListModel();
         this.listBookingApartmentjList.setModel(lBlistModel);
         this.nBListModel = new DefaultListModel();
         this.newBookingAvailList.setModel(nBListModel);
         this.eBListModel = new DefaultListModel();
         this.eBMatchList.setModel(eBListModel);
+        this.cBListModel = new DefaultListModel();
+        this.previousCustomerList.setModel(cBListModel);
         this.bcHM = new HashMap();
 
         this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
@@ -232,6 +239,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormButtonSaveButton = new javax.swing.JButton();
         eBFormButtonCancelButton = new javax.swing.JButton();
         eBTitleTitleLabel = new javax.swing.JLabel();
+        previousCustomerPanel = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        previousCustomerList = new javax.swing.JList();
+        previousCustomerSearchField = new javax.swing.JTextField();
+        previousCustomerSearchButton = new javax.swing.JButton();
+        previousCustomerChooseButton = new javax.swing.JButton();
+        previousCustomerCancelbutton = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 22, 1024, 720));
@@ -1073,7 +1090,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingDrawingPanel.setLayout(listBookingDrawingPanelLayout);
         listBookingDrawingPanelLayout.setHorizontalGroup(
             listBookingDrawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         listBookingDrawingPanelLayout.setVerticalGroup(
             listBookingDrawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1092,7 +1109,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
-        listBookingLastUpdatedjLabel.setText("last updated");
+        listBookingLastUpdatedjLabel.setText(" ");
 
         listBookingPreviousListButton.setText("Up");
         listBookingPreviousListButton.setMaximumSize(new java.awt.Dimension(100, 30));
@@ -1126,8 +1143,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
                         .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
                         .addComponent(listBookingDisplayTypejLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
-                        .addComponent(listBookingLastUpdatedjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(156, 156, 156)
+                        .addComponent(listBookingLastUpdatedjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(listOptionjPanelLayout.createSequentialGroup()
                         .addComponent(listBookingPreviousListButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1674,6 +1691,101 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         mainPage.add(editBookingPanel, "card4");
 
+        previousCustomerPanel.setMinimumSize(new java.awt.Dimension(1024, 720));
+
+        jLabel37.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel37.setText("Find Previous Customer");
+
+        jScrollPane4.setViewportView(previousCustomerList);
+
+        previousCustomerSearchButton.setText("Search");
+        previousCustomerSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousCustomerSearchButtonActionPerformed(evt);
+            }
+        });
+
+        previousCustomerChooseButton.setText("Choose");
+        previousCustomerChooseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousCustomerChooseButtonActionPerformed(evt);
+            }
+        });
+
+        previousCustomerCancelbutton.setText("Cancel");
+        previousCustomerCancelbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousCustomerCancelbuttonActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setText("Enter search criteria and choose your customer");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(previousCustomerChooseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(previousCustomerCancelbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(previousCustomerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(previousCustomerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel38)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel38)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(previousCustomerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(previousCustomerSearchButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(previousCustomerChooseButton)
+                    .addComponent(previousCustomerCancelbutton))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout previousCustomerPanelLayout = new javax.swing.GroupLayout(previousCustomerPanel);
+        previousCustomerPanel.setLayout(previousCustomerPanelLayout);
+        previousCustomerPanelLayout.setHorizontalGroup(
+            previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previousCustomerPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, previousCustomerPanelLayout.createSequentialGroup()
+                .addContainerGap(417, Short.MAX_VALUE)
+                .addComponent(jLabel37)
+                .addGap(386, 386, 386))
+        );
+        previousCustomerPanelLayout.setVerticalGroup(
+            previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previousCustomerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel37)
+                .addGap(72, 72, 72)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+
+        mainPage.add(previousCustomerPanel, "card6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1857,6 +1969,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     private void newBookingFormPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonActionPerformed
         // TODO add your handling code here:
+
+        cl.show(mainPage, "PreviousCustomer");
     }//GEN-LAST:event_newBookingFormPreviousButtonActionPerformed
 
     private void newBookingFormPreviousButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonMouseEntered
@@ -2015,8 +2129,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingPageButtonActionPerformed
 
     private void listBookingRefreshjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingRefreshjButtonActionPerformed
-        this.listBookingLastUpdatedjLabel.setText("Updated 1 minute ago");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss"); 
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(Calendar.getInstance().getTime());
+        String timeStamp = sdf.format(calendar.getTime());
+        
+        this.listBookingLastUpdatedjLabel.setText("Updated: " + timeStamp);
         this.controller.updateLists();
+        this.lBlistModel.clear();
         ArrayList<Apartment> list = this.controller.getApartments();
         for (Apartment a : list) {
             this.lBlistModel.addElement(a);
@@ -2098,6 +2218,27 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawApartment.setVisible(true);
     }//GEN-LAST:event_listBookingApartmentjListMouseClicked
 
+    private void previousCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerSearchButtonActionPerformed
+        ArrayList<Customer> clist = this.controller.searchForCustomers(this.previousCustomerSearchField.getText().toLowerCase());
+        for (Customer c : clist) {
+            this.cBListModel.addElement(c);
+        }
+    }//GEN-LAST:event_previousCustomerSearchButtonActionPerformed
+
+    private void previousCustomerChooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerChooseButtonActionPerformed
+        Customer c = (Customer) this.cBListModel.getElementAt(this.previousCustomerList.getSelectedIndex());
+        setNewBookingCustomer(c);
+        cl.show(mainPage, "NewBooking");
+        this.cBListModel.clear();
+        this.previousCustomerSearchField.setText("");
+    }//GEN-LAST:event_previousCustomerChooseButtonActionPerformed
+
+    private void previousCustomerCancelbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerCancelbuttonActionPerformed
+        cl.show(mainPage, "NewBooking");
+        this.cBListModel.clear();
+        this.previousCustomerSearchField.setText("");
+    }//GEN-LAST:event_previousCustomerCancelbuttonActionPerformed
+
     public void paintCalenderBorder(Graphics page) {
     }
 
@@ -2142,6 +2283,19 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 textField.setText("");
             }
         }
+    }
+
+    public void setNewBookingCustomer(Customer c) {
+        this.newBookingFormFirstTextField.setText(c.getFirst_name());
+        this.newBookingFormCityTextField.setText(c.getCity());
+        this.newBookingFormNameTextField.setText(c.getLast_name());
+        this.newBookingFormPhoneTextField.setText(c.getPhone());
+        this.newBookingFormStreetTextField.setText(c.getStreet());
+        this.newBookingFormZipTextField.setText(c.getZipcode());
+        this.newBookingFormEmailTextField.setText(c.getEmail());
+        this.newBookingFormNatTextField.setText(c.getCountry());
+        this.newBookingFindSearchNONTextField.setText("");
+        this.newBookingFindSearchFromTextField.setText("");
     }
 
     public void clearNewBookingFields() {
@@ -2264,15 +2418,19 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JList listBookingApartmentjList;
     private javax.swing.JButton listBookingBackButton;
     private javax.swing.JTextField listBookingDatejTextField1;
@@ -2337,5 +2495,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField newBookingFormZipTextField;
     private javax.swing.JPanel newBookingPanel;
     private javax.swing.JLabel newBookingTitleTitle;
+    private javax.swing.JButton previousCustomerCancelbutton;
+    private javax.swing.JButton previousCustomerChooseButton;
+    private javax.swing.JList previousCustomerList;
+    private javax.swing.JPanel previousCustomerPanel;
+    private javax.swing.JButton previousCustomerSearchButton;
+    private javax.swing.JTextField previousCustomerSearchField;
     // End of variables declaration//GEN-END:variables
 }

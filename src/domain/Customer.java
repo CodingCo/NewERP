@@ -119,7 +119,9 @@ public class Customer {
 
     @Override
     public String toString() {
-	return cust_id + ": " + first_name + " " + last_name;
+	return first_name + " " + last_name + " " +phone;
     }
+    
+    
 
 }

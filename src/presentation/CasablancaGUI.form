@@ -1428,8 +1428,8 @@
                                   <Component id="listBookingRefreshjButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="273" max="32767" attributes="0"/>
                                   <Component id="listBookingDisplayTypejLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="250" max="32767" attributes="0"/>
-                                  <Component id="listBookingLastUpdatedjLabel" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                                  <Component id="listBookingLastUpdatedjLabel" min="-2" pref="214" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="listBookingPreviousListButton" min="-2" max="-2" attributes="0"/>
@@ -1473,7 +1473,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="790" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -1507,7 +1507,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="listBookingLastUpdatedjLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="last updated"/>
+                    <Property name="text" type="java.lang.String" value=" "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="listBookingPreviousListButton">
@@ -2378,6 +2378,157 @@
                 <Property name="text" type="java.lang.String" value="Edit Booking"/>
               </Properties>
             </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="previousCustomerPanel">
+          <Properties>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1024, 720]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card6"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="417" max="32767" attributes="0"/>
+                      <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel37">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Find Previous Customer"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="previousCustomerChooseButton" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Component id="previousCustomerCancelbutton" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="previousCustomerSearchField" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                                  <Component id="previousCustomerSearchButton" min="-2" pref="210" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="previousCustomerSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="previousCustomerSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" pref="351" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="previousCustomerChooseButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="previousCustomerCancelbutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JList" name="previousCustomerList">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JTextField" name="previousCustomerSearchField">
+                </Component>
+                <Component class="javax.swing.JButton" name="previousCustomerSearchButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previousCustomerSearchButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="previousCustomerChooseButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Choose"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previousCustomerChooseButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="previousCustomerCancelbutton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancel"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previousCustomerCancelbuttonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel38">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Enter search criteria and choose your customer"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
