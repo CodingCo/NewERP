@@ -58,7 +58,7 @@ public class DrawMonth extends JPanel {
         this.increment = 0;
         this.lastIncrement = 0;
         this.lastApartment = 0;
-        //this.showings = 0;
+        this.showings = 0;
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -166,6 +166,8 @@ public class DrawMonth extends JPanel {
             } else {
                 break;
             }
+            
+            
 
             increment++;
         }
