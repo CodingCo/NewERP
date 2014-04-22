@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import java.awt.Color;
@@ -29,6 +24,9 @@ public class DrawMonth extends JPanel {
     private final Color blue;
     private final Color green;
     private final Color orange;
+    private final Color hGreen;
+    private final Color hOrange;
+    private final Color hblue;
     private int boxWidth;
 
     private int month;
@@ -44,13 +42,17 @@ public class DrawMonth extends JPanel {
     private int lastApartment;
 
     public DrawMonth(JPanel panel) {
-        this.panel = panel;
         this.setSize(panel.getSize());
+        this.panel = panel;
+        this.list = new ArrayList();
+        this.coor = new int[31];
+
         this.blue = new Color(0, 153, 204);
         this.green = new Color(119, 204, 51);
         this.orange = new Color(255, 204, 51);
-        this.list = new ArrayList();
-        this.coor = new int[31];
+        this.hGreen = new Color(100, 184, 31);
+        this.hOrange = new Color(235, 174, 21);
+        this.hblue = new Color(0, 127, 178);
         this.boxWidth = 0;
         this.apartment = 1;
         this.increment = 0;
@@ -77,7 +79,7 @@ public class DrawMonth extends JPanel {
 
     public void previous() {
         int aStart = apartment;
-        while (apartment > (aStart - (this.numOfRows * 2))-2) {
+        while (apartment > (aStart - (this.numOfRows * 2)) - 2) {
             if (this.list.get(increment)[5] == apartment) {
                 increment--;
                 if (increment == 0) {
@@ -107,6 +109,7 @@ public class DrawMonth extends JPanel {
 
     @Override
     public void paintComponent(Graphics page) {
+        this.setSize(panel.getSize());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         int ySpaceBuffer = 5;
@@ -119,29 +122,31 @@ public class DrawMonth extends JPanel {
         ///////
 
         int x = 0;
-        int y = boxHeight + ySpaceBuffer;
+        int y = 40;
 
         while (list.get(increment)[5] == apartment) {
             int[] tmp = list.get(increment);
 
             if (tmp[0] == 0) {
                 // empty
-                addBookingPanel(coor[0], y, width, boxHeight, Color.WHITE, " No bookings this month - nr. " + tmp[5], "");
+                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "");
 
             } else if (this.month > tmp[1] && (tmp[4] - (this.cdm + (tmp[3] - tmp[0]))) > 0) {
+
                 // whole month
-                addBookingPanel(coor[0], y, width, boxHeight, orange, " continious - Nr. " + tmp[5],"" +tmp[4]);
+                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " continious - Nr. " + tmp[5], "" + tmp[4]);
             } else if (this.month > tmp[1]) {
                 // ind i
                 int nights = (tmp[0] + tmp[4]) - tmp[3];
-                addBookingPanel(coor[0], y, calcSize(nights), boxHeight, orange, " << - nr. " + tmp[5],"" +tmp[4]);
+
+                addBookingPanel(coor[0], y, calcSize(nights), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4] + " - " + tmp[0] + tmp[1] + "   " + tmp[3]);
             } else if ((tmp[0] + tmp[4]) > tmp[3]) {
                 //ud af måneden
                 int nights = (tmp[3] - tmp[0]) + 1;
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(nights), boxHeight, orange, "nr. " + tmp[5] + ">> ","" +tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1], y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4]);
             } else {
                 // this month
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, "nr. " + tmp[5],"" +tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4]);
             }
 
             if (!(showings < numOfRows)) {
@@ -163,7 +168,7 @@ public class DrawMonth extends JPanel {
 
     }
 
-    private void addBookingPanel(int x, int y, int width, int height, Color c, String message, String message2) {
+    private void addBookingPanel(int x, int y, int width, int height, Color c, Color hc, String message, String message2) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
         JLabel k = new JLabel();
@@ -177,21 +182,23 @@ public class DrawMonth extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                p.setBackground(hc);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                p.setBackground(c);
             }
         });
 
         this.panel.add(p);
         p.add(h);
         p.add(k);
-        
+
         h.setHorizontalAlignment(SwingConstants.CENTER);
         h.setText(message);
         h.setBackground(Color.black);
-        
+
         k.setHorizontalAlignment(SwingConstants.CENTER);
         k.setText(message2);
         k.setBackground(Color.black);
@@ -213,7 +220,8 @@ public class DrawMonth extends JPanel {
             page.setColor(Color.GRAY);
             page.fillRect(x, y, size, (this.panel.getHeight()));
             page.setColor(Color.WHITE);
-            page.drawString("" + (i + 1), x + 5, y + 20);
+
+            page.drawString("" + (i + 1), x + 10, y + 25);
             x = x + size + 1;
         }
     }
