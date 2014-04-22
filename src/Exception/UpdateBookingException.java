@@ -21,6 +21,7 @@ public class UpdateBookingException extends Exception {
         super(thrwbl);
     }
 
+    @Override
     public String getMessage() {
         return super.getMessage();
     }

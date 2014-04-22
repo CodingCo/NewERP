@@ -10,9 +10,10 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.Frame;
-import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.Toolkit;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -197,25 +199,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBMatchButtonEditButton = new javax.swing.JButton();
         eBMAtchButtonDeleteButton = new javax.swing.JButton();
         eBFormPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         eBFormADateTextField = new javax.swing.JTextField();
         eBFormNONTextField = new javax.swing.JTextField();
         eBFormANRTextField = new javax.swing.JTextField();
         eBFormCombo = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         eBFormGrey = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         eBFormFirstTextField = new javax.swing.JTextField();
         eBFormNameTextField = new javax.swing.JTextField();
         eBFormNOGTextField = new javax.swing.JTextField();
@@ -225,9 +214,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormStreetTextField = new javax.swing.JTextField();
         eBFormZipTextField = new javax.swing.JTextField();
         eBFormNatTextField = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
         eBFormButtonSaveButton = new javax.swing.JButton();
         eBFormButtonCancelButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
         eBTitleTitleLabel = new javax.swing.JLabel();
         previousCustomerPanel = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
@@ -404,6 +405,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFindSearchNONTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFindSearchNONTextField.setText("1 - many");
+        newBookingFindSearchNONTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newBookingFindSearchNONTextFieldFocusGained(evt);
+            }
+        });
         newBookingFindSearchNONTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newBookingFindSearchNONTextFieldMouseClicked(evt);
@@ -418,7 +424,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
 
         newBookingFindRoomNRTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        newBookingFindRoomNRTextField.setText("Apartment no. 1 - 104");
+        newBookingFindRoomNRTextField.setText("1 - 104");
 
         newBookingFindButtonBackButton.setText("Back");
         newBookingFindButtonBackButton.setMaximumSize(new java.awt.Dimension(100, 30));
@@ -536,7 +542,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGroup(newBookingFindPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newBookingFindSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(newBookingFindSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 324, Short.MAX_VALUE)
                     .addGroup(newBookingFindPanelLayout.createSequentialGroup()
                         .addGroup(newBookingFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -613,6 +619,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormFirstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFormFirstTextField.setText("First name");
+        newBookingFormFirstTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newBookingFormFirstTextFieldFocusGained(evt);
+            }
+        });
         newBookingFormFirstTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newBookingFormFirstTextFieldActionPerformed(evt);
@@ -621,6 +632,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFormNameTextField.setText("Last name");
+        newBookingFormNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newBookingFormNameTextFieldActionPerformed(evt);
+            }
+        });
 
         newBookingFormNOGTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFormNOGTextField.setText("Visiting residents");
@@ -1372,129 +1388,107 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Arrival Date*:");
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setText("Number of nights*:");
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setText("Apartment type*:");
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel12.setText("Apartment Number*:");
-
         eBFormCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Single", "Double", "Family" }));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Booking Form");
 
         eBFormGrey.setMaximumSize(new java.awt.Dimension(456, 446));
-        eBFormGrey.setMinimumSize(new java.awt.Dimension(456, 446));
-        eBFormGrey.setPreferredSize(new java.awt.Dimension(456, 446));
+        eBFormGrey.setMinimumSize(new java.awt.Dimension(0, 0));
+        eBFormGrey.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setText("First name*:");
+        jLabel3.setText("First name");
 
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setText("Family name*:");
+        jLabel10.setText("Last name");
 
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel15.setText("Number of guests*:");
+        jLabel11.setText("Number of guests");
 
-        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel21.setText("Phone*:");
+        jLabel12.setText("Phone");
 
-        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel19.setText("Email*:");
+        jLabel47.setText("Email");
 
-        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel17.setText("City*:");
+        jLabel48.setText("City");
 
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel16.setText("Street*:");
+        jLabel49.setText("Street address");
 
-        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel20.setText("Zip Code*:");
+        jLabel50.setText("postal / zip code");
 
-        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel22.setText("Country*:");
-
-        jLabel30.setText("*Required Fields");
+        jLabel51.setText("Country");
 
         javax.swing.GroupLayout eBFormGreyLayout = new javax.swing.GroupLayout(eBFormGrey);
         eBFormGrey.setLayout(eBFormGreyLayout);
         eBFormGreyLayout.setHorizontalGroup(
             eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eBFormGreyLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(eBFormGreyLayout.createSequentialGroup()
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel48)
+                    .addComponent(jLabel49)
+                    .addComponent(jLabel50)
+                    .addComponent(jLabel51))
+                .addGap(40, 40, 40)
+                .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel22))
-                        .addGap(26, 26, 26)
-                        .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(eBFormNatTextField)
-                            .addComponent(eBFormZipTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormStreetTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormCityTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormEmailTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormPhoneTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFormFirstTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel30))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(eBFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eBFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eBFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(eBFormGreyLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(eBFormPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eBFormEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
         eBFormGreyLayout.setVerticalGroup(
             eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eBFormGreyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(eBFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(eBFormPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(eBFormEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(eBFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel48))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(eBFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel49))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel50))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormGreyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(eBFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel30)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eBFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         eBFormButtonSaveButton.setText("Save");
@@ -1527,6 +1521,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Arrival date");
+
+        jLabel29.setText("Number of nights");
+
+        jLabel45.setText("Apartment type");
+
+        jLabel46.setText("Apartment number");
+
         javax.swing.GroupLayout eBFormPanelLayout = new javax.swing.GroupLayout(eBFormPanel);
         eBFormPanel.setLayout(eBFormPanelLayout);
         eBFormPanelLayout.setHorizontalGroup(
@@ -1541,21 +1543,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
                             .addGroup(eBFormPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel45)
+                                    .addComponent(jLabel46))
+                                .addGap(55, 55, 55)
                                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(eBFormCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 153, Short.MAX_VALUE)
                                     .addComponent(eBFormNONTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(eBFormADateTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(eBFormANRTextField))))
-                        .addGap(0, 5, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eBFormGrey, javax.swing.GroupLayout.PREFERRED_SIZE, 324, Short.MAX_VALUE)
+                            .addComponent(eBFormGrey, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                             .addGroup(eBFormPanelLayout.createSequentialGroup()
                                 .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1569,23 +1571,23 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(eBFormADateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormADateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(10, 10, 10)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(eBFormNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
                 .addGap(8, 8, 8)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(eBFormCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
                 .addGap(8, 8, 8)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(eBFormANRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eBFormANRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46))
                 .addGap(34, 34, 34)
-                .addComponent(eBFormGrey, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(eBFormGrey, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eBFormButtonCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1704,12 +1706,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         previousCustomerPanelLayout.setHorizontalGroup(
             previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previousCustomerPanelLayout.createSequentialGroup()
-                .addContainerGap(275, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
-            .addGroup(previousCustomerPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel37)
+                .addGroup(previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         previousCustomerPanelLayout.setVerticalGroup(
@@ -1971,13 +1971,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindSearchPanelMouseClicked
 
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
+        setFocusListener(this.newBookingFormPanel);
 
         this.nBListModel.clear();
         int roomNr = 0;
         try {
             roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText().trim());
         } catch (NumberFormatException e) {
-            
+
         }
         ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
 
@@ -2007,6 +2008,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             cl.show(mainPage, "FrontPage");
             this.clearNewBookingFields();
             this.newBookingFindSearchFromTextField.setText("DD-MM-YY");
+
         } else {
             JOptionPane.showMessageDialog(this, "Save All Please", "", WIDTH);
         }
@@ -2067,11 +2069,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingPageButtonActionPerformed
 
     private void listBookingRefreshjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingRefreshjButtonActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss"); 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(Calendar.getInstance().getTime());
         String timeStamp = sdf.format(calendar.getTime());
-        
+
         this.listBookingLastUpdatedjLabel.setText("Updated: " + timeStamp);
         this.controller.updateLists();
         this.lBlistModel.clear();
@@ -2138,8 +2140,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.add(this.drawMonth);
         this.listBookingDrawingPanel.repaint();
         this.drawMonth.reset();
-
-
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
 
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
@@ -2180,9 +2180,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_previousCustomerCancelbuttonActionPerformed
 
     private void listBookingDatejTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingDatejTextField1ActionPerformed
-       
-        
-        
+
+
     }//GEN-LAST:event_listBookingDatejTextField1ActionPerformed
 
     private void listBookingDatejTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listBookingDatejTextField1KeyTyped
@@ -2210,7 +2209,37 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDatejTextField1.setText("");
     }//GEN-LAST:event_listBookingDatejTextField1FocusGained
 
-    public void paintCalenderBorder(Graphics page) {
+    private void newBookingFormFirstTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newBookingFormFirstTextFieldFocusGained
+        this.newBookingFormFirstTextField.setText("");
+    }//GEN-LAST:event_newBookingFormFirstTextFieldFocusGained
+
+    private void newBookingFormNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newBookingFormNameTextFieldActionPerformed
+
+    private void newBookingFindSearchNONTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newBookingFindSearchNONTextFieldFocusGained
+        this.newBookingFindSearchNONTextField.setText("");
+
+    }//GEN-LAST:event_newBookingFindSearchNONTextFieldFocusGained
+
+    
+    
+    
+    public void setFocusListener(JPanel panel) {
+        for (int x = 0; x < panel.getComponentCount(); ++x) {
+            if (panel.getComponent(x) instanceof JTextField) {
+                JTextField f = (JTextField) panel.getComponent(x);
+                f.addFocusListener(new FocusAdapter() {
+                    @Override
+                    public void focusGained(FocusEvent e) {
+                        f.setText("");
+                    }
+
+                });
+            }
+
+        }
+
     }
 
     private void setFullScreenSettings() {
@@ -2364,25 +2393,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2398,10 +2418,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
