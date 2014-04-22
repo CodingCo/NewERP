@@ -87,7 +87,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.previousCustomerList.setModel(cBListModel);
         this.bcHM = new HashMap();
         this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
-        this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
         //pack();
         //setVisible(true);
@@ -2201,7 +2200,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         if (this.drawMonthFlag) {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
-            this.listBookingDrawingPanel.repaint();
+            //this.listBookingDrawingPanel.repaint();
             this.drawMonth.next();
         }
 
@@ -2219,15 +2218,15 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
 
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
+        this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
         this.listBookingDrawingPanel.removeAll();
         this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
         this.listBookingDrawingPanel.add(this.drawMonth);
-        this.drawMonth.reset();
         this.listBookingDrawingPanel.repaint();
-        
+        this.drawMonth.reset();
 
 
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
@@ -2315,6 +2314,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 setResizable(!isFullScreen);
                 device.setFullScreenWindow(this);
                 validate();
+
             } else {
                 pack();
                 setVisible(true);

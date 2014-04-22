@@ -58,6 +58,7 @@ public class DrawMonth extends JPanel {
         this.increment = 0;
         this.lastIncrement = 0;
         this.lastApartment = 0;
+        //this.showings = 0;
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -121,12 +122,15 @@ public class DrawMonth extends JPanel {
         calcScreenCoor();
         ///////
 
-        int x = 0;
+        
         int y = 40;
-
+        System.out.println(this.list.get(17)[5]);
+        System.out.println(" b increment "+increment);
+            System.out.println(" b  ap "+apartment);
         while (list.get(increment)[5] == apartment) {
             int[] tmp = list.get(increment);
-
+            System.out.println("increment "+increment);
+            System.out.println("ap "+apartment);
             if (tmp[0] == 0) {
                 // empty
                 addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "");
