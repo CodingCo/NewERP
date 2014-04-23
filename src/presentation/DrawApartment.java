@@ -40,15 +40,14 @@ public class DrawApartment extends JPanel {
 
     @Override
     public void paintComponent(Graphics page) {
-        
-       int ySpaceBuffer = 5;
+
+        int ySpaceBuffer = 5;
         int boxHeight = 60;
         //boxWidth = (width / this.cdm);
         //numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
         System.out.println("kjdhfkljdshfjkds");
         drawCalendarBar(page);
-        
-        
+
     }
 
     private void drawBooking(int x, int y, int width, int height, Color c, Color hc, String message) {

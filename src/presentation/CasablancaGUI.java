@@ -12,8 +12,6 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.Toolkit;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +19,6 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
