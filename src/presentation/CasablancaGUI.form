@@ -276,9 +276,9 @@
                       <Component id="newBookingTitleTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="newBookingFormPanel" pref="678" max="32767" attributes="0"/>
-                          <Component id="newBookingFindPanel" alignment="1" pref="678" max="32767" attributes="0"/>
-                          <Component id="newBookingAvailablePanel" alignment="1" pref="678" max="32767" attributes="0"/>
+                          <Component id="newBookingFormPanel" pref="686" max="32767" attributes="0"/>
+                          <Component id="newBookingFindPanel" alignment="1" pref="686" max="32767" attributes="0"/>
+                          <Component id="newBookingAvailablePanel" alignment="1" pref="686" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -331,7 +331,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="newBookingFindSearchPanel" pref="560" max="32767" attributes="0"/>
+                          <Component id="newBookingFindSearchPanel" pref="578" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -357,42 +357,41 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="newBookingFindSearchFromTextField" min="-2" pref="315" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="newBookingFindRoomNRTextField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="newBookingFindSearchFromTextField" min="-2" pref="315" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="newBookingFindRoomNRTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel43" alignment="1" min="-2" pref="309" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel43" alignment="1" min="-2" pref="309" max="-2" attributes="0"/>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="newBookingFindButtonBackButton" min="-2" max="-2" attributes="0"/>
-                                          <Component id="newBookingFindButtonFindButton" min="-2" pref="302" max="-2" attributes="0"/>
-                                          <Component id="newBookingFindSearchNONTextField" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
-                                          <Component id="newBookingFindSearchTypeComboBox" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="newBookingFindButtonBackButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newBookingFindButtonFindButton" min="-2" pref="302" max="-2" attributes="0"/>
+                                  <Component id="newBookingFindSearchNONTextField" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                  <Component id="newBookingFindSearchTypeComboBox" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -442,7 +441,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingFindSearchFromTextFieldMouseClicked"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFindSearchFromTextFieldActionPerformed"/>
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newBookingFindSearchFromTextFieldKeyTyped"/>
                       </Events>
                     </Component>
@@ -627,7 +625,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingAvailListMouseClicked"/>
-                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="newBookingAvailListValueChanged"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -675,7 +672,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="newBookingFormFirstTextField" min="-2" pref="148" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="newBookingFormNameTextField" max="32767" attributes="0"/>
+                                          <Component id="newBookingFormNameTextField" pref="176" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -685,7 +682,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="newBookingFormZipTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="newBookingFormNatTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newBookingFormCountryTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="newBookingFormStreetTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="newBookingFormCityTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="newBookingFormEmailTextField" alignment="0" max="32767" attributes="0"/>
@@ -736,7 +733,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="newBookingFormStreetTextField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="newBookingFormNatTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="newBookingFormCountryTextField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -784,7 +781,7 @@
                     <Property name="text" type="java.lang.String" value="Phone"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="newBookingFormNatTextField">
+                <Component class="javax.swing.JTextField" name="newBookingFormCountryTextField">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Country"/>
@@ -812,7 +809,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="newBookingFormGreyPanel" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="newBookingFormCreateButton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingFormSubmitButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="newBookingFormPreviousButton" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -827,7 +824,7 @@
                               <Component id="newBookingFormGreyPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="newBookingFormCreateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newBookingFormSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newBookingFormPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -836,7 +833,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="newBookingFormCreateButton">
+                    <Component class="javax.swing.JButton" name="newBookingFormSubmitButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Submit"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -850,8 +847,8 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingFormCreateButtonMouseEntered"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormCreateButtonActionPerformed"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newBookingFormSubmitButtonMouseEntered"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormSubmitButtonActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="newBookingFormPreviousButton">
@@ -947,18 +944,12 @@
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormADateTextFieldActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="newBookingFormNONTextField">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormNONTextFieldActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="newBookingFormRoomTextField">
                           <Properties>
@@ -1069,7 +1060,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="listOptionjPanel" max="32767" attributes="0"/>
-                          <Component id="menuOptionsjPanel" pref="656" max="32767" attributes="0"/>
+                          <Component id="menuOptionsjPanel" pref="670" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -1455,7 +1446,7 @@
                           <Group type="102" attributes="0">
                               <Component id="eBFindPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="eBMatchPanel" pref="308" max="32767" attributes="0"/>
+                              <Component id="eBMatchPanel" pref="320" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="eBFormPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1476,9 +1467,9 @@
                       <Component id="eBTitleTitleLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="eBFormPanel" pref="666" max="32767" attributes="0"/>
-                          <Component id="eBMatchPanel" alignment="1" pref="666" max="32767" attributes="0"/>
-                          <Component id="eBFindPanel" alignment="0" pref="666" max="32767" attributes="0"/>
+                          <Component id="eBFormPanel" pref="680" max="32767" attributes="0"/>
+                          <Component id="eBMatchPanel" alignment="1" pref="680" max="32767" attributes="0"/>
+                          <Component id="eBFindPanel" alignment="0" pref="680" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1582,7 +1573,6 @@
                 <Component class="javax.swing.JTextField" name="eBFindRoomNrTextField">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="1 - 104"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFindBookingNRTextField">
@@ -1740,9 +1730,6 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eBMatchListMouseClicked"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1827,7 +1814,7 @@
                                       <Component id="eBFormFirstTextField" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class BookingMapper {
 
-    public ArrayList<Booking> getAllBookings(Connection con) throws BookingException{
+    public ArrayList<Booking> getAllBookings(Connection con) {
 
         ArrayList<Booking> aB = new ArrayList();
 
@@ -30,7 +30,6 @@ public class BookingMapper {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new BookingException("Error in getAllBookings");
         } finally {
             try {
                 st.close();

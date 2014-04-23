@@ -68,7 +68,7 @@ public class Controller {
         return null;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) throws BookingException{
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
         if (this.facade != null) {
             return this.facade.findBookings(bookingNr, name, date, apartment_nr);
         }
@@ -110,7 +110,7 @@ public class Controller {
         return null;
     }
 
-    public void updateLists() throws BookingException{
+    public void updateLists(){
         if (this.facade != null) {
             this.facade.updateLists();
         }

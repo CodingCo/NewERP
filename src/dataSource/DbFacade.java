@@ -59,7 +59,7 @@ public class DbFacade {
         return null;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) throws BookingException{
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr){
         if (this.chatty != null) {
             return this.chatty.findBookings(bookingNr, name, date, apartment_nr, con);
         }
@@ -94,7 +94,7 @@ public class DbFacade {
         return null;
     }
 
-    public void updateLists() throws BookingException {
+    public void updateLists() {
         if (this.chatty != null) {
             this.chatty.updateLists(con);
         }

@@ -75,15 +75,20 @@ public class InputCheck {
     }
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
-        int roomNumber;
-        try {
-            roomNumber = Integer.parseInt(apartmentNr.trim());
-        } catch (NumberFormatException ex) {
-            throw new RoomException("must enter a room number");
-        }
+        int roomNumber = 0;
+        if (!apartmentNr.trim().isEmpty()) {
+            
+            try {
 
-        if (roomNumber == 0 || roomNumber > 104) {
-            throw new RoomException("Room nr. must be between 1 and 104");
+                roomNumber = Integer.parseInt(apartmentNr.trim());
+
+            } catch (NumberFormatException ex) {
+                throw new RoomException("must enter a room number");
+            }
+
+            if (roomNumber == 0 || roomNumber > 104) {
+                throw new RoomException("Room nr. must be between 1 and 104");
+            }
         }
         return roomNumber;
     }

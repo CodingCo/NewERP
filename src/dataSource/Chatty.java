@@ -43,7 +43,7 @@ public class Chatty {
         return apartmentToReturn;
     }
 
-    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) throws BookingException {
+    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateLists(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
 
@@ -88,7 +88,7 @@ public class Chatty {
         return relevantBooking;
     }
 
-    public void updateLists(Connection con) throws BookingException{
+    public void updateLists(Connection con){
         bookings = bookingMapper.getAllBookings(con);
         customers = customerMapper.getAllCustomers(con); 
     }
