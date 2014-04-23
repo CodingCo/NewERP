@@ -771,9 +771,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Last name"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newBookingFormNameTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="newBookingFormNOGTextField">
                   <Properties>
@@ -1288,9 +1285,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="listBookingRefreshjButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="listBookingDisplayTypejLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="listBookingLastUpdatedjLabel" min="-2" pref="214" max="-2" attributes="0"/>
+                                  <Component id="listBookingLastUpdatedjLabel" min="-2" pref="202" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="listBookingUpListButton" min="-2" max="-2" attributes="0"/>
@@ -1313,7 +1308,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="listBookingRefreshjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="listBookingLastUpdatedjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="listBookingDisplayTypejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="listBookingDrawingPanel" max="32767" attributes="0"/>
@@ -1350,12 +1344,6 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Component class="javax.swing.JLabel" name="listBookingDisplayTypejLabel">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Display"/>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="listBookingRefreshjButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
@@ -1416,11 +1404,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Next"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listBookingnextListButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="listBookingPreviousListButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Previous"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listBookingPreviousListButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1514,49 +1508,29 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Component id="eBFindNameTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="eBFindDateTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="eBFindRoomNrTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="eBFindBookingNRTextField" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                                          <Component id="eBFindTitleTitleLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eBFindButtonBackButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eBFindButtonFindButton" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="eBFindNameTextField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="eBFindDateTextField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="eBFindRoomNrTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="eBFindBookingNRTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="eBFindButtonBackButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="eBFindButtonFindButton" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
-                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1564,14 +1538,12 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="eBFindTitleTitleLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="eBFindBookingNRTextField" min="-2" max="-2" attributes="0"/>
@@ -1603,24 +1575,21 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFindDateTextField">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="DD-MM-YY"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFindRoomNrTextField">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="1 - 104"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFindBookingNRTextField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Find booking by entering a search criteria. All  "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="eBFindTitleTitleLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Dialog" size="14" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Find Booking"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="eBFindButtonFindButton">
@@ -1780,7 +1749,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Dialog" size="14" style="1"/>
+                      <Font name="Dialog" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Matching Bookings"/>
                   </Properties>
@@ -2065,9 +2034,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFormEmailTextField">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBFormEmailTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel48">
                   <Properties>
@@ -2127,12 +2093,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="273" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="273" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2143,7 +2112,7 @@
                       <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2158,6 +2127,13 @@
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -2167,43 +2143,40 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="previousCustomerChooseButton" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                  <Component id="previousCustomerCancelbutton" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="previousCustomerSearchField" min="-2" pref="222" max="-2" attributes="0"/>
                                   <EmptySpace pref="30" max="32767" attributes="0"/>
                                   <Component id="previousCustomerSearchButton" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="previousCustomerCancelbutton" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="previousCustomerChooseButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="previousCustomerSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="previousCustomerSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane4" min="-2" pref="351" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="previousCustomerChooseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="previousCustomerCancelbutton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="previousCustomerChooseButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="previousCustomerCancelbutton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

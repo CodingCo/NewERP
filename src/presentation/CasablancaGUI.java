@@ -168,7 +168,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         listBookingBackButton = new javax.swing.JButton();
         listOptionjPanel = new javax.swing.JPanel();
         listBookingDrawingPanel = new javax.swing.JPanel();
-        listBookingDisplayTypejLabel = new javax.swing.JLabel();
         listBookingRefreshjButton = new javax.swing.JButton();
         listBookingLastUpdatedjLabel = new javax.swing.JLabel();
         listBookingUpListButton = new javax.swing.JButton();
@@ -183,7 +182,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFindRoomNrTextField = new javax.swing.JTextField();
         eBFindBookingNRTextField = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        eBFindTitleTitleLabel = new javax.swing.JLabel();
         eBFindButtonFindButton = new javax.swing.JButton();
         eBFindButtonBackButton = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
@@ -625,11 +623,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         newBookingFormNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFormNameTextField.setText("Last name");
-        newBookingFormNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBookingFormNameTextFieldActionPerformed(evt);
-            }
-        });
 
         newBookingFormNOGTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newBookingFormNOGTextField.setText("Visiting residents");
@@ -1041,9 +1034,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGap(0, 570, Short.MAX_VALUE)
         );
 
-        listBookingDisplayTypejLabel.setText("Display");
-        listBookingDisplayTypejLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         listBookingRefreshjButton.setText("Refresh");
         listBookingRefreshjButton.setMaximumSize(new java.awt.Dimension(100, 30));
         listBookingRefreshjButton.setMinimumSize(new java.awt.Dimension(100, 30));
@@ -1077,8 +1067,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
 
         listBookingnextListButton.setText("Next");
+        listBookingnextListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBookingnextListButtonActionPerformed(evt);
+            }
+        });
 
         listBookingPreviousListButton.setText("Previous");
+        listBookingPreviousListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBookingPreviousListButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout listOptionjPanelLayout = new javax.swing.GroupLayout(listOptionjPanel);
         listOptionjPanel.setLayout(listOptionjPanelLayout);
@@ -1091,9 +1091,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                     .addGroup(listOptionjPanelLayout.createSequentialGroup()
                         .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listBookingDisplayTypejLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listBookingLastUpdatedjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(listBookingLastUpdatedjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(listOptionjPanelLayout.createSequentialGroup()
                         .addComponent(listBookingUpListButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1110,8 +1108,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(listOptionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listBookingRefreshjButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listBookingLastUpdatedjLabel)
-                    .addComponent(listBookingDisplayTypejLabel))
+                    .addComponent(listBookingLastUpdatedjLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(listBookingDrawingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1166,12 +1163,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFindPanel.setMinimumSize(new java.awt.Dimension(380, 200));
         eBFindPanel.setPreferredSize(new java.awt.Dimension(340, 200));
 
+        eBFindDateTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eBFindDateTextField.setText("DD-MM-YY");
 
-        jLabel27.setText("Find booking by entering a search criteria. All  ");
+        eBFindRoomNrTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        eBFindRoomNrTextField.setText("1 - 104");
 
-        eBFindTitleTitleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        eBFindTitleTitleLabel.setText("Find Booking");
+        jLabel27.setText("Find booking by entering a search criteria. All  ");
 
         eBFindButtonFindButton.setText("Find");
         eBFindButtonFindButton.setMaximumSize(new java.awt.Dimension(100, 30));
@@ -1222,52 +1220,37 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFindPanelLayout.setHorizontalGroup(
             eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eBFindPanelLayout.createSequentialGroup()
-                .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(eBFindPanelLayout.createSequentialGroup()
-                        .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(eBFindPanelLayout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(eBFindTitleTitleLabel))
-                            .addGroup(eBFindPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel27)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(eBFindPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eBFindNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFindDateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eBFindRoomNrTextField)
-                            .addComponent(eBFindBookingNRTextField)
-                            .addGroup(eBFindPanelLayout.createSequentialGroup()
-                                .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel44)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel28)
-                                    .addComponent(eBFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eBFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(eBFindPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eBFindNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eBFindDateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eBFindRoomNrTextField)
+                    .addComponent(eBFindBookingNRTextField)
+                    .addGroup(eBFindPanelLayout.createSequentialGroup()
+                        .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel28)
+                            .addComponent(eBFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eBFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         eBFindPanelLayout.setVerticalGroup(
             eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eBFindPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eBFindTitleTitleLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(34, 34, 34)
+                .addGap(63, 63, 63)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eBFindBookingNRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1306,7 +1289,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(eBMatchList);
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Matching Bookings");
 
         eBMatchButtonEditButton.setText("Edit");
@@ -1427,12 +1410,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel12.setText("Phone");
 
         jLabel47.setText("Email");
-
-        eBFormEmailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eBFormEmailTextFieldActionPerformed(evt);
-            }
-        });
 
         jLabel48.setText("City");
 
@@ -1595,6 +1572,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel37.setText("Find Previous Customer");
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jScrollPane4.setViewportView(previousCustomerList);
 
         previousCustomerSearchButton.setText("Search");
@@ -1629,35 +1608,33 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(previousCustomerChooseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(previousCustomerCancelbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(previousCustomerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(previousCustomerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(previousCustomerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel38)
+                            .addComponent(previousCustomerCancelbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(previousCustomerChooseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel38)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jLabel38)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(previousCustomerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(previousCustomerSearchButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(previousCustomerChooseButton)
-                    .addComponent(previousCustomerCancelbutton))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(previousCustomerChooseButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previousCustomerCancelbutton)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout previousCustomerPanelLayout = new javax.swing.GroupLayout(previousCustomerPanel);
@@ -1665,11 +1642,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
         previousCustomerPanelLayout.setHorizontalGroup(
             previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previousCustomerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(273, Short.MAX_VALUE)
                 .addGroup(previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(previousCustomerPanelLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel37)))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         previousCustomerPanelLayout.setVerticalGroup(
             previousCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1678,7 +1657,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addComponent(jLabel37)
                 .addGap(72, 72, 72)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         mainPage.add(previousCustomerPanel, "card6");
@@ -2005,7 +1984,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.drawMonth.previous();
         }
 
-
     }//GEN-LAST:event_listBookingUpListButtonActionPerformed
     private void listBookingDownListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingDownListButtonActionPerformed
 
@@ -2018,22 +1996,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
         if (this.drawMonthFlag) {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
-            //this.listBookingDrawingPanel.repaint();
+            this.listBookingDrawingPanel.repaint();
             this.drawMonth.next();
         }
 
     }//GEN-LAST:event_listBookingDownListButtonActionPerformed
     private void listBookingTodayjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingTodayjButtonActionPerformed
-        this.drawMonth = new DrawMonth(jPanel2);
-
+        this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
         this.drawTodayFlag = true;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = false;
-        this.listBookingDisplayTypejLabel.setText("Bookings for today");
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
         this.drawToday.reset();
+
     }//GEN-LAST:event_listBookingTodayjButtonActionPerformed
     private void listBookingSearchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingSearchjButtonActionPerformed
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
@@ -2045,6 +2022,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingDrawingPanel.add(this.drawMonth);
         this.listBookingDrawingPanel.repaint();
         this.drawMonth.reset();
+
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
         this.cl.show(mainPage, "FrontPage");
@@ -2053,7 +2031,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void listBookingApartmentjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingApartmentjListMouseClicked
 
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
@@ -2107,15 +2084,33 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFormFirstTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newBookingFormFirstTextFieldFocusGained
         this.newBookingFormFirstTextField.setText("");
     }//GEN-LAST:event_newBookingFormFirstTextFieldFocusGained
-    private void newBookingFormNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newBookingFormNameTextFieldActionPerformed
     private void newBookingFindSearchNONTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newBookingFindSearchNONTextFieldFocusGained
         this.newBookingFindSearchNONTextField.setText("");
     }//GEN-LAST:event_newBookingFindSearchNONTextFieldFocusGained
-    private void eBFormEmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormEmailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eBFormEmailTextFieldActionPerformed
+    private void listBookingnextListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingnextListButtonActionPerformed
+        if (this.drawMonthFlag) {
+            this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
+            this.listBookingDatejTextField1.setText(this.drawMonth.nextMonth(this.listBookingDatejTextField1.getText()));
+            this.listBookingDrawingPanel.removeAll();
+            this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
+            this.listBookingDrawingPanel.add(this.drawMonth);
+            this.listBookingDrawingPanel.repaint();
+            this.drawMonth.reset();
+        }
+
+    }//GEN-LAST:event_listBookingnextListButtonActionPerformed
+    private void listBookingPreviousListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingPreviousListButtonActionPerformed
+        if (this.drawMonthFlag) {
+            this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
+            this.listBookingDatejTextField1.setText(this.drawMonth.previousMonth(this.listBookingDatejTextField1.getText()));
+            this.listBookingDrawingPanel.removeAll();
+            this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
+            this.listBookingDrawingPanel.add(this.drawMonth);
+            this.listBookingDrawingPanel.repaint();
+            this.drawMonth.reset();
+        }
+
+    }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
 
     public void setFocusListener(JPanel panel) {
         for (int x = 0; x < panel.getComponentCount(); ++x) {
@@ -2251,7 +2246,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField eBFindNameTextField;
     private javax.swing.JPanel eBFindPanel;
     private javax.swing.JTextField eBFindRoomNrTextField;
-    private javax.swing.JLabel eBFindTitleTitleLabel;
     private javax.swing.JTextField eBFormADateTextField;
     private javax.swing.JTextField eBFormANRTextField;
     private javax.swing.JButton eBFormButtonCancelButton;
@@ -2328,7 +2322,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JList listBookingApartmentjList;
     private javax.swing.JButton listBookingBackButton;
     private javax.swing.JTextField listBookingDatejTextField1;
-    private javax.swing.JLabel listBookingDisplayTypejLabel;
     private javax.swing.JButton listBookingDownListButton;
     private javax.swing.JPanel listBookingDrawingPanel;
     private javax.swing.JLabel listBookingLastUpdatedjLabel;
