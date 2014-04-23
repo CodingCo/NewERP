@@ -272,7 +272,7 @@ public class Chatty {
 
             if (bookingMonth == month && bookingYear == year) {
                 relevantBookings.add(current);
-            } else if(bookingMonth < month){
+            } else if(bookingMonth < month){ 
                 int num_nights = current.getNum_of_nights();
                 String bookingDateBegin = current.getDate_from();
 
@@ -323,6 +323,13 @@ public class Chatty {
             bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3,5));
             bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6,8));
             
+            System.out.println("Number of nights:   " + current.getNum_of_nights());
+            System.out.println("Start date:         " + current.getDate_from());
+            
+            System.out.println("End day:            " + bookingValues[8]);
+            System.out.println("End Month:          " + bookingValues[9]);
+            System.out.println("End year:           " + bookingValues[10]);
+            System.out.println("\n\n\n");
             
             listToReturn.add(bookingValues);
         }
