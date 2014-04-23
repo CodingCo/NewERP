@@ -1,5 +1,6 @@
 package dataSource;
 
+import Exception.BookingException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
@@ -27,7 +28,7 @@ public class DbFacade {
         return instance;
     }
 
-    public boolean newBooking(Booking booking, Customer customer) {
+    public boolean newBooking(Booking booking, Customer customer) throws BookingException {
         boolean status = false;
         if (this.chatty != null) {
             status = this.chatty.createNewBookingTransaction(booking, customer, con);
@@ -35,7 +36,7 @@ public class DbFacade {
         return status;
     }
 
-    public boolean updateBooking(Booking booking, Customer customer) /*throws UpdateBookingException*/ {
+    public boolean updateBooking(Booking booking, Customer customer) throws BookingException {
         boolean status = false;
         if (this.chatty != null) {
             status = this.chatty.updateBookingTransaction(booking, customer, con);
@@ -43,7 +44,7 @@ public class DbFacade {
         return status;
     }
 
-    public boolean deleteBooking(int b_id) {
+    public boolean deleteBooking(int b_id) throws BookingException {
         boolean status = false;
         if (this.chatty != null) {
             status = this.chatty.deleteBookingTransaction(b_id, con);
@@ -58,7 +59,7 @@ public class DbFacade {
         return null;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) throws BookingException{
         if (this.chatty != null) {
             return this.chatty.findBookings(bookingNr, name, date, apartment_nr, con);
         }
@@ -93,7 +94,7 @@ public class DbFacade {
         return null;
     }
 
-    public void updateLists() {
+    public void updateLists() throws BookingException {
         if (this.chatty != null) {
             this.chatty.updateLists(con);
         }

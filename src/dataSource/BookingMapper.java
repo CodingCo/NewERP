@@ -1,5 +1,6 @@
 package dataSource;
 
+import Exception.BookingException;
 import domain.Booking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class BookingMapper {
 
-    public ArrayList<Booking> getAllBookings(Connection con) {
+    public ArrayList<Booking> getAllBookings(Connection con) throws BookingException{
 
         ArrayList<Booking> aB = new ArrayList();
 
@@ -29,6 +30,7 @@ public class BookingMapper {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new BookingException("Error in getAllBookings");
         } finally {
             try {
                 st.close();
@@ -40,7 +42,7 @@ public class BookingMapper {
         return aB;
     }
 
-    public int insertNewBooking(Booking bo, int id, Connection con) {
+    public int insertNewBooking(Booking bo, int id, Connection con) throws BookingException {
         int rowsInserted = 0;
         String SQLString = "insert into booking values (booking_seq.NEXTVAL,?,?,to_date(?,'DD-MM-YY'),?,?,?,?,0)";
         PreparedStatement st = null;
@@ -57,6 +59,7 @@ public class BookingMapper {
             rowsInserted = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new BookingException("Booking not inserted");
         } finally {
             try {
                 st.close();
@@ -67,7 +70,7 @@ public class BookingMapper {
         return rowsInserted;
     }
 
-    public int updateBooking(Booking b, Connection con) /*throws UpdateBookingException*/{
+    public int updateBooking(Booking b, Connection con) throws BookingException{
         int rowsIns = 0;
         String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = TO_DATE(?,'DD-MM-YY'), number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
@@ -88,7 +91,7 @@ public class BookingMapper {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            //throw new UpdateBookingException();
+            throw new BookingException("Booking could not be updated");
         } finally {
             try {
                 st.close();
@@ -99,7 +102,7 @@ public class BookingMapper {
         return rowsIns;
     }
 
-    public int deleteBooking(Connection con, int b_id) {
+    public int deleteBooking(Connection con, int b_id) throws BookingException{
         int rowDel = 0;
         String SQLString = "delete from booking where b_id = ?";
         PreparedStatement stat = null;
@@ -112,6 +115,7 @@ public class BookingMapper {
         } catch (SQLException e) {
             System.err.println(e);
             e.printStackTrace();
+            throw new BookingException("Booking could not be deleted");
         } finally {
             try {
                 stat.close();
