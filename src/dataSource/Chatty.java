@@ -1,5 +1,6 @@
 package dataSource;
 
+import Exception.BookingException;
 import domain.*;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class Chatty {
         return apartmentToReturn;
     }
 
-    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
+    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) throws BookingException {
         updateLists(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
 
@@ -87,7 +88,7 @@ public class Chatty {
         return relevantBooking;
     }
 
-    public void updateLists(Connection con) {
+    public void updateLists(Connection con) throws BookingException{
         bookings = bookingMapper.getAllBookings(con);
         customers = customerMapper.getAllCustomers(con); 
     }
@@ -97,7 +98,7 @@ public class Chatty {
     }
 
     ///////////////////////////////////////////////// TRANSACTIONS
-    public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) {
+    public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
 
         int bookingStatus = 0;
         int customerStatus = 0;
@@ -130,7 +131,7 @@ public class Chatty {
         return false;
     }
 
-    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) {
+    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException{
         int bookingStatus = 0;
         int customerStatus = 0;
 
@@ -162,7 +163,7 @@ public class Chatty {
         return false;
     }
 
-    public boolean deleteBookingTransaction(int b_id, Connection con) {
+    public boolean deleteBookingTransaction(int b_id, Connection con) throws BookingException{
         int status;
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;

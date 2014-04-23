@@ -276,9 +276,9 @@
                       <Component id="newBookingTitleTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="newBookingFormPanel" pref="686" max="32767" attributes="0"/>
-                          <Component id="newBookingFindPanel" alignment="1" pref="686" max="32767" attributes="0"/>
-                          <Component id="newBookingAvailablePanel" alignment="1" pref="686" max="32767" attributes="0"/>
+                          <Component id="newBookingFormPanel" pref="678" max="32767" attributes="0"/>
+                          <Component id="newBookingFindPanel" alignment="1" pref="678" max="32767" attributes="0"/>
+                          <Component id="newBookingAvailablePanel" alignment="1" pref="678" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -331,7 +331,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="newBookingFindSearchPanel" pref="578" max="32767" attributes="0"/>
+                          <Component id="newBookingFindSearchPanel" pref="560" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -357,41 +357,42 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="newBookingFindSearchFromTextField" min="-2" pref="315" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="newBookingFindRoomNRTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel43" alignment="1" min="-2" pref="309" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="newBookingFindButtonBackButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newBookingFindButtonFindButton" min="-2" pref="302" max="-2" attributes="0"/>
-                                  <Component id="newBookingFindSearchNONTextField" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
-                                  <Component id="newBookingFindSearchTypeComboBox" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                                  <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="newBookingFindSearchFromTextField" min="-2" pref="315" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="newBookingFindRoomNRTextField" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jLabel43" alignment="1" min="-2" pref="309" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="newBookingFindButtonBackButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="newBookingFindButtonFindButton" min="-2" pref="302" max="-2" attributes="0"/>
+                                          <Component id="newBookingFindSearchNONTextField" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                          <Component id="newBookingFindSearchTypeComboBox" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -674,7 +675,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="newBookingFormFirstTextField" min="-2" pref="148" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="newBookingFormNameTextField" pref="176" max="32767" attributes="0"/>
+                                          <Component id="newBookingFormNameTextField" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1068,7 +1069,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="listOptionjPanel" max="32767" attributes="0"/>
-                          <Component id="menuOptionsjPanel" pref="670" max="32767" attributes="0"/>
+                          <Component id="menuOptionsjPanel" pref="656" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -1454,7 +1455,7 @@
                           <Group type="102" attributes="0">
                               <Component id="eBFindPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="eBMatchPanel" pref="320" max="32767" attributes="0"/>
+                              <Component id="eBMatchPanel" pref="308" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="eBFormPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1475,9 +1476,9 @@
                       <Component id="eBTitleTitleLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="eBFormPanel" pref="680" max="32767" attributes="0"/>
-                          <Component id="eBMatchPanel" alignment="1" pref="680" max="32767" attributes="0"/>
-                          <Component id="eBFindPanel" alignment="0" pref="680" max="32767" attributes="0"/>
+                          <Component id="eBFormPanel" pref="666" max="32767" attributes="0"/>
+                          <Component id="eBMatchPanel" alignment="1" pref="666" max="32767" attributes="0"/>
+                          <Component id="eBFindPanel" alignment="0" pref="666" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1826,7 +1827,7 @@
                                       <Component id="eBFormFirstTextField" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
