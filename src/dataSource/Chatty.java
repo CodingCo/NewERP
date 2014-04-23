@@ -258,7 +258,7 @@ public class Chatty {
         ArrayList<int[]> listToReturn = new ArrayList();
         ArrayList<Booking> relevantBookings = new ArrayList();
 
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 
         int month = Integer.parseInt(date.substring(3, 5));
@@ -295,7 +295,7 @@ public class Chatty {
         }
 
         for (Booking current : relevantBookings) {
-            int[] bookingValues = new int[8];
+            int[] bookingValues = new int[11];
 
             bookingValues[0] = Integer.parseInt(current.getDate_from().substring(0, 2));
             bookingValues[1] = Integer.parseInt(current.getDate_from().substring(3, 5));
@@ -314,6 +314,15 @@ public class Chatty {
             bookingValues[6] = current.getB_id();
             bookingValues[7] = current.getCust_id();
 
+            // End Date info
+            c.add(Calendar.DATE, current.getNum_of_nights());  
+            String bookingDateEnd = sdf.format(c.getTime());
+            
+            bookingValues[8] = Integer.parseInt(bookingDateEnd.substring(0,2));
+            bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3,5));
+            bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6,8));
+            
+            
             listToReturn.add(bookingValues);
         }
 
