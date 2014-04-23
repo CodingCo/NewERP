@@ -87,8 +87,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1941,12 +1941,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.listBookingLastUpdatedjLabel.setText("Updated: " + timeStamp);
         this.controller.updateLists();
-        this.lBlistModel.clear();
-        ArrayList<Apartment> list = this.controller.getApartments();
-        for (Apartment a : list) {
-            this.lBlistModel.addElement(a);
-        }
-
+        
     }//GEN-LAST:event_listBookingRefreshjButtonActionPerformed
     private void listBookingUpListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingUpListButtonActionPerformed
 
@@ -2019,12 +2014,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
         
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-
+        System.out.println(a.getA_num());
         
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
-        this.drawApartment.setVisible(true);
+        
     }//GEN-LAST:event_listBookingApartmentjListMouseClicked
     private void previousCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerSearchButtonActionPerformed
         this.cBListModel.clear();

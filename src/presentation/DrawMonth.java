@@ -148,7 +148,6 @@ public class DrawMonth extends JPanel {
 
     @Override
     public void paintComponent(Graphics page) {
-        this.setSize(panel.getSize());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         int ySpaceBuffer = 5;
@@ -223,7 +222,7 @@ public class DrawMonth extends JPanel {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
+                //JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
             }
 
             @Override
