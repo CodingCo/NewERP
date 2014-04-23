@@ -1,5 +1,6 @@
 package presentation;
 
+import Exception.DateException;
 import Exception.EmailException;
 import Exception.NameException;
 import Exception.RoomException;
@@ -103,5 +104,35 @@ public class InputCheck {
             throw new RoomException("no apartment matches the specified apartment type");
         }
         return apartment;
+    }
+
+    public static void dateCheck(String date) throws DateException {
+
+        if (date.isEmpty()) {
+            throw new DateException("Must enter a Date - no charecters entered ");
+        }
+
+        if (date.length() != 8) {
+            throw new DateException("Date entered has errounous dimensions - must be in DD-MM-YY format");
+        }
+
+        if (date.charAt(3) != '-' || date.charAt(6) != '-') {
+            throw new DateException("Date must be in DD-MM-YY format");
+        }
+
+        if (!Character.isDigit(date.charAt(1)) || !Character.isDigit(date.charAt(2)) || !Character.isDigit(date.charAt(4)) || !Character.isDigit(date.charAt(5)) || !Character.isDigit(date.charAt(7)) || !Character.isDigit(date.charAt(8))) {
+            throw new DateException("Date must consist of digits - in DD-MM-YY format");
+
+        }
+
+        if (date.contains("--")) {
+            throw new DateException("No -- allowed");
+        }
+        
+    }
+
+    public static void main(String[] args) {
+        Character c = 'ö';
+        System.out.println(Character.isLetter(c));
     }
 }
