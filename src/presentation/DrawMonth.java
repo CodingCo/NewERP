@@ -48,9 +48,9 @@ public class DrawMonth extends JPanel {
         this.panel = panel;
         this.list = new ArrayList();
         this.coor = new int[31];
-        this.blue = new Color(172, 207, 234);
-        this.green = new Color(184, 227, 178);
-        this.orange = new Color(253, 233, 182);
+        this.blue = new Color(0, 153, 204);
+        this.green = new Color(119, 204, 51);
+        this.orange = new Color(255, 204, 51);
         this.grey = new Color(176, 179, 180);
         this.hGreen = new Color(100, 184, 31);
         this.hOrange = new Color(235, 174, 21);
@@ -254,7 +254,7 @@ public class DrawMonth extends JPanel {
         for (int i = 0; i < 31; i++) {
             page.setColor(this.grey);
             page.fillRect(x, y, size, (this.panel.getHeight()));
-            page.setColor(Color.BLACK);
+            page.setColor(Color.WHITE);
 
             page.drawString("" + (i + 1), x + 10, y + 25);
             x = x + size + 1;
