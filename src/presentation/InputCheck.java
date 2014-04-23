@@ -136,8 +136,5 @@ public class InputCheck {
 
     }
 
-    public static void main(String[] args) {
-        Character c = 'ö';
-        System.out.println(Character.isLetter(c));
-    }
+    
 }
