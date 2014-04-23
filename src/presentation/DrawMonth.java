@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class DrawMonth extends JPanel {
     private final Color blue;
     private final Color green;
     private final Color orange;
+    private final Color grey;
     private final Color hGreen;
     private final Color hOrange;
     private final Color hblue;
@@ -37,7 +39,7 @@ public class DrawMonth extends JPanel {
     private int apartment;
     private int increment;
     private int numOfRows;
-
+    private String[] sMonths;
     private int lastIncrement;
     private int lastApartment;
 
@@ -46,10 +48,10 @@ public class DrawMonth extends JPanel {
         this.panel = panel;
         this.list = new ArrayList();
         this.coor = new int[31];
-
         this.blue = new Color(0, 153, 204);
         this.green = new Color(119, 204, 51);
         this.orange = new Color(255, 204, 51);
+        this.grey = new Color(176, 179, 180);
         this.hGreen = new Color(100, 184, 31);
         this.hOrange = new Color(235, 174, 21);
         this.hblue = new Color(0, 127, 178);
@@ -59,6 +61,7 @@ public class DrawMonth extends JPanel {
         this.lastIncrement = 0;
         this.lastApartment = 0;
         this.showings = 0;
+        this.sMonths = new String[12];
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -69,6 +72,7 @@ public class DrawMonth extends JPanel {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
             try {
                 c.setTime(sdf.parse(date));
+
                 this.cdm = c.getActualMaximum(Calendar.DAY_OF_MONTH);
             } catch (ParseException e) {
 
@@ -77,6 +81,35 @@ public class DrawMonth extends JPanel {
 
         }
     }
+
+    public String nextMonth(String date) {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        try {
+            c.setTime(sdf.parse(date));
+
+        } catch (ParseException ex) {
+        }
+        c.add(Calendar.MONTH, 1);
+        String s = sdf.format(c.getTime());
+
+        return s;
+    }
+    
+    public String previousMonth(String date) {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        try {
+            c.setTime(sdf.parse(date));
+
+        } catch (ParseException ex) {
+        }
+        c.add(Calendar.MONTH, -1);
+        String s = sdf.format(c.getTime());
+        return s;
+    }
+    
+    
 
     public void previous() {
         int aStart = apartment;
@@ -117,20 +150,18 @@ public class DrawMonth extends JPanel {
         int boxHeight = 60;
         boxWidth = (width / this.cdm);
         numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
-        /////// draw
+        int bsv = boxWidth / 2;
+
+/////// draw
         drawCalendarBar(page);
         calcScreenCoor();
         ///////
 
-        
         int y = 40;
-        System.out.println(this.list.get(17)[5]);
-        System.out.println(" b increment "+increment);
-            System.out.println(" b  ap "+apartment);
+
         while (list.get(increment)[5] == apartment) {
             int[] tmp = list.get(increment);
-            System.out.println("increment "+increment);
-            System.out.println("ap "+apartment);
+
             if (tmp[0] == 0) {
                 // empty
                 addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "");
@@ -139,18 +170,18 @@ public class DrawMonth extends JPanel {
 
                 // whole month
                 addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " continious - Nr. " + tmp[5], "" + tmp[4]);
+
             } else if (this.month > tmp[1]) {
                 // ind i
                 int nights = (tmp[0] + tmp[4]) - tmp[3];
-
-                addBookingPanel(coor[0], y, calcSize(nights), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4] + " - " + tmp[0] + tmp[1] + "   " + tmp[3]);
+                addBookingPanel(coor[0], y, calcSize(nights) - (boxWidth / 2), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4] + " - " + tmp[0] + tmp[1] + "   " + tmp[3]);
             } else if ((tmp[0] + tmp[4]) > tmp[3]) {
                 //ud af måneden
                 int nights = (tmp[3] - tmp[0]) + 1;
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4]);
             } else {
                 // this month
-                addBookingPanel(coor[tmp[0] - 1], y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4]);
             }
 
             if (!(showings < numOfRows)) {
@@ -166,8 +197,6 @@ public class DrawMonth extends JPanel {
             } else {
                 break;
             }
-            
-            
 
             increment++;
         }
@@ -223,7 +252,7 @@ public class DrawMonth extends JPanel {
         int x = 0;
         int y = 0;
         for (int i = 0; i < 31; i++) {
-            page.setColor(Color.GRAY);
+            page.setColor(this.grey);
             page.fillRect(x, y, size, (this.panel.getHeight()));
             page.setColor(Color.WHITE);
 
