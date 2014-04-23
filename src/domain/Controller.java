@@ -1,5 +1,6 @@
 package domain;
 
+import Exception.DateException;
 import dataSource.DbFacade;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -115,11 +116,10 @@ public class Controller {
     }
 
     //== No booking back in time - method
-    public static boolean isDateValid(String date) {
+    public void isDateValid(String date) throws DateException{
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;
         Calendar dateToCheck = null;
-
         try {
             currentDate = new GregorianCalendar();
             dateToCheck = new GregorianCalendar();
@@ -128,12 +128,11 @@ public class Controller {
             dateToCheck.setTime(sdf.parse(date));
             
             
-            if(dateToCheck.compareTo(currentDate) == 1)
-                return true;
+            if(dateToCheck.compareTo(currentDate) != 1)
+                throw new DateException("Can not create a booking on that date ");
             
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
-        return false;
     }
 }

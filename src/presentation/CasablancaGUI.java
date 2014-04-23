@@ -1,5 +1,6 @@
 package presentation;
 
+import Exception.RoomException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Controller;
@@ -420,7 +421,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         });
 
         newBookingFindRoomNRTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        newBookingFindRoomNRTextField.setText("1 - 104");
 
         newBookingFindButtonBackButton.setText("Back");
         newBookingFindButtonBackButton.setMaximumSize(new java.awt.Dimension(100, 30));
@@ -1868,16 +1868,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_newBookingFindSearchPanelMouseClicked
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
-        setFocusListener(this.newBookingFormPanel);
-
+       
         this.nBListModel.clear();
-        int roomNr = 0;
+        int apartmentNr = 0;
         try {
-            roomNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText().trim());
-        } catch (NumberFormatException e) {
-
+            apartmentNr = InputCheck.apartmentCheck(this.newBookingFindRoomNRTextField.getText());
+        } catch (RoomException e) {
+             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         }
-        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), roomNr);
+        
+        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), apartmentNr);
 
         if (a == null) {
             this.enableComponents(this, false);
@@ -2095,7 +2095,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
             this.listBookingDrawingPanel.add(this.drawMonth);
             this.listBookingDrawingPanel.repaint();
-            this.drawMonth.reset();
         }
 
     }//GEN-LAST:event_listBookingnextListButtonActionPerformed
@@ -2107,7 +2106,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
             this.listBookingDrawingPanel.add(this.drawMonth);
             this.listBookingDrawingPanel.repaint();
-            this.drawMonth.reset();
         }
 
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed

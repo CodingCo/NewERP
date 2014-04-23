@@ -74,10 +74,10 @@ public class InputCheck {
 
     }
 
-    public static void roomCheck(String roomNr) throws RoomException {
+    public static int apartmentCheck(String apartmentNr) throws RoomException {
         int roomNumber;
         try {
-            roomNumber = Integer.parseInt(roomNr.trim());
+            roomNumber = Integer.parseInt(apartmentNr.trim());
         } catch (NumberFormatException ex) {
             throw new RoomException("must enter a room number");
         }
@@ -85,10 +85,10 @@ public class InputCheck {
         if (roomNumber == 0 || roomNumber > 104) {
             throw new RoomException("Room nr. must be between 1 and 104");
         }
-
+        return roomNumber;
     }
 
-    public static String apartmentCheck(int num) throws RoomException {
+    public static String apartmentTypeCheck(int num) throws RoomException {
         String apartment = "";
 
         if (num > 0 && num <= 40) {
@@ -128,7 +128,7 @@ public class InputCheck {
         if (date.contains("--")) {
             throw new DateException("No -- allowed");
         }
-        
+
     }
 
     public static void main(String[] args) {
