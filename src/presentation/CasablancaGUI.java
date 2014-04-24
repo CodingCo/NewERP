@@ -23,6 +23,7 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import quicktime.std.StdQTConstants;
 
 /**
  * @author Simon & Robert
@@ -1707,29 +1708,43 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.bookingsFoundHashMap.clear();
         this.eBListModel.clear();
 
-        int bookingNumber = 0;
-        int apartmentNumber = 0;
-
-        String name = this.eBFindNameTextField.getText();
-        String date = this.eBFindDateTextField.getText();
-
         try {
-            apartmentNumber = Integer.parseInt(this.eBFindRoomNrTextField.getText());
-            bookingNumber = Integer.parseInt(this.eBFindBookingNRTextField.getText());
-
-        } catch (NumberFormatException ex) {
-            // Optional fields - no exceptions needed
-        }
-
-        bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
-        if (bookingsFoundHashMap == null) {
-            JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
-        } else {
-            for (Booking b : bookingsFoundHashMap.keySet()) {
-                this.eBListModel.addElement(b);
+            String name = this.eBFindNameTextField.getText();
+            String date = this.eBFindDateTextField.getText();
+            String bNum = this.eBFindBookingNRTextField.getText();
+            String aNum = this.eBFindRoomNrTextField.getText();
+            int apartmentNumber = 0;
+            int bookingNumber = 0;
+            
+            if (!name.trim().isEmpty()) {
+                InputCheck.nameCheck(name);
             }
-            this.enableComponents(this.eBMatchPanel, true);
+            if (!date.trim().isEmpty()) {
+                InputCheck.dateFormatCheck(date);
+            }
+            if (!bNum.trim().isEmpty()) {
+
+            }
+            if (!aNum.trim().isEmpty()) {
+               apartmentNumber = InputCheck.apartmentCheck(aNum);
+            }
+
+            bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
+
+            if (bookingsFoundHashMap == null) {
+                JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
+            } else {
+                for (Booking b : bookingsFoundHashMap.keySet()) {
+                    this.eBListModel.addElement(b);
+                }
+                this.enableComponents(this.eBMatchPanel, true);
+            }
+
+        } catch (Exception e) {
+
         }
+
+
     }//GEN-LAST:event_eBFindButtonFindButtonActionPerformed
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
         Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
@@ -1830,7 +1845,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             int numberOfNights = Integer.parseInt(this.newBookingFormNONTextField.getText());
 
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-            
+
             InputCheck.nameCheck(firstName);
             InputCheck.nameCheck(lastName);
             InputCheck.phoneCheck(phone);
