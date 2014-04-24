@@ -2,6 +2,7 @@ package presentation;
 
 import Exception.BookingException;
 import Exception.DateException;
+import Exception.NameException;
 import Exception.RoomException;
 import domain.Apartment;
 import domain.Booking;
@@ -140,7 +141,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormNONTextField = new javax.swing.JTextField();
         newBookingFormRoomTextField = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        newBookingPriceTextField = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         newBookingFormAgenTextField = new javax.swing.JTextField();
         newBookingFormEmailTextField = new javax.swing.JTextField();
@@ -639,7 +640,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormRoomTextField.setEditable(false);
         newBookingFormRoomTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jTextField1.setEnabled(false);
+        newBookingPriceTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        newBookingPriceTextField.setEnabled(false);
 
         jLabel30.setText("Price:");
 
@@ -661,7 +663,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                             .addComponent(jLabel30))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newBookingPriceTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(newBookingFormADateTextField)
                             .addComponent(newBookingFormNONTextField)
                             .addComponent(newBookingFormRoomTextField))))
@@ -672,7 +674,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newBookingPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1821,30 +1823,41 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String country = this.newBookingFormCountryTextField.getText();
             String city = this.newBookingFormCityTextField.getText();
             String street = this.newBookingFormStreetTextField.getText();
-            String date = this.newBookingFormADateTextField.getText();
-
+            String apartmentType = this.newBookingFindSearchTypeComboBox.getSelectedItem().toString();
             String travelAgency = this.newBookingFormAgenTextField.getText();
             String zipcode = this.newBookingFormZipTextField.getText();
+            String date = this.newBookingFormADateTextField.getText();
+            int price = Integer.parseInt(this.newBookingPriceTextField.getText());
+            int numberOfNights = Integer.parseInt(this.newBookingFormNONTextField.getText());
+            int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), apartmentType);
 
-            String numberOfNights = this.newBookingFormNONTextField.getText();
-            String numberOfGuests = this.newBookingFormNOGTextField.getText();
+            InputCheck.nameCheck(firstName);
+            InputCheck.nameCheck(lastName);
+            InputCheck.emailCheck(email);
+            InputCheck.custInfoCheck(country);
+            InputCheck.custInfoCheck(city);
 
             Customer c = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
 
-            boolean success = this.controller.newBooking(c, a.getA_num(), this.newBookingFormADateTextField.getText(), Integer.parseInt(this.newBookingFormNONTextField.getText()), this.newBookingFormAgenTextField.getText(), Integer.parseInt(this.newBookingFormNOGTextField.getText()), Integer.parseInt(this.newBookingFormNONTextField.getText()) * a.getPrice(), c.getFirst_name(), c.getLast_name(), c.getPhone());
-
+            this.controller.newBooking(c, a.getA_num(), date, numberOfNights, travelAgency, guests, price, c.getFirst_name(), c.getLast_name(), c.getPhone());
             this.enableComponents(this, false);
-            JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
             this.enableComponents(this, true);
             this.enableComponents(this.newBookingFormPanel, false);
             this.enableComponents(this.newBookingFormButtonPanel, true);
             this.enableComponents(this.newBookingFormGreyPanel, false);
             this.enableComponents(this.newBookingAvailablePanel, false);
             this.clearNewBookingFields();
-
-        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
+            
+        } catch (RoomException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
+        } catch (BookingException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
+        } catch (NameException exx) {
+            JOptionPane.showMessageDialog(this, exx.getMessage(), "", WIDTH);
+        } catch (Exception exxx) {
+            JOptionPane.showMessageDialog(this, exxx.getMessage(), "", WIDTH);
         }
 
 
@@ -1857,11 +1870,17 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingAvailablePanelMouseEntered
     private void newBookingAvailListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingAvailListMouseClicked
 
+        Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+        int price = 0;
+        try {
+            price = Integer.parseInt(this.newBookingFindSearchNONTextField.getText()) * a.getPrice();
+        } catch (NumberFormatException ex) {
+        }
         this.newBookingFormADateTextField.setText(this.newBookingFindSearchFromTextField.getText());
         this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
-        Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
-
         this.newBookingFormRoomTextField.setText("" + a.getA_num());
+        this.newBookingPriceTextField.setText("" + price);
+
         this.enableComponents(this.newBookingFormPanel, true);
         this.enableComponents(this.newBookingFormGreyPanel, false);
     }//GEN-LAST:event_newBookingAvailListMouseClicked
@@ -1889,8 +1908,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
         try {
-            InputCheck.dateCheck(date);
-            InputCheck.isDateValid(date);
+            InputCheck.dateFormatCheck(date);
+            InputCheck.timeDateCheck(date);
             numNights = InputCheck.nightsCheck(numberOfNights);
 
             a = controller.findAvailableApartment(date, numNights, selectedItem, apartmentNumber);
@@ -2357,7 +2376,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JList listBookingApartmentjList;
     private javax.swing.JButton listBookingBackButton;
     private javax.swing.JTextField listBookingDatejTextField1;
@@ -2408,6 +2426,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JButton newBookingFormSubmitButton;
     private javax.swing.JTextField newBookingFormZipTextField;
     private javax.swing.JPanel newBookingPanel;
+    private javax.swing.JTextField newBookingPriceTextField;
     private javax.swing.JLabel newBookingTitleTitle;
     private javax.swing.JButton previousCustomerCancelbutton;
     private javax.swing.JButton previousCustomerChooseButton;

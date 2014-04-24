@@ -78,6 +78,23 @@ public class InputCheck {
         }
 
     }
+     
+    public static void custInfoCheck(String name) throws NameException {
+
+        if (name.isEmpty()) {
+            throw new NameException("Must enter valid location information");
+        }
+
+        if (!name.trim().matches("[a-zA-Z]+")) {
+            throw new NameException("Can only contain latters");
+        }
+
+        if (name.length() < 1) {
+            throw new NameException("Lacation information must be longer than one charecter");
+        }
+
+    }
+    
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
         int roomNumber = 0;
@@ -92,6 +109,28 @@ public class InputCheck {
             throw new RoomException("Room nr. must be between 1 and 104");
         }
         return roomNumber;
+    }
+
+    public static int guestCheck(String guests, String type) throws RoomException {
+        int numberOfGuests = 0;
+        try {
+            numberOfGuests = Integer.parseInt(guests);
+        } catch (NumberFormatException ex) {
+            throw new RoomException("Number of guests must be a number");
+        }
+
+        if (type.equals("Single") && numberOfGuests > 1) {
+            throw new RoomException("Single apartments can only hold 1 guest");
+        }
+
+        if (type.equals("Double") && numberOfGuests > 2) {
+            throw new RoomException("Double apartments can only hold 2 guests");
+        }
+
+        if (type.equals("Family") && numberOfGuests > 5) {
+            throw new RoomException("Family apartments can only hold 5 guests");
+        }
+        return numberOfGuests;
     }
 
     public static String apartmentTypeCheck(int num) throws RoomException {
@@ -120,14 +159,14 @@ public class InputCheck {
         } catch (NumberFormatException ex) {
             throw new BookingException("Must enter a number");
         }
-        
-        if(x > 999){
+
+        if (x > 999) {
             throw new BookingException("Booking must not be over 999 nights");
         }
         return x;
     }
 
-    public static void dateCheck(String date) throws DateException {
+    public static void dateFormatCheck(String date) throws DateException {
 
         if (date.isEmpty()) {
             throw new DateException("Must enter a Date - no charecters entered ");
@@ -149,10 +188,9 @@ public class InputCheck {
         if (date.contains("--")) {
             throw new DateException("No -- allowed");
         }
-
     }
-    
-    public static void isDateValid(String date) throws DateException{
+
+    public static void timeDateCheck(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;
         Calendar dateToCheck = null;
@@ -162,12 +200,12 @@ public class InputCheck {
             currentDate.setTime(Calendar.getInstance().getTime());
             currentDate.add(Calendar.DAY_OF_MONTH, -1);
             dateToCheck.setTime(sdf.parse(date));
-            if(dateToCheck.compareTo(currentDate) != 1)
-                
+            if (dateToCheck.compareTo(currentDate) != 1) {
                 throw new DateException("Can not create a booking on that date");
-            
+            }
+
         } catch (ParseException ex) {
-            
+
         }
     }
 

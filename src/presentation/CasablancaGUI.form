@@ -909,7 +909,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField1" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="newBookingPriceTextField" alignment="1" max="32767" attributes="0"/>
                                               <Component id="newBookingFormADateTextField" max="32767" attributes="0"/>
                                               <Component id="newBookingFormNONTextField" max="32767" attributes="0"/>
                                               <Component id="newBookingFormRoomTextField" max="32767" attributes="0"/>
@@ -925,7 +925,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newBookingPriceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -985,8 +985,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel31">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField1">
+                        <Component class="javax.swing.JTextField" name="newBookingPriceTextField">
                           <Properties>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
