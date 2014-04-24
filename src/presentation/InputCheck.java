@@ -1,10 +1,12 @@
 package presentation;
 
+import Exception.PhoneException;
 import Exception.BookingException;
 import Exception.DateException;
 import Exception.EmailException;
 import Exception.NameException;
 import Exception.RoomException;
+import Exception.StreetAddressException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,9 +76,34 @@ public class InputCheck {
         }
 
         if (name.length() < 1) {
-            throw new NameException("Name must be longer than one charecter");
+            throw new NameException("Name must be longer than one character");
         }
 
+    }
+
+    public static void streetAddressCheck(String streetAddress) throws StreetAddressException {
+
+        if (streetAddress.isEmpty()) {
+            throw new StreetAddressException("No Address entered");
+        }
+
+        if (streetAddress.length() < 3) {
+            throw new StreetAddressException("Adress must be in 'streetname number'");
+        }
+
+        int tmp = 0;
+        for (char c : streetAddress.toCharArray()) {
+
+            if (Character.isDigit(c)) {
+                tmp = 2;
+            } else {
+                tmp = 1;
+            }
+        }
+
+        if (tmp == 1) {
+            throw new StreetAddressException("Adress must be in 'streetname number'");
+        }
     }
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
@@ -120,8 +147,8 @@ public class InputCheck {
         } catch (NumberFormatException ex) {
             throw new BookingException("Must enter a number");
         }
-        
-        if(x > 999){
+
+        if (x > 999) {
             throw new BookingException("Booking must not be over 999 nights");
         }
         return x;
@@ -151,8 +178,42 @@ public class InputCheck {
         }
 
     }
-    
-    public static void isDateValid(String date) throws DateException{
+
+    public static void phoneCheck(String phone) throws PhoneException {
+
+        if (phone.isEmpty()) {
+            throw new PhoneException("Must enter a Phone nr - no charecters entered ");
+        }
+
+        if (phone.length() < 5) {
+            throw new PhoneException("Phone nr must be at least 4 characters");
+        }
+
+        int tmp = 0;
+        for (char c : phone.toCharArray()) {
+            if (Character.isDigit(c)) {
+                tmp = 1;
+            } else if (Character.isAlphabetic(c)) {
+                tmp = 2;
+                break;
+            } else if (!Character.isLetterOrDigit(c)) {
+                if (c == '-') {
+                    tmp = 1;
+                } else {
+                    tmp = 3;
+                    break;
+                }
+            }
+        }
+
+        if (tmp == 2) {
+            throw new PhoneException("Phone nr can't contain letters");
+        } else if (tmp == 3) {
+            throw new PhoneException("Phone nr must be Digits. Only character allowed is '-'");
+        }
+    }
+
+    public static void isDateValid(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;
         Calendar dateToCheck = null;
@@ -162,12 +223,12 @@ public class InputCheck {
             currentDate.setTime(Calendar.getInstance().getTime());
             currentDate.add(Calendar.DAY_OF_MONTH, -1);
             dateToCheck.setTime(sdf.parse(date));
-            if(dateToCheck.compareTo(currentDate) != 1)
-                
+            if (dateToCheck.compareTo(currentDate) != 1) {
                 throw new DateException("Can not create a booking on that date");
-            
+            }
+
         } catch (ParseException ex) {
-            
+
         }
     }
 
