@@ -80,7 +80,7 @@ public class InputCheck {
         }
 
     }
-     
+
     public static void custInfoCheck(String name) throws NameException {
 
         if (name.isEmpty()) {
@@ -96,7 +96,16 @@ public class InputCheck {
         }
 
     }
-    
+
+    public static int bookingNrCheck(String bookingNr) throws BookingException {
+        for (char c : bookingNr.trim().toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new BookingException("Booking nr must be Digits");
+            }
+        }
+
+        return Integer.parseInt(bookingNr);
+    }
 
     public static void streetAddressCheck(String streetAddress) throws StreetAddressException {
 
@@ -250,7 +259,7 @@ public class InputCheck {
             throw new PhoneException("Phone nr must be Digits. Only character allowed is '-'");
         }
     }
-    
+
     public static void timeDateCheck(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;
