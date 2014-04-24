@@ -1,6 +1,6 @@
 package domain;
 
-public class Booking implements Comparable {
+public class Booking implements Comparable, Cloneable {
 
     private int b_id;
     private int cust_id;
@@ -177,4 +177,10 @@ public class Booking implements Comparable {
             }
         }
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
 }

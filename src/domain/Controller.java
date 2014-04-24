@@ -2,25 +2,22 @@ package domain;
 
 import Exception.DateException;
 import Exception.BookingException;
-import Exception.CustomerException;
 import dataSource.DbFacade;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Controller {
 
-    private DbFacade facade;
-    private boolean transaction;
+    private final DbFacade facade;
 
     public Controller() {
-        this.transaction = false;
         this.facade = DbFacade.getInstance();
     }
 
     public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) throws BookingException {
         boolean status = false;
         if (facade != null) {
-            Booking b = new Booking(a_num, date_from, num_of_nights, travel_agency, number_of_guests, (price * num_of_nights), first_name, last_name, phone);
+            Booking b = new Booking(a_num, date_from, num_of_nights, travel_agency, number_of_guests, price, first_name, last_name, phone);
             status = this.facade.newBooking(b, c);
         }
         return status;
@@ -32,6 +29,13 @@ public class Controller {
 
     public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws BookingException {
         boolean status = false;
+        Booking tmp = null;
+        try {
+            tmp = (Booking) b.clone();
+        } catch (CloneNotSupportedException ex) {
+            System.out.println("damn");
+        }
+
         if (this.facade != null) {
             b.setA_num(a_num);
             b.setDate_from(date_from);
@@ -45,7 +49,11 @@ public class Controller {
             c.setCity(city);
             c.setStreet(street);
             c.setZipcode(zipcode);
+
             status = this.facade.updateBooking(b, c);
+            if (status) {
+                b = tmp;
+            }
         }
         return status;
     }

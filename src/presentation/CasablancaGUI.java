@@ -1380,6 +1380,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
+        eBFormANRTextField.setText("price");
+
         eBFormButtonSaveButton.setText("Save");
         eBFormButtonSaveButton.setMaximumSize(new java.awt.Dimension(100, 30));
         eBFormButtonSaveButton.setMinimumSize(new java.awt.Dimension(100, 30));
@@ -1432,6 +1434,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel50.setText("postal / zip code");
 
+        eBFormZipTextField.setText("optional");
+
         jLabel51.setText("Country");
 
         javax.swing.GroupLayout eBFormPanelLayout = new javax.swing.GroupLayout(eBFormPanel);
@@ -1441,49 +1445,59 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGroup(eBFormPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eBFormADateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(eBFormNONTextField)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eBFormPanelLayout.createSequentialGroup()
-                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eBFormFirstTextField)
-                            .addGroup(eBFormPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 70, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(eBFormNOGTextField)
-                    .addComponent(eBFormPhoneTextField)
-                    .addComponent(eBFormEmailTextField)
-                    .addComponent(eBFormStreetTextField)
-                    .addComponent(eBFormCityTextField)
-                    .addGroup(eBFormPanelLayout.createSequentialGroup()
-                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel47)
-                            .addComponent(jLabel48)
-                            .addComponent(jLabel49)
-                            .addComponent(jLabel50))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(eBFormPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel51)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(eBFormNatTextField)))
-                    .addComponent(jSeparator2)
-                    .addComponent(eBFormANRTextField)
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel29)
-                            .addComponent(jLabel46)
                             .addComponent(eBFormButtonClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(54, 54, 54))
+                    .addGroup(eBFormPanelLayout.createSequentialGroup()
+                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(eBFormADateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eBFormNONTextField)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eBFormPanelLayout.createSequentialGroup()
+                                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eBFormFirstTextField)
+                                    .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(eBFormPhoneTextField)
+                            .addComponent(eBFormEmailTextField)
+                            .addComponent(eBFormStreetTextField)
+                            .addComponent(eBFormCityTextField)
+                            .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel47)
+                                    .addComponent(jLabel48)
+                                    .addComponent(jLabel49)
+                                    .addComponent(jLabel50))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel51)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(eBFormNatTextField)))
+                            .addComponent(jSeparator2))
+                        .addContainerGap())
+                    .addGroup(eBFormPanelLayout.createSequentialGroup()
+                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormANRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel46))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(0, 54, Short.MAX_VALUE))
+                            .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                .addComponent(eBFormNOGTextField)
+                                .addContainerGap())))))
         );
         eBFormPanelLayout.setVerticalGroup(
             eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1497,9 +1511,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eBFormNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel46)
+                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eBFormANRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eBFormANRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1510,10 +1528,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eBFormFirstTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eBFormNOGTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1538,7 +1552,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eBFormNatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eBFormButtonClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1715,7 +1729,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String aNum = this.eBFindRoomNrTextField.getText();
             int apartmentNumber = 0;
             int bookingNumber = 0;
-            
+
             if (!name.trim().isEmpty()) {
                 InputCheck.nameCheck(name);
             }
@@ -1723,14 +1737,15 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 InputCheck.dateFormatCheck(date);
             }
             if (!bNum.trim().isEmpty()) {
-
+                bookingNumber = InputCheck.bookingNrCheck(bNum);
             }
             if (!aNum.trim().isEmpty()) {
-               apartmentNumber = InputCheck.apartmentCheck(aNum);
+                apartmentNumber = InputCheck.apartmentCheck(aNum);
             }
-
+            
             bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
 
+            
             if (bookingsFoundHashMap == null) {
                 JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
             } else {
@@ -1739,9 +1754,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 }
                 this.enableComponents(this.eBMatchPanel, true);
             }
-
-        } catch (Exception e) {
-
+        } catch (NameException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
+        } catch (DateException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
+        } catch (BookingException exx) {
+            JOptionPane.showMessageDialog(this, exx.getMessage(), "", WIDTH);
+        } catch (RoomException exxx) {
+            JOptionPane.showMessageDialog(this, exxx.getMessage(), "", WIDTH);
+        } catch (Exception exxxx) {
+            JOptionPane.showMessageDialog(this, exxxx.getMessage(), "", WIDTH);
         }
 
 
