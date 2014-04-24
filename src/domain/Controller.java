@@ -2,12 +2,9 @@ package domain;
 
 import Exception.DateException;
 import Exception.BookingException;
+import Exception.CustomerException;
 import dataSource.DbFacade;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class Controller {
@@ -20,7 +17,7 @@ public class Controller {
         this.facade = DbFacade.getInstance();
     }
 
-    public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) throws BookingException{
+    public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) throws BookingException {
         boolean status = false;
         if (facade != null) {
             Booking b = new Booking(a_num, date_from, num_of_nights, travel_agency, number_of_guests, (price * num_of_nights), first_name, last_name, phone);
@@ -53,7 +50,7 @@ public class Controller {
         return status;
     }
 
-    public boolean deleteBooking(int b_id) throws BookingException{
+    public boolean deleteBooking(int b_id) throws BookingException {
         boolean status = false;
         if (this.facade != null) {
             status = this.facade.deleteBooking(b_id);
@@ -110,10 +107,10 @@ public class Controller {
         return null;
     }
 
-    public void updateLists(){
+    public void updateLists() {
         if (this.facade != null) {
             this.facade.updateLists();
         }
     }
-    
+
 }

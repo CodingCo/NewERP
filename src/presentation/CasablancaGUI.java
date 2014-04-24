@@ -1823,22 +1823,24 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String country = this.newBookingFormCountryTextField.getText();
             String city = this.newBookingFormCityTextField.getText();
             String street = this.newBookingFormStreetTextField.getText();
-            String apartmentType = this.newBookingFindSearchTypeComboBox.getSelectedItem().toString();
             String travelAgency = this.newBookingFormAgenTextField.getText();
             String zipcode = this.newBookingFormZipTextField.getText();
             String date = this.newBookingFormADateTextField.getText();
             int price = Integer.parseInt(this.newBookingPriceTextField.getText());
             int numberOfNights = Integer.parseInt(this.newBookingFormNONTextField.getText());
-            int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), apartmentType);
 
+            Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
+            
             InputCheck.nameCheck(firstName);
             InputCheck.nameCheck(lastName);
+            InputCheck.phoneCheck(phone);
             InputCheck.emailCheck(email);
-            InputCheck.custInfoCheck(country);
             InputCheck.custInfoCheck(city);
+            InputCheck.custInfoCheck(country);
+            InputCheck.streetAddressCheck(street);
+            int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), a.getType());
 
             Customer c = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
-            Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
 
             this.controller.newBooking(c, a.getA_num(), date, numberOfNights, travelAgency, guests, price, c.getFirst_name(), c.getLast_name(), c.getPhone());
             this.enableComponents(this, false);
@@ -1849,7 +1851,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.enableComponents(this.newBookingAvailablePanel, false);
             this.clearNewBookingFields();
             JOptionPane.showMessageDialog(this, "Booking created", "", WIDTH);
-            
+
         } catch (RoomException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (BookingException ex) {

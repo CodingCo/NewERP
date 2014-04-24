@@ -1,10 +1,12 @@
 package presentation;
 
+import Exception.PhoneException;
 import Exception.BookingException;
 import Exception.DateException;
 import Exception.EmailException;
 import Exception.NameException;
 import Exception.RoomException;
+import Exception.StreetAddressException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,7 +76,7 @@ public class InputCheck {
         }
 
         if (name.length() < 1) {
-            throw new NameException("Name must be longer than one charecter");
+            throw new NameException("Name must be longer than one character");
         }
 
     }
@@ -90,11 +92,36 @@ public class InputCheck {
         }
 
         if (name.length() < 1) {
-            throw new NameException("Lacation information must be longer than one charecter");
+            throw new NameException("Location information must be longer than one character");
         }
 
     }
     
+
+    public static void streetAddressCheck(String streetAddress) throws StreetAddressException {
+
+        if (streetAddress.isEmpty()) {
+            throw new StreetAddressException("No Address entered");
+        }
+
+        if (streetAddress.length() < 3) {
+            throw new StreetAddressException("Address must be longer than 3 characters ");
+        }
+
+        int tmp = 0;
+        for (char c : streetAddress.trim().toCharArray()) {
+
+            if (Character.isDigit(c)) {
+                tmp = 2;
+            } else {
+                tmp = 1;
+            }
+        }
+
+        if (tmp == 1) {
+            throw new StreetAddressException("Address must be in ex: 'Examplestreet 42'");
+        }
+    }
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
         int roomNumber = 0;
@@ -190,6 +217,40 @@ public class InputCheck {
         }
     }
 
+    public static void phoneCheck(String phone) throws PhoneException {
+
+        if (phone.isEmpty()) {
+            throw new PhoneException("Must enter a Phone nr - no charecters entered ");
+        }
+
+        if (phone.length() < 5) {
+            throw new PhoneException("Phone nr must be at least 4 characters");
+        }
+
+        int tmp = 0;
+        for (char c : phone.toCharArray()) {
+            if (Character.isDigit(c)) {
+                tmp = 1;
+            } else if (Character.isAlphabetic(c)) {
+                tmp = 2;
+                break;
+            } else if (!Character.isLetterOrDigit(c)) {
+                if (c == '-') {
+                    tmp = 1;
+                } else {
+                    tmp = 3;
+                    break;
+                }
+            }
+        }
+
+        if (tmp == 2) {
+            throw new PhoneException("Phone nr can't contain letters");
+        } else if (tmp == 3) {
+            throw new PhoneException("Phone nr must be Digits. Only character allowed is '-'");
+        }
+    }
+    
     public static void timeDateCheck(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;
@@ -203,7 +264,6 @@ public class InputCheck {
             if (dateToCheck.compareTo(currentDate) != 1) {
                 throw new DateException("Can not create a booking on that date");
             }
-
         } catch (ParseException ex) {
 
         }
