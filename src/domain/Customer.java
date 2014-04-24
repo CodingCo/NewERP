@@ -1,6 +1,6 @@
 package domain;
 
-public class Customer {
+public class Customer implements Cloneable{
 
     private int cust_id;
     private String first_name;
@@ -122,6 +122,9 @@ public class Customer {
 	return first_name + " " + last_name + " " +phone;
     }
     
-    
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
 
 }
