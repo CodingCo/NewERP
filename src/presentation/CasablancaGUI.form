@@ -1882,28 +1882,54 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="eBFormNONTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="eBFormANRTextField" alignment="0" pref="157" max="32767" attributes="0"/>
+                                          <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="eBFormButtonClearButton" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="eBFormNOGTextField" max="32767" attributes="0"/>
+                                              <Component id="ebPriceTextField" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="eBFormNatTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="eBFormButtonSaveButton" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="eBFormButtonClearButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="167" pref="230" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="eBFormButtonSaveButton" max="32767" attributes="0"/>
                                       <Component id="eBFormADateTextField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="eBFormNONTextField" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="eBFormFirstTextField" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1916,44 +1942,29 @@
                                       <Component id="eBFormEmailTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="eBFormStreetTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="eBFormCityTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="eBFormZipTextField" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
                                               <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel48" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="eBFormNatTextField" max="32767" attributes="0"/>
-                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="eBFormANRTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                      <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="eBFormNOGTextField" max="32767" attributes="0"/>
+                                      <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="eBFormZipTextField" min="-2" pref="156" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1967,9 +1978,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="eBFormADateTextField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="eBFormNONTextField" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="eBFormNONTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ebPriceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1980,7 +1997,7 @@
                               <Component id="eBFormANRTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="eBFormNOGTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2009,16 +2026,17 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="eBFormStreetTextField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="eBFormNatTextField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="eBFormZipTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="eBFormNatTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <EmptySpace pref="16" max="32767" attributes="0"/>
                           <Component id="eBFormButtonSaveButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="eBFormButtonClearButton" min="-2" max="-2" attributes="0"/>
@@ -2033,9 +2051,6 @@
                 <Component class="javax.swing.JTextField" name="eBFormNONTextField">
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFormANRTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="price"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="eBFormButtonSaveButton">
                   <Properties>
@@ -2143,9 +2158,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="eBFormZipTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="optional"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel51">
                   <Properties>
@@ -2155,6 +2167,24 @@
                 <Component class="javax.swing.JTextField" name="eBFormNatTextField">
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator2">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel39">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Price:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="ebPriceTextField">
+                  <Properties>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel40">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Lucida Grande" size="13" style="2"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Optional"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
