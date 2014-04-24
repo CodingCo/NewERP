@@ -1,6 +1,7 @@
 package dataSource;
 
 import Exception.BookingException;
+import Exception.DateException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
@@ -52,7 +53,7 @@ public class DbFacade {
         return status;
     }
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr) throws DateException {
         if (chatty != null) {
             return this.chatty.findAvailableApartment(date, days, type, apartment_nr, con);
         }

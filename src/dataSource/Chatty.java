@@ -1,6 +1,7 @@
 package dataSource;
 
 import Exception.BookingException;
+import Exception.DateException;
 import domain.*;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class Chatty {
     }
 
     /////////////////////////////////////////// FINDERS
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
         return apartmentToReturn;
     }
@@ -88,9 +89,9 @@ public class Chatty {
         return relevantBooking;
     }
 
-    public void updateLists(Connection con){
+    public void updateLists(Connection con) {
         bookings = bookingMapper.getAllBookings(con);
-        customers = customerMapper.getAllCustomers(con); 
+        customers = customerMapper.getAllCustomers(con);
     }
 
     public ArrayList<Apartment> getApartments(Connection con) {
@@ -131,7 +132,7 @@ public class Chatty {
         return false;
     }
 
-    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException{
+    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException {
         int bookingStatus = 0;
         int customerStatus = 0;
 
@@ -163,7 +164,7 @@ public class Chatty {
         return false;
     }
 
-    public boolean deleteBookingTransaction(int b_id, Connection con) throws BookingException{
+    public boolean deleteBookingTransaction(int b_id, Connection con) throws BookingException {
         int status;
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;
@@ -259,7 +260,7 @@ public class Chatty {
         ArrayList<int[]> listToReturn = new ArrayList();
         ArrayList<Booking> relevantBookings = new ArrayList();
 
-        Calendar c = Calendar.getInstance(); 
+        Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 
         int month = Integer.parseInt(date.substring(3, 5));
@@ -267,17 +268,17 @@ public class Chatty {
 
         for (Booking current : bookings) {
 
-            int bookingMonth = Integer.parseInt(current.getDate_from().substring(3, 5));
-            int bookingYear = Integer.parseInt(current.getDate_from().substring(6, 8));
+            int bookingStartMonth = Integer.parseInt(current.getDate_from().substring(3, 5));
+            int bookingStartYear = Integer.parseInt(current.getDate_from().substring(6, 8));
 
-            if (bookingMonth == month && bookingYear == year) {
+            if (bookingStartMonth == month && bookingStartYear == year) {
                 relevantBookings.add(current);
-            } else if(bookingMonth < month){ 
+            } else {
                 int num_nights = current.getNum_of_nights();
-                String bookingDateBegin = current.getDate_from();
+                String bookingStartDate = current.getDate_from();
 
                 try {
-                    c.setTime(sdf.parse(bookingDateBegin));
+                    c.setTime(sdf.parse(bookingStartDate));
                 } catch (ParseException ex) {
                     System.out.println("Error in getBookingsByMonth method");
                     ex.printStackTrace();
@@ -288,10 +289,38 @@ public class Chatty {
                 int bookingEndMonth = Integer.parseInt(bookingDateEnd.substring(3, 5));
                 int bookingEndYear = Integer.parseInt(bookingDateEnd.substring(6, 8));
 
-                // Then they reache into the next month
-                if (bookingEndMonth >= month && bookingEndYear >= year) {
-                    relevantBookings.add(current);
+                if (bookingEndYear == year) {
+                    if (bookingEndMonth >= month && bookingStartMonth <= month) {
+                        relevantBookings.add(current);
+                    }
                 }
+
+                if (bookingStartYear < year) {
+                    if (bookingEndYear == year) {
+                        if (bookingEndMonth >= month) {
+                            relevantBookings.add(current);
+                        }
+                    }
+
+                    if (bookingEndYear > year) {
+                        relevantBookings.add(current);
+                    }
+
+                }
+
+                if (bookingEndYear > year) {
+                    if (bookingStartYear < year) {
+                        relevantBookings.add(current);
+
+                    }
+
+                    if (bookingStartYear == year) {
+                        if (bookingStartMonth <= month) {
+                            relevantBookings.add(current);
+                        }
+                    }
+                }
+
             }
         }
 
@@ -309,28 +338,26 @@ public class Chatty {
             }
 
             bookingValues[3] = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-            
+
             bookingValues[4] = current.getNum_of_nights();
             bookingValues[5] = current.getA_num();
             bookingValues[6] = current.getB_id();
             bookingValues[7] = current.getCust_id();
 
             // End Date info
-            c.add(Calendar.DATE, current.getNum_of_nights());  
+            c.add(Calendar.DATE, current.getNum_of_nights());
             String bookingDateEnd = sdf.format(c.getTime());
-            
-            bookingValues[8] = Integer.parseInt(bookingDateEnd.substring(0,2));
-            bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3,5));
-            bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6,8));
-            
-            System.out.println("Number of nights:   " + current.getNum_of_nights());
-            System.out.println("Start date:         " + current.getDate_from());
-            
-            System.out.println("End day:            " + bookingValues[8]);
-            System.out.println("End Month:          " + bookingValues[9]);
-            System.out.println("End year:           " + bookingValues[10]);
-            System.out.println("\n\n\n");
-            
+
+            bookingValues[8] = Integer.parseInt(bookingDateEnd.substring(0, 2));
+            bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3, 5));
+            bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6, 8));
+
+	            //System.out.println("Number of nights:   " + current.getNum_of_nights());
+            //System.out.println("Start date:         " + current.getDate_from());
+            //System.out.println("End day:            " + bookingValues[8]);
+            //System.out.println("End Month:          " + bookingValues[9]);
+            //System.out.println("End year:           " + bookingValues[10]);
+            //System.out.println("\n\n\n");
             listToReturn.add(bookingValues);
         }
 

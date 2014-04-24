@@ -120,6 +120,10 @@ public class InputCheck {
         } catch (NumberFormatException ex) {
             throw new BookingException("Must enter a number");
         }
+        
+        if(x > 999){
+            throw new BookingException("Booking must not be over 999 nights");
+        }
         return x;
     }
 

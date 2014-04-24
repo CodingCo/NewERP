@@ -140,6 +140,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormNONTextField = new javax.swing.JTextField();
         newBookingFormRoomTextField = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
         newBookingFormAgenTextField = new javax.swing.JTextField();
         newBookingFormEmailTextField = new javax.swing.JTextField();
         newBookingFormZipTextField = new javax.swing.JTextField();
@@ -637,6 +639,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         newBookingFormRoomTextField.setEditable(false);
         newBookingFormRoomTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField1.setEnabled(false);
+
+        jLabel30.setText("Price:");
+
         javax.swing.GroupLayout newBookingFormGreyPanelLayout = new javax.swing.GroupLayout(newBookingFormGreyPanel);
         newBookingFormGreyPanel.setLayout(newBookingFormGreyPanelLayout);
         newBookingFormGreyPanelLayout.setHorizontalGroup(
@@ -651,9 +657,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
                         .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newBookingFormNONLabel)
                             .addComponent(newBookingFormRoomLabel)
-                            .addComponent(newBookingFormADateLabel))
+                            .addComponent(newBookingFormADateLabel)
+                            .addComponent(jLabel30))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(newBookingFormADateTextField)
                             .addComponent(newBookingFormNONTextField)
                             .addComponent(newBookingFormRoomTextField))))
@@ -663,6 +671,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
             newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newBookingFormGreyPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newBookingFormGreyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormADateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormADateLabel))
@@ -685,22 +697,23 @@ public class CasablancaGUI extends javax.swing.JFrame {
             .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
                         .addComponent(newBookingFormSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         newBookingFormButtonPanelLayout.setVerticalGroup(
             newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newBookingFormButtonPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFormButtonPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(newBookingFormGreyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(newBookingFormButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         newBookingFormAgenTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -755,11 +768,32 @@ public class CasablancaGUI extends javax.swing.JFrame {
                         .addComponent(newBookingFormButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(8, 8, 8))
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel32)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(newBookingFormPanelLayout.createSequentialGroup()
                         .addComponent(jSeparator1)
                         .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFormPanelLayout.createSequentialGroup()
+                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newBookingFormEmailTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newBookingFormPhoneTextField)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFormPanelLayout.createSequentialGroup()
+                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newBookingFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel21))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel22)
+                                    .addComponent(newBookingFormCountryTextField))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFormPanelLayout.createSequentialGroup()
+                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newBookingFormStreetTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newBookingFormNOGTextField))
+                        .addContainerGap())
+                    .addGroup(newBookingFormPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
                         .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
@@ -769,26 +803,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
                             .addGroup(newBookingFormPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(newBookingFormAgenTextField))
-                        .addContainerGap())
+                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
+                                .addComponent(newBookingFormAgenTextField)
+                                .addContainerGap())))
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookingFormPanelLayout.createSequentialGroup()
-                        .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(newBookingFormNOGTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormCountryTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormStreetTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormCityTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormEmailTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newBookingFormPhoneTextField))
-                        .addContainerGap())))
+                        .addComponent(jLabel1)
+                        .addGap(217, 217, 217))))
         );
         newBookingFormPanelLayout.setVerticalGroup(
             newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -810,17 +830,17 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newBookingFormEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
+                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newBookingFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newBookingFormCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newBookingFormCountryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newBookingFormStreetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newBookingFormCountryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -835,7 +855,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newBookingFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newBookingFormAgenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newBookingFormButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1802,9 +1822,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String city = this.newBookingFormCityTextField.getText();
             String street = this.newBookingFormStreetTextField.getText();
             String date = this.newBookingFormADateTextField.getText();
-            String travelAgency = this.newBookingFormAgenTextField.getText();
 
-            // integers
+            String travelAgency = this.newBookingFormAgenTextField.getText();
             String zipcode = this.newBookingFormZipTextField.getText();
 
             String numberOfNights = this.newBookingFormNONTextField.getText();
@@ -1873,7 +1892,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             InputCheck.dateCheck(date);
             InputCheck.isDateValid(date);
             numNights = InputCheck.nightsCheck(numberOfNights);
-            
+
             a = controller.findAvailableApartment(date, numNights, selectedItem, apartmentNumber);
 
             if (a.isEmpty()) {
@@ -1894,8 +1913,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (DateException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
-        } catch(Exception exx){
-        
+        } catch (Exception exx) {
+
         }
 
 
@@ -2306,6 +2325,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2337,6 +2357,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JList listBookingApartmentjList;
     private javax.swing.JButton listBookingBackButton;
     private javax.swing.JTextField listBookingDatejTextField1;

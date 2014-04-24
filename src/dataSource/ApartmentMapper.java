@@ -1,5 +1,6 @@
 package dataSource;
 
+import Exception.DateException;
 import domain.Apartment;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -41,7 +42,7 @@ public class ApartmentMapper {
 	return list;
     }
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException{
         ArrayList<Apartment> aplist = new ArrayList();
 
         String SQLString = "select * "
@@ -87,7 +88,7 @@ public class ApartmentMapper {
             }
 
         } catch (SQLException e) {
-            
+            throw new DateException("Invalid date");
         } finally {
             try {
                 statement.close();

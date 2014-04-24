@@ -75,7 +75,7 @@ public class Controller {
         return null;
     }
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr) {
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr) throws DateException {
         if (this.facade != null) {
             return this.facade.findAvailableApartment(date, days, type, apartment_nr);
         }
