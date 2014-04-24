@@ -29,30 +29,33 @@ public class Controller {
 
     public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws BookingException {
         boolean status = false;
-        Booking tmp = null;
+        Booking btmp = null;
+        Customer ctmp = null;
         try {
-            tmp = (Booking) b.clone();
+            btmp = (Booking) b.clone();
+            ctmp = (Customer) c.clone();
         } catch (CloneNotSupportedException ex) {
             System.out.println("damn");
         }
 
         if (this.facade != null) {
-            b.setA_num(a_num);
-            b.setDate_from(date_from);
-            b.setNum_of_nights(number_of_nights);
-            b.setPrice(price);
-            c.setFirst_name(first_name);
-            c.setLast_name(last_name);
-            c.setEmail(email);
-            c.setPhone(phone);
-            c.setCountry(country);
-            c.setCity(city);
-            c.setStreet(street);
-            c.setZipcode(zipcode);
+            btmp.setA_num(a_num);
+            btmp.setDate_from(date_from);
+            btmp.setNum_of_nights(number_of_nights);
+            btmp.setPrice(price);
+            ctmp.setFirst_name(first_name);
+            ctmp.setLast_name(last_name);
+            ctmp.setEmail(email);
+            ctmp.setPhone(phone);
+            ctmp.setCountry(country);
+            ctmp.setCity(city);
+            ctmp.setStreet(street);
+            ctmp.setZipcode(zipcode);
 
-            status = this.facade.updateBooking(b, c);
+            status = this.facade.updateBooking(btmp, ctmp);
             if (status) {
-                b = tmp;
+                b = btmp;
+                c = ctmp;
             }
         }
         return status;
