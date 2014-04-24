@@ -1,6 +1,8 @@
 package presentation;
 
 import Exception.BookingException;
+import Exception.DateException;
+import Exception.RoomException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Controller;
@@ -22,7 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * @author Simon & Robert 
+ * @author Simon & Robert
  */
 public class CasablancaGUI extends javax.swing.JFrame {
 
@@ -33,15 +35,15 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private final DefaultListModel lBlistModel;
     private final DefaultListModel cBListModel;
     private final GraphicsDevice device;
-    
+
     private Apartment temporaryApartment = null;
     private HashMap<Booking, Customer> bookingsFoundHashMap = null;
-    
+
     private boolean drawTodayFlag = false;
     private boolean drawMonthFlag = false;
     private boolean drawApartmentFlag = false;
     private boolean isFullScreen = false;
-    
+
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 0;
 
@@ -441,8 +443,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
-                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(newBookingFindButtonFindButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -450,7 +451,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
                                     .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel42)
                                         .addGap(216, 216, 216))))
-                            .addComponent(newBookingFindRoomNRTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(newBookingFindButtonFindButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newBookingFindRoomNRTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(newBookingFindSearchPanelLayout.createSequentialGroup()
                         .addGroup(newBookingFindSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -765,10 +768,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
                         .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(newBookingFormPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(newBookingFormPanelLayout.createSequentialGroup()
-                                .addComponent(newBookingFormAgenTextField)
-                                .addContainerGap())))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(newBookingFormAgenTextField))
+                        .addContainerGap())
                     .addGroup(newBookingFormPanelLayout.createSequentialGroup()
                         .addGroup(newBookingFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
@@ -1801,11 +1803,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String street = this.newBookingFormStreetTextField.getText();
             String date = this.newBookingFormADateTextField.getText();
             String travelAgency = this.newBookingFormAgenTextField.getText();
-            
+
             // integers
-            
             String zipcode = this.newBookingFormZipTextField.getText();
-            
+
             String numberOfNights = this.newBookingFormNONTextField.getText();
             String numberOfGuests = this.newBookingFormNOGTextField.getText();
 
@@ -1851,30 +1852,52 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonActionPerformed
 
         this.nBListModel.clear();
-        int apartmentNr = 0;
-        int numberOfguests = 0;
+        int apartmentNumber = 0;
+        int numNights = 0;
+        ArrayList<Apartment> a = null;
+
+        String date = this.newBookingFindSearchFromTextField.getText();
+        String numberOfNights = this.newBookingFindSearchNONTextField.getText();
+        String selectedItem = this.newBookingFindSearchTypeComboBox.getSelectedItem().toString();
+        String anum = this.newBookingFindRoomNRTextField.getText();
 
         try {
-            apartmentNr = Integer.parseInt(this.newBookingFindRoomNRTextField.getText());
-        } catch (NumberFormatException e) {
-
-        }
-
-        ArrayList<Apartment> a = controller.findAvailableApartment(this.newBookingFindSearchFromTextField.getText(), Integer.parseInt(this.newBookingFindSearchNONTextField.getText()), this.newBookingFindSearchTypeComboBox.getSelectedItem().toString(), apartmentNr);
-
-        if (a == null) {
-            this.enableComponents(this, false);
-            JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
-            this.enableComponents(this, true);
-            this.enableComponents(this.newBookingFormPanel, false);
-            this.enableComponents(this.newBookingAvailablePanel, false);
-
-        } else {
-            for (int x = 0; x < a.size(); ++x) {
-                this.nBListModel.addElement(a.get(x));
-                this.enableComponents(this.newBookingAvailablePanel, true);
+            if (!anum.trim().isEmpty()) {
+                apartmentNumber = InputCheck.apartmentCheck(anum);
             }
+        } catch (RoomException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
+
+        try {
+            InputCheck.dateCheck(date);
+            InputCheck.isDateValid(date);
+            numNights = InputCheck.nightsCheck(numberOfNights);
+            
+            a = controller.findAvailableApartment(date, numNights, selectedItem, apartmentNumber);
+
+            if (a.isEmpty()) {
+                this.enableComponents(this, false);
+                JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
+                this.enableComponents(this, true);
+                this.enableComponents(this.newBookingFormPanel, false);
+                this.enableComponents(this.newBookingAvailablePanel, false);
+
+            } else {
+                for (int x = 0; x < a.size(); ++x) {
+                    this.nBListModel.addElement(a.get(x));
+                    this.enableComponents(this.newBookingAvailablePanel, true);
+                }
+            }
+
+        } catch (BookingException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
+        } catch (DateException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
+        } catch(Exception exx){
+        
+        }
+
 
     }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
     private void newBookingFindButtonFindButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonMouseEntered
@@ -1938,7 +1961,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.listBookingLastUpdatedjLabel.setText("Updated: " + timeStamp);
         this.controller.updateLists();
-        
+
     }//GEN-LAST:event_listBookingRefreshjButtonActionPerformed
     private void listBookingUpListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingUpListButtonActionPerformed
 
@@ -1952,7 +1975,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
             this.listBookingDrawingPanel.repaint();
-            this.drawMonth.previous();
+            this.drawMonth.up();
         }
 
     }//GEN-LAST:event_listBookingUpListButtonActionPerformed
@@ -1968,7 +1991,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
             this.listBookingDrawingPanel.repaint();
-            this.drawMonth.next();
+            this.drawMonth.down();
         }
 
     }//GEN-LAST:event_listBookingDownListButtonActionPerformed
@@ -2009,14 +2032,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonthFlag = true;
 
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-        
+
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
         System.out.println(a.getA_num());
-        
+
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
-        
+
     }//GEN-LAST:event_listBookingApartmentjListMouseClicked
     private void previousCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerSearchButtonActionPerformed
         this.cBListModel.clear();
@@ -2105,20 +2128,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 }
             }
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_eBFindDateTextFieldKeyTyped
 
     private void eBFindDateTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldFocusGained
         this.eBFindDateTextField.setText("");
     }//GEN-LAST:event_eBFindDateTextFieldFocusGained
 
-   
     /**
-     * Calculates the window size based on system preferences. 
-     * @author Simon  
+     * Calculates the window size based on system preferences.
+     *
+     * @author Simon
      */
     private void setFullScreenSettings() {
         isFullScreen = device.isFullScreenSupported();

@@ -87,12 +87,12 @@ public class ApartmentMapper {
             }
 
         } catch (SQLException e) {
-            System.err.println(e);
+            
         } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.err.println(e);
+                
             }
         }
         return aplist;

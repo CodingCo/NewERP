@@ -1,9 +1,14 @@
 package presentation;
 
+import Exception.BookingException;
 import Exception.DateException;
 import Exception.EmailException;
 import Exception.NameException;
 import Exception.RoomException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -76,19 +81,15 @@ public class InputCheck {
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
         int roomNumber = 0;
-        if (!apartmentNr.trim().isEmpty()) {
-            
-            try {
+        try {
+            roomNumber = Integer.parseInt(apartmentNr.trim());
 
-                roomNumber = Integer.parseInt(apartmentNr.trim());
+        } catch (NumberFormatException ex) {
+            throw new RoomException("must enter a room number");
+        }
 
-            } catch (NumberFormatException ex) {
-                throw new RoomException("must enter a room number");
-            }
-
-            if (roomNumber == 0 || roomNumber > 104) {
-                throw new RoomException("Room nr. must be between 1 and 104");
-            }
+        if (roomNumber == 0 || roomNumber > 104) {
+            throw new RoomException("Room nr. must be between 1 and 104");
         }
         return roomNumber;
     }
@@ -111,6 +112,17 @@ public class InputCheck {
         return apartment;
     }
 
+    public static int nightsCheck(String nights) throws BookingException {
+        int x = 0;
+        try {
+            x = Integer.parseInt(nights);
+
+        } catch (NumberFormatException ex) {
+            throw new BookingException("Must enter a number");
+        }
+        return x;
+    }
+
     public static void dateCheck(String date) throws DateException {
 
         if (date.isEmpty()) {
@@ -121,11 +133,11 @@ public class InputCheck {
             throw new DateException("Date entered has errounous dimensions - must be in DD-MM-YY format");
         }
 
-        if (date.charAt(3) != '-' || date.charAt(6) != '-') {
+        if (date.charAt(2) != '-' || date.charAt(5) != '-') {
             throw new DateException("Date must be in DD-MM-YY format");
         }
 
-        if (!Character.isDigit(date.charAt(1)) || !Character.isDigit(date.charAt(2)) || !Character.isDigit(date.charAt(4)) || !Character.isDigit(date.charAt(5)) || !Character.isDigit(date.charAt(7)) || !Character.isDigit(date.charAt(8))) {
+        if (!Character.isDigit(date.charAt(0)) || !Character.isDigit(date.charAt(1)) || !Character.isDigit(date.charAt(3)) || !Character.isDigit(date.charAt(4)) || !Character.isDigit(date.charAt(6)) || !Character.isDigit(date.charAt(7))) {
             throw new DateException("Date must consist of digits - in DD-MM-YY format");
 
         }
@@ -135,6 +147,24 @@ public class InputCheck {
         }
 
     }
-
     
+    public static void isDateValid(String date) throws DateException{
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        Calendar currentDate = null;
+        Calendar dateToCheck = null;
+        try {
+            currentDate = new GregorianCalendar();
+            dateToCheck = new GregorianCalendar();
+            currentDate.setTime(Calendar.getInstance().getTime());
+            currentDate.add(Calendar.DAY_OF_MONTH, -1);
+            dateToCheck.setTime(sdf.parse(date));
+            if(dateToCheck.compareTo(currentDate) != 1)
+                
+                throw new DateException("Can not create a booking on that date");
+            
+        } catch (ParseException ex) {
+            
+        }
+    }
+
 }

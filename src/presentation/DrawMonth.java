@@ -9,9 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -40,9 +38,9 @@ public class DrawMonth extends JPanel {
     private int apartment;
     private int increment;
     private int numOfRows;
-    private String[] sMonths;
-    private int lastIncrement;
-    private int lastApartment;
+    
+    
+    
 
     public DrawMonth(JPanel panel) {
         this.setSize(panel.getSize());
@@ -59,10 +57,7 @@ public class DrawMonth extends JPanel {
         this.boxWidth = 0;
         this.apartment = 1;
         this.increment = 0;
-        this.lastIncrement = 0;
-        this.lastApartment = 0;
         this.showings = 0;
-        this.sMonths = new String[12];
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -94,7 +89,6 @@ public class DrawMonth extends JPanel {
         }
         c.add(Calendar.MONTH, 1);
         String s = sdf.format(c.getTime());
-
         return s;
     }
 
@@ -111,19 +105,27 @@ public class DrawMonth extends JPanel {
         return s;
     }
 
-    public void previous() {
+    public void up() {
         int aStart = apartment;
-        while (apartment > (aStart - (this.numOfRows * 2)) - 2) {
-            if (this.list.get(increment)[5] == apartment) {
-                increment--;
-                if (increment == 0) {
-                    break;
+        
+        if ((apartment > this.numOfRows + 1)) {
+            while (apartment > (aStart - (this.numOfRows * 2)) - 2) {
+                if (this.list.get(increment)[5] == apartment) {
+                    increment--;
+                    if (increment == 0) {
+                        apartment = 1;
+                        break;
+                    }
+                } else {
+                    apartment--;
                 }
-            } else {
-                apartment--;
             }
+            showings = 0;
+        }else {
+            apartment = 1;
+            increment = 0;
+            showings = 0;
         }
-        showings = 0;
         repaint();
     }
 
@@ -134,7 +136,7 @@ public class DrawMonth extends JPanel {
         repaint();
     }
 
-    public void next() {
+    public void down() {
 
         if (apartment == 104) {
 
