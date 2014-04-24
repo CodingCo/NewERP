@@ -23,7 +23,6 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import quicktime.std.StdQTConstants;
 
 /**
  * @author Simon & Robert
