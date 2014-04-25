@@ -1258,7 +1258,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                             .addComponent(jLabel27)
                             .addComponent(jLabel44)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel45))
+                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1377,11 +1377,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormPanel.setMaximumSize(new java.awt.Dimension(9999, 9999));
         eBFormPanel.setMinimumSize(new java.awt.Dimension(340, 600));
         eBFormPanel.setPreferredSize(new java.awt.Dimension(340, 600));
-        eBFormPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eBFormPanelMouseClicked(evt);
-            }
-        });
 
         eBFormNONTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1846,6 +1841,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
+        } finally {
+            controller.updateLists();
         }
 
 
@@ -1860,9 +1857,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
         this.clearEditBookingsFields();
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
-    private void eBFormPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eBFormPanelMouseClicked
-        this.enableComponents(this.eBFormPanel, false);
-    }//GEN-LAST:event_eBFormPanelMouseClicked
     private void eBFormButtonClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonClearButtonActionPerformed
         this.clearEditBookingsFields();
         this.enableComponents(this.eBFormPanel, false);

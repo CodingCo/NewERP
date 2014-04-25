@@ -53,6 +53,15 @@ public class Chatty {
         return null;
     }
 
+    Booking getBooking(int bid) {
+        for (Booking b : this.bookings) {
+            if (b.getB_id() == bid) {
+                return b;
+            }
+        }
+        return null;
+    }
+
     public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateLists(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
@@ -345,7 +354,6 @@ public class Chatty {
             }
 
             bookingValues[3] = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-
             bookingValues[4] = current.getNum_of_nights();
             bookingValues[5] = current.getA_num();
             bookingValues[6] = current.getB_id();

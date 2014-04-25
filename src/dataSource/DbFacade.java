@@ -114,4 +114,11 @@ public class DbFacade {
         }
         return null;
     }
+
+    public Booking getBooking(int bid) {
+        if (this.chatty != null) {
+            return this.chatty.getBooking(bid);
+        }
+        return null;
+    }
 }

@@ -27,7 +27,7 @@ public class Controller {
         return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
     }
 
-    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street, int guests) throws BookingException {
+    public void updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street, int guests) throws BookingException {
         boolean status = false;
         Booking btmp = null;
         Customer ctmp = null;
@@ -57,9 +57,10 @@ public class Controller {
             if (status) {
                 b = btmp;
                 c = ctmp;
+            } else {
+                throw new BookingException("Booking could not be updated");
             }
         }
-        return status;
     }
 
     public boolean deleteBooking(int b_id) throws BookingException {
@@ -68,14 +69,6 @@ public class Controller {
             status = this.facade.deleteBooking(b_id);
         }
         return status;
-    }
-
-    public Customer getCustomer(int custId) {
-        if (this.facade != null) {
-            return this.facade.getCustomer(custId);
-        }
-        return null;
-
     }
 
     public ArrayList<Apartment> getApartments() {
@@ -131,6 +124,22 @@ public class Controller {
         if (this.facade != null) {
             this.facade.updateLists();
         }
+
+    }
+
+    public Customer getCustomer(int custId) {
+        if (this.facade != null) {
+            return this.facade.getCustomer(custId);
+        }
+        return null;
+
+    }
+
+    public Booking getBooking(int bid) {
+        if (this.facade != null) {
+            return this.facade.getBooking(bid);
+        }
+        return null;
     }
 
 }
