@@ -1754,31 +1754,34 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void eBFindButtonFindButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFindButtonFindButtonActionPerformed
         this.bookingsFoundHashMap.clear();
         this.eBListModel.clear();
+        clearEditBookingsFields();
+        enableComponents(this.eBFormPanel, false);
 
         try {
-            String name = this.eBFindNameTextField.getText();
-            String date = this.eBFindDateTextField.getText();
-            String bNum = this.eBFindBookingNRTextField.getText();
-            String aNum = this.eBFindRoomNrTextField.getText();
+            String name = this.eBFindNameTextField.getText().trim();
+            String date = this.eBFindDateTextField.getText().trim();
+            String bNum = this.eBFindBookingNRTextField.getText().trim();
+            String aNum = this.eBFindRoomNrTextField.getText().trim();
             int apartmentNumber = 0;
             int bookingNumber = 0;
 
-            if (!name.trim().isEmpty()) {
+            if (!name.isEmpty()) {
                 InputCheck.nameCheck(name);
             }
-            if (!date.trim().isEmpty()) {
+            if (!date.isEmpty()) {
                 InputCheck.dateFormatCheck(date);
             }
-            if (!bNum.trim().isEmpty()) {
+            if (!bNum.isEmpty()) {
                 bookingNumber = InputCheck.bookingNrCheck(bNum);
             }
-            if (!aNum.trim().isEmpty()) {
+            if (!aNum.isEmpty()) {
                 apartmentNumber = InputCheck.apartmentCheck(aNum);
             }
 
             bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
-
-            if (bookingsFoundHashMap == null) {
+            
+            
+            if (bookingsFoundHashMap.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
             } else {
                 for (Booking b : bookingsFoundHashMap.keySet()) {

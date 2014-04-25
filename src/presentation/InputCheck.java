@@ -65,6 +65,7 @@ public class InputCheck {
 
     }
 
+  
     public static void nameCheck(String name) throws NameException {
 
         if (name.isEmpty()) {
