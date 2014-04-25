@@ -50,7 +50,7 @@ public class ApartmentMapper {
                 + "where a_num not in(select a_num from booking "
                 + "where (to_date(?) between (date_from) and date_from + number_of_nights - 1) or "
                 + "((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or "
-                + "date_from between to_date(?) and (to_date(?)+?-1)) and type = ?";
+                + "date_from between to_date(?) and (to_date(?)+?-1)) and type = ? order by a_num";
 
         String withNr = "select * from apartment where a_num not in (select a_num from booking where (to_date(?)  between (date_from) and date_from + number_of_nights - 1) or ((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or date_from  between to_date(?) and (to_date(?)+?-1)) and a_num = ?";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
