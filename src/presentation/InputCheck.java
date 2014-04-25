@@ -71,7 +71,7 @@ public class InputCheck {
             throw new NameException("No name entered - try with John");
         }
 
-        if (!name.trim().matches("[a-zA-Z]+")) {
+        if (name.trim().matches("[0-9]+")) {
             throw new NameException("must type in a real name");
         }
 
@@ -87,7 +87,7 @@ public class InputCheck {
             throw new NameException("Must enter valid location information");
         }
 
-        if (!name.trim().matches("[a-zA-Z ]+")) {
+        if (name.trim().matches("[0-9]+")) {
             throw new NameException("Can only contain letters");
         }
 
