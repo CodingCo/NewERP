@@ -52,13 +52,12 @@ public class DrawToday extends JPanel {
         setDate();
     }
 
-    private void setDate(){
+    private void setDate() {
         SimpleDateFormat f = new SimpleDateFormat("dd   MMMMMMMMMM   yyyy");
         Date d = new Date();
-         this.date = f.format(d);
+        this.date = f.format(d);
     }
 
-    
     public void next() {
         ++pointer;
         repaint();
@@ -95,7 +94,6 @@ public class DrawToday extends JPanel {
         int xOnePos = 0;
         int xTwoPos = boxLength + (xSpaceBuffer * 2);
         int yBoxPos = 0;
-        
 
         page.setColor(Color.WHITE);
         page.fillRect(0, 0, width, boxHeight);
@@ -109,17 +107,17 @@ public class DrawToday extends JPanel {
         if (to > list.size()) {
             to = list.size();
         }
-        
-        
 
         page.setColor(Color.black);
         page.setFont(new Font("Arial", 1, 18));
-        page.drawString("Welcome \t \t"  + "  \t \t Date: " + date, 10, 35);
+        page.drawString("Welcome \t \t" + "  \t \t Date: " + date, 10, 35);
 
         for (int i = from; i < to; ++i) {
             Booking b1 = list.get(i)[0];
             Booking b2 = list.get(i)[1];
-
+            System.out.println("to " + to);
+            System.out.println("i " + i);
+            System.out.println("from " + from);
             if (b1 != null && b2 != null) {
                 // draw two small check -in/out                
                 addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1, checkOut);
@@ -163,7 +161,8 @@ public class DrawToday extends JPanel {
         p.add(k);
         p.add(l);
         p.add(h);
-
+        
+        
         k.setHorizontalAlignment(SwingConstants.CENTER);
         k.setBackground(Color.black);
         k.setText("Name: " + b.getLast_name() + ", " + b.getFirst_name() + "  --  Phone number: " + b.getPhone());
