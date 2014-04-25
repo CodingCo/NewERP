@@ -44,7 +44,7 @@ public class DrawApartment extends JPanel {
         int boxHeight = 60;
         //boxWidth = (width / this.cdm);
         //numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
-        System.out.println("kjdhfkljdshfjkds");
+
         drawCalendarBar(page);
 
     }

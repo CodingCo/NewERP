@@ -1860,6 +1860,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
         this.clearEditBookingsFields();
+        this.eBListModel.clear();
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
     private void eBFormButtonClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonClearButtonActionPerformed
         this.clearEditBookingsFields();
@@ -1915,16 +1916,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void newBookingFormSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormSubmitButtonActionPerformed
 
         try {
-            String firstName = this.newBookingFormFirstTextField.getText();
-            String lastName = this.newBookingFormNameTextField.getText();
-            String phone = this.newBookingFormPhoneTextField.getText();
-            String email = this.newBookingFormEmailTextField.getText();
-            String country = this.newBookingFormCountryTextField.getText();
-            String city = this.newBookingFormCityTextField.getText();
-            String street = this.newBookingFormStreetTextField.getText();
-            String travelAgency = this.newBookingFormAgenTextField.getText();
-            String zipcode = this.newBookingFormZipTextField.getText();
-            String date = this.newBookingFormADateTextField.getText();
+            String firstName = this.newBookingFormFirstTextField.getText().trim();
+            String lastName = this.newBookingFormNameTextField.getText().trim();
+            String phone = this.newBookingFormPhoneTextField.getText().trim();
+            String email = this.newBookingFormEmailTextField.getText().trim();
+            String country = this.newBookingFormCountryTextField.getText().trim();
+            String city = this.newBookingFormCityTextField.getText().trim();
+            String street = this.newBookingFormStreetTextField.getText().trim();
+            String travelAgency = this.newBookingFormAgenTextField.getText().trim();
+            String zipcode = this.newBookingFormZipTextField.getText().trim();
+            String date = this.newBookingFormADateTextField.getText().trim();
             int price = Integer.parseInt(this.newBookingPriceTextField.getText());
             int numberOfNights = Integer.parseInt(this.newBookingFormNONTextField.getText());
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());

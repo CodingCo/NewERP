@@ -13,36 +13,33 @@ import java.sql.SQLException;
  * @author kasper
  */
 public class ApartmentMapper {
-    
+
     public ArrayList<Apartment> getAllApartments(Connection con) {
-	ArrayList<Apartment> list = new ArrayList();
-	String SQLString = "select * from apartment";
-	PreparedStatement stat = null;
-	
-	try {
-	    stat = con.prepareStatement(SQLString);
-	    ResultSet rs = stat.executeQuery();
-	    
-	    while (rs.next()){
-		list.add(new Apartment(rs.getInt(1), rs.getInt(3), rs.getString(2), rs.getInt(4)));
-	    }
-	    
-	}catch (SQLException e){
-	    System.out.println(e);
-	    e.printStackTrace();
-	} finally {
-	    try {
-		stat.close();
-	    } catch (SQLException e){
-		System.out.println(e);
-		e.printStackTrace();
-	    }
-	}
-	
-	return list;
+        ArrayList<Apartment> list = new ArrayList();
+        String SQLString = "select * from apartment";
+        PreparedStatement stat = null;
+
+        try {
+            stat = con.prepareStatement(SQLString);
+            ResultSet rs = stat.executeQuery();
+
+            while (rs.next()) {
+                list.add(new Apartment(rs.getInt(1), rs.getInt(3), rs.getString(2), rs.getInt(4)));
+            }
+
+        } catch (SQLException e) {
+
+        } finally {
+            try {
+                stat.close();
+            } catch (SQLException e) {
+            }
+        }
+
+        return list;
     }
 
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException{
+    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> aplist = new ArrayList();
 
         String SQLString = "select * "
@@ -93,22 +90,19 @@ public class ApartmentMapper {
             try {
                 statement.close();
             } catch (SQLException e) {
-                
+
             }
         }
         return aplist;
     }
 
-    
-    
-    
     public boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
         boolean status = false;
         days = days - 1;
-        String SQL = "select a_num from apartment where a_num not in (select a_num from (SELECT * from booking where b_id <> ?) " +
-                     "where ((to_date(?) between (date_from) and date_from + number_of_nights - 1) or " +
-                     "((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or " +
-                     "date_from between to_date(?) and (to_date(?)+? - 1))) and a_num = ?";  
+        String SQL = "select a_num from apartment where a_num not in (select a_num from (SELECT * from booking where b_id <> ?) "
+                + "where ((to_date(?) between (date_from) and date_from + number_of_nights - 1) or "
+                + "((to_date(?)+?) between (date_from + 1) and (date_from + number_of_nights)) or "
+                + "date_from between to_date(?) and (to_date(?)+? - 1))) and a_num = ?";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
         PreparedStatement statement = null;
         try {
@@ -135,12 +129,12 @@ public class ApartmentMapper {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.err.println(e);
+
             }
         }
         return status;

@@ -30,8 +30,6 @@ public class GuestMapper {
             }
 
         } catch (SQLException ex) {
-            System.err.println("Fail in getGuestID");
-            ex.printStackTrace();
         }
 
         return guest_ids;
@@ -51,8 +49,6 @@ public class GuestMapper {
             rowsinserted = statement.executeUpdate();
 
         } catch (SQLException ex) {
-            System.err.println("Fail in insertGuest");
-            ex.printStackTrace();
         }
 
         return rowsinserted != 0;
