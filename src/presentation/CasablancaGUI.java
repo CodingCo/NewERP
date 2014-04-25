@@ -43,7 +43,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private boolean drawTodayFlag = false;
     private boolean drawMonthFlag = false;
     private boolean drawApartmentFlag = false;
-    private boolean isFullScreen = false;
+    private boolean isFullScreen = true;
 
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 0;
@@ -195,6 +195,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
         eBMatchPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         eBMatchList = new javax.swing.JList();
@@ -230,7 +231,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormNatTextField = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel39 = new javax.swing.JLabel();
-        ebPriceTextField = new javax.swing.JTextField();
+        ebFormPriceTextField = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         eBTitleTitleLabel = new javax.swing.JLabel();
         previousCustomerPanel = new javax.swing.JPanel();
@@ -1175,12 +1176,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFindNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         eBFindDateTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        eBFindDateTextField.setText("DD-MM-YY");
-        eBFindDateTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                eBFindDateTextFieldFocusGained(evt);
-            }
-        });
         eBFindDateTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 eBFindDateTextFieldKeyTyped(evt);
@@ -1237,6 +1232,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel5.setText("booking form on the right.");
 
+        jLabel45.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jLabel45.setText("Booking start date must be in DD-MM-YY");
+
         javax.swing.GroupLayout eBFindPanelLayout = new javax.swing.GroupLayout(eBFindPanel);
         eBFindPanel.setLayout(eBFindPanelLayout);
         eBFindPanelLayout.setHorizontalGroup(
@@ -1259,7 +1257,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel27)
                             .addComponent(jLabel44)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel45))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1288,6 +1287,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eBFindRoomNrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1382,6 +1383,23 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
+        eBFormNONTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                eBFormNONTextFieldFocusLost(evt);
+            }
+        });
+
+        eBFormANRTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                eBFormANRTextFieldFocusLost(evt);
+            }
+        });
+        eBFormANRTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                eBFormANRTextFieldKeyTyped(evt);
+            }
+        });
+
         eBFormButtonSaveButton.setText("Save");
         eBFormButtonSaveButton.setMaximumSize(new java.awt.Dimension(100, 30));
         eBFormButtonSaveButton.setMinimumSize(new java.awt.Dimension(100, 30));
@@ -1438,7 +1456,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel39.setText("Price:");
 
-        ebPriceTextField.setEnabled(false);
+        ebFormPriceTextField.setEnabled(false);
 
         jLabel40.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel40.setText("Optional");
@@ -1447,7 +1465,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         eBFormPanel.setLayout(eBFormPanelLayout);
         eBFormPanelLayout.setHorizontalGroup(
             eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator2)
             .addGroup(eBFormPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1470,17 +1487,26 @@ public class CasablancaGUI extends javax.swing.JFrame {
                                         .addComponent(jLabel39)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(eBFormNOGTextField)
-                                    .addComponent(ebPriceTextField))
+                                    .addComponent(ebFormPriceTextField))
                                 .addContainerGap())))
-                    .addComponent(eBFormNatTextField)
                     .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addComponent(eBFormButtonClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(167, 230, Short.MAX_VALUE))
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eBFormADateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eBFormPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel51)
+                            .addGroup(eBFormPanelLayout.createSequentialGroup()
+                                .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel40)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eBFormPanelLayout.createSequentialGroup()
+                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eBFormNatTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormADateTextField)
+                            .addGroup(eBFormPanelLayout.createSequentialGroup()
                                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(eBFormFirstTextField)
                                     .addGroup(eBFormPanelLayout.createSequentialGroup()
@@ -1490,11 +1516,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
                                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(eBFormNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(eBFormPhoneTextField)
-                            .addComponent(eBFormEmailTextField)
-                            .addComponent(eBFormStreetTextField)
-                            .addComponent(eBFormCityTextField)
-                            .addGroup(eBFormPanelLayout.createSequentialGroup()
+                            .addComponent(eBFormPhoneTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormEmailTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormStreetTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eBFormCityTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, eBFormPanelLayout.createSequentialGroup()
                                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel47)
@@ -1502,15 +1528,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel49)
                                     .addComponent(jLabel50))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(eBFormPanelLayout.createSequentialGroup()
-                        .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel51)
-                            .addGroup(eBFormPanelLayout.createSequentialGroup()
-                                .addComponent(eBFormZipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel40)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         eBFormPanelLayout.setVerticalGroup(
             eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1526,7 +1544,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eBFormNONTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ebPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ebFormPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
@@ -1732,6 +1750,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFindButtonBackButtonActionPerformed
     private void eBMatchButtonEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBMatchButtonEditButtonActionPerformed
         this.enableComponents(this.eBFormPanel, true);
+        this.ebFormPriceTextField.setEnabled(false);
         Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
         Customer c = this.bookingsFoundHashMap.get(b);
         setUpTextFields(b, c);
@@ -1761,10 +1780,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
             if (!aNum.trim().isEmpty()) {
                 apartmentNumber = InputCheck.apartmentCheck(aNum);
             }
-            
+
             bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
 
-            
             if (bookingsFoundHashMap == null) {
                 JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
             } else {
@@ -1788,16 +1806,45 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_eBFindButtonFindButtonActionPerformed
     private void eBFormButtonSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBFormButtonSaveButtonActionPerformed
-        Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
-
         try {
-            controller.updateBooking(b, Integer.parseInt(this.eBFormANRTextField.getText()), this.eBFormADateTextField.getText(), Integer.parseInt(this.eBFormNONTextField.getText()), b.getPrice(), bookingsFoundHashMap.get(b), this.eBFormFirstTextField.getText(), this.eBFormNameTextField.getText(), this.eBFormPhoneTextField.getText(), this.eBFormEmailTextField.getText(), this.eBFormNatTextField.getText(), this.eBFormCityTextField.getText(), this.eBFormZipTextField.getText(), this.eBFormStreetTextField.getText());
+            Booking b = (Booking) eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+            Customer c = (Customer) bookingsFoundHashMap.get(b);
+            String anum = this.eBFormANRTextField.getText();
+            String date = this.eBFormADateTextField.getText();
+            String numNights = this.eBFormNONTextField.getText();
+            String firstName = this.eBFormFirstTextField.getText();
+            String lastName = this.eBFormNameTextField.getText();
+            String phone = this.eBFormPhoneTextField.getText();
+            String email = this.eBFormEmailTextField.getText();
+            String price = this.ebFormPriceTextField.getText();
+            String country = this.eBFormNatTextField.getText();
+            String city = this.eBFormCityTextField.getText();
+            String street = this.eBFormStreetTextField.getText();
+            String zipcode = this.eBFormZipTextField.getText();
+            int apartmentNumber = InputCheck.apartmentCheck(anum);
+            int numberOfNights = InputCheck.nightsCheck(numNights);
+            double bookingPrice = Double.parseDouble(price);
+            int guests = InputCheck.editApartmentTypeCheck(this.eBFormNOGTextField.getText(), apartmentNumber);
+
+            InputCheck.dateFormatCheck(date);
+            InputCheck.timeDateCheck(date);
+            InputCheck.nightsCheck(numNights);
+            InputCheck.nameCheck(firstName);
+            InputCheck.nameCheck(lastName);
+            InputCheck.phoneCheck(phone);
+            InputCheck.emailCheck(email);
+            InputCheck.streetAddressCheck(street);
+
+            controller.updateBooking(b, apartmentNumber, date, numberOfNights, bookingPrice, c, firstName, lastName, phone, email, country, city, zipcode, street, guests);
+
             this.clearEditBookingsFields();
             this.eBListModel.clear();
             this.enableComponents(this.eBMatchPanel, false);
             this.enableComponents(this.eBFormPanel, false);
             JOptionPane.showMessageDialog(this, "Booking Updated", "", WIDTH);
-        } catch (BookingException ex) {
+        } catch (BookingException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
 
@@ -1811,9 +1858,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         } catch (BookingException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
-
         this.clearEditBookingsFields();
-
     }//GEN-LAST:event_eBMAtchButtonDeleteButtonActionPerformed
     private void eBFormPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eBFormPanelMouseClicked
         this.enableComponents(this.eBFormPanel, false);
@@ -1884,7 +1929,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             String date = this.newBookingFormADateTextField.getText();
             int price = Integer.parseInt(this.newBookingPriceTextField.getText());
             int numberOfNights = Integer.parseInt(this.newBookingFormNONTextField.getText());
-
             Apartment a = (Apartment) nBListModel.getElementAt(this.newBookingAvailList.getSelectedIndex());
 
             InputCheck.nameCheck(firstName);
@@ -1897,7 +1941,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), a.getType());
 
             Customer c = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
-
             this.controller.newBooking(c, a.getA_num(), date, numberOfNights, travelAgency, guests, price, c.getFirst_name(), c.getLast_name(), c.getPhone());
             this.enableComponents(this, false);
             this.enableComponents(this, true);
@@ -1938,7 +1981,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.newBookingFormNONTextField.setText(this.newBookingFindSearchNONTextField.getText());
         this.newBookingFormRoomTextField.setText("" + a.getA_num());
         this.newBookingPriceTextField.setText("" + price);
-
         this.enableComponents(this.newBookingFormPanel, true);
         this.enableComponents(this.newBookingFormGreyPanel, false);
     }//GEN-LAST:event_newBookingAvailListMouseClicked
@@ -1951,7 +1993,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         int apartmentNumber = 0;
         int numNights = 0;
         ArrayList<Apartment> a = null;
-
         String date = this.newBookingFindSearchFromTextField.getText();
         String numberOfNights = this.newBookingFindSearchNONTextField.getText();
         String selectedItem = this.newBookingFindSearchTypeComboBox.getSelectedItem().toString();
@@ -1964,28 +2005,23 @@ public class CasablancaGUI extends javax.swing.JFrame {
         } catch (RoomException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
-
         try {
             InputCheck.dateFormatCheck(date);
             InputCheck.timeDateCheck(date);
             numNights = InputCheck.nightsCheck(numberOfNights);
-
             a = controller.findAvailableApartment(date, numNights, selectedItem, apartmentNumber);
-
             if (a.isEmpty()) {
                 this.enableComponents(this, false);
                 JOptionPane.showMessageDialog(this, "No available apartment", "", WIDTH);
                 this.enableComponents(this, true);
                 this.enableComponents(this.newBookingFormPanel, false);
                 this.enableComponents(this.newBookingAvailablePanel, false);
-
             } else {
                 for (int x = 0; x < a.size(); ++x) {
                     this.nBListModel.addElement(a.get(x));
                     this.enableComponents(this.newBookingAvailablePanel, true);
                 }
             }
-
         } catch (BookingException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (DateException ex) {
@@ -1993,8 +2029,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         } catch (Exception exx) {
 
         }
-
-
     }//GEN-LAST:event_newBookingFindButtonFindButtonActionPerformed
     private void newBookingFindButtonFindButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFindButtonFindButtonMouseEntered
         this.newBookingFindButtonFindButton.setToolTipText("Press to search for available apartment");
@@ -2054,7 +2088,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(Calendar.getInstance().getTime());
         String timeStamp = sdf.format(calendar.getTime());
-
         this.listBookingLastUpdatedjLabel.setText("Updated: " + timeStamp);
         this.controller.updateLists();
 
@@ -2095,9 +2128,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = true;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = false;
-
         this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
-
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
         this.listBookingDrawingPanel.repaint();
@@ -2108,9 +2139,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
-
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
-
         this.listBookingDrawingPanel.removeAll();
         this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
         this.listBookingDrawingPanel.add(this.drawMonth);
@@ -2126,12 +2155,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
-
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
-
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-        System.out.println(a.getA_num());
-
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
@@ -2204,7 +2229,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
-
     private void eBFindDateTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldKeyTyped
         JTextField selectedTextField = this.eBFindDateTextField; //== EDIT THIS
         String candidates = "1234567890";
@@ -2224,13 +2248,35 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 }
             }
         }
-
-
     }//GEN-LAST:event_eBFindDateTextFieldKeyTyped
+    private void eBFormANRTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFormANRTextFieldKeyTyped
+        this.eBFormNOGTextField.setText("");
+    }//GEN-LAST:event_eBFormANRTextFieldKeyTyped
+    private void eBFormNONTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eBFormNONTextFieldFocusLost
+        Booking b = (Booking) this.eBListModel.getElementAt(this.eBMatchList.getSelectedIndex());
+        try {
+            if (!this.eBFormNONTextField.getText().trim().isEmpty()) {
+                int nights = Integer.parseInt(this.eBFormNONTextField.getText());
+                int price = InputCheck.priceCheck(b.getA_num()) * nights;
+                this.ebFormPriceTextField.setText("" + price);
+            }
 
-    private void eBFindDateTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldFocusGained
-        this.eBFindDateTextField.setText("");
-    }//GEN-LAST:event_eBFindDateTextFieldFocusGained
+        } catch (RoomException ex) {
+        }
+    }//GEN-LAST:event_eBFormNONTextFieldFocusLost
+    private void eBFormANRTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eBFormANRTextFieldFocusLost
+
+        try {
+            if (!this.eBFormNONTextField.getText().trim().isEmpty()) {
+                int nights = Integer.parseInt(this.eBFormNONTextField.getText());
+                int anum = Integer.parseInt(this.eBFormANRTextField.getText());
+                int price = InputCheck.priceCheck(anum) * nights;
+                this.ebFormPriceTextField.setText("" + price);
+            }
+
+        } catch (RoomException ex) {
+        }
+    }//GEN-LAST:event_eBFormANRTextFieldFocusLost
 
     /**
      * Calculates the window size based on system preferences.
@@ -2295,6 +2341,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     public void clearNewBookingFields() {
+        this.newBookingPriceTextField.setText("");
         this.newBookingFormFirstTextField.setText("");
         this.newBookingFormADateTextField.setText("");
         this.newBookingFormAgenTextField.setText("");
@@ -2308,9 +2355,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.newBookingFormStreetTextField.setText("");
         this.newBookingFormZipTextField.setText("");
         this.newBookingFormEmailTextField.setText("");
-        this.nBListModel.clear();
         this.newBookingFindSearchNONTextField.setText("");
         this.newBookingFindSearchFromTextField.setText("");
+        this.nBListModel.clear();
     }
 
     private void clearEditBookingsFields() {
@@ -2326,13 +2373,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormPhoneTextField.setText("");
         this.eBFormStreetTextField.setText("");
         this.eBFormZipTextField.setText("");
+        this.ebFormPriceTextField.setText("");
     }
 
     private void setUpTextFields(Booking b, Customer c) {
         this.eBFormADateTextField.setText(b.getDate_from());
         this.eBFormANRTextField.setText("" + b.getA_num());
         this.eBFormCityTextField.setText(c.getCity());
-        //this.eBFormCombo.setSelectedItem("");
+        this.ebFormPriceTextField.setText("" + b.getPrice());
         this.eBFormEmailTextField.setText(c.getEmail());
         this.eBFormFirstTextField.setText(c.getFirst_name());
         this.eBFormNOGTextField.setText("" + b.getNumber_of_guests());
@@ -2341,8 +2389,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBFormNatTextField.setText(c.getCountry());
         this.eBFormPhoneTextField.setText(c.getPhone());
         this.eBFormStreetTextField.setText(c.getStreet());
-        this.eBFormZipTextField.setText("" + c.getZipcode());
-
+        if (c.getZipcode() != null) {
+            this.eBFormZipTextField.setText("" + c.getZipcode());
+        }
     }
 
 
@@ -2374,7 +2423,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JList eBMatchList;
     private javax.swing.JPanel eBMatchPanel;
     private javax.swing.JLabel eBTitleTitleLabel;
-    private javax.swing.JTextField ebPriceTextField;
+    private javax.swing.JTextField ebFormPriceTextField;
     private javax.swing.JPanel editBookingPanel;
     private javax.swing.JButton frontPageEditBooking;
     private javax.swing.JButton frontPageExitButton;
@@ -2419,6 +2468,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;

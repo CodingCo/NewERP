@@ -57,19 +57,17 @@ public class BookingMapper {
             st.setDouble(7, bo.getPrice());
             rowsInserted = st.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
             throw new BookingException("Booking not inserted");
         } finally {
             try {
                 st.close();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
         return rowsInserted;
     }
 
-    public int updateBooking(Booking b, Connection con) throws BookingException{
+    public int updateBooking(Booking b, Connection con) throws BookingException {
         int rowsIns = 0;
         String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = TO_DATE(?,'DD-MM-YY'), number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
@@ -89,19 +87,17 @@ public class BookingMapper {
             rowsIns = st.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new BookingException("Booking could not be updated");
         } finally {
             try {
                 st.close();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
         return rowsIns;
     }
 
-    public int deleteBooking(Connection con, int b_id) throws BookingException{
+    public int deleteBooking(Connection con, int b_id) throws BookingException {
         int rowDel = 0;
         String SQLString = "delete from booking where b_id = ?";
         PreparedStatement stat = null;
@@ -112,14 +108,11 @@ public class BookingMapper {
             rowDel = stat.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println(e);
-            e.printStackTrace();
             throw new BookingException("Booking could not be deleted");
         } finally {
             try {
                 stat.close();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
         return rowDel;

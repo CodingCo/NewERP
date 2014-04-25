@@ -1,15 +1,18 @@
 package presentation;
 
+import domain.Controller;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -38,6 +41,7 @@ public class DrawMonth extends JPanel {
     private int apartment;
     private int increment;
     private int numOfRows;
+    private Controller controller;
 
     public DrawMonth(JPanel panel) {
         this.setSize(panel.getSize());
@@ -55,6 +59,7 @@ public class DrawMonth extends JPanel {
         this.apartment = 1;
         this.increment = 0;
         this.showings = 0;
+        controller = new Controller();
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
@@ -166,25 +171,25 @@ public class DrawMonth extends JPanel {
 
             if (tmp[0] == 0) {
                 // empty
-                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "");
+                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "",tmp[7]);
 
             } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
 
                 // whole month
-                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " continious - Nr. " + tmp[5], "" + tmp[4]);
+                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " continious - Nr. " + tmp[5], "" + tmp[4],tmp[7]);
 
             } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] == (this.year * 100) + this.month) {
                 // ind i
                 int nights = tmp[8];
-                addBookingPanel(coor[0], y, calcSize(nights) - (boxWidth / 2), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4] + " - " + tmp[0] + tmp[1] + "   " + tmp[3]);
+                addBookingPanel(coor[0], y, calcSize(nights) - (boxWidth / 2), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4],tmp[7]);
 
             } else if ((tmp[2] * 100) + tmp[1] == (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
                 //ud af måneden
                 int nights = (tmp[3] - tmp[0]) + 1;
-                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4],tmp[7]);
             } else {
                 // this month
-                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4]);
+                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4],tmp[7]);
             }
 
             if (!(showings < numOfRows)) {
@@ -209,7 +214,7 @@ public class DrawMonth extends JPanel {
 
     }
 
-    private void addBookingPanel(int x, int y, int width, int height, Color c, Color hc, String message, String message2) {
+    private void addBookingPanel(int x, int y, int width, int height, Color c, Color hc, String message, String message2, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
         JLabel k = new JLabel();
@@ -218,7 +223,7 @@ public class DrawMonth extends JPanel {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
+                JOptionPane.showMessageDialog(panel.getRootPane(), controller.getCustomer(id), "", WIDTH);
             }
 
             @Override

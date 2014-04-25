@@ -60,7 +60,7 @@ public class DbFacade {
         return null;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr){
+    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
         if (this.chatty != null) {
             return this.chatty.findBookings(bookingNr, name, date, apartment_nr, con);
         }
@@ -104,6 +104,13 @@ public class DbFacade {
     public ArrayList<Apartment> getApartments() {
         if (this.chatty != null) {
             return this.chatty.getApartments(con);
+        }
+        return null;
+    }
+
+    public Customer getCustomer(int custId) {
+        if (this.chatty != null) {
+            return this.chatty.getCustomer(custId);
         }
         return null;
     }

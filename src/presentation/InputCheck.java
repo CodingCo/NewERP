@@ -116,20 +116,6 @@ public class InputCheck {
         if (streetAddress.length() < 3) {
             throw new StreetAddressException("Address must be longer than 3 characters ");
         }
-
-        int tmp = 0;
-        for (char c : streetAddress.trim().toCharArray()) {
-
-            if (Character.isDigit(c)) {
-                tmp = 2;
-            } else {
-                tmp = 1;
-            }
-        }
-
-        if (tmp == 1) {
-            throw new StreetAddressException("Address must be in ex: 'Examplestreet 42'");
-        }
     }
 
     public static int apartmentCheck(String apartmentNr) throws RoomException {
@@ -169,22 +155,22 @@ public class InputCheck {
         return numberOfGuests;
     }
 
-    public static String apartmentTypeCheck(int num) throws RoomException {
-        String apartment = "";
+    public static int priceCheck(int num) throws RoomException {
+        int price = 0;
 
         if (num > 0 && num <= 40) {
-            apartment = "Single";
+            price = 60;
 
         } else if (num > 40 && num <= 90) {
-            apartment = "Double";
+            price = 80;
 
         } else if (num > 90 && num <= 104) {
-            apartment = "Family";
+            price = 100;
         } else {
 
-            throw new RoomException("no apartment matches the specified apartment type");
+            throw new RoomException("no prices on that apartment");
         }
-        return apartment;
+        return price;
     }
 
     public static int nightsCheck(String nights) throws BookingException {
@@ -198,6 +184,37 @@ public class InputCheck {
 
         if (x > 999) {
             throw new BookingException("Booking must not be over 999 nights");
+        }
+        return x;
+    }
+
+    public static int editApartmentTypeCheck(String guests, int num) throws RoomException {
+        int x = 0;
+
+        try {
+            x = Integer.parseInt(guests);
+        } catch (NumberFormatException ex) {
+            throw new RoomException("Number of nights must be a number");
+        }
+
+        if (num > 0 && num <= 40) {
+            if (x > 1) {
+                throw new RoomException("That apartment can only contain 1 resident");
+            }
+
+        } else if (num > 40 && num <= 90) {
+            if (x > 2) {
+                throw new RoomException("That apartment can only contain 2 residents");
+            }
+
+        } else if (num > 90 && num <= 104) {
+            if (x > 5) {
+                throw new RoomException("That apartment can only contain 5 residents");
+            }
+
+        } else {
+
+            throw new RoomException("no apartment matches the specified apartment type");
         }
         return x;
     }
@@ -232,8 +249,8 @@ public class InputCheck {
             throw new PhoneException("Must enter a Phone nr - no charecters entered ");
         }
 
-        if (phone.length() < 5) {
-            throw new PhoneException("Phone nr must be at least 4 characters");
+        if (phone.length() < 1) {
+            throw new PhoneException("Phone nr must be at least 1 characters");
         }
 
         int tmp = 0;
@@ -244,7 +261,7 @@ public class InputCheck {
                 tmp = 2;
                 break;
             } else if (!Character.isLetterOrDigit(c)) {
-                if (c == '-') {
+                if (c == '-' || c == '+') {
                     tmp = 1;
                 } else {
                     tmp = 3;
@@ -256,7 +273,7 @@ public class InputCheck {
         if (tmp == 2) {
             throw new PhoneException("Phone nr can't contain letters");
         } else if (tmp == 3) {
-            throw new PhoneException("Phone nr must be Digits. Only character allowed is '-'");
+            throw new PhoneException("Phone nr must be Digits. Only character allowed is - and +");
         }
     }
 

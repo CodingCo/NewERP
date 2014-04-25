@@ -27,7 +27,7 @@ public class Controller {
         return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
     }
 
-    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws BookingException {
+    public boolean updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street, int guests) throws BookingException {
         boolean status = false;
         Booking btmp = null;
         Customer ctmp = null;
@@ -42,6 +42,7 @@ public class Controller {
             btmp.setA_num(a_num);
             btmp.setDate_from(date_from);
             btmp.setNum_of_nights(number_of_nights);
+            btmp.setNumber_of_guests(guests);
             btmp.setPrice(price);
             ctmp.setFirst_name(first_name);
             ctmp.setLast_name(last_name);
@@ -67,6 +68,14 @@ public class Controller {
             status = this.facade.deleteBooking(b_id);
         }
         return status;
+    }
+
+    public Customer getCustomer(int custId) {
+        if (this.facade != null) {
+            return this.facade.getCustomer(custId);
+        }
+        return null;
+
     }
 
     public ArrayList<Apartment> getApartments() {

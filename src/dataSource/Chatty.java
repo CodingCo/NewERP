@@ -44,6 +44,15 @@ public class Chatty {
         return apartmentToReturn;
     }
 
+    public Customer getCustomer(int custId) {
+        for (Customer c : this.customers) {
+            if (c.getCust_id() == custId) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateLists(con);
         HashMap<Booking, Customer> relevantBooking = new HashMap();
@@ -157,10 +166,8 @@ public class Chatty {
                 }
             }
         } catch (SQLException ex) {
-            System.err.println("Fail in updateBooking - Hilsen Thomas og Christopher");
-            System.out.println(ex);
+            throw new BookingException("Booking could not be updated");
         }
-
         return false;
     }
 
@@ -352,7 +359,7 @@ public class Chatty {
             bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3, 5));
             bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6, 8));
 
-	            //System.out.println("Number of nights:   " + current.getNum_of_nights());
+            //System.out.println("Number of nights:   " + current.getNum_of_nights());
             //System.out.println("Start date:         " + current.getDate_from());
             //System.out.println("End day:            " + bookingValues[8]);
             //System.out.println("End Month:          " + bookingValues[9]);
