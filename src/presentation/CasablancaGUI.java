@@ -1779,8 +1779,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
 
             bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
-            
-            
+
             if (bookingsFoundHashMap.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
             } else {
@@ -1855,7 +1854,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         try {
             controller.deleteBooking(b.getB_id());
             JOptionPane.showMessageDialog(this, "Booking Deleted", "", WIDTH);
-        } catch (BookingException ex) {
+        } catch (BookingException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
         }
         this.clearEditBookingsFields();
