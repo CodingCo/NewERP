@@ -79,6 +79,9 @@ public class DrawToday extends JPanel {
     @Override
     public void paintComponent(Graphics page) {
         //this.setSize(this.panel.getWidth(), this.panel.getHeight());
+        page.setColor(this.panel.getBackground());
+        page.fillRect(0, 0, getWidth(), getHeight());
+        page.setColor(this.panel.getForeground());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         Graphics2D graphics2D = (Graphics2D) page;
@@ -115,9 +118,6 @@ public class DrawToday extends JPanel {
         for (int i = from; i < to; ++i) {
             Booking b1 = list.get(i)[0];
             Booking b2 = list.get(i)[1];
-            System.out.println("to " + to);
-            System.out.println("i " + i);
-            System.out.println("from " + from);
             if (b1 != null && b2 != null) {
                 // draw two small check -in/out                
                 addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1, checkOut);
@@ -161,8 +161,7 @@ public class DrawToday extends JPanel {
         p.add(k);
         p.add(l);
         p.add(h);
-        
-        
+
         k.setHorizontalAlignment(SwingConstants.CENTER);
         k.setBackground(Color.black);
         k.setText("Name: " + b.getLast_name() + ", " + b.getFirst_name() + "  --  Phone number: " + b.getPhone());

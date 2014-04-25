@@ -151,6 +151,9 @@ public class DrawMonth extends JPanel {
 
     @Override
     public void paintComponent(Graphics page) {
+        page.setColor(this.panel.getBackground());
+        page.fillRect(0, 0, getWidth(), getHeight());
+        page.setColor(this.panel.getForeground());
         int width = this.panel.getWidth() - 1;
         int height = this.panel.getHeight() - 1;
         int ySpaceBuffer = 5;
