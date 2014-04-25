@@ -145,7 +145,7 @@ public class DrawToday extends JPanel {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
+                JOptionPane.showMessageDialog(panel.getRootPane(), b.toGuiListString(), "", WIDTH);
             }
 
             @Override

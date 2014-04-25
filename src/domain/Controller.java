@@ -113,9 +113,9 @@ public class Controller {
         return null;
     }
 
-    public ArrayList<int[]> getBookingsByApartment(int a_num) {
+    public ArrayList<int[]> getBookingsByApartment(int a_num, int months) {
         if (this.facade != null) {
-            return this.facade.getBookingsByApartment(a_num);
+            return this.facade.getBookingsByApartment(a_num, months);
         }
         return null;
     }

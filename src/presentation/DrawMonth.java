@@ -222,7 +222,7 @@ public class DrawMonth extends JPanel {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(panel.getRootPane(), controller.getBooking(id), "", WIDTH);
+                JOptionPane.showMessageDialog(panel.getRootPane(), controller.getBooking(id).toGuiListString(), "", WIDTH);
             }
 
             @Override

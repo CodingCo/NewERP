@@ -144,8 +144,8 @@ public class Chatty {
             }
 
         } catch (SQLException ex) {
-            System.err.println("Fail in createNewBooking()");
-            System.out.println(ex);
+            throw new BookingException("Booking could not be created");
+
         }
         return false;
     }
@@ -223,8 +223,7 @@ public class Chatty {
                 try {
                     c.setTime(sdf.parse(bookingDateBegin));
                 } catch (ParseException ex) {
-                    System.out.println("Error in method getBookingsToDay");
-                    ex.printStackTrace();
+
                 }
 
                 c.add(Calendar.DATE, num_nights);
@@ -296,7 +295,6 @@ public class Chatty {
                 try {
                     c.setTime(sdf.parse(bookingStartDate));
                 } catch (ParseException ex) {
-                    System.out.println("Error in getBookingsByMonth method");
                     ex.printStackTrace();
                 }
                 c.add(Calendar.DATE, num_nights);
@@ -400,50 +398,65 @@ public class Chatty {
         return finalList;
     }
 
-    public ArrayList<int[]> getBookingsByApartment(int aNum) {
-        ArrayList<int[]> arrayListToReturn = new ArrayList();
-        ArrayList<Booking> relevantBookings = new ArrayList();
+    public ArrayList<int[]> getBookingsByApartment(int aNum, int months) {
+        ArrayList<Booking> bookingsToSort = new ArrayList(bookings);
+        ArrayList<int[]> relevantBookings = new ArrayList();
+        boolean relevant = false;
 
+        // Get current date to count from, and into the future
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
-        Calendar todayDate = Calendar.getInstance();
-        todayDate.add(Calendar.DATE, -1); // because 10-05-14 + hours, seconds and miliseconds are larger than 10-05-14 only. 
-        Calendar currentDate = new GregorianCalendar();
+        Calendar today = new GregorianCalendar();
+        Calendar endDate = new GregorianCalendar();
+        Calendar bookingStartDate = new GregorianCalendar();
+        Calendar bookingEndDate = new GregorianCalendar();
 
-        //== FINDS THE RELEVANT BOOKINGS
         try {
-            for (Booking booking : bookings) {
-                if (booking.getA_num() == aNum) {
-                    currentDate.setTime(sdf.parse(booking.getDate_from()));
-                    if (currentDate.compareTo(todayDate) == 1) {
-                        relevantBookings.add(booking);
-                    } else {
-                        currentDate.add(Calendar.DATE, booking.getNum_of_nights());
-                        if (currentDate.compareTo(todayDate) == 1) {
-                            relevantBookings.add(booking);
-                        }
+            // Find the END month and year                           
+            endDate.add(Calendar.MONTH, months);
+
+            Collections.sort(bookingsToSort);
+
+            for (Booking current : bookingsToSort) {
+
+                if (current.getA_num() == aNum) {
+
+                    bookingStartDate.setTime(sdf.parse(current.getDate_from()));
+                    bookingEndDate.setTime(sdf.parse(current.getDate_from()));
+                    bookingEndDate.add(Calendar.DATE, current.getNum_of_nights());
+
+                    if ((bookingStartDate.compareTo(today) < 0) && (bookingEndDate.compareTo(today) >= 0)) {
+                        relevant = true;
+                    } else if ((bookingStartDate.compareTo(today) >= 0) && (bookingStartDate.compareTo(endDate) <= 0)) {
+                        relevant = true;
                     }
+
+                    if (relevant) {
+                        int[] bookingValues = new int[11];
+                        bookingValues[0] = Integer.parseInt(current.getDate_from().substring(0, 2));
+                        bookingValues[1] = Integer.parseInt(current.getDate_from().substring(3, 5));
+                        bookingValues[2] = Integer.parseInt(current.getDate_from().substring(6, 8));
+                        bookingValues[3] = bookingStartDate.getActualMaximum(Calendar.DAY_OF_MONTH);
+                        bookingValues[4] = current.getNum_of_nights();
+                        bookingValues[5] = current.getA_num();
+                        bookingValues[6] = current.getB_id();
+                        bookingValues[7] = current.getCust_id();
+                        bookingValues[8] = Integer.parseInt(sdf.format(bookingEndDate.getTime()).substring(0, 2));
+                        bookingValues[9] = Integer.parseInt(sdf.format(bookingEndDate.getTime()).substring(3, 5));
+                        bookingValues[10] = Integer.parseInt(sdf.format(bookingEndDate.getTime()).substring(6, 8));
+
+                        relevantBookings.add(bookingValues);
+                    }
+
                 }
-            }
-            //== ADDS THE RELEVANT APARTMENTS TO THE arrayListToReturn
-            Collections.sort(relevantBookings);
-            for (Booking booking : relevantBookings) {
-                int[] octoArray = new int[8];
-                currentDate.setTime(sdf.parse(booking.getDate_from()));
-                octoArray[0] = Integer.parseInt(booking.getDate_from().split("-")[0]); //DD
-                octoArray[1] = Integer.parseInt(booking.getDate_from().split("-")[1]); //MM
-                octoArray[2] = Integer.parseInt(booking.getDate_from().split("-")[2]); //YY
-                octoArray[3] = currentDate.getActualMaximum(Calendar.DAY_OF_MONTH);    //DM
-                octoArray[4] = booking.getNum_of_nights();                             //N_O_N
-                octoArray[5] = booking.getA_num();                                     //A_NUM
-                octoArray[6] = booking.getB_id();                                      //B_ID
-                octoArray[7] = booking.getCust_id();                                   //C_ID
-                arrayListToReturn.add(octoArray);
+
+                relevant = false;
+
             }
         } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        return arrayListToReturn;
 
+        }
+
+        return relevantBookings;
     }
 
 }

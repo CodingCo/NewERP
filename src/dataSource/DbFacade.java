@@ -88,9 +88,9 @@ public class DbFacade {
         return null;
     }
 
-    public ArrayList<int[]> getBookingsByApartment(int a_num) {
+    public ArrayList<int[]> getBookingsByApartment(int a_num, int months) {
         if (this.chatty != null) {
-            return this.chatty.getBookingsByApartment(a_num);
+            return this.chatty.getBookingsByApartment(a_num, months);
         }
         return null;
     }
