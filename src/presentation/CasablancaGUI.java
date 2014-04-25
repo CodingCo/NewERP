@@ -37,6 +37,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private final DefaultListModel cBListModel;
     private final GraphicsDevice device;
 
+    private Customer tmpCustomer = null;
     private Apartment temporaryApartment = null;
     private HashMap<Booking, Customer> bookingsFoundHashMap = null;
 
@@ -44,10 +45,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private boolean drawMonthFlag = false;
     private boolean drawApartmentFlag = false;
     private boolean isFullScreen = true;
+    private boolean previousCustomerFlag = false;
 
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 0;
-
+    
     private DrawToday drawToday;
     private DrawMonth drawMonth;
     private DrawApartment drawApartment;
@@ -1909,6 +1911,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_frontPageNewBookingMouseEntered
     private void newBookingFormPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonActionPerformed
         cl.show(mainPage, "PreviousCustomer");
+        
+        
     }//GEN-LAST:event_newBookingFormPreviousButtonActionPerformed
     private void newBookingFormPreviousButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonMouseEntered
         this.newBookingFormPreviousButton.setToolTipText("Press to load Previous Customer");
@@ -1937,10 +1941,24 @@ public class CasablancaGUI extends javax.swing.JFrame {
             InputCheck.custInfoCheck(city);
             InputCheck.custInfoCheck(country);
             InputCheck.streetAddressCheck(street);
+            
             int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), a.getType());
-
-            Customer c = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
-            this.controller.newBooking(c, a.getA_num(), date, numberOfNights, travelAgency, guests, price, c.getFirst_name(), c.getLast_name(), c.getPhone());
+            if(!this.previousCustomerFlag){
+            tmpCustomer = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
+            }else{
+                tmpCustomer.setFirst_name(firstName);
+                tmpCustomer.setLast_name(lastName);
+                tmpCustomer.setPhone(phone);
+                tmpCustomer.setEmail(email);
+                tmpCustomer.setCountry(country);
+                tmpCustomer.setCity(city);
+                tmpCustomer.setStreet(street);
+                tmpCustomer.setZipcode(zipcode);
+                
+            }
+            this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, tmpCustomer.getFirst_name(), tmpCustomer.getLast_name(), tmpCustomer.getPhone());
+            this.previousCustomerFlag = false;
+            this.tmpCustomer = null;
             this.enableComponents(this, false);
             this.enableComponents(this, true);
             this.enableComponents(this.newBookingFormPanel, false);
@@ -2169,9 +2187,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_previousCustomerSearchButtonActionPerformed
     private void previousCustomerChooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerChooseButtonActionPerformed
-        Customer c = (Customer) this.cBListModel.getElementAt(this.previousCustomerList.getSelectedIndex());
-        setNewBookingCustomer(c);
+        tmpCustomer  = (Customer) this.cBListModel.getElementAt(this.previousCustomerList.getSelectedIndex());
+        setNewBookingCustomer(tmpCustomer);
         cl.show(mainPage, "NewBooking");
+        this.previousCustomerFlag = true;
         this.cBListModel.clear();
         this.previousCustomerSearchField.setText("");
     }//GEN-LAST:event_previousCustomerChooseButtonActionPerformed
