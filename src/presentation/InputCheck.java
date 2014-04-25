@@ -253,6 +253,10 @@ public class InputCheck {
             throw new PhoneException("Phone nr must be at least 1 characters");
         }
 
+        if (phone.length() > 16) {
+            throw new PhoneException("Phone nr is too long");
+        }
+
         int tmp = 0;
         for (char c : phone.toCharArray()) {
             if (Character.isDigit(c)) {
