@@ -87,8 +87,8 @@ public class InputCheck {
             throw new NameException("Must enter valid location information");
         }
 
-        if (!name.trim().matches("[a-zA-Z]+")) {
-            throw new NameException("Can only contain latters");
+        if (!name.trim().matches("[a-zA-Z ]+")) {
+            throw new NameException("Can only contain letters");
         }
 
         if (name.length() < 1) {
