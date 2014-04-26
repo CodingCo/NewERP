@@ -1,9 +1,12 @@
 package presentation;
 
-import Exception.BookingException;
-import Exception.DateException;
-import Exception.NameException;
-import Exception.RoomException;
+import animation.DrawMonth;
+import animation.DrawToday;
+import animation.DrawApartment;
+import errorHandling.BookingException;
+import errorHandling.DateException;
+import errorHandling.NameException;
+import errorHandling.RoomException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Controller;
@@ -49,7 +52,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 0;
-    
+
     private DrawToday drawToday;
     private DrawMonth drawMonth;
     private DrawApartment drawApartment;
@@ -89,8 +92,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1845,9 +1848,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
-        } finally {
-            controller.updateLists();
-        }
+        } 
 
 
     }//GEN-LAST:event_eBFormButtonSaveButtonActionPerformed
@@ -1911,8 +1912,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_frontPageNewBookingMouseEntered
     private void newBookingFormPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonActionPerformed
         cl.show(mainPage, "PreviousCustomer");
-        
-        
+
+
     }//GEN-LAST:event_newBookingFormPreviousButtonActionPerformed
     private void newBookingFormPreviousButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newBookingFormPreviousButtonMouseEntered
         this.newBookingFormPreviousButton.setToolTipText("Press to load Previous Customer");
@@ -1941,11 +1942,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
             InputCheck.custInfoCheck(city);
             InputCheck.custInfoCheck(country);
             InputCheck.streetAddressCheck(street);
-            
+
             int guests = InputCheck.guestCheck(this.newBookingFormNOGTextField.getText(), a.getType());
-            if(!this.previousCustomerFlag){
-            tmpCustomer = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
-            }else{
+            if (!this.previousCustomerFlag) {
+                tmpCustomer = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
+            } else {
                 tmpCustomer.setFirst_name(firstName);
                 tmpCustomer.setLast_name(lastName);
                 tmpCustomer.setPhone(phone);
@@ -1954,7 +1955,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 tmpCustomer.setCity(city);
                 tmpCustomer.setStreet(street);
                 tmpCustomer.setZipcode(zipcode);
-                
+
             }
             this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, tmpCustomer.getFirst_name(), tmpCustomer.getLast_name(), tmpCustomer.getPhone());
             this.previousCustomerFlag = false;
@@ -2187,7 +2188,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_previousCustomerSearchButtonActionPerformed
     private void previousCustomerChooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerChooseButtonActionPerformed
-        tmpCustomer  = (Customer) this.cBListModel.getElementAt(this.previousCustomerList.getSelectedIndex());
+        tmpCustomer = (Customer) this.cBListModel.getElementAt(this.previousCustomerList.getSelectedIndex());
         setNewBookingCustomer(tmpCustomer);
         cl.show(mainPage, "NewBooking");
         this.previousCustomerFlag = true;

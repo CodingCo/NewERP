@@ -1,7 +1,7 @@
 package domain;
 
-import Exception.DateException;
-import Exception.BookingException;
+import errorHandling.DateException;
+import errorHandling.BookingException;
 import dataSource.DbFacade;
 import java.util.ArrayList;
 import java.util.HashMap;

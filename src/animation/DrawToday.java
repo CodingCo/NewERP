@@ -1,4 +1,4 @@
-package presentation;
+package animation;
 
 import domain.Booking;
 import java.awt.Color;

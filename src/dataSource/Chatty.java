@@ -1,8 +1,8 @@
 package dataSource;
 
-import Exception.BookingException;
-import Exception.DateException;
+import errorHandling.BookingException;
 import domain.*;
+import errorHandling.DateException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,7 +81,7 @@ public class Chatty {
             if (booking.getFirst_name().equalsIgnoreCase(name)
                     || booking.getDate_from().equalsIgnoreCase(date)
                     || booking.getA_num() == apartment_nr) {
-
+                
                 for (Customer customer : customers) {
                     if (booking.getCust_id() == customer.getCust_id()) {
                         relevantBooking.put(booking, customer);

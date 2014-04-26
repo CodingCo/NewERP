@@ -1,4 +1,4 @@
-package presentation;
+package animation;
 
 import domain.Controller;
 import java.awt.Color;

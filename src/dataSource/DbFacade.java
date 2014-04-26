@@ -1,7 +1,7 @@
 package dataSource;
 
-import Exception.BookingException;
-import Exception.DateException;
+import errorHandling.BookingException;
+import errorHandling.DateException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;

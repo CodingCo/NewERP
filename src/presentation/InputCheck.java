@@ -1,12 +1,12 @@
 package presentation;
 
-import Exception.PhoneException;
-import Exception.BookingException;
-import Exception.DateException;
-import Exception.EmailException;
-import Exception.NameException;
-import Exception.RoomException;
-import Exception.StreetAddressException;
+import errorHandling.PhoneException;
+import errorHandling.BookingException;
+import errorHandling.DateException;
+import errorHandling.EmailException;
+import errorHandling.NameException;
+import errorHandling.RoomException;
+import errorHandling.StreetAddressException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +17,7 @@ import java.util.GregorianCalendar;
  * @author simon
  */
 public class InputCheck {
-
+    
     public static void emailCheck(String email) throws EmailException {
 
         if (email.trim().length() == 0) {

@@ -1,6 +1,6 @@
 package dataSource;
 
-import Exception.BookingException;
+import errorHandling.BookingException;
 import domain.Booking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
