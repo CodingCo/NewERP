@@ -21,14 +21,10 @@ import javax.swing.SwingConstants;
  *
  * @author simon
  */
-public class DrawToday extends JPanel {
+public class DrawToday extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
-    private final Color blue;
-    private final Color green;
-    private final Color orange;
-    private final Color hoverBlue;
-    private final Color hoverGreen;
+
     private final Font font;
     private String checkOut = "Check out";
     private String checkIn = "Check in";
@@ -40,11 +36,6 @@ public class DrawToday extends JPanel {
     public DrawToday(JPanel panel, ArrayList<Booking[]> list) {
         this.panel = panel;
         this.setSize(panel.getSize());
-        this.blue = new Color(0, 153, 204);
-        this.green = new Color(119, 204, 51);
-        this.orange = new Color(255, 204, 51);
-        this.hoverBlue = new Color(0, 127, 178);
-        this.hoverGreen = new Color(100, 184, 31);
         this.font = new Font("Areal", 1, 12);
         this.list = new ArrayList();
         this.pointer = 0;
@@ -120,14 +111,14 @@ public class DrawToday extends JPanel {
             Booking b2 = list.get(i)[1];
             if (b1 != null && b2 != null) {
                 // draw two small check -in/out                
-                addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hoverBlue, b1, checkOut);
-                addBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hoverGreen, b2, checkIn);
+                addBookingPanel(xOnePos, yBoxPos, boxLength, boxHeight, blue, hblue, b1, checkOut);
+                addBookingPanel(xTwoPos, yBoxPos, boxLength, boxHeight, green, hGreen, b2, checkIn);
             } else if (b1 != null) {
                 // draw long checkout
-                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hoverBlue, b1, checkOut);
+                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, blue, hblue, b1, checkOut);
             } else {
                 // draw long checkin
-                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hoverGreen, b2, checkIn);
+                addBookingPanel(xOnePos, yBoxPos, fullBoxlength, boxHeight, green, hGreen, b2, checkIn);
             }
             yBoxPos = yBoxPos + ySpaceBuffer + boxHeight;
         }

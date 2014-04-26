@@ -19,18 +19,11 @@ import javax.swing.SwingConstants;
  *
  * @author simon
  */
-public class DrawMonth extends JPanel {
+public class DrawMonth extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
-    private final Color blue;
-    private final Color green;
-    private final Color orange;
-    private final Color grey;
-    private final Color hGreen;
-    private final Color hOrange;
-    private final Color hblue;
-    private int boxWidth;
 
+    private int boxWidth;
     private int month;
     private int year;
     private int cdm;
@@ -47,13 +40,6 @@ public class DrawMonth extends JPanel {
         this.panel = panel;
         this.list = new ArrayList();
         this.coor = new int[31];
-        this.blue = new Color(0, 153, 204);
-        this.green = new Color(119, 204, 51);
-        this.orange = new Color(255, 204, 51);
-        this.grey = new Color(176, 179, 180);
-        this.hGreen = new Color(100, 184, 31);
-        this.hOrange = new Color(235, 174, 21);
-        this.hblue = new Color(0, 127, 178);
         this.boxWidth = 0;
         this.apartment = 1;
         this.increment = 0;
@@ -173,7 +159,7 @@ public class DrawMonth extends JPanel {
 
             if (tmp[0] == 0) {
                 // empty
-                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.lightGray, " No bookings this month - nr. " + tmp[5], "", tmp[6]);
+                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.WHITE, " No bookings this month - nr. " + tmp[5], "", tmp[6]);
 
             } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
 
@@ -269,7 +255,7 @@ public class DrawMonth extends JPanel {
         int x = 0;
         int y = 0;
         for (int i = 0; i < 31; i++) {
-            page.setColor(this.grey);
+            page.setColor(grey);
             page.fillRect(x, y, size, (this.panel.getHeight()));
             page.setColor(Color.WHITE);
 

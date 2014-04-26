@@ -15,24 +15,15 @@ import javax.swing.SwingConstants;
  *
  * @author simon
  */
-public class DrawApartment extends JPanel {
+public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
-    private final Color blue;
-    private final Color green;
-    private final Color orange;
-    private final Color grey;
     private int cdm;
-
     private int[] coor;
 
     public DrawApartment(JPanel panel) {
         this.panel = panel;
         this.setSize(this.panel.getSize());
-        this.blue = new Color(0, 153, 204);
-        this.green = new Color(119, 204, 51);
-        this.orange = new Color(255, 204, 51);
-        this.grey = new Color(176, 179, 180);
         this.cdm = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
 
     }
@@ -45,7 +36,9 @@ public class DrawApartment extends JPanel {
         //boxWidth = (width / this.cdm);
         //numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
 
-        drawCalendarBar(page);
+        drawCalendarBar(page,0,31);
+        drawCalendarBar(page,200,30);
+        drawCalendarBar(page,400,31);
 
     }
 
@@ -83,15 +76,15 @@ public class DrawApartment extends JPanel {
         p.setBackground(c);
     }
 
-    private void drawCalendarBar(Graphics page) {
-        int size = (this.panel.getWidth() - 1) / this.cdm;
+    private void drawCalendarBar(Graphics page, int y, int len) {
+        int size = (this.panel.getWidth() - 1) / 31;
         int x = 0;
-        int y = 0;
-        for (int i = 0; i < 31; i++) {
-            page.setColor(this.grey);
-            page.fillRect(x, y, size, (this.panel.getHeight()));
+        
+        for (int i = 0; i < len; i++) {
+            page.setColor(grey);
+            page.fillRect(x, y, size, 100);
+            
             page.setColor(Color.WHITE);
-
             page.drawString("" + (i + 1), x + 10, y + 25);
             x = x + size + 1;
         }

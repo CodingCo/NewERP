@@ -185,19 +185,37 @@ public class Booking implements Comparable, Cloneable {
 
     public String toGuiListString() {
 
-        return "Booking " + b_id + "\n"
-                + "________________\n"
-                + "Apartment:\t\t" + a_num + "\n"
-                + "Arrival date:\t\t" + date_from + "\n"
-                + "Nights:\t\t" + num_of_nights + "\n"
-                + "Guests:\t\t" + number_of_guests + "\n"
-                + "Agency:\t\t" + travel_agency + "\n"
-                + "Price:\t\t" + price + "\n\n"
-                + "Customer " + cust_id + "\n"
-                + "________________\n"
-                + "First Name:\t\t" + first_name + "\n"
-                + "Last Name:\t\t" + last_name + "\n"
-                + "Phone: \t\t" + phone;
+        if (travel_agency == null) {
+            return "Booking ID: " + b_id + "\n"
+                    + "________________\n"
+                    + "Apartment:\t\t" + a_num + "\n"
+                    + "Arrival date:\t\t" + date_from + "\n"
+                    + "Nights:\t\t" + num_of_nights + "\n"
+                    + "Guests:\t\t" + number_of_guests + "\n"
+                    + "Agency:\t\t" + "No Travel agency" + "\n"
+                    + "Price:\t\t" + price + "\n\n"
+                    + "Customer ID: " + cust_id + "\n"
+                    + "________________\n"
+                    + "First Name:\t\t" + first_name + "\n"
+                    + "Last Name:\t\t" + last_name + "\n"
+                    + "Phone: \t\t" + phone;
+        } else {
+            return "Booking ID: " + b_id + "\n"
+                    + "________________\n"
+                    + "Apartment:\t\t" + a_num + "\n"
+                    + "Arrival date:\t\t" + date_from + "\n"
+                    + "Nights:\t\t" + num_of_nights + "\n"
+                    + "Guests:\t\t" + number_of_guests + "\n"
+                    + "Agency:\t\t" + travel_agency + "\n"
+                    + "Price:\t\t" + price + "\n\n"
+                    + "Customer ID: " + cust_id + "\n"
+                    + "________________\n"
+                    + "First Name:\t\t" + first_name + "\n"
+                    + "Last Name:\t\t" + last_name + "\n"
+                    + "Phone: \t\t" + phone;
+
+        }
 
     }
+
 }

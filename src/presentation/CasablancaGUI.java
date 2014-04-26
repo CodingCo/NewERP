@@ -92,8 +92,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -933,7 +933,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         jLabel35.setText("Search Bookings by month");
 
         listBookingDatejTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        listBookingDatejTextField1.setText("10-04-14");
+        listBookingDatejTextField1.setText("10-05-14");
         listBookingDatejTextField1.setMinimumSize(new java.awt.Dimension(120, 30));
         listBookingDatejTextField1.setPreferredSize(new java.awt.Dimension(120, 30));
         listBookingDatejTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -2096,6 +2096,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindSearchFromTextFieldMouseClicked
     private void listBookingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingPageButtonActionPerformed
         cl.show(mainPage, "ListBooking");
+        this.lBlistModel.clear();
         ArrayList<Apartment> list = this.controller.getApartments();
         for (Apartment a : list) {
             this.lBlistModel.addElement(a);
