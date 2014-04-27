@@ -295,7 +295,6 @@ public class Chatty {
                 try {
                     c.setTime(sdf.parse(bookingStartDate));
                 } catch (ParseException ex) {
-                    ex.printStackTrace();
                 }
                 c.add(Calendar.DATE, num_nights);
                 String bookingDateEnd = sdf.format(c.getTime());
@@ -412,7 +411,9 @@ public class Chatty {
 
         try {
             // Find the END month and year                           
-            endDate.add(Calendar.MONTH, months);
+            endDate.add(Calendar.MONTH, (months));
+            endDate.set(Calendar.DAY_OF_MONTH, 1);
+            endDate.add(Calendar.DATE, -1);
 
             Collections.sort(bookingsToSort);
 
