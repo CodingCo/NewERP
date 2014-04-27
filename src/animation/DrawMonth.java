@@ -125,8 +125,7 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
     }
 
     public void down() {
-
-        if (apartment == 104) {
+        if (apartment > 104) {
 
         } else {
             showings = 0;

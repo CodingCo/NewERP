@@ -92,7 +92,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-       //setVisible(true);
+        //setVisible(true);
         setFullScreenSettings();
     }
 
@@ -1848,7 +1848,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
-        } 
+        }
 
 
     }//GEN-LAST:event_eBFormButtonSaveButtonActionPerformed
