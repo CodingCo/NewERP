@@ -5,6 +5,7 @@ import errorHandling.DateException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
+import errorHandling.CustomerException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -120,5 +121,13 @@ public class DbFacade {
             return this.chatty.getBooking(bid);
         }
         return null;
+    }
+
+    public boolean updateCustomer(Customer ctmp) throws CustomerException {
+        boolean status = false;
+        if (this.chatty != null) {
+            status = this.chatty.updateCustomerTransaction(ctmp, con);
+        }
+        return status;
     }
 }

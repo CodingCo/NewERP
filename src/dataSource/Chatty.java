@@ -2,6 +2,7 @@ package dataSource;
 
 import errorHandling.BookingException;
 import domain.*;
+import errorHandling.CustomerException;
 import errorHandling.DateException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -81,7 +82,7 @@ public class Chatty {
             if (booking.getFirst_name().equalsIgnoreCase(name)
                     || booking.getDate_from().equalsIgnoreCase(date)
                     || booking.getA_num() == apartment_nr) {
-                
+
                 for (Customer customer : customers) {
                     if (booking.getCust_id() == customer.getCust_id()) {
                         relevantBooking.put(booking, customer);
@@ -184,6 +185,34 @@ public class Chatty {
         int status;
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;
+    }
+
+    boolean updateCustomerTransaction(Customer ctmp, Connection con) throws CustomerException {
+
+        int customerStatus = 0;
+
+        try {
+            String lock = "LOCK TABLE customer IN EXCLUSIVE MODE";
+            con.setAutoCommit(false);
+            Statement statement = con.createStatement();
+            boolean lockStatus = statement.execute(lock);
+
+            if (!lockStatus) {
+
+                customerStatus = customerMapper.updateCustomer(con, ctmp);
+
+                if (customerStatus == 0) {
+                    con.rollback();
+                    return false;
+                } else {
+                    con.commit();
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new CustomerException("Customer could not be updated");
+        }
+        return false;
     }
 
     public ArrayList<Customer> searchForCustomers(String keyword) {
@@ -459,5 +488,4 @@ public class Chatty {
 
         return relevantBookings;
     }
-
 }
