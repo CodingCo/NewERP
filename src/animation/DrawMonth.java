@@ -127,14 +127,12 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
     public void down() {
 
         if (apartment == 104) {
-            System.out.println("hej ");
+
         } else {
             showings = 0;
-            apartment++;
-            increment++;
-
+            repaint();
         }
-        repaint();
+
     }
 
     @Override
@@ -149,59 +147,55 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         boxWidth = (width / this.cdm);
         numOfRows = (height / (boxHeight + ySpaceBuffer)) - 1;
 
-/////// draw
         drawCalendarBar(page);
         calcScreenCoor();
-        ///////
 
         int y = 40;
-        System.out.println("i = " + increment);
-        System.out.println("a = " + apartment);
 
-        while (list.get(increment)[5] == apartment) {
-            int[] tmp = list.get(increment);
+        while (showings <= numOfRows) {
 
-            if (tmp[0] == 0) {
-                // empty
-                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.WHITE, " No bookings this month - nr. " + tmp[5], "", tmp[6]);
-
-            } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
-
-                // whole month
-                addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " Continious Booking - Nr. " + tmp[5], "" + tmp[4], tmp[6]);
-
-            } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] == (this.year * 100) + this.month) {
-                // ind i
-                int nights = tmp[8];
-                addBookingPanel(coor[0], y, calcSize(nights) - (boxWidth / 2), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4], tmp[6]);
-
-            } else if ((tmp[2] * 100) + tmp[1] == (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
-                //ud af måneden
-                int nights = (tmp[3] - tmp[0]) + 1;
-                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4], tmp[6]);
-            } else {
-                // this month
-                addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4], tmp[6]);
-            }
-
-            if (!(showings < numOfRows)) {
-                break;
-            }
-
-            if (!((increment + 1) > list.size() - 1)) {
-                if (list.get(increment + 1)[5] != apartment) {
-                    y = y + boxHeight + ySpaceBuffer;
-                    apartment++;
-                    showings++;
+            while (list.get(increment)[5] == apartment) {
+                if (increment + 1 > list.size()) {
+                    break;
                 }
-            } else {
-                break;
-            }
-            increment++;
 
-            if (increment >= list.size()) {
-                increment--;
+                int[] tmp = list.get(increment);
+
+                // tegne stuff
+                if (tmp[0] == 0) {
+                    // empty
+                    addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.WHITE, " No bookings this month - nr. " + tmp[5], "", tmp[6]);
+
+                } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
+
+                    // whole month
+                    addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, orange, hOrange, " Continious Booking - Nr. " + tmp[5], "" + tmp[4], tmp[6]);
+
+                } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] == (this.year * 100) + this.month) {
+                    // ind i
+                    int nights = tmp[8];
+                    addBookingPanel(coor[0], y, calcSize(nights) - (boxWidth / 2), boxHeight, green, hGreen, " << - nr. " + tmp[5], "" + tmp[4], tmp[6]);
+
+                } else if ((tmp[2] * 100) + tmp[1] == (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
+                    //ud af måneden
+                    int nights = (tmp[3] - tmp[0]) + 1;
+                    addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", "" + tmp[4], tmp[6]);
+                } else {
+                    // this month
+                    addBookingPanel(coor[tmp[0] - 1] + (boxWidth / 2), y, calcSize(tmp[4]), boxHeight, blue, hblue, "nr. " + tmp[5], "" + tmp[4], tmp[6]);
+                }
+
+                increment++;
+
+                if (increment >= list.size()) {
+                    increment--;
+                    break;
+                }
             }
+
+            y = y + boxHeight + ySpaceBuffer;
+            apartment++;
+            showings++;
         }
 
     }

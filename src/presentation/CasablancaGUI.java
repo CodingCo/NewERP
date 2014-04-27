@@ -92,7 +92,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-       // setVisible(true);
+       //setVisible(true);
         setFullScreenSettings();
     }
 
