@@ -26,7 +26,7 @@ public class CronThreader implements Runnable {
 
     @Override
     public void run() {
-        this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.SECONDS);
+        this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.HOURS);
     }
     
     public void doCronJob() {

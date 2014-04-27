@@ -3,6 +3,7 @@ package domain;
 import errorHandling.DateException;
 import errorHandling.BookingException;
 import dataSource.DbFacade;
+import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,7 +36,6 @@ public class Controller {
             btmp = (Booking) b.clone();
             ctmp = (Customer) c.clone();
         } catch (CloneNotSupportedException ex) {
-            System.out.println("damn");
         }
 
         if (this.facade != null) {
@@ -60,6 +60,37 @@ public class Controller {
             } else {
                 throw new BookingException("Booking could not be updated");
             }
+        }
+    }
+
+    public void updateCustomer(Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws CustomerException {
+
+        boolean status = false;
+        Customer ctmp = null;
+
+        try {
+            ctmp = (Customer) c.clone();
+        } catch (CloneNotSupportedException ex) {
+        }
+
+        if (this.facade != null) {
+            ctmp.setFirst_name(first_name);
+            ctmp.setLast_name(last_name);
+            ctmp.setEmail(email);
+            ctmp.setPhone(phone);
+            ctmp.setCountry(country);
+            ctmp.setCity(city);
+            ctmp.setStreet(street);
+            ctmp.setZipcode(zipcode);
+
+            status = this.facade.updateCustomer(ctmp);
+
+            if (status) {
+                c = ctmp;
+            } else {
+                throw new CustomerException("Customer could not be updated");
+            }
+
         }
     }
 
