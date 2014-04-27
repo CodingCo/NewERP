@@ -1947,15 +1947,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             if (!this.previousCustomerFlag) {
                 tmpCustomer = this.controller.newCustomer(firstName, lastName, phone, email, country, city, zipcode, street);
             } else {
-                tmpCustomer.setFirst_name(firstName);
-                tmpCustomer.setLast_name(lastName);
-                tmpCustomer.setPhone(phone);
-                tmpCustomer.setEmail(email);
-                tmpCustomer.setCountry(country);
-                tmpCustomer.setCity(city);
-                tmpCustomer.setStreet(street);
-                tmpCustomer.setZipcode(zipcode);
-
+                this.controller.updateCustomer(tmpCustomer, firstName, lastName, phone, email, country, city, zipcode, street);
             }
             this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, tmpCustomer.getFirst_name(), tmpCustomer.getLast_name(), tmpCustomer.getPhone());
             this.previousCustomerFlag = false;
