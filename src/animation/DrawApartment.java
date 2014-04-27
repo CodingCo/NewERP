@@ -47,10 +47,42 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     public void paintComponent(Graphics page) {
         paintCalendar(page, screenRows);
 
-        for (int x = 0; x < screenRows; ++x) {
-            page.fillRect(xCoor[0], yCoor[x] + 40, this.panel.getWidth() - 1, boxheight);
+        for (int x = 0; x < list.size() - 1; ++x) {
+
+            int[] tmp = list.get(x);
+
+            if (tmp[1] == thisMonth && tmp[9] == thisMonth) {
+                // i denne måned
+                addBookingBox(xCoor[tmp[0]], yCoor[0] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "omg");
+            }
+
+            if (tmp[1] == thisMonth && tmp[9] > thisMonth) {
+                // ud af
+                System.out.println("        dfjlk");
+                int width = tmp[3] - tmp[0];
+                addBookingBox(xCoor[tmp[0]], yCoor[0] + 40, boxWidth(width), boxheight, green, hGreen, "omg");
+            }
         }
 
+        for (int x = 0; x < list.size() - 1; ++x) {
+
+            int[] tmp = list.get(x);
+
+            if (tmp[1] == thisMonth + 1 && tmp[9] == thisMonth + 1) {
+                // i denne måned
+                addBookingBox(xCoor[tmp[0]], yCoor[1] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "omg");
+            }
+
+            if (tmp[1] == thisMonth && tmp[1] == thisMonth + 1) {
+                int width = tmp[4] - (tmp[3] - tmp[0]);
+                addBookingBox(xCoor[tmp[0]], yCoor[1] + 40, boxWidth(width), boxheight, green, hGreen, "omg");
+            }
+        }
+
+    }
+
+    private int boxWidth(int nights) {
+        return (this.boxWidth * nights) + (nights - 1);
     }
 
     private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message) {
@@ -132,7 +164,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         try {
             Calendar c = Calendar.getInstance();
             this.thisDay = c.get(Calendar.DAY_OF_MONTH);
-            this.thisMonth = c.get(Calendar.MONTH);
+            this.thisMonth = c.get(Calendar.MONTH) + 1;
             this.thisYear = Integer.parseInt(("" + c.get(Calendar.YEAR)).substring(2));
             this.cdm = c.getActualMaximum(Calendar.DAY_OF_MONTH);
         } catch (NumberFormatException ex) {

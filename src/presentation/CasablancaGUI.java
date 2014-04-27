@@ -93,8 +93,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingnextListButton.setEnabled(false);
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
