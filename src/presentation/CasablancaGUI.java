@@ -92,7 +92,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         this.bookingsFoundHashMap = new HashMap();
         //pack();
-        //setVisible(true);
+       // setVisible(true);
         setFullScreenSettings();
     }
 
@@ -2122,7 +2122,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         if (this.drawMonthFlag) {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
-            this.listBookingDrawingPanel.repaint();
             this.drawMonth.up();
         }
 
@@ -2138,7 +2137,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         if (this.drawMonthFlag) {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
-            this.listBookingDrawingPanel.repaint();
             this.drawMonth.down();
         }
 
