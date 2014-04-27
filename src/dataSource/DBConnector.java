@@ -15,8 +15,8 @@ public class DBConnector {
     private static String password;
 
     private DBConnector() {
-	username = "cphre31";
-	password = "krumme24";
+	username = "cphkh191";
+	password = "cphkh191";
     }
     
     public static DBConnector getInstance(){

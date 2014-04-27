@@ -128,7 +128,6 @@ public class Chatty {
             con.setAutoCommit(false);
             Statement statement = con.createStatement();
             boolean lockStatus = statement.execute(lock);
-
             if (!lockStatus) {
 
                 if (apartmentMapper.checkAvailAbleApartment(b.getB_id(), b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
