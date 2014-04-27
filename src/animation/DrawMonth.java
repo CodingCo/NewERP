@@ -22,18 +22,19 @@ import javax.swing.SwingConstants;
 public class DrawMonth extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
+    private ArrayList<int[]> list;
+    private Controller controller;
 
     private int boxWidth;
     private int month;
     private int year;
     private int cdm;
     private int[] coor;
-    private ArrayList<int[]> list;
+
     private int showings;
     private int apartment;
     private int increment;
     private int numOfRows;
-    private Controller controller;
 
     public DrawMonth(JPanel panel) {
         this.setSize(panel.getSize());
@@ -126,11 +127,12 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
     public void down() {
 
         if (apartment == 104) {
-
+            System.out.println("hej ");
         } else {
             showings = 0;
             apartment++;
             increment++;
+
         }
         repaint();
     }
@@ -153,6 +155,8 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         ///////
 
         int y = 40;
+        System.out.println("i = " + increment);
+        System.out.println("a = " + apartment);
 
         while (list.get(increment)[5] == apartment) {
             int[] tmp = list.get(increment);
