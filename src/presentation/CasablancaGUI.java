@@ -89,7 +89,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.eBMatchList.setModel(eBListModel);
         this.cBListModel = new DefaultListModel();
         this.previousCustomerList.setModel(cBListModel);
-
+        this.listBookingPreviousListButton.setEnabled(false);
+        this.listBookingnextListButton.setEnabled(false);
         this.bookingsFoundHashMap = new HashMap();
         //pack();
         //setVisible(true);
@@ -2138,6 +2139,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = true;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = false;
+        this.listBookingPreviousListButton.setEnabled(false);
+        this.listBookingnextListButton.setEnabled(false);
         this.drawToday = new DrawToday(this.listBookingDrawingPanel, this.controller.getBookingsToDay());
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawToday);
@@ -2149,6 +2152,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
+        this.listBookingPreviousListButton.setEnabled(true);
+        this.listBookingnextListButton.setEnabled(true);
         this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
         this.listBookingDrawingPanel.removeAll();
         this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
@@ -2165,8 +2170,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
-        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel);
+        this.listBookingPreviousListButton.setEnabled(false);
+        this.listBookingnextListButton.setEnabled(false);
+        
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
+        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel,a.getA_num()); 
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();

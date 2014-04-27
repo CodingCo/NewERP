@@ -1,10 +1,12 @@
 package animation;
 
+import domain.Controller;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,29 +20,36 @@ import javax.swing.SwingConstants;
 public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
+    private ArrayList<int[]> list;
     private int cdm;
     private int[] xCoor;
     private int[] yCoor;
     private int screenRows;
-
-    private final int calHeight = 100;
+    private int boxWidth;
+    private final int calendarHeight = 120;
     private final int boxheight = 60;
-    private final int spaceBuffer = 50;
+    private final int spaceBuffer = 40;
 
     private int thisYear;
     private int thisMonth;
     private int thisDay;
     private int thisCdm;
 
-    public DrawApartment(JPanel panel) {
+    public DrawApartment(JPanel panel, int anum) {
         this.panel = panel;
         this.setSize(this.panel.getSize());
         calculateCurrentDate();
+        getList(anum);
+        calcScreenCoor();
     }
 
     @Override
     public void paintComponent(Graphics page) {
         paintCalendar(page, screenRows);
+
+        for (int x = 0; x < screenRows; ++x) {
+            page.fillRect(xCoor[0], yCoor[x] + 40, this.panel.getWidth() - 1, boxheight);
+        }
 
     }
 
@@ -78,13 +87,12 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         p.setBackground(c);
     }
 
-    private void drawCalendarBar(Graphics page, int y, int days) {
+    private void makeCalendar(Graphics page, int y, int days) {
         int size = (this.panel.getWidth() - 1) / 31;
         int x = 0;
-
         for (int i = 0; i < days; i++) {
             page.setColor(grey);
-            page.fillRect(x, y, size, 100);
+            page.fillRect(x, y, size, calendarHeight);
             page.setColor(Color.WHITE);
             page.drawString("" + (i + 1), x + 10, y + 25);
             x = x + size + 1;
@@ -94,13 +102,14 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     private void paintCalendar(Graphics page, int rows) {
         int y = 0;
         for (int x = 0; x < rows; ++x) {
-            drawCalendarBar(page, y, daysOfNextmonth(x));
-            y = y + this.spaceBuffer + this.calHeight;
+            makeCalendar(page, y, daysOfNextmonth(x));
+            y = y + this.spaceBuffer + this.calendarHeight;
         }
     }
 
     private void calcScreenCoor() {
-        this.screenRows = this.panel.getHeight() / (this.spaceBuffer + this.calHeight);
+        this.screenRows = this.panel.getHeight() / (this.spaceBuffer + this.calendarHeight);
+        this.boxWidth = (this.panel.getWidth() - 1) / 31;
 
         int x = 0;
         this.xCoor = new int[31];
@@ -114,7 +123,8 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         this.yCoor = new int[screenRows];
         this.yCoor[0] = y;
         for (int j = 1; j < screenRows; ++j) {
-            y = y + spaceBuffer + calHeight;
+            y = y + spaceBuffer + calendarHeight;
+            yCoor[j] = y;
         }
     }
 
@@ -137,4 +147,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         return c.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 
+    private void getList(int anum) {
+        this.list = new Controller().getBookingsByApartment(anum, this.thisMonth);
+    }
 }
