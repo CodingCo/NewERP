@@ -95,13 +95,14 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
 
     public void up() {
         int aStart = apartment;
-
         if ((apartment > this.numOfRows + 1)) {
             while (apartment > (aStart - (this.numOfRows * 2)) - 2) {
                 if (this.list.get(increment)[5] == apartment) {
                     increment--;
-                    if (increment == 0) {
+                    if (increment <= numOfRows) {
                         apartment = 1;
+                        increment = 0;
+                        showings = 0;
                         break;
                     }
                 } else {
@@ -111,10 +112,10 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
             showings = 0;
         } else {
             apartment = 1;
-            increment = 0;
             showings = 0;
         }
         repaint();
+
     }
 
     public void reset() {
@@ -125,10 +126,11 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
     }
 
     public void down() {
-        if (apartment > 104) {
+        if (apartment >= 104) {
 
         } else {
             showings = 0;
+
             repaint();
         }
 
@@ -152,12 +154,10 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         int y = 40;
 
         while (showings <= numOfRows) {
-
             while (list.get(increment)[5] == apartment) {
                 if (increment + 1 > list.size()) {
                     break;
                 }
-
                 int[] tmp = list.get(increment);
 
                 // tegne stuff
@@ -196,7 +196,6 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
             apartment++;
             showings++;
         }
-
     }
 
     private void addBookingPanel(int x, int y, int width, int height, Color c, Color hc, String message, String message2, int id) {

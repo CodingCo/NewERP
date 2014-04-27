@@ -2115,6 +2115,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             this.listBookingDrawingPanel.removeAll();
             this.listBookingDrawingPanel.add(this.drawMonth);
             this.drawMonth.up();
+
         }
 
     }//GEN-LAST:event_listBookingUpListButtonActionPerformed
