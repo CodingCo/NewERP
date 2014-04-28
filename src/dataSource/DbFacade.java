@@ -6,7 +6,6 @@ import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
 import errorHandling.ConnectionException;
-import errorHandling.CustomerException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;

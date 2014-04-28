@@ -2,7 +2,6 @@ package dataSource;
 
 import errorHandling.BookingException;
 import domain.*;
-import errorHandling.CustomerException;
 import errorHandling.DateException;
 import java.sql.Connection;
 import java.sql.SQLException;

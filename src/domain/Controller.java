@@ -4,7 +4,6 @@ import errorHandling.DateException;
 import errorHandling.BookingException;
 import dataSource.DbFacade;
 import errorHandling.ConnectionException;
-import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
