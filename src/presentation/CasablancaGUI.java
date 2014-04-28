@@ -978,6 +978,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 listBookingApartmentjListMouseClicked(evt);
             }
         });
+        listBookingApartmentjList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listBookingApartmentjListValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(listBookingApartmentjList);
 
         listBookingBackButton.setText("Back");
@@ -2313,6 +2318,20 @@ public class CasablancaGUI extends javax.swing.JFrame {
         } catch (RoomException ex) {
         }
     }//GEN-LAST:event_eBFormANRTextFieldFocusLost
+    private void listBookingApartmentjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBookingApartmentjListValueChanged
+                this.drawTodayFlag = false;
+        this.drawApartmentFlag = false;
+        this.drawMonthFlag = true;
+        this.listBookingPreviousListButton.setEnabled(false);
+        this.listBookingnextListButton.setEnabled(false);
+
+        Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
+        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
+        this.listBookingDrawingPanel.removeAll();
+        this.listBookingDrawingPanel.add(this.drawApartment);
+        this.listBookingDrawingPanel.repaint();
+
+    }//GEN-LAST:event_listBookingApartmentjListValueChanged
 
     /**
      * Calculates the window size based on system preferences.

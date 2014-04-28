@@ -63,23 +63,26 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         int year = thisYear;
         int day = thisDay;
 
-        for (int x = 0; x < list.size(); ++x) {
-            int[] tmp = list.get(x);
+        // muligvis en for lang
+        for (int x = 0; x < screenRows; ++x) {
 
-            for (int y = 0; y < screenRows; ++y) {
+            for (int y = 0; y < list.size(); ++y) {
+                int[] tmp = list.get(y);
 
                 if (tmp[1] == month && tmp[9] == month) {
                     // i denne måned
-                    addBookingBox(xCoor[tmp[0] - 1], yCoor[y] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
                 }
 
-                month = nextMonth(1)[0];
+                if ((tmp[2] * 100) + tmp[1] < (thisYear * 100) + thisMonth && (tmp[10] * 100) + tmp[9] > (thisYear * 100) + thisMonth) {
+                    // whole month
+                }
+
             }
+
+            month = nextMonth(x + 1)[0];
         }
 
-//        if ((tmp[2] * 100) + tmp[1] < (thisYear * 100) + thisMonth && (tmp[10] * 100) + tmp[9] > (thisYear * 100) + thisMonth) {
-//            // whole month
-//        }
     }
 
     /**
@@ -163,7 +166,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         this.xCoor = new int[31];
         this.xCoor[0] = 0;
         for (int i = 1; i < 31; i++) {
-            x = x + ((this.panel.getWidth() - 1) / this.cdm) + 1;
+            x = x + boxWidth + 1;
             xCoor[i] = x;
         }
 
@@ -203,7 +206,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     }
 
     private int boxWidth(int nights) {
-        return (this.boxWidth * nights) + (nights - 1);
+        return ((this.boxWidth * nights) + (nights - 1));
     }
 
 }
