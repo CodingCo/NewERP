@@ -41,12 +41,20 @@ public class Chatty {
     }
 
     /////////////////////////////////////////// FINDERS
-    public ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
+    protected ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
         return apartmentToReturn;
     }
 
-    public Customer getCustomer(int custId) {
+    /**
+     * Author: Thomas & Christopher
+     * 
+     * Finds a Customer, with matching customer ID
+     * If none is found with the input ID, it returns null
+     * @param custId - Customer ID to search for
+     * @return Customer - returns the desired customer
+     */
+    protected Customer getCustomer(int custId) {
         for (Customer c : this.customers) {
             if (c.getCust_id() == custId) {
                 return c;
@@ -55,27 +63,49 @@ public class Chatty {
         return null;
     }
 
-    Booking getBooking(int bid) {
+    /**
+     * Author: Thomas & Christopher
+     * 
+     * Finds a booking with matching booking ID 
+     * if none is found with the input ID, it returns null
+     * @param bID - Booking ID to search for
+     * 
+     * @return A Booking object, corresponding to the input 
+     */
+    protected Booking getBooking(int bID) {
         for (Booking b : this.bookings) {
-            if (b.getB_id() == bid) {
-                return b;
+            if (b.getB_id() == bID) {
+                return b; 
             }
         }
         return null;
     }
 
-    public HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
+    /**
+     * <p>Author: Thomas & Christopher</p>
+     * 
+     * Finds <code>bookings</code> depending on the params, the user wants 
+     * to search for
+     * 
+     * @param b_id The booking ID to search for
+     * @param name name on customer to search for
+     * @param date the date to to search for
+     * @param apartment_nr Apartment num to search for
+     * @param con Mandatory Connection
+     * @return Returns a HashMap with Booking as the key, and Customer as value
+     */
+    protected HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateLists(con);
-        HashMap<Booking, Customer> relevantBooking = new HashMap();
+        HashMap<Booking, Customer> relevantBooking = new HashMap(); 
 
-        for (Booking booking : bookings) {
+        for (Booking booking : bookings) { 
             //== Compares the b_id
             if (booking.getB_id() == b_id) {
                 for (Customer customer : customers) {
                     if (booking.getCust_id() == customer.getCust_id()) {
                         relevantBooking.clear();
                         relevantBooking.put(booking, customer);
-                        return relevantBooking;
+                        return relevantBooking; 
                     }
                 }
             }
@@ -109,20 +139,41 @@ public class Chatty {
         return relevantBooking;
     }
 
-    public void updateLists(Connection con) {
+    /**
+     * <p>Author: Thomas & Christopher</p> 
+     * 
+     * Updates the lists: bookings and customers.
+     * When the list is updated the newest information 
+     * from the database is retriewed
+     * 
+     * @param con The mandatory Connection
+     */
+    protected void updateLists(Connection con) {
         bookings = bookingMapper.getAllBookings(con);
         customers = customerMapper.getAllCustomers(con);
     }
 
-    public ArrayList<Apartment> getApartments(Connection con) {
+    protected ArrayList<Apartment> getApartments(Connection con) {
         return this.apartmentMapper.getAllApartments(con);
     }
 
- 
 
-    ///////////////////////////////////////////////// TRANSACTIONS
-    public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
-
+    ///////////////////////////////////////////////// TRANSACTIONS'
+    
+    /**
+     * <p>Author: Thomas & Christopher</p> 
+     * 
+     * Creates a booking on the DB
+     * Commits if it succeeds, if not it rolls back
+     * 
+     * @param b Booking 
+     * @param c Customer 
+     * @param con Connection
+     * @return status, depending on wether the transaction succeded or not
+     * @throws BookingException
+     */
+    protected boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
+    
         int bookingStatus = 0;
         int customerId = 0;
 
@@ -154,7 +205,18 @@ public class Chatty {
         return false;
     }
 
-    public boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException {
+    /**
+     * <p>Author: Thomas & Christopher</p> 
+     * 
+     * Updates a booking with mathcing bookig ID, stored in the param
+     * 
+     * @param b Booking 
+     * @param customer Customer
+     * @param con Connection 
+     * @return true if booking was updated, false if not 
+     * @throws BookingException
+     */
+    protected boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException {
         int bookingStatus = 0;
         int customerStatus = 0;
 
@@ -184,15 +246,25 @@ public class Chatty {
         return false;
     }
 
-    public boolean deleteBookingTransaction(int b_id, Connection con) throws BookingException {
+    protected boolean deleteBookingTransaction(int b_id, Connection con) throws BookingException {
         int status;
         status = bookingMapper.deleteBooking(con, b_id);
         return status != 0;
     }
 
-    boolean updateCustomerTransaction(Customer ctmp, Connection con) throws CustomerException {
+    /**
+     * <p>Author: Thomas & Christopher</p> 
+     * 
+     * Updates a customer with the customer ID, stored
+     * in the param
+     *  
+     * @param ctmp Customer 
+     * @param con Connection
+     * @return true if the update succeeded
+     */
+    protected boolean updateCustomerTransaction(Customer ctmp, Connection con) throws CustomerException {
 
-        int customerStatus = 0;
+        int customerStatus = 0; 
 
         try {
             String lock = "LOCK TABLE customer IN EXCLUSIVE MODE";
@@ -218,7 +290,15 @@ public class Chatty {
         return false;
     }
 
-    public ArrayList<Customer> searchForCustomers(String keyword) {
+    /**
+     * <p>Author: Simon Gay</p>
+     * 
+     * Searches through the Customer list
+     * 
+     * @param keyword - String 
+     * @return ArrayLIst of customers, which are related with the keyword
+     */
+    protected ArrayList<Customer> searchForCustomers(String keyword) {
         ArrayList<Customer> tmpList = new ArrayList();
 
         for (Customer c : customers) {
@@ -231,8 +311,16 @@ public class Chatty {
         return tmpList;
     }
 
-    //======== Sorting method underneath
-    public ArrayList<Booking[]> getBookingsToDay() {
+    /**
+     * <p>Author: Thomas </p> 
+     * 
+     * Finds all bookings which starts today, or ends today
+     * The return ArrayList contains int[] for each booking
+     * with relevant data, unique for each booking
+     * 
+     * @return All Bookings which starts or ends today
+     */
+    protected ArrayList<Booking[]> getBookingsToDay() {
         ArrayList<Booking> oldBookings = new ArrayList();
         ArrayList<Booking> newBookings = new ArrayList();
         ArrayList<Booking[]> BookingPairs = new ArrayList(); // The list to return
@@ -297,12 +385,14 @@ public class Chatty {
     }
 
     /**
+     * <p>Author: Thomas</p> 
+     * 
+     *  Finds all bookings which starts, ends or overlaps this month
      *
-     * @param date - Expected format: dd-mm-yy
-     * @param con
+     * @param date String 
      * @return ArrayList<int[]>
      */
-    public ArrayList<int[]> getBookingsByMonth(String date) {
+    protected ArrayList<int[]> getBookingsByMonth(String date) {
         ArrayList<int[]> finalList = new ArrayList();
         ArrayList<int[]> listToReturn = new ArrayList();
         ArrayList<Booking> relevantBookings = new ArrayList();
@@ -429,7 +519,18 @@ public class Chatty {
         return finalList;
     }
 
-    public ArrayList<int[]> getBookingsByApartment(int aNum, int months) {
+    /**
+     * <p>Author: Thomas & Christopher</p> 
+     * 
+     * Finds all bookings, which have the same apartment number,
+     * and starts, ends or overlaps the period from today and the 
+     * number of months into the future. 
+     * 
+     * @param aNum int
+     * @param months int
+     * @return ArrayList<int[]>
+     */
+    protected ArrayList<int[]> getBookingsByApartment(int aNum, int months) {
         ArrayList<Booking> bookingsToSort = new ArrayList(bookings);
         ArrayList<int[]> relevantBookings = new ArrayList();
         boolean relevant = false;
