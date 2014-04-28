@@ -7,10 +7,12 @@ import errorHandling.ConnectionException;
 import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @Author Simon Grønborg
- * 
+ *
  */
 public class Controller {
 
@@ -31,16 +33,48 @@ public class Controller {
      * @param first_name
      * @param last_name
      * @param phone
+     * @param email
+     * @param country
+     * @param city
+     * @param zipcode
+     * @param street
      * @return boolean
      * @throws BookingException
      *
-     * @Author Simon
+     * @Author Simon & Robert
      */
-    public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) throws BookingException {
+    public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws BookingException {
+        boolean previousCustomerFlag;
         boolean status = false;
+
+        Customer ctmp = null;
+
         if (facade != null) {
+            if (c != null) {
+                System.out.println("prev");
+                previousCustomerFlag = true;
+                try {
+                    ctmp = (Customer) c.clone();
+                    ctmp.setFirst_name(first_name);
+                    ctmp.setLast_name(last_name);
+                    ctmp.setEmail(email);
+                    ctmp.setPhone(phone);
+                    ctmp.setCountry(country);
+                    ctmp.setCity(city);
+                    ctmp.setStreet(street);
+                    ctmp.setZipcode(zipcode);
+                } catch (CloneNotSupportedException ex) {
+                }
+            } else {
+                System.out.println("new");
+                previousCustomerFlag = false;
+                ctmp = this.newCustomer(first_name, last_name, phone, email, country, city, zipcode, street);
+            }
             Booking b = new Booking(a_num, date_from, num_of_nights, travel_agency, number_of_guests, price, first_name, last_name, phone);
-            status = this.facade.newBooking(b, c);
+            status = this.facade.newBooking(b, ctmp, previousCustomerFlag);
+            if (status) {
+                c = ctmp;
+            }
         }
         return status;
     }

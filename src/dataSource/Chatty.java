@@ -156,6 +156,7 @@ public class Chatty {
 
     ///////////////////////////////////////////////// TRANSACTIONS'
     /**
+     * @param previousCustomerFlag
      * @Author Thomas & Christopher
      *
      * Creates a booking on the DB Commits if it succeeds, if not it rolls back
@@ -166,7 +167,7 @@ public class Chatty {
      * @return status, depending on wether the transaction succeded or not
      * @throws BookingException
      */
-    protected boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
+    protected boolean createNewBookingTransaction(Booking b, Customer c, Connection con, boolean previousCustomerFlag) throws BookingException {
 
         int bookingStatus = 0;
         int customerId = 0;
@@ -180,7 +181,11 @@ public class Chatty {
             if (!lockStatus) {
 
                 if (apartmentMapper.checkAvailAbleApartment(b.getB_id(), b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
-                    customerId = customerMapper.insertNewCustomer(c, con);
+                    if (previousCustomerFlag) {
+                        customerId = customerMapper.updateCustomer(con, c);
+                    } else {
+                        customerId = customerMapper.insertNewCustomer(c, con);
+                    }
                     bookingStatus = bookingMapper.insertNewBooking(b, customerId, con);
                 }
                 if (customerId == 0 || bookingStatus == 0) {

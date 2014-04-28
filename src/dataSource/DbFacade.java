@@ -40,15 +40,16 @@ public class DbFacade {
      *
      * @param booking
      * @param customer
+     * @param previousCustomerFlag
      * @return
      * @throws BookingException
      *
      * @Author Simon
      */
-    public boolean newBooking(Booking booking, Customer customer) throws BookingException {
+    public boolean newBooking(Booking booking, Customer customer, boolean previousCustomerFlag) throws BookingException {
         boolean status = false;
         if (this.chatty != null) {
-            status = this.chatty.createNewBookingTransaction(booking, customer, con);
+            status = this.chatty.createNewBookingTransaction(booking, customer, con, previousCustomerFlag);
         }
         return status;
     }
