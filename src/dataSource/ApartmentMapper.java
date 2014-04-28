@@ -21,7 +21,7 @@ public class ApartmentMapper {
      * @return
      * @author kasper
      */
-    public ArrayList<Apartment> getAllApartments(Connection con) {
+    protected ArrayList<Apartment> getAllApartments(Connection con) {
         ArrayList<Apartment> list = new ArrayList();
         String SQLString = "select * from apartment";
         PreparedStatement stat = null;
@@ -125,7 +125,7 @@ public class ApartmentMapper {
      * @return
      * @author kasper Simon og Robert
      */
-    public boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
+    protected boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
         boolean status = false;
         days = days - 1;
         String SQL = "select a_num from apartment where a_num not in (select a_num from (SELECT * from booking where b_id <> ?) "

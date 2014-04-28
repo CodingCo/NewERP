@@ -19,7 +19,7 @@ public class CustomerMapper {
      * @return
      * @author kasper
      */
-    public int insertNewCustomer(Customer customer, Connection con) {
+    protected int insertNewCustomer(Customer customer, Connection con) {
 
         String insertCustomerSQL = "INSERT INTO CUSTOMER VALUES(?,?,?,?,?,?,?,?,?,0)";
         int rowsInserted = 0;
@@ -70,7 +70,7 @@ public class CustomerMapper {
      * @return
      * @author kasper
      */
-    public int updateCustomer(Connection con, Customer cus) {
+    protected int updateCustomer(Connection con, Customer cus) {
         String SQLString = "update customer set"
                 + " first_name = ?,"
                 + " last_name = ?,"
@@ -118,7 +118,7 @@ public class CustomerMapper {
      * @return
      * @author kasper
      */
-    public ArrayList<Customer> getAllCustomers(Connection con) {
+    protected ArrayList<Customer> getAllCustomers(Connection con) {
         ArrayList<Customer> list = new ArrayList();
         String SQLString = "select * from customer";
         PreparedStatement stat = null;
