@@ -62,6 +62,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     /**
      * Creates new form CasablancaGUI
      *
+     * @Author Simon & Robert
      * @param device
      */
     public CasablancaGUI(GraphicsDevice device) {
@@ -2072,6 +2073,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.enableComponents(this.newBookingFormPanel, false);
     }//GEN-LAST:event_newBookingFindSearchNONTextFieldMouseClicked
     private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
+        //@author Christopher
+
         JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2213,6 +2216,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listBookingDatejTextField1ActionPerformed
     private void listBookingDatejTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listBookingDatejTextField1KeyTyped
+        //@author Christopher
         JTextField selectedTextField = this.listBookingDatejTextField1; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2258,6 +2262,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
     private void eBFindDateTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldKeyTyped
+        //@author Christopher
         JTextField selectedTextField = this.eBFindDateTextField; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2332,8 +2337,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     /**
+     * Enables or disables components in Containter container 
      * @param container
-     * @param enable set true to enable components in container
+     * @param enable
      * @author Robert Elving
      */
     private void enableComponents(Container container, boolean enable) {
@@ -2346,6 +2352,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * @param c
+     * set text in all JTextField components in container c to "" 
+     * @author Robert Elving
+     */
     private void resetAllJTextFields(Container c) {
         for (Component component : c.getComponents()) {
             if (component instanceof JTextField) {
