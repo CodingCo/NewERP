@@ -1,5 +1,9 @@
 package domain;
 
+/**
+ * Contains information about a booking.
+ * @author kasper
+ */
 public class Booking implements Comparable, Cloneable {
 
     private int b_id;
@@ -183,6 +187,12 @@ public class Booking implements Comparable, Cloneable {
         return super.clone();
     }
 
+    /**
+     * Retrieves a string containg information about the apartment. This string
+     * is adapted for use in a dialogue box.
+     * @return
+     * @author simon
+     */
     public String toGuiListString() {
 
         if (travel_agency == null) {

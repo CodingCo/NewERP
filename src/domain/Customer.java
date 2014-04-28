@@ -1,5 +1,9 @@
 package domain;
 
+/**
+ * Contains information about a customer.
+ * @author kasper
+ */
 public class Customer implements Cloneable{
 
     private int cust_id;

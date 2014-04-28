@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ * DBConnector contains the methods for making database connections.
  * @author kasper
  */
 public class DBConnector {
@@ -33,6 +33,7 @@ public class DBConnector {
      *
      * @return Connection
      * @throws errorHandling.ConnectionException
+     * @author Kasper
      */
     public static Connection getConnection() throws ConnectionException {
         Connection con = null;
@@ -52,6 +53,7 @@ public class DBConnector {
      * Ends chosen connection
      *
      * @param con - Chosen connection
+     * @author kasper
      */
     public static void releaseConnection(Connection con) {
         try {
