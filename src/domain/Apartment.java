@@ -1,5 +1,9 @@
 package domain;
 
+/**
+ * Contains information about an apartment.
+ * @author kasper
+ */
 public class Apartment {
     
     private final int a_num;

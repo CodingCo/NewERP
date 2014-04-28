@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author simon
+ * @author simon Grønborg
  */
 public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
@@ -51,6 +51,10 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         calcScreenCoor();
     }
 
+    /**
+     * @param page
+     * @Author = Simon Grønborg Draws onscreen
+     */
     @Override
     public void paintComponent(Graphics page) {
         paintCalendar(page, screenRows);
@@ -66,7 +70,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
                 if (tmp[1] == month && tmp[9] == month) {
                     // i denne måned
-                    addBookingBox(xCoor[tmp[0] - 1], yCoor[y] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, ""+tmp[6], tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1], yCoor[y] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
                 }
 
                 month = nextMonth(1)[0];
@@ -78,11 +82,13 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 //        }
     }
 
-    private int boxWidth(int nights) {
-        return (this.boxWidth * nights) + (nights - 1);
-    }
-
-    private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
+    /**
+     * Adds a panel on the specified coordinates and the given size. Must match
+     * a booking
+     *
+     * @Author Simon Grønborg
+     */
+    public void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
         p.setLayout(new GridLayout(1, 1));
@@ -116,6 +122,9 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         p.setBackground(c);
     }
 
+    /**
+     * @Author Simon Grønborg Make one calender bar
+     */
     private void makeCalendar(Graphics page, int yCoor, int[] date) {
         int size = (this.panel.getWidth() - 1) / 31;
         int x = 0;
@@ -129,6 +138,9 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         page.drawString("Date: " + (date[0]) + "/ " + date[2], this.panel.getWidth() / 2, yCoor + 115);
     }
 
+    /**
+     * @Author Simon Grønborg Draws the calender bar for the whole screen
+     */
     private void paintCalendar(Graphics page, int rows) {
         int y = 0;
         for (int x = 0; x < rows; ++x) {
@@ -137,6 +149,12 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         }
     }
 
+    /**
+     * Creates to integer arrays, with sizes based on screen size. These arrays
+     * holds coordinates matching each calender, which makes plotting easyer.
+     *
+     * @Author Simon Grønborg
+     */
     private void calcScreenCoor() {
         this.screenRows = this.panel.getHeight() / (this.spaceBuffer + this.calendarHeight);
         this.boxWidth = (this.panel.getWidth() - 1) / 31;
@@ -183,4 +201,9 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     private void getList(int anum) {
         this.list = controller.getBookingsByApartment(anum, this.thisMonth);
     }
+
+    private int boxWidth(int nights) {
+        return (this.boxWidth * nights) + (nights - 1);
+    }
+
 }

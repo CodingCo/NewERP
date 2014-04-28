@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author simon
+ * @author simon Grønborg
  */
 public class DrawToday extends JPanel implements DrawPropertyInterface {
 
@@ -67,6 +67,10 @@ public class DrawToday extends JPanel implements DrawPropertyInterface {
         repaint();
     }
 
+    /**
+     * @param page
+     * @Author Simon Grønborg
+     */
     @Override
     public void paintComponent(Graphics page) {
         //this.setSize(this.panel.getWidth(), this.panel.getHeight());
@@ -125,6 +129,11 @@ public class DrawToday extends JPanel implements DrawPropertyInterface {
 
     }
 
+    /**
+     * Adds a pooking panel on the specified coordinates
+     *
+     * @Author Simon Grønborg
+     */
     private void addBookingPanel(int x, int y, int width, int height, Color c, Color hover, Booking b, String check) {
         JPanel p = new JPanel();
         JLabel l = new JLabel();
