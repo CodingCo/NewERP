@@ -2,6 +2,7 @@ package presentation;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -26,7 +27,10 @@ public class LaunchProgram {
                     break;
                 }
             }
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (IllegalAccessException ex) {
+        } catch (InstantiationException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
         }
     }
 }
