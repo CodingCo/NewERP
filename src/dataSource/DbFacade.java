@@ -174,11 +174,4 @@ public class DbFacade {
      * @throws errorHandling.CustomerException
      * @Author Robert
      */
-    public boolean updateCustomer(Customer ctmp) throws CustomerException {
-        boolean status = false;
-        if (this.chatty != null) {
-            status = this.chatty.updateCustomerTransaction(ctmp, con);
-        }
-        return status;
-    }
 }

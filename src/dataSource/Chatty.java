@@ -252,43 +252,6 @@ public class Chatty {
     }
 
     /**
-     * @Author Robert
-     *
-     * Updates a customer with the customer ID, stored in the param
-     *
-     * @param ctmp Customer
-     * @param con Connection
-     * @return true if the update succeeded
-     */
-    protected boolean updateCustomerTransaction(Customer ctmp, Connection con) throws CustomerException {
-
-        int customerStatus = 0;
-
-        try {
-            String lock = "LOCK TABLE customer IN EXCLUSIVE MODE";
-            con.setAutoCommit(false);
-            Statement statement = con.createStatement();
-            boolean lockStatus = statement.execute(lock);
-
-            if (!lockStatus) {
-
-                customerStatus = customerMapper.updateCustomer(con, ctmp);
-
-                if (customerStatus == 0) {
-                    con.rollback();
-                    return false;
-                } else {
-                    con.commit();
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            throw new CustomerException("Customer could not be updated");
-        }
-        return false;
-    }
-
-    /**
      * @Author Simon
      *
      * Searches through the Customer list
@@ -469,7 +432,7 @@ public class Chatty {
             try {
                 c.setTime(sdf.parse(current.getDate_from()));
             } catch (ParseException e) {
-                System.out.println("Error in getBookingsByMonth method");
+
             }
 
             bookingValues[3] = c.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -514,7 +477,7 @@ public class Chatty {
 
     /**
      *
-     * @Author: Thomas & Christopher
+     * @Author Thomas
      *
      * Finds all bookings, which have the same apartment number, and starts,
      * ends or overlaps the period from today and the number of months into the
@@ -574,16 +537,12 @@ public class Chatty {
 
                         relevantBookings.add(bookingValues);
                     }
-
                 }
-
                 relevant = false;
-
             }
         } catch (ParseException ex) {
 
         }
-
         return relevantBookings;
     }
 }

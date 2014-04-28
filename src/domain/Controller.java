@@ -7,8 +7,6 @@ import errorHandling.ConnectionException;
 import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @Author Simon Grønborg
@@ -66,7 +64,6 @@ public class Controller {
                 } catch (CloneNotSupportedException ex) {
                 }
             } else {
-                System.out.println("new");
                 previousCustomerFlag = false;
                 ctmp = this.newCustomer(first_name, last_name, phone, email, country, city, zipcode, street);
             }
@@ -138,50 +135,7 @@ public class Controller {
         }
     }
 
-    /**
-     * @param c
-     * @param first_name
-     * @param last_name
-     * @param phone
-     * @param email
-     * @param country
-     * @param city
-     * @param zipcode
-     * @param street
-     * @throws CustomerException
-     *
-     * @Author Simon Grønborg Robert Elving
-     */
-    public void updateCustomer(Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws CustomerException {
-
-        boolean status = false;
-        Customer ctmp = null;
-
-        try {
-            ctmp = (Customer) c.clone();
-        } catch (CloneNotSupportedException ex) {
-        }
-
-        if (this.facade != null) {
-            ctmp.setFirst_name(first_name);
-            ctmp.setLast_name(last_name);
-            ctmp.setEmail(email);
-            ctmp.setPhone(phone);
-            ctmp.setCountry(country);
-            ctmp.setCity(city);
-            ctmp.setStreet(street);
-            ctmp.setZipcode(zipcode);
-
-            status = this.facade.updateCustomer(ctmp);
-
-            if (status) {
-                c = ctmp;
-            } else {
-                throw new CustomerException("Customer could not be updated");
-            }
-
-        }
-    }
+ 
 
     public boolean deleteBooking(int b_id) throws BookingException {
         boolean status = false;
