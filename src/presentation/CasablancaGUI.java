@@ -11,6 +11,7 @@ import domain.Apartment;
 import domain.Booking;
 import domain.Controller;
 import domain.Customer;
+import errorHandling.ConnectionException;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -33,13 +34,14 @@ import javax.swing.JTextField;
 public class CasablancaGUI extends javax.swing.JFrame {
 
     private final CardLayout cl;
-    private final Controller controller;
+
     private final DefaultListModel nBListModel;
     private final DefaultListModel eBListModel;
     private final DefaultListModel lBlistModel;
     private final DefaultListModel cBListModel;
     private final GraphicsDevice device;
 
+    private Controller controller = null;
     private Customer tmpCustomer = null;
     private Apartment temporaryApartment = null;
     private HashMap<Booking, Customer> bookingsFoundHashMap = null;
@@ -71,9 +73,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         INDEX_HEIGHT = d.height;
         setSize(d.width, d.height);
 
-        this.controller = new Controller();
-        this.controller.updateLists();
-
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
         this.cl.addLayoutComponent(newBookingPanel, "NewBooking");
@@ -92,9 +91,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
         this.bookingsFoundHashMap = new HashMap();
+
+        try {
+            this.controller = new Controller();
+            this.controller.updateLists();
+        } catch (ConnectionException ex) {
+            JOptionPane p = new JOptionPane();
+            p.showMessageDialog(this, ex.getMessage(), "", 1);
+        }
+
         //pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1951,6 +1959,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 this.controller.updateCustomer(tmpCustomer, firstName, lastName, phone, email, country, city, zipcode, street);
             }
             this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, tmpCustomer.getFirst_name(), tmpCustomer.getLast_name(), tmpCustomer.getPhone());
+
             this.previousCustomerFlag = false;
             this.tmpCustomer = null;
             this.enableComponents(this, false);
@@ -2172,9 +2181,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonthFlag = true;
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
-        
+
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel,a.getA_num()); 
+        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();

@@ -5,6 +5,7 @@ import errorHandling.DateException;
 import domain.Apartment;
 import domain.Booking;
 import domain.Customer;
+import errorHandling.ConnectionException;
 import errorHandling.CustomerException;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -16,14 +17,15 @@ public class DbFacade {
     private Connection con;
     private static DbFacade instance;
 
-    private DbFacade() {
+    private DbFacade()throws ConnectionException{
         this.chatty = new Chatty();
         con = DBConnector.getInstance().getConnection();
+        
         CronThreader c = new CronThreader(con);
         new Thread(c).start();
     }
 
-    public static DbFacade getInstance() {
+    public static DbFacade getInstance() throws ConnectionException{
         if (instance == null) {
             instance = new DbFacade();
         }

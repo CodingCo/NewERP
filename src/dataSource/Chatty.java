@@ -117,11 +117,13 @@ public class Chatty {
         return this.apartmentMapper.getAllApartments(con);
     }
 
+ 
+
     ///////////////////////////////////////////////// TRANSACTIONS
     public boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
 
         int bookingStatus = 0;
-        int customerStatus = 0;
+        int customerId = 0;
 
         try {
             String lock = "LOCK TABLE booking IN EXCLUSIVE MODE";
@@ -132,10 +134,10 @@ public class Chatty {
             if (!lockStatus) {
 
                 if (apartmentMapper.checkAvailAbleApartment(b.getB_id(), b.getDate_from(), b.getNum_of_nights(), b.getA_num(), con)) {
-                    customerStatus = customerMapper.insertNewCustomer(c, con);
-                    bookingStatus = bookingMapper.insertNewBooking(b, customerStatus, con);
+                    customerId = customerMapper.insertNewCustomer(c, con);
+                    bookingStatus = bookingMapper.insertNewBooking(b, customerId, con);
                 }
-                if (customerStatus == 0 || bookingStatus == 0) {
+                if (customerId == 0 || bookingStatus == 0) {
                     con.rollback();
                     return false;
                 } else {

@@ -3,6 +3,7 @@ package domain;
 import errorHandling.DateException;
 import errorHandling.BookingException;
 import dataSource.DbFacade;
+import errorHandling.ConnectionException;
 import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public class Controller {
 
     private final DbFacade facade;
 
-    public Controller() {
+    public Controller() throws ConnectionException {
         this.facade = DbFacade.getInstance();
     }
 

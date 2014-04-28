@@ -1,6 +1,7 @@
 package animation;
 
 import domain.Controller;
+import errorHandling.ConnectionException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -45,7 +46,12 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         this.apartment = 1;
         this.increment = 0;
         this.showings = 0;
-        controller = new Controller();
+
+        try {
+            this.controller = new Controller();
+        } catch (ConnectionException ex) {
+            JOptionPane.showMessageDialog(panel.getRootPane(), ex.getMessage(), "", 1);
+        }
     }
 
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {

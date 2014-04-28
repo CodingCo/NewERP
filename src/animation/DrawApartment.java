@@ -1,6 +1,7 @@
 package animation;
 
 import domain.Controller;
+import errorHandling.ConnectionException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -8,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +23,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
     private JPanel panel;
     private ArrayList<int[]> list;
+    private Controller controller;
     private int cdm;
     private int[] xCoor;
     private int[] yCoor;
@@ -38,6 +41,11 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     public DrawApartment(JPanel panel, int anum) {
         this.panel = panel;
         this.setSize(this.panel.getSize());
+        try {
+            this.controller = new Controller();
+        } catch (ConnectionException ex) {
+            JOptionPane.showMessageDialog(panel.getRootPane(), ex.getMessage(), "", 1);
+        }
         calculateCurrentDate();
         getList(anum);
         calcScreenCoor();
@@ -47,45 +55,34 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     public void paintComponent(Graphics page) {
         paintCalendar(page, screenRows);
 
-        for (int x = 0; x < list.size() - 1; ++x) {
+        int month = thisMonth;
+        int year = thisYear;
+        int day = thisDay;
 
+        for (int x = 0; x < list.size(); ++x) {
             int[] tmp = list.get(x);
 
-            if (tmp[1] == thisMonth && tmp[9] == thisMonth) {
-                // i denne måned
-                addBookingBox(xCoor[tmp[0]], yCoor[0] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "omg");
-            }
+            for (int y = 0; y < screenRows; ++y) {
 
-            if (tmp[1] == thisMonth && tmp[9] > thisMonth) {
-                // ud af
-                System.out.println("        dfjlk");
-                int width = tmp[3] - tmp[0];
-                addBookingBox(xCoor[tmp[0]], yCoor[0] + 40, boxWidth(width), boxheight, green, hGreen, "omg");
+                if (tmp[1] == month && tmp[9] == month) {
+                    // i denne måned
+                    addBookingBox(xCoor[tmp[0] - 1], yCoor[y] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, ""+tmp[6], tmp[6]);
+                }
+
+                month = nextMonth(1)[0];
             }
         }
 
-        for (int x = 0; x < list.size() - 1; ++x) {
-
-            int[] tmp = list.get(x);
-
-            if (tmp[1] == thisMonth + 1 && tmp[9] == thisMonth + 1) {
-                // i denne måned
-                addBookingBox(xCoor[tmp[0]], yCoor[1] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "omg");
-            }
-
-            if (tmp[1] == thisMonth && tmp[1] == thisMonth + 1) {
-                int width = tmp[4] - (tmp[3] - tmp[0]);
-                addBookingBox(xCoor[tmp[0]], yCoor[1] + 40, boxWidth(width), boxheight, green, hGreen, "omg");
-            }
-        }
-
+//        if ((tmp[2] * 100) + tmp[1] < (thisYear * 100) + thisMonth && (tmp[10] * 100) + tmp[9] > (thisYear * 100) + thisMonth) {
+//            // whole month
+//        }
     }
 
     private int boxWidth(int nights) {
         return (this.boxWidth * nights) + (nights - 1);
     }
 
-    private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message) {
+    private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
         p.setLayout(new GridLayout(1, 1));
@@ -93,7 +90,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showConfirmDialog(panel.getRootPane(), "not yet implemented");
+                JOptionPane.showMessageDialog(panel.getRootPane(), controller.getBooking(id).toGuiListString(), "", 1);
             }
 
             @Override
@@ -119,22 +116,23 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         p.setBackground(c);
     }
 
-    private void makeCalendar(Graphics page, int y, int days) {
+    private void makeCalendar(Graphics page, int yCoor, int[] date) {
         int size = (this.panel.getWidth() - 1) / 31;
         int x = 0;
-        for (int i = 0; i < days; i++) {
+        for (int i = 0; i < date[1]; i++) {
             page.setColor(grey);
-            page.fillRect(x, y, size, calendarHeight);
+            page.fillRect(x, yCoor, size, calendarHeight);
             page.setColor(Color.WHITE);
-            page.drawString("" + (i + 1), x + 10, y + 25);
+            page.drawString("" + (i + 1), x + 10, yCoor + 25);
             x = x + size + 1;
         }
+        page.drawString("Date: " + (date[0]) + "/ " + date[2], this.panel.getWidth() / 2, yCoor + 115);
     }
 
     private void paintCalendar(Graphics page, int rows) {
         int y = 0;
         for (int x = 0; x < rows; ++x) {
-            makeCalendar(page, y, daysOfNextmonth(x));
+            makeCalendar(page, y, nextMonth(x));
             y = y + this.spaceBuffer + this.calendarHeight;
         }
     }
@@ -162,24 +160,27 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
     private void calculateCurrentDate() {
         try {
-            Calendar c = Calendar.getInstance();
+            GregorianCalendar c = new GregorianCalendar();
             this.thisDay = c.get(Calendar.DAY_OF_MONTH);
-            this.thisMonth = c.get(Calendar.MONTH) + 1;
+            this.thisMonth = c.get(GregorianCalendar.MONTH) + 1;
             this.thisYear = Integer.parseInt(("" + c.get(Calendar.YEAR)).substring(2));
             this.cdm = c.getActualMaximum(Calendar.DAY_OF_MONTH);
         } catch (NumberFormatException ex) {
-
         }
+
     }
 
-    private int daysOfNextmonth(int amount) {
+    private int[] nextMonth(int amount) {
+        int[] dates = new int[3];
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.MONTH, thisMonth);
         c.add(Calendar.MONTH, amount);
-        return c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        dates[0] = c.get(Calendar.MONTH) + 1;
+        dates[1] = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        dates[2] = c.get(Calendar.YEAR);
+        return dates;
     }
 
     private void getList(int anum) {
-        this.list = new Controller().getBookingsByApartment(anum, this.thisMonth);
+        this.list = controller.getBookingsByApartment(anum, this.thisMonth);
     }
 }
