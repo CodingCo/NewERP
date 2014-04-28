@@ -1,7 +1,8 @@
 package domain;
 
 /**
- * contains information about an archived booking.
+ * Contains information about an archived booking.
+ *
  * @author kasper
  */
 public class History extends Booking {

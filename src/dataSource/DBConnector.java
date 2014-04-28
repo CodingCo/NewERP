@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 /**
  * DBConnector contains the methods for making database connections.
+ *
  * @author kasper
  */
 public class DBConnector {

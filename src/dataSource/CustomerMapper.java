@@ -14,6 +14,7 @@ public class CustomerMapper {
 
     /**
      * Inserts a new customer into the database.
+     *
      * @param customer
      * @param con
      * @return
@@ -65,6 +66,7 @@ public class CustomerMapper {
 
     /**
      * Updates a customer already in the database, based on information given.
+     *
      * @param con
      * @param cus
      * @return
@@ -114,6 +116,7 @@ public class CustomerMapper {
 
     /**
      * Retrieves a list containing all customers in the database.
+     *
      * @param con
      * @return
      * @author kasper

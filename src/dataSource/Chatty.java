@@ -20,9 +20,7 @@ import java.util.HashMap;
  * @author Christopher & Thomas
  */
 public class Chatty {
-    
-    
-    //== Fields
+
     private ArrayList<Booking> bookings;
     private ArrayList<History> history;
     private ArrayList<Customer> customers;
@@ -30,7 +28,6 @@ public class Chatty {
     private CustomerMapper customerMapper;
     private ApartmentMapper apartmentMapper;
 
-    //== Constructor
     public Chatty() {
         this.bookings = new ArrayList();
         this.history = new ArrayList();
@@ -40,17 +37,17 @@ public class Chatty {
         this.customers = new ArrayList();
     }
 
-    /////////////////////////////////////////// FINDERS
     protected ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> apartmentToReturn = new ApartmentMapper().findAvailableApartment(date, days, type, apartment_nr, con);
         return apartmentToReturn;
     }
 
     /**
-     * Author: Thomas & Christopher
-     * 
-     * Finds a Customer, with matching customer ID
-     * If none is found with the input ID, it returns null
+     * @Author Simon
+     *
+     * Finds a Customer, with matching customer ID If none is found with the
+     * input ID, it returns null
+     *
      * @param custId - Customer ID to search for
      * @return Customer - returns the desired customer
      */
@@ -64,29 +61,30 @@ public class Chatty {
     }
 
     /**
-     * Author: Thomas & Christopher
-     * 
-     * Finds a booking with matching booking ID 
-     * if none is found with the input ID, it returns null
+     * @Author Simon
+     *
+     * Finds a booking with matching booking ID if none is found with the input
+     * ID, it returns null
+     *
      * @param bID - Booking ID to search for
-     * 
-     * @return A Booking object, corresponding to the input 
+     *
+     * @return A Booking object, corresponding to the input
      */
     protected Booking getBooking(int bID) {
         for (Booking b : this.bookings) {
             if (b.getB_id() == bID) {
-                return b; 
+                return b;
             }
         }
         return null;
     }
 
     /**
-     * <p>Author: Thomas & Christopher</p>
-     * 
-     * Finds <code>bookings</code> depending on the params, the user wants 
-     * to search for
-     * 
+     *
+     * @Author Thomas & Christopher
+     *
+     * Finds bookings depending on the params, the user wants to search for
+     *
      * @param b_id The booking ID to search for
      * @param name name on customer to search for
      * @param date the date to to search for
@@ -96,16 +94,16 @@ public class Chatty {
      */
     protected HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
         updateLists(con);
-        HashMap<Booking, Customer> relevantBooking = new HashMap(); 
+        HashMap<Booking, Customer> relevantBooking = new HashMap();
 
-        for (Booking booking : bookings) { 
+        for (Booking booking : bookings) {
             //== Compares the b_id
             if (booking.getB_id() == b_id) {
                 for (Customer customer : customers) {
                     if (booking.getCust_id() == customer.getCust_id()) {
                         relevantBooking.clear();
                         relevantBooking.put(booking, customer);
-                        return relevantBooking; 
+                        return relevantBooking;
                     }
                 }
             }
@@ -140,12 +138,11 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas & Christopher</p> 
-     * 
-     * Updates the lists: bookings and customers.
-     * When the list is updated the newest information 
-     * from the database is retriewed
-     * 
+     * @Author Thomas & Christopher
+     *
+     * Updates the lists: bookings and customers. When the list is updated the
+     * newest information from the database is retriewed
+     *
      * @param con The mandatory Connection
      */
     protected void updateLists(Connection con) {
@@ -157,23 +154,20 @@ public class Chatty {
         return this.apartmentMapper.getAllApartments(con);
     }
 
-
     ///////////////////////////////////////////////// TRANSACTIONS'
-    
     /**
-     * <p>Author: Thomas & Christopher</p> 
-     * 
-     * Creates a booking on the DB
-     * Commits if it succeeds, if not it rolls back
-     * 
-     * @param b Booking 
-     * @param c Customer 
+     * @Author Thomas & Christopher
+     *
+     * Creates a booking on the DB Commits if it succeeds, if not it rolls back
+     *
+     * @param b Booking
+     * @param c Customer
      * @param con Connection
      * @return status, depending on wether the transaction succeded or not
      * @throws BookingException
      */
     protected boolean createNewBookingTransaction(Booking b, Customer c, Connection con) throws BookingException {
-    
+
         int bookingStatus = 0;
         int customerId = 0;
 
@@ -206,14 +200,14 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas & Christopher</p> 
-     * 
+     * @Author Thomas & Christopher
+     *
      * Updates a booking with mathcing bookig ID, stored in the param
-     * 
-     * @param b Booking 
+     *
+     * @param b Booking
      * @param customer Customer
-     * @param con Connection 
-     * @return true if booking was updated, false if not 
+     * @param con Connection
+     * @return true if booking was updated, false if not
      * @throws BookingException
      */
     protected boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException {
@@ -253,18 +247,17 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas & Christopher</p> 
-     * 
-     * Updates a customer with the customer ID, stored
-     * in the param
-     *  
-     * @param ctmp Customer 
+     * @Author Robert
+     *
+     * Updates a customer with the customer ID, stored in the param
+     *
+     * @param ctmp Customer
      * @param con Connection
      * @return true if the update succeeded
      */
     protected boolean updateCustomerTransaction(Customer ctmp, Connection con) throws CustomerException {
 
-        int customerStatus = 0; 
+        int customerStatus = 0;
 
         try {
             String lock = "LOCK TABLE customer IN EXCLUSIVE MODE";
@@ -291,11 +284,11 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Simon Gay</p>
-     * 
+     * @Author Simon
+     *
      * Searches through the Customer list
-     * 
-     * @param keyword - String 
+     *
+     * @param keyword - String
      * @return ArrayLIst of customers, which are related with the keyword
      */
     protected ArrayList<Customer> searchForCustomers(String keyword) {
@@ -312,12 +305,13 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas </p> 
-     * 
-     * Finds all bookings which starts today, or ends today
-     * The return ArrayList contains int[] for each booking
-     * with relevant data, unique for each booking
-     * 
+     *
+     * @Author Thomas
+     *
+     * Finds all bookings which starts today, or ends today The return ArrayList
+     * contains int[] for each booking with relevant data, unique for each
+     * booking
+     *
      * @return All Bookings which starts or ends today
      */
     protected ArrayList<Booking[]> getBookingsToDay() {
@@ -385,11 +379,12 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas</p> 
-     * 
-     *  Finds all bookings which starts, ends or overlaps this month
      *
-     * @param date String 
+     * @Author: Thomas
+     *
+     * Finds all bookings which starts, ends or overlaps this month
+     *
+     * @param date String
      * @return ArrayList<int[]>
      */
     protected ArrayList<int[]> getBookingsByMonth(String date) {
@@ -485,13 +480,6 @@ public class Chatty {
             bookingValues[8] = Integer.parseInt(bookingDateEnd.substring(0, 2));
             bookingValues[9] = Integer.parseInt(bookingDateEnd.substring(3, 5));
             bookingValues[10] = Integer.parseInt(bookingDateEnd.substring(6, 8));
-
-            //System.out.println("Number of nights:   " + current.getNum_of_nights());
-            //System.out.println("Start date:         " + current.getDate_from());
-            //System.out.println("End day:            " + bookingValues[8]);
-            //System.out.println("End Month:          " + bookingValues[9]);
-            //System.out.println("End year:           " + bookingValues[10]);
-            //System.out.println("\n\n\n");
             listToReturn.add(bookingValues);
         }
 
@@ -520,12 +508,13 @@ public class Chatty {
     }
 
     /**
-     * <p>Author: Thomas & Christopher</p> 
-     * 
-     * Finds all bookings, which have the same apartment number,
-     * and starts, ends or overlaps the period from today and the 
-     * number of months into the future. 
-     * 
+     *
+     * @Author: Thomas & Christopher
+     *
+     * Finds all bookings, which have the same apartment number, and starts,
+     * ends or overlaps the period from today and the number of months into the
+     * future.
+     *
      * @param aNum int
      * @param months int
      * @return ArrayList<int[]>

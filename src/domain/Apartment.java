@@ -2,10 +2,11 @@ package domain;
 
 /**
  * Contains information about an apartment.
+ *
  * @author kasper
  */
 public class Apartment {
-    
+
     private final int a_num;
     private final String type;
     private final int price;
@@ -15,7 +16,7 @@ public class Apartment {
         this.a_num = a_num;
         this.price = price;
         this.type = type;
-	this.capacity = capacity;
+        this.capacity = capacity;
     }
 
     public int getA_num() {
@@ -29,9 +30,9 @@ public class Apartment {
     public int getPrice() {
         return price;
     }
-    
-    public int getCapacity(){
-	return capacity;
+
+    public int getCapacity() {
+        return capacity;
     }
 
     @Override

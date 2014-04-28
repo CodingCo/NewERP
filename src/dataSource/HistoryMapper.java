@@ -14,6 +14,7 @@ public class HistoryMapper {
 
     /**
      * Retrieves a list containing all archived bookings.
+     *
      * @param con
      * @return
      * @author kasper
@@ -34,12 +35,12 @@ public class HistoryMapper {
                 historyList.add(new History(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(9), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getDouble(8), rs.getString(10), rs.getString(11), rs.getString(12)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+
         } finally {
             try {
                 st.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+
             }
         }
         return historyList;

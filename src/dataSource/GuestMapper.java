@@ -11,9 +11,10 @@ import java.util.ArrayList;
  * @author kasper
  */
 public class GuestMapper {
-    
+
     /**
      * Retrieves a list containing all the guestIDs related to a booking.
+     *
      * @param b_id
      * @param con
      * @return
@@ -45,6 +46,7 @@ public class GuestMapper {
 
     /**
      * Inserts a new guest into the database.
+     *
      * @param b_id
      * @param apartment_nr
      * @param con

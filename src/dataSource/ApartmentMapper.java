@@ -11,12 +11,14 @@ import java.sql.SQLException;
 /**
  * The ApartmentMapper class is responsible for handling all database calls
  * regarding apartments.
+ *
  * @author kasper
  */
 public class ApartmentMapper {
 
     /**
      * Retrieves a list of all apartments.
+     *
      * @param con
      * @return
      * @author kasper
@@ -48,6 +50,7 @@ public class ApartmentMapper {
 
     /**
      * Retrieves alist of apartments based on the search criterias.
+     *
      * @param date
      * @param days
      * @param type
@@ -117,6 +120,7 @@ public class ApartmentMapper {
     /**
      * Checks whether an apartment has any bookings for a chosen period. Returns
      * true, if the apartment is available.
+     *
      * @param id
      * @param date
      * @param days

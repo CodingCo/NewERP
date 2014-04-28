@@ -29,7 +29,7 @@ public class CronThreader implements Runnable {
         this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.HOURS);
     }
 
-    public void doCronJob() {
+    protected void doCronJob() {
 
         String SQL1 = "BEGIN CPHRE31.MOVEBOOKING; END;";
         String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
@@ -56,7 +56,7 @@ public class CronThreader implements Runnable {
         }
     }
 
-    Runnable periodicTask = new Runnable() {
+    private Runnable periodicTask = new Runnable() {
         @Override
         public void run() {
             doCronJob();

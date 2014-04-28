@@ -17,10 +17,10 @@ import java.util.GregorianCalendar;
  * @author simon & Robert
  */
 public class InputCheck {
-    
+
     /**
      * Checks that email param doesn't violate standard email format
-     * 
+     *
      * @param email
      * @throws EmailException
      * @author Simon
@@ -72,11 +72,11 @@ public class InputCheck {
 
     }
 
-  
     /**
      * Checks for name violations on String name
+     *
      * @param name
-     * @throws NameException 
+     * @throws NameException
      * @author Simon
      */
     public static void nameCheck(String name) throws NameException {
@@ -97,6 +97,7 @@ public class InputCheck {
 
     /**
      * Checks for location violations on String name
+     *
      * @param name
      * @throws NameException
      * @author Simon
@@ -119,9 +120,10 @@ public class InputCheck {
 
     /**
      * Checks for Format violation on String bookingNr
+     *
      * @param bookingNr
      * @return bookingNr parsed to int
-     * @throws BookingException 
+     * @throws BookingException
      * @author Robert
      */
     public static int bookingNrCheck(String bookingNr) throws BookingException {
@@ -136,8 +138,9 @@ public class InputCheck {
 
     /**
      * Checks for format violations on String streetAdress
+     *
      * @param streetAddress
-     * @throws StreetAddressException 
+     * @throws StreetAddressException
      * @author Robert
      */
     public static void streetAddressCheck(String streetAddress) throws StreetAddressException {
@@ -153,9 +156,10 @@ public class InputCheck {
 
     /**
      * Checks for apartment violations on String apartmentNr
+     *
      * @param apartmentNr
      * @return int roomNumber: apartmentNr parsed to int
-     * @throws RoomException 
+     * @throws RoomException
      * @author Simon
      */
     public static int apartmentCheck(String apartmentNr) throws RoomException {
@@ -175,10 +179,11 @@ public class InputCheck {
 
     /**
      * Checks for violations on number of guests and apartment type
+     *
      * @param guests
      * @param type
      * @return int numberOfGuests
-     * @throws RoomException 
+     * @throws RoomException
      */
     public static int guestCheck(String guests, String type) throws RoomException {
         int numberOfGuests = 0;
@@ -203,10 +208,11 @@ public class InputCheck {
     }
 
     /**
-     * Checks for violations on price 
+     * Checks for violations on price
+     *
      * @param num
      * @return int price
-     * @throws RoomException 
+     * @throws RoomException
      * @author Simon
      */
     public static int priceCheck(int num) throws RoomException {
@@ -229,9 +235,10 @@ public class InputCheck {
 
     /**
      * checl for boundary violations on String nights
+     *
      * @param nights
      * @return int x: nights
-     * @throws BookingException 
+     * @throws BookingException
      * @author Simon
      */
     public static int nightsCheck(String nights) throws BookingException {
@@ -251,10 +258,13 @@ public class InputCheck {
 
     /**
      * Checks for violations
+     *
      * @param guests
      * @param num
      * @return int x: guests
-     * @throws RoomException 
+     * @throws RoomException
+     *
+     * @Author Simon
      */
     public static int editApartmentTypeCheck(String guests, int num) throws RoomException {
         int x = 0;
@@ -288,9 +298,10 @@ public class InputCheck {
     }
 
     /**
-     * Checks for format violations on String date 
+     * Checks for format violations on String date
+     *
      * @param date
-     * @throws DateException 
+     * @throws DateException
      * @author Robert
      */
     public static void dateFormatCheck(String date) throws DateException {
@@ -319,8 +330,9 @@ public class InputCheck {
 
     /**
      * Checks for format violations on String phone
+     *
      * @param phone
-     * @throws PhoneException 
+     * @throws PhoneException
      * @author Robert
      */
     public static void phoneCheck(String phone) throws PhoneException {
@@ -363,9 +375,10 @@ public class InputCheck {
 
     /**
      * Checks if String date is a past date
+     *
      * @param date
-     * @throws DateException 
-     * @christopher
+     * @throws DateException
+     * @Author christopher
      */
     public static void timeDateCheck(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");

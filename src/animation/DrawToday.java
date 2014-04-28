@@ -130,8 +130,7 @@ public class DrawToday extends JPanel implements DrawPropertyInterface {
     }
 
     /**
-     * Adds a pooking panel on the specified coordinates
-     *
+     *  Adds a pooking panel on the specified coordinates
      * @Author Simon Grønborg
      */
     private void addBookingPanel(int x, int y, int width, int height, Color c, Color hover, Booking b, String check) {

@@ -2337,7 +2337,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     /**
-     * Enables or disables components in Containter container 
+     * Enables or disables components in Containter container
+     *
      * @param container
      * @param enable
      * @author Robert Elving
@@ -2353,8 +2354,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     /**
-     * @param c
-     * set text in all JTextField components in container c to "" 
+     * @param c set text in all JTextField components in container c to ""
      * @author Robert Elving
      */
     private void resetAllJTextFields(Container c) {

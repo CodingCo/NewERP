@@ -11,12 +11,14 @@ import java.util.ArrayList;
 /**
  * The BookingMapper class is responsible for handling all database calls
  * regarding bookings.
+ *
  * @author kasper
  */
 public class BookingMapper {
 
     /**
      * Retrieves a list containing all bookings, in the database.
+     *
      * @param con
      * @return
      * @author kasper
@@ -40,12 +42,12 @@ public class BookingMapper {
                 aB.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(10), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getDouble(8), rs.getInt(9), rs.getString(11), rs.getString(12), rs.getString(13)));
             }
         } catch (SQLException e) {
-            
+
         } finally {
             try {
                 st.close();
             } catch (SQLException e) {
-            
+
             }
         }
 
@@ -54,6 +56,7 @@ public class BookingMapper {
 
     /**
      * Inserts a new booking into the database.
+     *
      * @param bo
      * @param id
      * @param con
@@ -89,6 +92,7 @@ public class BookingMapper {
 
     /**
      * Updates a booking found in the database, with new information.
+     *
      * @param b
      * @param con
      * @return
@@ -127,6 +131,7 @@ public class BookingMapper {
 
     /**
      * Deletes a booking in the database.
+     *
      * @param con
      * @param b_id
      * @return

@@ -167,6 +167,12 @@ public class DbFacade {
         return null;
     }
 
+    /**
+     * @param ctmp
+     * @return
+     * @throws errorHandling.CustomerException
+     * @Author Robert
+     */
     public boolean updateCustomer(Customer ctmp) throws CustomerException {
         boolean status = false;
         if (this.chatty != null) {
