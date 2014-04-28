@@ -8,11 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * The customerMapper class is responsible for handling all database calls
+ * regarding customers.
  * @author kasper
  */
 public class CustomerMapper {
 
+    /**
+     * Inserts a new customer into the database.
+     * @param customer
+     * @param con
+     * @return
+     * @author kasper
+     */
     public int insertNewCustomer(Customer customer, Connection con) {
 
         String insertCustomerSQL = "INSERT INTO CUSTOMER VALUES(?,?,?,?,?,?,?,?,?,0)";
@@ -57,6 +65,13 @@ public class CustomerMapper {
         return id;
     }
 
+    /**
+     * Updates a customer already in the database, based on information given.
+     * @param con
+     * @param cus
+     * @return
+     * @author kasper
+     */
     public int updateCustomer(Connection con, Customer cus) {
         String SQLString = "update customer set"
                 + " first_name = ?,"
@@ -99,6 +114,12 @@ public class CustomerMapper {
         return rowIns;
     }
 
+    /**
+     * Retrieves a list containing all customers in the database.
+     * @param con
+     * @return
+     * @author kasper
+     */
     public ArrayList<Customer> getAllCustomers(Connection con) {
         ArrayList<Customer> list = new ArrayList();
         String SQLString = "select * from customer";

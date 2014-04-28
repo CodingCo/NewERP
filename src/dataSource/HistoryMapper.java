@@ -8,11 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author simon
+ * The BookingMapper class is responsible for handling all database calls
+ * regarding archived bookings.
+ * @author kasper
  */
 public class HistoryMapper {
 
+    /**
+     * Retrieves a list containing all archived bookings.
+     * @param con
+     * @return
+     * @author kasper
+     */
     public ArrayList<History> getAllBookings(Connection con) {
         ArrayList<History> historyList = new ArrayList();
         String SQLString = "SELECT history.*, to_char(history.DATE_FROM, 'DD-MM-YY'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "

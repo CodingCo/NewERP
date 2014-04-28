@@ -6,11 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author kasper
+ */
 public class GuestMapper {
 
     public GuestMapper() {
     }
-
+    
+    /**
+     * Retrieves a list containing all the guestIDs related to a booking.
+     * @param b_id
+     * @param con
+     * @return
+     * @author kasper
+     */
     public ArrayList<Integer> getGuestIDs(int b_id, Connection con) {
         ArrayList<Integer> guest_ids = new ArrayList();
 
@@ -35,6 +46,14 @@ public class GuestMapper {
         return guest_ids;
     }
 
+    /**
+     * Inserts a new guest into the database.
+     * @param b_id
+     * @param apartment_nr
+     * @param con
+     * @return
+     * @author kasper
+     */
     public boolean insertGuest(int b_id, int apartment_nr, Connection con) {
         int rowsinserted = 0;
 

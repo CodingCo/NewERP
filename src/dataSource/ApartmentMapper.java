@@ -9,11 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * The ApartmentMapper class is responsible for handling all database calls
+ * regarding apartments.
  * @author kasper
  */
 public class ApartmentMapper {
 
+    /**
+     * Retrieves a list of all apartments.
+     * @param con
+     * @return
+     * @author kasper
+     */
     public ArrayList<Apartment> getAllApartments(Connection con) {
         ArrayList<Apartment> list = new ArrayList();
         String SQLString = "select * from apartment";
@@ -39,6 +46,17 @@ public class ApartmentMapper {
         return list;
     }
 
+    /**
+     * Retrieves alist of apartments based on the search criterias.
+     * @param date
+     * @param days
+     * @param type
+     * @param apartment_nr
+     * @param con
+     * @return
+     * @throws DateException
+     * @author kasper
+     */
     protected ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> aplist = new ArrayList();
 
@@ -96,6 +114,17 @@ public class ApartmentMapper {
         return aplist;
     }
 
+    /**
+     * Checks whether an apartment has any bookings for a chosen period. Returns
+     * true, if the apartment is available.
+     * @param id
+     * @param date
+     * @param days
+     * @param a_num
+     * @param con
+     * @return
+     * @author kasper
+     */
     public boolean checkAvailAbleApartment(int id, String date, int days, int a_num, Connection con) {
         boolean status = false;
         days = days - 1;
