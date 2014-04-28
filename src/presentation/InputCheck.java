@@ -398,4 +398,38 @@ public class InputCheck {
         }
     }
 
+    /**
+     * @param date
+     * @throws errorHandling.DateException
+     * @Author Simon Grønborg
+     */
+    public static void invalidTimeCheck(String date) throws DateException {
+        int day = 0;
+        int month = 1;
+
+        try {
+            day = Integer.parseInt(date.substring(0, 2));
+            month = Integer.parseInt(date.substring(3, 5));
+        } catch (NumberFormatException ex) {
+            throw new DateException("not numbers");
+        }
+
+        if (day > 31) {
+            throw new DateException("non exsisting day");
+        }
+
+        if (day <= 0) {
+            throw new DateException("non exsisting day - too small");
+        }
+
+        if (month > 12) {
+            throw new DateException("non exsisting month");
+        }
+
+        if (month == 0) {
+            throw new DateException("non exsisting month - too small");
+        }
+
+    }
+
 }

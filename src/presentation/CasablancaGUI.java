@@ -49,7 +49,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private boolean drawMonthFlag = false;
     private boolean drawApartmentFlag = false;
     private boolean isFullScreen = true;
-   // private boolean previousCustomerFlag = false;
+    // private boolean previousCustomerFlag = false;
 
     public static int INDEX_WIDTH = 0;
     public static int INDEX_HEIGHT = 0;
@@ -939,7 +939,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel35.setText("Search Bookings by month");
+        jLabel35.setText("Search Bookings by date");
 
         listBookingDatejTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         listBookingDatejTextField1.setText("10-05-14");
@@ -1501,7 +1501,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                     .addComponent(eBFormButtonSaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addComponent(eBFormButtonClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 230, Short.MAX_VALUE))
+                        .addGap(167, 224, Short.MAX_VALUE))
                     .addGroup(eBFormPanelLayout.createSequentialGroup()
                         .addGroup(eBFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel51)
@@ -1953,7 +1953,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
             InputCheck.streetAddressCheck(street);
 
             System.out.println(tmpCustomer);
-            this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, firstName, lastName, phone, email ,country, city, zipcode, street);
+            this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, firstName, lastName, phone, email, country, city, zipcode, street);
 
             //this.previousCustomerFlag = false;
             this.tmpCustomer = null;
@@ -2160,12 +2160,21 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonthFlag = true;
         this.listBookingPreviousListButton.setEnabled(true);
         this.listBookingnextListButton.setEnabled(true);
-        this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
-        this.listBookingDrawingPanel.removeAll();
-        this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
-        this.listBookingDrawingPanel.add(this.drawMonth);
-        this.listBookingDrawingPanel.repaint();
-        this.drawMonth.reset();
+
+        try {
+            InputCheck.dateFormatCheck(this.listBookingDatejTextField1.getText());
+            InputCheck.invalidTimeCheck(this.listBookingDatejTextField1.getText());
+            this.drawMonth = new DrawMonth(this.listBookingDrawingPanel);
+            this.listBookingDrawingPanel.removeAll();
+            this.drawMonth.initializeListAndMonth(this.controller.getBookingsBySpecificMonth(this.listBookingDatejTextField1.getText()), this.listBookingDatejTextField1.getText());
+            this.listBookingDrawingPanel.add(this.drawMonth);
+            this.listBookingDrawingPanel.repaint();
+            this.drawMonth.reset();
+
+        } catch (DateException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
+        }
+
 
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
