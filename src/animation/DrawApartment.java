@@ -88,7 +88,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
      *
      * @Author Simon Grønborg
      */
-    public void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
+    private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
         p.setLayout(new GridLayout(1, 1));
