@@ -38,7 +38,7 @@ public class ApartmentMapper {
 
         return list;
     }
-
+    
     protected ArrayList<Apartment> findAvailableApartment(String date, int days, String type, int apartment_nr, Connection con) throws DateException {
         ArrayList<Apartment> aplist = new ArrayList();
 
