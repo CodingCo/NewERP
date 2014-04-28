@@ -14,10 +14,17 @@ import java.util.GregorianCalendar;
 
 /**
  *
- * @author simon
+ * @author simon & Robert
  */
 public class InputCheck {
     
+    /**
+     * Checks that email param doesn't violate standard email format
+     * 
+     * @param email
+     * @throws EmailException
+     * @author Simon
+     */
     public static void emailCheck(String email) throws EmailException {
 
         if (email.trim().length() == 0) {
@@ -66,6 +73,12 @@ public class InputCheck {
     }
 
   
+    /**
+     * Checks for name violations on String name
+     * @param name
+     * @throws NameException 
+     * @author Simon
+     */
     public static void nameCheck(String name) throws NameException {
 
         if (name.isEmpty()) {
@@ -82,6 +95,12 @@ public class InputCheck {
 
     }
 
+    /**
+     * Checks for location violations on String name
+     * @param name
+     * @throws NameException
+     * @author Simon
+     */
     public static void custInfoCheck(String name) throws NameException {
 
         if (name.isEmpty()) {
@@ -98,6 +117,13 @@ public class InputCheck {
 
     }
 
+    /**
+     * Checks for Format violation on String bookingNr
+     * @param bookingNr
+     * @return bookingNr parsed to int
+     * @throws BookingException 
+     * @author Robert
+     */
     public static int bookingNrCheck(String bookingNr) throws BookingException {
         for (char c : bookingNr.trim().toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -108,6 +134,12 @@ public class InputCheck {
         return Integer.parseInt(bookingNr);
     }
 
+    /**
+     * Checks for format violations on String streetAdress
+     * @param streetAddress
+     * @throws StreetAddressException 
+     * @author Robert
+     */
     public static void streetAddressCheck(String streetAddress) throws StreetAddressException {
 
         if (streetAddress.isEmpty()) {
@@ -119,6 +151,13 @@ public class InputCheck {
         }
     }
 
+    /**
+     * Checks for apartment violations on String apartmentNr
+     * @param apartmentNr
+     * @return int roomNumber: apartmentNr parsed to int
+     * @throws RoomException 
+     * @author Simon
+     */
     public static int apartmentCheck(String apartmentNr) throws RoomException {
         int roomNumber = 0;
         try {
@@ -134,6 +173,13 @@ public class InputCheck {
         return roomNumber;
     }
 
+    /**
+     * Checks for violations on number of guests and apartment type
+     * @param guests
+     * @param type
+     * @return int numberOfGuests
+     * @throws RoomException 
+     */
     public static int guestCheck(String guests, String type) throws RoomException {
         int numberOfGuests = 0;
         try {
@@ -156,6 +202,13 @@ public class InputCheck {
         return numberOfGuests;
     }
 
+    /**
+     * Checks for violations on price 
+     * @param num
+     * @return int price
+     * @throws RoomException 
+     * @author Simon
+     */
     public static int priceCheck(int num) throws RoomException {
         int price = 0;
 
@@ -174,6 +227,13 @@ public class InputCheck {
         return price;
     }
 
+    /**
+     * checl for boundary violations on String nights
+     * @param nights
+     * @return int x: nights
+     * @throws BookingException 
+     * @author Simon
+     */
     public static int nightsCheck(String nights) throws BookingException {
         int x = 0;
         try {
@@ -189,6 +249,13 @@ public class InputCheck {
         return x;
     }
 
+    /**
+     * Checks for violations
+     * @param guests
+     * @param num
+     * @return int x: guests
+     * @throws RoomException 
+     */
     public static int editApartmentTypeCheck(String guests, int num) throws RoomException {
         int x = 0;
 
@@ -220,6 +287,12 @@ public class InputCheck {
         return x;
     }
 
+    /**
+     * Checks for format violations on String date 
+     * @param date
+     * @throws DateException 
+     * @author Robert
+     */
     public static void dateFormatCheck(String date) throws DateException {
 
         if (date.isEmpty()) {
@@ -244,6 +317,12 @@ public class InputCheck {
         }
     }
 
+    /**
+     * Checks for format violations on String phone
+     * @param phone
+     * @throws PhoneException 
+     * @author Robert
+     */
     public static void phoneCheck(String phone) throws PhoneException {
 
         if (phone.isEmpty()) {
@@ -282,6 +361,12 @@ public class InputCheck {
         }
     }
 
+    /**
+     * Checks if String date is a past date
+     * @param date
+     * @throws DateException 
+     * @christopher
+     */
     public static void timeDateCheck(String date) throws DateException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
         Calendar currentDate = null;

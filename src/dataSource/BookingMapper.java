@@ -8,9 +8,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The BookingMapper class is responsible for handling all database calls
+ * regarding bookings.
+ * @author kasper
+ */
 public class BookingMapper {
 
-    public ArrayList<Booking> getAllBookings(Connection con) {
+    /**
+     * Retrieves a list containing all bookings, in the database.
+     * @param con
+     * @return
+     * @author kasper
+     */
+    protected ArrayList<Booking> getAllBookings(Connection con) {
 
         ArrayList<Booking> aB = new ArrayList();
 
@@ -41,7 +52,16 @@ public class BookingMapper {
         return aB;
     }
 
-    public int insertNewBooking(Booking bo, int id, Connection con) throws BookingException {
+    /**
+     * Inserts a new booking into the database.
+     * @param bo
+     * @param id
+     * @param con
+     * @return
+     * @throws BookingException
+     * @author kasper
+     */
+    protected int insertNewBooking(Booking bo, int id, Connection con) throws BookingException {
         int rowsInserted = 0;
         String SQLString = "insert into booking values (booking_seq.NEXTVAL,?,?,to_date(?,'DD-MM-YY'),?,?,?,?,0)";
         PreparedStatement st = null;
@@ -67,7 +87,15 @@ public class BookingMapper {
         return rowsInserted;
     }
 
-    public int updateBooking(Booking b, Connection con) throws BookingException {
+    /**
+     * Updates a booking found in the database, with new information.
+     * @param b
+     * @param con
+     * @return
+     * @throws BookingException
+     * @author kasper
+     */
+    protected int updateBooking(Booking b, Connection con) throws BookingException {
         int rowsIns = 0;
         String sQLString = "UPDATE BOOKING SET a_num = ?, date_from = TO_DATE(?,'DD-MM-YY'), number_of_nights = ?, "
                 + "travel_agency = ?, number_of_guests = ?, price = ?, version_num = (version_num + 1) "
@@ -97,7 +125,15 @@ public class BookingMapper {
         return rowsIns;
     }
 
-    public int deleteBooking(Connection con, int b_id) throws BookingException {
+    /**
+     * Deletes a booking in the database.
+     * @param con
+     * @param b_id
+     * @return
+     * @throws BookingException
+     * @author kasper
+     */
+    protected int deleteBooking(Connection con, int b_id) throws BookingException {
         int rowDel = 0;
         String SQLString = "delete from booking where b_id = ?";
         PreparedStatement stat = null;

@@ -8,12 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
  * @author kasper
  */
 public class CustomerMapper {
 
-    public int insertNewCustomer(Customer customer, Connection con) {
+    /**
+     * Inserts a new customer into the database.
+     * @param customer
+     * @param con
+     * @return
+     * @author kasper
+     */
+    protected int insertNewCustomer(Customer customer, Connection con) {
 
         String insertCustomerSQL = "INSERT INTO CUSTOMER VALUES(?,?,?,?,?,?,?,?,?,0)";
         int rowsInserted = 0;
@@ -57,7 +63,14 @@ public class CustomerMapper {
         return id;
     }
 
-    public int updateCustomer(Connection con, Customer cus) {
+    /**
+     * Updates a customer already in the database, based on information given.
+     * @param con
+     * @param cus
+     * @return
+     * @author kasper
+     */
+    protected int updateCustomer(Connection con, Customer cus) {
         String SQLString = "update customer set"
                 + " first_name = ?,"
                 + " last_name = ?,"
@@ -99,7 +112,13 @@ public class CustomerMapper {
         return rowIns;
     }
 
-    public ArrayList<Customer> getAllCustomers(Connection con) {
+    /**
+     * Retrieves a list containing all customers in the database.
+     * @param con
+     * @return
+     * @author kasper
+     */
+    protected ArrayList<Customer> getAllCustomers(Connection con) {
         ArrayList<Customer> list = new ArrayList();
         String SQLString = "select * from customer";
         PreparedStatement stat = null;

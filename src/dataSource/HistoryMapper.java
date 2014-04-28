@@ -8,12 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author simon
+ * @author kasper
  */
 public class HistoryMapper {
 
-    public ArrayList<History> getAllBookings(Connection con) {
+    /**
+     * Retrieves a list containing all archived bookings.
+     * @param con
+     * @return
+     * @author kasper
+     */
+    protected ArrayList<History> getAllBookings(Connection con) {
         ArrayList<History> historyList = new ArrayList();
         String SQLString = "SELECT history.*, to_char(history.DATE_FROM, 'DD-MM-YY'), customer.FIRST_NAME, customer.LAST_NAME, customer.PHONE "
                 + "FROM history, customer "

@@ -11,6 +11,7 @@ import domain.Apartment;
 import domain.Booking;
 import domain.Controller;
 import domain.Customer;
+import errorHandling.ConnectionException;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -33,13 +34,14 @@ import javax.swing.JTextField;
 public class CasablancaGUI extends javax.swing.JFrame {
 
     private final CardLayout cl;
-    private final Controller controller;
+
     private final DefaultListModel nBListModel;
     private final DefaultListModel eBListModel;
     private final DefaultListModel lBlistModel;
     private final DefaultListModel cBListModel;
     private final GraphicsDevice device;
 
+    private Controller controller = null;
     private Customer tmpCustomer = null;
     private Apartment temporaryApartment = null;
     private HashMap<Booking, Customer> bookingsFoundHashMap = null;
@@ -60,6 +62,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
     /**
      * Creates new form CasablancaGUI
      *
+     * @Author Simon & Robert
      * @param device
      */
     public CasablancaGUI(GraphicsDevice device) {
@@ -70,9 +73,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         INDEX_WIDTH = d.width;
         INDEX_HEIGHT = d.height;
         setSize(d.width, d.height);
-
-        this.controller = new Controller();
-        this.controller.updateLists();
 
         this.cl = (CardLayout) (mainPage.getLayout());
         this.cl.addLayoutComponent(frontPagePanel, "FrontPage");
@@ -92,9 +92,18 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
         this.bookingsFoundHashMap = new HashMap();
+
+        try {
+            this.controller = new Controller();
+            this.controller.updateLists();
+        } catch (ConnectionException ex) {
+            JOptionPane p = new JOptionPane();
+            p.showMessageDialog(this, ex.getMessage(), "", 1);
+        }
+
         //pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -1951,6 +1960,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 this.controller.updateCustomer(tmpCustomer, firstName, lastName, phone, email, country, city, zipcode, street);
             }
             this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, tmpCustomer.getFirst_name(), tmpCustomer.getLast_name(), tmpCustomer.getPhone());
+
             this.previousCustomerFlag = false;
             this.tmpCustomer = null;
             this.enableComponents(this, false);
@@ -2063,6 +2073,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.enableComponents(this.newBookingFormPanel, false);
     }//GEN-LAST:event_newBookingFindSearchNONTextFieldMouseClicked
     private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
+        //@author Christopher
+
         JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2172,9 +2184,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonthFlag = true;
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
-        
+
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel,a.getA_num()); 
+        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
         this.listBookingDrawingPanel.removeAll();
         this.listBookingDrawingPanel.add(this.drawApartment);
         this.listBookingDrawingPanel.repaint();
@@ -2204,6 +2216,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listBookingDatejTextField1ActionPerformed
     private void listBookingDatejTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listBookingDatejTextField1KeyTyped
+        //@author Christopher
         JTextField selectedTextField = this.listBookingDatejTextField1; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2249,6 +2262,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
     private void eBFindDateTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldKeyTyped
+        //@author Christopher
         JTextField selectedTextField = this.eBFindDateTextField; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
@@ -2323,8 +2337,9 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }
 
     /**
+     * Enables or disables components in Containter container 
      * @param container
-     * @param enable set true to enable components in container
+     * @param enable
      * @author Robert Elving
      */
     private void enableComponents(Container container, boolean enable) {
@@ -2337,6 +2352,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * @param c
+     * set text in all JTextField components in container c to "" 
+     * @author Robert Elving
+     */
     private void resetAllJTextFields(Container c) {
         for (Component component : c.getComponents()) {
             if (component instanceof JTextField) {

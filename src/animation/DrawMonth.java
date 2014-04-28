@@ -1,9 +1,11 @@
 package animation;
 
 import domain.Controller;
+import errorHandling.ConnectionException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -17,7 +19,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author simon
+ * @author simon Grønborg
  */
 public class DrawMonth extends JPanel implements DrawPropertyInterface {
 
@@ -45,9 +47,19 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         this.apartment = 1;
         this.increment = 0;
         this.showings = 0;
-        controller = new Controller();
+
+        try {
+            this.controller = new Controller();
+        } catch (ConnectionException ex) {
+            JOptionPane.showMessageDialog(panel.getRootPane(), ex.getMessage(), "", 1);
+        }
     }
 
+    /**
+     * @Author Simon Grønborg
+     * @param list
+     * @param date
+     */
     public void initializeListAndMonth(ArrayList<int[]> list, String date) {
         this.list = list;
         try {
@@ -67,6 +79,11 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         }
     }
 
+    /**
+     * @Author Simon Grønborg
+     * @param date
+     * @return
+     */
     public String nextMonth(String date) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
@@ -80,6 +97,11 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         return s;
     }
 
+    /**
+     * @Author Simon grønborg
+     * @param date
+     * @return date
+     */
     public String previousMonth(String date) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
@@ -93,6 +115,9 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         return s;
     }
 
+    /**
+     * @Author Robert Elving
+     */
     public void up() {
         int aStart = apartment;
         if ((apartment > this.numOfRows + 1)) {
@@ -136,6 +161,10 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
 
     }
 
+    /**
+     * @Author = Simon og Robert
+     * @param page
+     */
     @Override
     public void paintComponent(Graphics page) {
         page.setColor(this.panel.getBackground());
@@ -198,6 +227,9 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         }
     }
 
+    /**
+     * @Author Simon Grønborg
+     */
     private void addBookingPanel(int x, int y, int width, int height, Color c, Color hc, String message, String message2, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
@@ -209,7 +241,7 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
             public void mouseClicked(MouseEvent e) {
                 try {
                     JOptionPane.showMessageDialog(panel.getRootPane(), controller.getBooking(id).toGuiListString(), "", WIDTH);
-                } catch (Exception ex) {
+                } catch (HeadlessException ex) {
 
                 }
             }

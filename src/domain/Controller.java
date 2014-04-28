@@ -3,18 +3,39 @@ package domain;
 import errorHandling.DateException;
 import errorHandling.BookingException;
 import dataSource.DbFacade;
+import errorHandling.ConnectionException;
 import errorHandling.CustomerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @Author Simon Grønborg
+ * 
+ */
 public class Controller {
 
     private final DbFacade facade;
 
-    public Controller() {
+    public Controller() throws ConnectionException {
         this.facade = DbFacade.getInstance();
     }
 
+    /**
+     * @param c
+     * @param a_num
+     * @param date_from
+     * @param num_of_nights
+     * @param travel_agency
+     * @param number_of_guests
+     * @param price
+     * @param first_name
+     * @param last_name
+     * @param phone
+     * @return boolean
+     * @throws BookingException
+     *
+     * @Author Simon
+     */
     public boolean newBooking(Customer c, int a_num, String date_from, int num_of_nights, String travel_agency, int number_of_guests, double price, String first_name, String last_name, String phone) throws BookingException {
         boolean status = false;
         if (facade != null) {
@@ -28,6 +49,26 @@ public class Controller {
         return new Customer(first_name, last_name, phone, email, country, city, zipcode, street);
     }
 
+    /**
+     * @param b
+     * @param a_num
+     * @param date_from
+     * @param number_of_nights
+     * @param price
+     * @param c
+     * @param first_name
+     * @param last_name
+     * @param phone
+     * @param email
+     * @param country
+     * @param city
+     * @param zipcode
+     * @param street
+     * @param guests
+     * @throws BookingException
+     *
+     * @Author Simon Grønborg og Robert Elving
+     */
     public void updateBooking(Booking b, int a_num, String date_from, int number_of_nights, double price, Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street, int guests) throws BookingException {
         boolean status = false;
         Booking btmp = null;
@@ -63,6 +104,20 @@ public class Controller {
         }
     }
 
+    /**
+     * @param c
+     * @param first_name
+     * @param last_name
+     * @param phone
+     * @param email
+     * @param country
+     * @param city
+     * @param zipcode
+     * @param street
+     * @throws CustomerException
+     *
+     * @Author Simon Grønborg Robert Elving
+     */
     public void updateCustomer(Customer c, String first_name, String last_name, String phone, String email, String country, String city, String zipcode, String street) throws CustomerException {
 
         boolean status = false;
