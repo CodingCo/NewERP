@@ -17,7 +17,7 @@ public class CronThreader implements Runnable {
 
     ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     Connection con;
-    int hour_delay = 25-Calendar.getInstance().getTime().getHours();
+    int hour_delay = 25 - Calendar.getInstance().getTime().getHours();
     int c = 0;
 
     public CronThreader(Connection con) {
@@ -28,7 +28,7 @@ public class CronThreader implements Runnable {
     public void run() {
         this.executor.scheduleAtFixedRate(periodicTask, hour_delay, 24, TimeUnit.HOURS);
     }
-    
+
     public void doCronJob() {
 
         String SQL1 = "BEGIN CPHRE31.MOVEBOOKING; END;";
@@ -40,29 +40,27 @@ public class CronThreader implements Runnable {
             st = con.prepareStatement(SQL2);
             st.executeQuery();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
         try {
             st2 = con.prepareCall(SQL1);
             st2.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         } finally {
             try {
                 st.close();
                 st2.close();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
     }
 
     Runnable periodicTask = new Runnable() {
+        @Override
         public void run() {
             doCronJob();
-
             c++;
-            System.out.println("Cron nr: " + c);
         }
     };
 }

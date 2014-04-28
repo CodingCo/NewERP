@@ -20,7 +20,8 @@ import java.util.HashMap;
  * @author Christopher & Thomas
  */
 public class Chatty {
-
+    
+    
     //== Fields
     private ArrayList<Booking> bookings;
     private ArrayList<History> history;
