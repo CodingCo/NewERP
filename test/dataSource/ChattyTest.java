@@ -74,18 +74,19 @@ public class ChattyTest {
 
         try {
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (true);
-        } catch (BookingException e) {
-            assert (false);
+            assertTrue(true);
+        } catch (BookingException ex) {
+            assertFalse(true);
+
         }
 
         // Too long email
         try {
             c.setEmail("emailemailemailemailemailemailemailemailemail@mail.com");
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(false);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
 
         // Zipcode not a number
@@ -93,9 +94,9 @@ public class ChattyTest {
             c = resetToValidCustomer();
             c.setZipcode("not a num");
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(true);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
 
         // Too long phone number
@@ -103,9 +104,9 @@ public class ChattyTest {
             c = resetToValidCustomer();
             c.setPhone("123456789987654321");
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(true);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
 
         // null-value in a string where SQL constriant is not null 
@@ -113,39 +114,79 @@ public class ChattyTest {
             c = resetToValidCustomer();
             c.setFirst_name(null);
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(true);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
 
         try {
             c = null;
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(true);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
 
         try {
             c = resetToValidCustomer();
             c.setZipcode("-500");
             chatty.createNewBookingTransaction(b, c, con, false);
-            assert (false);
+            assertFalse(true);
         } catch (BookingException ex) {
-            assert (true);
+            assertTrue(true);
         }
-        
-        
-        
-   
-        // Gyldig booking
-        // ugyldig booking
-        // - ugyldig cust id
-        // - ugyldig apartment 
-        //  - forkert dato format bogstaver og høje tal
-        // - travel agency length
-        // - nullværdi 
-        // ugyldig cust id
+
+        c = resetToValidCustomer();
+        b = resetToValidBooking(c);
+
+        // Too high apartnumber
+        try {
+            b.setA_num(105);
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assertFalse(true);
+        } catch (BookingException ex) {
+            assertTrue(true);
+        }
+
+        // negative apartment number
+        try {
+            b = resetToValidBooking(c);
+            b.setA_num(-1);
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assertFalse(true);
+        } catch (BookingException ex) {
+            assertTrue(true);
+        }
+
+        // Date not in number
+        try {
+            b = resetToValidBooking(c);
+            b.setDate_from("dette er en dato");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assertFalse(true);
+        } catch (BookingException ex) {
+            assertTrue(true);
+        }
+
+        // invalid date
+        try {
+            b = resetToValidBooking(c);
+            b.setDate_from("99-99-99");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assertFalse(true);
+        } catch (BookingException ex) {
+            assertTrue(true);
+        }
+
+        // Too long travel agency
+        try {
+            b = resetToValidBooking(c);
+            b.setTravel_agency("i am a travel agancy and you are all my scrum slaves");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assertFalse(true);
+        } catch (BookingException ex) {
+            assertTrue(true);
+        }
     }
 
     /**
