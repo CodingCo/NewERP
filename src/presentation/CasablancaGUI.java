@@ -1957,7 +1957,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
             InputCheck.custInfoCheck(country);
             InputCheck.streetAddressCheck(street);
 
-            System.out.println(tmpCustomer);
             this.controller.newBooking(tmpCustomer, a.getA_num(), date, numberOfNights, travelAgency, guests, price, firstName, lastName, phone, email, country, city, zipcode, street);
 
             //this.previousCustomerFlag = false;
@@ -2319,7 +2318,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eBFormANRTextFieldFocusLost
     private void listBookingApartmentjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBookingApartmentjListValueChanged
-                this.drawTodayFlag = false;
+        this.drawTodayFlag = false;
         this.drawApartmentFlag = false;
         this.drawMonthFlag = true;
         this.listBookingPreviousListButton.setEnabled(false);
