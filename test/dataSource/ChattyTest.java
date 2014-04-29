@@ -2,6 +2,7 @@ package dataSource;
 
 import domain.Booking;
 import domain.Customer;
+import errorHandling.BookingException;
 import errorHandling.ConnectionException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -55,41 +56,96 @@ public class ChattyTest {
 
     }
 
+    private Customer resetToValidCustomer() {
+        return new Customer("Kasper", "Hald", "5555", "email@mail.dk", "Danmark", "køge", "8888", "Street 88");
+    }
+
+    private Booking resetToValidBooking(Customer c) {
+        return new Booking(1, "12-12-14", 1, "travel agency", 1, 60, c.getFirst_name(), c.getLast_name(), c.getPhone());
+    }
+
     /**
      * Test of createNewBookingTransaction method, of class Chatty.
      */
-    @Test(expected = Exception.class)
-    public void testCreateNewBookingTransaction() throws Exception {
-        Customer c = new Customer("Kebab", "Smith", "5555", "email@mail.dk", "denmark", "køge", "8888", "Street 88");
-        Booking b = new Booking(1, "12-12-14", 1, "travel agency", 1, 60, c.getFirst_name(), c.getLast_name(), c.getPhone());
+    @Test
+    public void testCreateNewBookingTransaction() {
+        Customer c = resetToValidCustomer();
+        Booking b = resetToValidBooking(c);
 
-        // gyldig customer        
-        // Ugyldig customer        
-        // - for lang email 
-        // - zipcode som ikke nummer
-        // - for lang phone
-        // - en null værdi 
-        // - En tom customer
-        // - En negativ zipcode
+        try {
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (true);
+        } catch (BookingException e) {
+            assert (false);
+        }
+
+        // Too long email
+        try {
+            c.setEmail("emailemailemailemailemailemailemailemailemail@mail.com");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
+
+        // Zipcode not a number
+        try {
+            c = resetToValidCustomer();
+            c.setZipcode("not a num");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
+
+        // Too long phone number
+        try {
+            c = resetToValidCustomer();
+            c.setPhone("123456789987654321");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
+
+        // null-value in a string where SQL constriant is not null 
+        try {
+            c = resetToValidCustomer();
+            c.setFirst_name(null);
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
+
+        try {
+            c = null;
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
+
+        try {
+            c = resetToValidCustomer();
+            c.setZipcode("-500");
+            chatty.createNewBookingTransaction(b, c, con, false);
+            assert (false);
+        } catch (BookingException ex) {
+            assert (true);
+        }
         
         
         
+   
         // Gyldig booking
         // ugyldig booking
         // - ugyldig cust id
         // - ugyldig apartment 
         //  - forkert dato format bogstaver og høje tal
         // - travel agency length
-        
-        
-        Connection con = null;
-        boolean previousCustomerFlag = false;
-        Chatty instance = new Chatty();
-        boolean expResult = false;
-        boolean result = instance.createNewBookingTransaction(b, c, con, previousCustomerFlag);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // - nullværdi 
+        // ugyldig cust id
     }
 
     /**
@@ -97,16 +153,7 @@ public class ChattyTest {
      */
     @Test
     public void testUpdateBookingTransaction() throws Exception {
-        System.out.println("updateBookingTransaction");
-        Booking b = null;
-        Customer customer = null;
-        Connection con = null;
-        Chatty instance = new Chatty();
-        boolean expResult = false;
-        boolean result = instance.updateBookingTransaction(b, customer, con);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
 }
