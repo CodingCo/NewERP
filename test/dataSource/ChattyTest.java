@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class ChattyTest {
 
     private static Connection con;
+    private Chatty chatty;
 
     public ChattyTest() {
 
@@ -46,6 +47,7 @@ public class ChattyTest {
     public void setUp() {
         Fixture f = new Fixture();
         f.runScript();
+        chatty = new Chatty();
     }
 
     @After
@@ -56,11 +58,30 @@ public class ChattyTest {
     /**
      * Test of createNewBookingTransaction method, of class Chatty.
      */
-    @Test
+    @Test(expected = Exception.class)
     public void testCreateNewBookingTransaction() throws Exception {
-        System.out.println("createNewBookingTransaction");
-        Booking b = null;
-        Customer c = null;
+        Customer c = new Customer("Kebab", "Smith", "5555", "email@mail.dk", "denmark", "køge", "8888", "Street 88");
+        Booking b = new Booking(1, "12-12-14", 1, "travel agency", 1, 60, c.getFirst_name(), c.getLast_name(), c.getPhone());
+
+        // gyldig customer        
+        // Ugyldig customer        
+        // - for lang email 
+        // - zipcode som ikke nummer
+        // - for lang phone
+        // - en null værdi 
+        // - En tom customer
+        // - En negativ zipcode
+        
+        
+        
+        // Gyldig booking
+        // ugyldig booking
+        // - ugyldig cust id
+        // - ugyldig apartment 
+        //  - forkert dato format bogstaver og høje tal
+        // - travel agency length
+        
+        
         Connection con = null;
         boolean previousCustomerFlag = false;
         Chatty instance = new Chatty();
