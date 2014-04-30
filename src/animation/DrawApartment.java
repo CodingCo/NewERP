@@ -74,8 +74,15 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
                     addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
                 }
 
-                if ((tmp[2] * 100) + tmp[1] < (thisYear * 100) + thisMonth && (tmp[10] * 100) + tmp[9] > (thisYear * 100) + thisMonth) {
+                if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     // whole month
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
+                }
+
+                if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
+                    // in this month
+
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxheight, green, hGreen, "" + tmp[6], tmp[6]);
                 }
 
             }
