@@ -43,13 +43,13 @@ public class Chatty {
     }
 
     /**
-     * @Author Simon
      *
      * Finds a Customer, with matching customer ID If none is found with the
      * input ID, it returns null
      *
      * @param custId - Customer ID to search for
      * @return Customer - returns the desired customer
+     * @Author Simon
      */
     protected Customer getCustomer(int custId) {
 	for (Customer c : this.customers) {
@@ -61,7 +61,6 @@ public class Chatty {
     }
 
     /**
-     * @Author Simon
      *
      * Finds a booking with matching booking ID if none is found with the input
      * ID, it returns null
@@ -69,6 +68,7 @@ public class Chatty {
      * @param bID - Booking ID to search for
      *
      * @return A Booking object, corresponding to the input
+     * @Author Simon
      */
     protected Booking getBooking(int bID) {
 	for (Booking b : this.bookings) {
@@ -81,8 +81,6 @@ public class Chatty {
 
     /**
      *
-     * @Author Thomas & Christopher
-     *
      * Finds bookings depending on the params, the user wants to search for
      *
      * @param b_id The booking ID to search for
@@ -91,7 +89,8 @@ public class Chatty {
      * @param apartment_nr Apartment num to search for
      * @param con Mandatory Connection
      * @return Returns a HashMap with Booking as the key, and Customer as value.
-     * @deprecated 
+     * @Author Thomas & Christopher
+     * @deprecated
      */
     protected HashMap findBookings(int b_id, String name, String date, int apartment_nr, Connection con) {
 	updateLists(con);
@@ -189,12 +188,12 @@ public class Chatty {
     }
 
     /**
-     * @Author Thomas & Christopher
      *
      * Updates the lists: bookings and customers. When the list is updated the
      * newest information from the database is retriewed
      *
      * @param con The mandatory Connection
+     * @Author Thomas & Christopher
      */
     protected void updateLists(Connection con) {
 	bookings = bookingMapper.getAllBookings(con);
@@ -205,11 +204,7 @@ public class Chatty {
 	return this.apartmentMapper.getAllApartments(con);
     }
 
-    ///////////////////////////////////////////////// TRANSACTIONS'
     /**
-     * @param previousCustomerFlag
-     * @Author Thomas & Christopher
-     *
      * Creates a booking on the DB Commits if it succeeds, if not it rolls back
      *
      * @param b Booking
@@ -217,6 +212,8 @@ public class Chatty {
      * @param con Connection
      * @return status, depending on wether the transaction succeded or not
      * @throws BookingException
+     * @param previousCustomerFlag
+     * @Author Thomas & Christopher
      */
     protected boolean createNewBookingTransaction(Booking b, Customer c, Connection con, boolean previousCustomerFlag) throws BookingException {
 
@@ -256,8 +253,6 @@ public class Chatty {
     }
 
     /**
-     * @Author Thomas & Christopher
-     *
      * Updates a booking with mathcing bookig ID, stored in the param
      *
      * @param b Booking
@@ -265,6 +260,7 @@ public class Chatty {
      * @param con Connection
      * @return true if booking was updated, false if not
      * @throws BookingException
+     * @Author Thomas & Christopher
      */
     protected boolean updateBookingTransaction(Booking b, Customer customer, Connection con) throws BookingException {
 	int bookingStatus = 0;
@@ -303,20 +299,19 @@ public class Chatty {
     }
 
     /**
-     * @Author Simon
      *
      * Searches through the Customer list
      *
      * @param keyword - String
      * @return ArrayLIst of customers, which are related with the keyword
+     * @Author Kasper
      */
     protected ArrayList<Customer> searchForCustomers(String keyword) {
 	ArrayList<Customer> tmpList = new ArrayList();
-
 	for (Customer c : customers) {
-	    if (c.getFirst_name().toLowerCase().contains(keyword)
-		    || c.getLast_name().toLowerCase().contains(keyword)
-		    || c.getPhone().toLowerCase().contains(keyword)) {
+	    if (c.getFirst_name().toLowerCase().contains(keyword.toLowerCase())
+		    || c.getLast_name().toLowerCase().contains(keyword.toLowerCase())
+		    || c.getPhone().toLowerCase().contains(keyword.toLowerCase())) {
 		tmpList.add(c);
 	    }
 	}
