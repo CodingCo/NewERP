@@ -99,6 +99,7 @@ public class Fixture {
         Statement statement = null;
         String[] dropTable = new String[5];
         String[] dropSeq = new String[3];
+        PreparedStatement s = null;
 
         dropTable[0] = "DROP TABLE guest";
         dropTable[1] = "DROP TABLE booking";
@@ -119,13 +120,13 @@ public class Fixture {
         String d15 = "CREATE TABLE history( b_id  NUMBER(8) PRIMARY KEY, cust_id NUMBER(8) NOT NULL REFERENCES customer(cust_id), a_num NUMBER NOT NULL REFERENCES apartment(a_num), date_from DATE NOT NULL, number_of_nights NUMBER(4) NOT NULL, travel_agency VARCHAR2(30), number_of_guests NUMBER(1) NOT NULL, price DECIMAL(10,2) NOT NULL )";
         String d16 = "CREATE TABLE guest( b_id NUMBER(8) REFERENCES booking (b_id), guest_id VARCHAR2(10))";
 
+        String SQL2 = "ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'";
+
         try {
-
-            statement = con.createStatement();
-            statement.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YY'");
-
+            s = con.prepareStatement(SQL2);
+            s.executeQuery();
         } catch (SQLException ex) {
-
+            System.out.println(".sdjflkdsjfl");
         }
 
         for (String dt : dropTable) {

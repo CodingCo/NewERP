@@ -30,7 +30,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     private int screenRows;
     private int boxWidth;
     private final int calendarHeight = 120;
-    private final int boxheight = 60;
+    private final int boxHeight = 60;
     private final int spaceBuffer = 40;
 
     private int thisYear;
@@ -69,20 +69,26 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
             for (int y = 0; y < list.size(); ++y) {
                 int[] tmp = list.get(y);
 
-                if (tmp[1] == month && tmp[9] == month) {
+                if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // i denne måned
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxHeight, blue, hblue, "" + tmp[6], tmp[6]);
                 }
 
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     // whole month
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxheight, blue, hblue, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(30), boxHeight, orange, hOrange, "" + tmp[6], tmp[6]);
                 }
 
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // in this month
 
-                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxheight, green, hGreen, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "" + tmp[6], tmp[6]);
+                }
+
+                if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
+                    //ud af måneden
+                    int nights = (tmp[3] - tmp[0]) + 1;
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", tmp[6]);
                 }
 
             }

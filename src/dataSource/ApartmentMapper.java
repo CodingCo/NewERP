@@ -141,8 +141,7 @@ public class ApartmentMapper {
         try {
             statement = con.prepareStatement(SQL2);
             statement.executeQuery();
-        } catch (Exception d) {
-
+        } catch (SQLException ex) {
         }
         try {
             statement = con.prepareStatement(SQL);
@@ -162,7 +161,7 @@ public class ApartmentMapper {
             }
 
         } catch (SQLException ex) {
-
+            System.out.println(ex.getMessage());
         } finally {
             try {
                 statement.close();

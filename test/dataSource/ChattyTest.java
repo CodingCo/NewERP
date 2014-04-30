@@ -191,12 +191,4 @@ public class ChattyTest {
         assertEquals(1, i);
     }
 
-    /**
-     * Test of updateBookingTransaction method, of class Chatty.
-     */
-    @Test
-    public void testUpdateBookingTransaction() throws Exception {
-
-    }
-
 }
