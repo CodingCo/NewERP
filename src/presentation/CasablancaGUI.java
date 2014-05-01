@@ -2072,7 +2072,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newBookingFindSearchNONTextFieldMouseClicked
     private void newBookingFindSearchFromTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newBookingFindSearchFromTextFieldKeyTyped
         //@author Christopher
-
         JTextField selectedTextField = this.newBookingFindSearchFromTextField; //== EDIT THIS
         String candidates = "1234567890";
         boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
