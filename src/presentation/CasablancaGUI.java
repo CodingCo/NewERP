@@ -101,8 +101,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
         //pack();
-        //setVisible(true);
-        setFullScreenSettings();
+        setVisible(true);
+        //setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -2037,7 +2037,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.lBlistModel.clear();
         ArrayList<Apartment> list = this.controller.getApartments();
         for (Apartment a : list) {
-            System.out.println("jk");
             this.lBlistModel.addElement(a);
         }
     }//GEN-LAST:event_listBookingPageButtonActionPerformed
@@ -2118,8 +2117,11 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listBookingSearchjButtonActionPerformed
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
+        this.drawApartmentFlag = false;
         this.cl.show(mainPage, "FrontPage");
+
         this.listBookingDrawingPanel.removeAll();
+        this.listBookingApartmentjList.clearSelection();
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
     private void listBookingApartmentjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingApartmentjListMouseClicked
         this.drawTodayFlag = false;
@@ -2233,18 +2235,19 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eBFormANRTextFieldFocusLost
     private void listBookingApartmentjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBookingApartmentjListValueChanged
-        this.drawTodayFlag = false;
-        this.drawApartmentFlag = true;
-        this.drawMonthFlag = false;
-        this.listBookingPreviousListButton.setEnabled(false);
-        this.listBookingnextListButton.setEnabled(false);
-        
-        Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
-        this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
-        this.listBookingDrawingPanel.removeAll();
-        this.listBookingDrawingPanel.add(this.drawApartment);
-        this.listBookingDrawingPanel.repaint();
+        if (this.drawApartmentFlag) {
+            this.drawTodayFlag = false;
+            this.drawApartmentFlag = true;
+            this.drawMonthFlag = false;
+            this.listBookingPreviousListButton.setEnabled(false);
+            this.listBookingnextListButton.setEnabled(false);
 
+            Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
+            this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
+            this.listBookingDrawingPanel.removeAll();
+            this.listBookingDrawingPanel.add(this.drawApartment);
+            this.listBookingDrawingPanel.repaint();
+        }
     }//GEN-LAST:event_listBookingApartmentjListValueChanged
 
     /**

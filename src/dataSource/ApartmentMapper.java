@@ -36,12 +36,12 @@ public class ApartmentMapper {
                 list.add(new Apartment(rs.getInt(1), rs.getInt(3), rs.getString(2), rs.getInt(4)));
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
 
         } finally {
             try {
                 stat.close();
-            } catch (SQLException e) {
+            } catch (Exception e) {
             }
         }
 
