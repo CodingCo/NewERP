@@ -2037,6 +2037,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.lBlistModel.clear();
         ArrayList<Apartment> list = this.controller.getApartments();
         for (Apartment a : list) {
+            System.out.println("jk");
             this.lBlistModel.addElement(a);
         }
     }//GEN-LAST:event_listBookingPageButtonActionPerformed
@@ -2237,7 +2238,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
         this.drawMonthFlag = false;
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
-
+        
         Apartment a = (Apartment) this.lBlistModel.getElementAt(this.listBookingApartmentjList.getSelectedIndex());
         this.drawApartment = new DrawApartment(this.listBookingDrawingPanel, a.getA_num());
         this.listBookingDrawingPanel.removeAll();
