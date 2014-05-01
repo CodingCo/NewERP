@@ -57,6 +57,9 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
      */
     @Override
     public void paintComponent(Graphics page) {
+        page.setColor(this.panel.getBackground());
+        page.fillRect(0, 0, getWidth(), getHeight());
+        page.setColor(this.panel.getForeground());
         paintCalendar(page, screenRows);
 
         int month = thisMonth;
