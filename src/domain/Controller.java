@@ -134,8 +134,6 @@ public class Controller {
         }
     }
 
- 
-
     public boolean deleteBooking(int b_id) throws BookingException {
         boolean status = false;
         if (this.facade != null) {
@@ -151,9 +149,9 @@ public class Controller {
         return null;
     }
 
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
+    public HashMap<Booking, Customer> findBookings(String search) {
         if (this.facade != null) {
-            return this.facade.findBookings(bookingNr, name, date, apartment_nr);
+            return this.facade.findBookings(search);
         }
         return null;
     }

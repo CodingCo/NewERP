@@ -62,6 +62,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         int month = thisMonth;
         int year = thisYear;
         int day = thisDay;
+        int cdd = thisCdm;
 
         // muligvis en for lang
         for (int x = 0; x < screenRows; ++x) {
@@ -71,29 +72,33 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
                 if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // i denne måned
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxHeight, blue, hblue, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxHeight, blue, hblue, ""+ tmp[6], tmp[6]);
                 }
 
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     // whole month
-                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(30), boxHeight, orange, hOrange, "" + tmp[6], tmp[6]);
+                    System.out.println(cdd);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(cdd), boxHeight, orange, hOrange, "" + tmp[6], tmp[6]);
                 }
 
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // in this month
 
-                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "<<"+ tmp[6], tmp[6]);
                 }
 
                 if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     //ud af måneden
                     int nights = (tmp[3] - tmp[0]) + 1;
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights), boxHeight, green, hGreen, "nr. " + tmp[5] + ">> ", tmp[6]);
+
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights) - (boxWidth / 2), boxHeight, green, hGreen, ""+tmp[6]+">>", tmp[6]);
                 }
 
             }
 
-            month = nextMonth(x + 1)[0];
+            int[] calt = nextMonth(x + 1);
+            month = calt[0];
+            cdd = calt[1];
         }
 
     }
@@ -107,8 +112,11 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     private void addBookingBox(int x, int y, int width, int height, Color c, Color hc, String message, int id) {
         JPanel p = new JPanel();
         JLabel h = new JLabel();
-        p.setLayout(new GridLayout(1, 1));
+        JLabel k = new JLabel();
+        p.setLayout(new GridLayout(2, 1));
 
+        
+        
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -128,11 +136,17 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
         this.panel.add(p);
         p.add(h);
+        p.add(k);
 
         h.setHorizontalAlignment(SwingConstants.CENTER);
         h.setText(message);
         h.setBackground(Color.black);
 
+        
+        k.setHorizontalAlignment(SwingConstants.CENTER);
+        k.setText(controller.getBooking(id).getFirst_name());
+        k.setBackground(Color.black);
+        
         p.setLocation(x, y);
         p.setSize(width, height);
         p.setBackground(c);

@@ -97,17 +97,14 @@ public class DbFacade {
     }
 
     /**
-     * @param bookingNr
-     * @param name
-     * @param date
-     * @param apartment_nr
+     * @param search
      * @return
      *
      * @Author Simon
      */
-    public HashMap<Booking, Customer> findBookings(int bookingNr, String name, String date, int apartment_nr) {
+    public HashMap<Booking, Customer> findBookings(String search) {
         if (this.chatty != null) {
-            return this.chatty.findBookings(bookingNr, name, date, apartment_nr, con);
+            return this.chatty.searchForBookings(search, con);
         }
         return null;
     }

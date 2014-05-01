@@ -196,20 +196,14 @@ public class CasablancaGUI extends javax.swing.JFrame {
         editBookingPanel = new javax.swing.JPanel();
         eBFindPanel = new javax.swing.JPanel();
         eBFindNameTextField = new javax.swing.JTextField();
-        eBFindDateTextField = new javax.swing.JTextField();
-        eBFindRoomNrTextField = new javax.swing.JTextField();
-        eBFindBookingNRTextField = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         eBFindButtonFindButton = new javax.swing.JButton();
         eBFindButtonBackButton = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         eBMatchPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         eBMatchList = new javax.swing.JList();
@@ -1194,17 +1188,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         eBFindNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        eBFindDateTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        eBFindDateTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                eBFindDateTextFieldKeyTyped(evt);
-            }
-        });
-
-        eBFindRoomNrTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        eBFindBookingNRTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         jLabel27.setText("Find booking by entering a search criteria. All  ");
 
         eBFindButtonFindButton.setText("Find");
@@ -1239,20 +1222,13 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
         jLabel44.setText("fields are optional. Make your changes in the");
 
-        jLabel6.setText("Booking number");
-
-        jLabel18.setText("Customer name");
-
-        jLabel7.setText("Booking start date");
-
-        jLabel28.setText("Apartment number");
+        jLabel18.setText("Search Field");
 
         jLabel8.setText("Click to find your booking");
 
         jLabel5.setText("booking form on the right.");
 
-        jLabel45.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-        jLabel45.setText("Booking start date must be in DD-MM-YY");
+        jLabel6.setText("Enter any search criteria, seperate with a space");
 
         javax.swing.GroupLayout eBFindPanelLayout = new javax.swing.GroupLayout(eBFindPanel);
         eBFindPanel.setLayout(eBFindPanelLayout);
@@ -1262,22 +1238,16 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eBFindNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(eBFindDateTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(eBFindRoomNrTextField)
-                    .addComponent(eBFindBookingNRTextField)
                     .addGroup(eBFindPanelLayout.createSequentialGroup()
                         .addGroup(eBFindPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel18)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel28)
                             .addComponent(eBFindButtonBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(eBFindButtonFindButton, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel27)
                             .addComponent(jLabel44)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1290,24 +1260,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eBFindBookingNRTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(131, 131, 131)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eBFindNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eBFindDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eBFindRoomNrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel45)
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1777,27 +1735,12 @@ public class CasablancaGUI extends javax.swing.JFrame {
         enableComponents(this.eBFormPanel, false);
 
         try {
-            String name = this.eBFindNameTextField.getText().trim();
-            String date = this.eBFindDateTextField.getText().trim();
-            String bNum = this.eBFindBookingNRTextField.getText().trim();
-            String aNum = this.eBFindRoomNrTextField.getText().trim();
-            int apartmentNumber = 0;
-            int bookingNumber = 0;
-
-            if (!name.isEmpty()) {
-                InputCheck.nameCheck(name);
+            String search = this.eBFindNameTextField.getText();
+            if (search.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Field is empty", "", WIDTH);
+            } else {
+                bookingsFoundHashMap = controller.findBookings(search);
             }
-            if (!date.isEmpty()) {
-                InputCheck.dateFormatCheck(date);
-            }
-            if (!bNum.isEmpty()) {
-                bookingNumber = InputCheck.bookingNrCheck(bNum);
-            }
-            if (!aNum.isEmpty()) {
-                apartmentNumber = InputCheck.apartmentCheck(aNum);
-            }
-
-            bookingsFoundHashMap = controller.findBookings(bookingNumber, name, date, apartmentNumber);
 
             if (bookingsFoundHashMap.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Booking Found", "", WIDTH);
@@ -1807,14 +1750,7 @@ public class CasablancaGUI extends javax.swing.JFrame {
                 }
                 this.enableComponents(this.eBMatchPanel, true);
             }
-        } catch (NameException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "", WIDTH);
-        } catch (DateException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "", WIDTH);
-        } catch (BookingException exx) {
-            JOptionPane.showMessageDialog(this, exx.getMessage(), "", WIDTH);
-        } catch (RoomException exxx) {
-            JOptionPane.showMessageDialog(this, exxx.getMessage(), "", WIDTH);
+
         } catch (Exception exxxx) {
             JOptionPane.showMessageDialog(this, exxxx.getMessage(), "", WIDTH);
         }
@@ -2267,27 +2203,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_listBookingPreviousListButtonActionPerformed
-    private void eBFindDateTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFindDateTextFieldKeyTyped
-        //@author Christopher
-        JTextField selectedTextField = this.eBFindDateTextField; //== EDIT THIS
-        String candidates = "1234567890";
-        boolean hit = candidates.indexOf(evt.getKeyChar()) >= 0;
-        if (hit) {
-            int textLength = selectedTextField.getText().length();
-            //== Controls "bindestreg"
-            if (textLength == 2 || (textLength % 2 == 1 && textLength > 1) && textLength < 7) {
-                selectedTextField.setText(selectedTextField.getText() + "-");
-            }
-            //== Controls maxlength
-            if (textLength > 7) {
-                char[] firstChars = selectedTextField.getText().toCharArray();
-                selectedTextField.setText("");
-                for (int i = 0; i < 7; i++) {
-                    selectedTextField.setText(selectedTextField.getText() + firstChars[i]);
-                }
-            }
-        }
-    }//GEN-LAST:event_eBFindDateTextFieldKeyTyped
     private void eBFormANRTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eBFormANRTextFieldKeyTyped
         this.eBFormNOGTextField.setText("");
     }//GEN-LAST:event_eBFormANRTextFieldKeyTyped
@@ -2455,13 +2370,10 @@ public class CasablancaGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField eBFindBookingNRTextField;
     private javax.swing.JButton eBFindButtonBackButton;
     private javax.swing.JButton eBFindButtonFindButton;
-    private javax.swing.JTextField eBFindDateTextField;
     private javax.swing.JTextField eBFindNameTextField;
     private javax.swing.JPanel eBFindPanel;
-    private javax.swing.JTextField eBFindRoomNrTextField;
     private javax.swing.JTextField eBFormADateTextField;
     private javax.swing.JTextField eBFormANRTextField;
     private javax.swing.JButton eBFormButtonClearButton;
@@ -2508,7 +2420,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -2527,7 +2438,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -2536,7 +2446,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
