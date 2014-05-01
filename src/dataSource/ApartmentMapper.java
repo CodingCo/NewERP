@@ -161,7 +161,7 @@ public class ApartmentMapper {
             }
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            
         } finally {
             try {
                 statement.close();

@@ -2122,8 +2122,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
     private void listBookingApartmentjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingApartmentjListMouseClicked
         this.drawTodayFlag = false;
-        this.drawApartmentFlag = false;
-        this.drawMonthFlag = true;
+        this.drawApartmentFlag = true;
+        this.drawMonthFlag = false;
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
 
@@ -2233,8 +2233,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_eBFormANRTextFieldFocusLost
     private void listBookingApartmentjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listBookingApartmentjListValueChanged
         this.drawTodayFlag = false;
-        this.drawApartmentFlag = false;
-        this.drawMonthFlag = true;
+        this.drawApartmentFlag = true;
+        this.drawMonthFlag = false;
         this.listBookingPreviousListButton.setEnabled(false);
         this.listBookingnextListButton.setEnabled(false);
 

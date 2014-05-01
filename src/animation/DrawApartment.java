@@ -75,26 +75,20 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
 
                 if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // i denne måned
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxHeight, blue, hblue, ""+ tmp[6], tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(tmp[4]), boxHeight, blue, hblue, "" + tmp[6], tmp[6]);
                 }
-
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     // whole month
-                    System.out.println(cdd);
                     addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(cdd), boxHeight, orange, hOrange, "" + tmp[6], tmp[6]);
                 }
-
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // in this month
-
-                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "<<"+ tmp[6], tmp[6]);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "<<" + tmp[6], tmp[6]);
                 }
-
                 if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     //ud af måneden
                     int nights = (tmp[3] - tmp[0]) + 1;
-
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights) - (boxWidth / 2), boxHeight, green, hGreen, ""+tmp[6]+">>", tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights) - (boxWidth / 2), boxHeight, green, hGreen, "" + tmp[6] + ">>", tmp[6]);
                 }
 
             }
@@ -118,8 +112,6 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         JLabel k = new JLabel();
         p.setLayout(new GridLayout(2, 1));
 
-        
-        
         p.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -145,11 +137,10 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         h.setText(message);
         h.setBackground(Color.black);
 
-        
         k.setHorizontalAlignment(SwingConstants.CENTER);
         k.setText(controller.getBooking(id).getFirst_name());
         k.setBackground(Color.black);
-        
+
         p.setLocation(x, y);
         p.setSize(width, height);
         p.setBackground(c);

@@ -427,7 +427,7 @@ public class Chatty {
                 bookingEndDate.add(Calendar.DATE, current.getNum_of_nights());
 
                 if ((bookingStartDate.compareTo(startPeriod) >= 0) && (bookingStartDate.compareTo(endPeriod) <= 0)) {
-                    System.out.println("true"); // it starts this month
+                     // it starts this month
                     relevant = true;
                 } else if ((bookingStartDate.compareTo(startPeriod) < 0) && (bookingEndDate.compareTo(startPeriod)) >= 0) {
                     relevant = true; // Then it starts before, but ends after the first day of month

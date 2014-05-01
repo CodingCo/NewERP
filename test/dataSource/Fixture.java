@@ -126,7 +126,7 @@ public class Fixture {
             s = con.prepareStatement(SQL2);
             s.executeQuery();
         } catch (SQLException ex) {
-            System.out.println(".sdjflkdsjfl");
+            
         }
 
         for (String dt : dropTable) {

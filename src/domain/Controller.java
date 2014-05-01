@@ -48,7 +48,6 @@ public class Controller {
 
         if (facade != null) {
             if (c != null) {
-                System.out.println("prev");
                 previousCustomerFlag = true;
                 try {
                     ctmp = (Customer) c.clone();

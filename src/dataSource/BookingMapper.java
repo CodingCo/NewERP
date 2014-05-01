@@ -119,7 +119,6 @@ public class BookingMapper {
             rowsIns = st.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("ub1");
             throw new BookingException("Booking could not be updated");
 
         } finally {
