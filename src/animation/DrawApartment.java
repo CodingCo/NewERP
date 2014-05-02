@@ -138,7 +138,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
         h.setBackground(Color.black);
 
         k.setHorizontalAlignment(SwingConstants.CENTER);
-        //k.setText(controller.getBooking(id).getFirst_name());
+        k.setText(controller.getBooking(id).getFirst_name());
         k.setBackground(Color.black);
 
         p.setLocation(x, y);

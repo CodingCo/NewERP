@@ -101,8 +101,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
         //pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
@@ -2119,7 +2119,6 @@ public class CasablancaGUI extends javax.swing.JFrame {
     private void listBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBookingBackButtonActionPerformed
         this.drawApartmentFlag = false;
         this.cl.show(mainPage, "FrontPage");
-
         this.listBookingDrawingPanel.removeAll();
         this.listBookingApartmentjList.clearSelection();
     }//GEN-LAST:event_listBookingBackButtonActionPerformed
