@@ -101,8 +101,8 @@ public class CasablancaGUI extends javax.swing.JFrame {
         }
 
         //pack();
-        setVisible(true);
-        //setFullScreenSettings();
+        //setVisible(true);
+        setFullScreenSettings();
     }
 
     @SuppressWarnings("unchecked")
