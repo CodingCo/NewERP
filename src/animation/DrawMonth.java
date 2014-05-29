@@ -192,7 +192,7 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
                 // tegne stuff
                 if (tmp[0] == 0) {
                     // empty
-                    addBookingPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.WHITE, " No bookings this month - nr. " + tmp[5], "", tmp[6]);
+                    addEmptyPanel(coor[0], y, this.panel.getWidth(), boxHeight, Color.WHITE, Color.white, " No bookings this month - nr. " + tmp[5],"" + tmp[5]);
 
                 } else if ((tmp[2] * 100) + tmp[1] < (this.year * 100) + this.month && (tmp[10] * 100) + tmp[9] > (this.year * 100) + this.month) {
 
@@ -272,6 +272,51 @@ public class DrawMonth extends JPanel implements DrawPropertyInterface {
         p.setLocation(x, y);
         p.setSize(width, height);
         p.setBackground(c);
+    }
+
+    private void addEmptyPanel(int x, int y, int width, int height, Color c, Color hc, String message, String m2) {
+
+        JPanel p = new JPanel();
+        JLabel h = new JLabel();
+        JLabel k = new JLabel();
+        p.setLayout(new GridLayout(2, 1));
+
+        p.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    JOptionPane.showMessageDialog(panel.getRootPane(), "There are no bookings for apartment " + m2 + " in this month ", "", WIDTH);
+                } catch (HeadlessException ex) {
+
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                p.setBackground(hc);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                p.setBackground(c);
+            }
+        });
+
+        this.panel.add(p);
+        p.add(h);
+        p.add(k);
+
+        h.setHorizontalAlignment(SwingConstants.CENTER);
+        h.setText(message);
+        h.setBackground(Color.black);
+
+        k.setHorizontalAlignment(SwingConstants.CENTER);
+        k.setBackground(Color.black);
+
+        p.setLocation(x, y);
+        p.setSize(width, height);
+        p.setBackground(c);
+
     }
 
     private int calcSize(int nights) {

@@ -98,6 +98,7 @@ public class CustomerMapper {
             stat.setString(6, cus.getCity());
             stat.setString(7, cus.getZipcode());
             stat.setString(8, cus.getStreet());
+            System.out.println(cus.getCust_id());
             stat.setInt(9, cus.getCust_id());
             stat.setInt(10, cus.getVersion());
 
@@ -111,7 +112,7 @@ public class CustomerMapper {
 
             }
         }
-        return rowIns;
+        return cus.getCust_id();
     }
 
     /**

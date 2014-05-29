@@ -772,7 +772,7 @@
                               <Component id="newBookingFormZipTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="newBookingFormAgenTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="44" max="32767" attributes="0"/>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="newBookingFormButtonPanel" min="-2" max="-2" attributes="0"/>

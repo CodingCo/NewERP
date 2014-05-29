@@ -37,7 +37,7 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
     private int thisMonth;
     private int thisDay;
     private int thisCdm;
-
+    
     public DrawApartment(JPanel panel, int anum) {
         this.panel = panel;
         this.setSize(this.panel.getSize());
@@ -83,12 +83,12 @@ public class DrawApartment extends JPanel implements DrawPropertyInterface {
                 }
                 if ((tmp[2] * 100) + tmp[1] < (year * 100) + month && (tmp[10] * 100) + tmp[9] == (year * 100) + month) {
                     // in this month
-                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, green, hGreen, "<<" + tmp[6], tmp[6]);
+                    addBookingBox(xCoor[0], yCoor[x] + 40, boxWidth(tmp[8]) - (boxWidth / 2), boxHeight, orange, hOrange, "<<" + tmp[6], tmp[6]);
                 }
                 if ((tmp[2] * 100) + tmp[1] == (year * 100) + month && (tmp[10] * 100) + tmp[9] > (year * 100) + month) {
                     //ud af måneden
                     int nights = (tmp[3] - tmp[0]) + 1;
-                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights) - (boxWidth / 2), boxHeight, green, hGreen, "" + tmp[6] + ">>", tmp[6]);
+                    addBookingBox(xCoor[tmp[0] - 1] + (boxWidth / 2), yCoor[x] + 40, boxWidth(nights) - (boxWidth / 2), boxHeight, orange, hOrange, "" + tmp[6] + ">>", tmp[6]);
                 }
 
             }

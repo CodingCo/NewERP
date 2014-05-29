@@ -121,10 +121,17 @@ public class Customer implements Cloneable{
 	return version;
     }
 
+//    @Override
+//    public String toString() {
+//	return first_name + " " + last_name + " " +phone;
+//    }
+//    
     @Override
     public String toString() {
-	return first_name + " " + last_name + " " +phone;
+        return "Customer{" + "cust_id=" + cust_id + ", first_name=" + first_name + ", last_name=" + last_name + ", phone=" + phone + ", email=" + email + ", country=" + country + ", city=" + city + ", zipcode=" + zipcode + ", street=" + street + ", version=" + version + '}';
     }
+    
+    
     
     @Override
     public Object clone() throws CloneNotSupportedException{
